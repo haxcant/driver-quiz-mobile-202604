@@ -2351,9 +2351,7 @@ function renderWrongBook() {
       `題目：${prompt}`,
       `建議檢索詞：${query}`,
       "（檢索詞已嘗試複製到剪貼簿）"
-    ].join("
-
-"));
+    ].join("\n\n"));
   }
 
   function bindQuestionSearchButton(question) {
@@ -3061,4 +3059,9 @@ function truncateText(text, maxLen = 80) {
   function escapeAttr(value) {
     return escapeHtml(value);
   }
-})();
+})();    alert([
+      "瀏覽器阻擋了外部搜尋分頁。",
+      `題目：${prompt}`,
+      `建議檢索詞：${query}`,
+      "（檢索詞已嘗試複製到剪貼簿）"
+    ].join("\n\n"));

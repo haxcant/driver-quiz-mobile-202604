@@ -11,8 +11,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   };
 
   try {
-    const authMod = await import('./firebase-auth.js?v=20260330c');
-    const smokeMod = await import('./firebase-sync-smoke.js?v=20260330c');
+    const authMod = await import('./firebase-auth.js?v=20260330d');
+    const smokeMod = await import('./firebase-sync-smoke.js?v=20260330d');
     const { loginWithGoogle, logoutFirebase, watchAuthState, finishRedirectLogin } = authMod;
     const { smokeWrite, smokeRead } = smokeMod;
 
@@ -51,7 +51,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         setOutput('寫入成功');
       } catch (err) {
         console.error(err);
-        setOutput('寫入失敗：\n' + (err?.message || String(err)));
+        const msg = err?.message || String(err);
+        setOutput(msg.includes('Missing or insufficient permissions') ? '寫入失敗：你已登入，但尚未被加入 allowlist 白名單，或 app_config/global.syncEnabled 不是 true。' : '寫入失敗：\n' + msg);
       }
     });
 
@@ -62,7 +63,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         setOutput(JSON.stringify(data, null, 2));
       } catch (err) {
         console.error(err);
-        setOutput('讀取失敗：\n' + (err?.message || String(err)));
+        const msg = err?.message || String(err);
+        setOutput(msg.includes('Missing or insufficient permissions') ? '讀取失敗：你已登入，但尚未被加入 allowlist 白名單，或 app_config/global.syncEnabled 不是 true。' : '讀取失敗：\n' + msg);
       }
     });
 
