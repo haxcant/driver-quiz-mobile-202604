@@ -179,9 +179,8 @@ const HANDBOOK_RULES = [
     autoNextWrongDelayInput: document.getElementById("autoNextWrongDelayInput"),
     soundVolumeInput: document.getElementById("soundVolumeInput"),
     soundVolumeValue: document.getElementById("soundVolumeValue"),
-    quickFilterZeroBtn: document.getElementById("quickFilterZeroBtn"),
-    quickFilterNegativeBtn: document.getElementById("quickFilterNegativeBtn"),
-    quickFilterClearBtn: document.getElementById("quickFilterClearBtn"),
+    soundTestBtn: document.getElementById("soundTestBtn"),
+    panicReloadBtn: document.getElementById("panicReloadBtn"),
     maskTextToggle: document.getElementById("maskTextToggle"),
     shortcutOption1Input: document.getElementById("shortcutOption1Input"),
     shortcutOption2Input: document.getElementById("shortcutOption2Input"),
@@ -371,6 +370,8 @@ const HANDBOOK_RULES = [
 
     els.startBtn?.addEventListener("click", startSessionFromControls);
     els.continueBtn?.addEventListener("click", () => renderSessionOrEmpty());
+    els.soundTestBtn?.addEventListener("click", () => playVolumeTest());
+    els.panicReloadBtn?.addEventListener("click", () => emergencySaveAndReload());
     els.imageReviewBtn?.addEventListener("click", renderImageReview);
     els.resetSessionBtn?.addEventListener("click", () => {
       if (!confirm("確定要清除目前題組嗎？")) return;
@@ -414,9 +415,6 @@ const HANDBOOK_RULES = [
       renderWrongBook();
       renderSessionOrEmpty();
     });
-    els.quickFilterZeroBtn?.addEventListener("click", () => applyQuickScoreFilter("eq", 0));
-    els.quickFilterNegativeBtn?.addEventListener("click", () => applyQuickScoreFilter("lt", 0));
-    els.quickFilterClearBtn?.addEventListener("click", () => applyQuickScoreFilter("any", 0));
     els.installBtn?.addEventListener("click", async () => {
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
@@ -438,13 +436,14 @@ const HANDBOOK_RULES = [
     settings.answerTimeLimitSec = sanitizeNonNegativeNumber(els.answerTimeLimitInput?.value, 15);
     settings.autoNextCorrectDelaySec = sanitizeNonNegativeNumber(els.autoNextCorrectDelayInput?.value, 1);
     settings.autoNextWrongDelaySec = sanitizeNonNegativeNumber(els.autoNextWrongDelayInput?.value, 4);
-    settings.soundVolumePercent = sanitizeInteger(els.soundVolumeInput?.value, 180, 0, 300);
+    settings.soundVolumePercent = sanitizeNumberInRange(els.soundVolumeInput?.value, 180, 0, 500);
     settings.shortcutOption1 = normalizeShortcutSetting(els.shortcutOption1Input?.value, "1");
     settings.shortcutOption2 = normalizeShortcutSetting(els.shortcutOption2Input?.value, "2");
     settings.shortcutOption3 = normalizeShortcutSetting(els.shortcutOption3Input?.value, "3");
     settings.shortcutOption4 = normalizeShortcutSetting(els.shortcutOption4Input?.value, "4");
     settings.shortcutNext = normalizeShortcutSetting(els.shortcutNextInput?.value, "Enter");
     saveSettings();
+    updateSoundVolumeLabel();
     refreshFilterSummary();
     buildCategorySelect();
     refreshStats();
@@ -529,7 +528,7 @@ const HANDBOOK_RULES = [
     const scopedCount = getScopedQuestions(scope).length;
     const totalCount = ALL_QUESTIONS.length;
     if (els.versionSummary) {
-      els.versionSummary.textContent = `v18.1｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。支援電腦／平板／手機、PWA 安裝、JSON 匯入匯出、Firebase 手動雲端同步與同步前本機備份。`;
+      els.versionSummary.textContent = `${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
     }
     if (els.scopeSummary) {
       els.scopeSummary.textContent = EXAM_SCOPE_DESCRIPTIONS[scope] || "";
@@ -555,18 +554,6 @@ const HANDBOOK_RULES = [
     if (els.filterSummary) {
       els.filterSummary.textContent = summaryText;
     }
-  }
-
-  function updateSoundVolumeLabel() {
-    if (!els.soundVolumeValue) return;
-    const value = sanitizeInteger(els.soundVolumeInput?.value ?? settings.soundVolumePercent, 180, 0, 300);
-    els.soundVolumeValue.textContent = `${value}%`;
-  }
-
-  function applyQuickScoreFilter(operator, value) {
-    if (els.scoreFilterOperatorSelect) els.scoreFilterOperatorSelect.value = operator;
-    if (els.scoreFilterValueInput) els.scoreFilterValueInput.value = String(value);
-    handleSettingChange();
   }
 
   function startSessionFromControls() {
@@ -873,21 +860,14 @@ function goToNextFlashcardWithoutGrading() {
     }
   }
 
-  function getQuizSoundScale() {
-    const raw = Number(settings?.soundVolumePercent ?? 180);
-    if (!Number.isFinite(raw)) return 1.8;
-    return Math.min(3, Math.max(0, raw / 100));
-  }
-
   function playCorrectChime() {
     try {
       unlockAudio();
       if (!quizAudioContext) return;
       const now = quizAudioContext.currentTime;
       const master = quizAudioContext.createGain();
-      const volumeScale = getQuizSoundScale();
       master.gain.setValueAtTime(0.0001, now);
-      master.gain.exponentialRampToValueAtTime(Math.max(0.0001, 0.08 * volumeScale), now + 0.02);
+      master.gain.exponentialRampToValueAtTime(0.08 * getSoundVolumeGain(), now + 0.02);
       master.gain.exponentialRampToValueAtTime(0.0001, now + 0.8);
       master.connect(quizAudioContext.destination);
 
@@ -897,7 +877,7 @@ function goToNextFlashcardWithoutGrading() {
         osc.type = "sine";
         osc.frequency.setValueAtTime(freq, now + idx * 0.12);
         gain.gain.setValueAtTime(0.0001, now + idx * 0.12);
-        gain.gain.exponentialRampToValueAtTime(0.25, now + idx * 0.12 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.25 * getSoundVolumeGain(), now + idx * 0.12 + 0.02);
         gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.12 + 0.22);
         osc.connect(gain);
         gain.connect(master);
@@ -913,9 +893,8 @@ function goToNextFlashcardWithoutGrading() {
       if (!quizAudioContext) return;
       const now = quizAudioContext.currentTime;
       const master = quizAudioContext.createGain();
-      const volumeScale = getQuizSoundScale();
       master.gain.setValueAtTime(0.0001, now);
-      master.gain.exponentialRampToValueAtTime(Math.max(0.0001, 0.08 * volumeScale), now + 0.01);
+      master.gain.exponentialRampToValueAtTime(0.08 * getSoundVolumeGain(), now + 0.01);
       master.gain.exponentialRampToValueAtTime(0.0001, now + 0.45);
       master.connect(quizAudioContext.destination);
 
@@ -925,7 +904,7 @@ function goToNextFlashcardWithoutGrading() {
         osc.type = "triangle";
         osc.frequency.setValueAtTime(freq, now + idx * 0.14);
         gain.gain.setValueAtTime(0.0001, now + idx * 0.14);
-        gain.gain.exponentialRampToValueAtTime(0.2, now + idx * 0.14 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.2 * getSoundVolumeGain(), now + idx * 0.14 + 0.02);
         gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.14 + 0.18);
         osc.connect(gain);
         gain.connect(master);
@@ -2079,7 +2058,7 @@ function renderWrongBook() {
       answerTimeLimitSec: sanitizeNonNegativeNumber(data?.answerTimeLimitSec, 15),
       autoNextCorrectDelaySec: sanitizeNonNegativeNumber(data?.autoNextCorrectDelaySec, data?.autoNextDelaySec, 1),
       autoNextWrongDelaySec: sanitizeNonNegativeNumber(data?.autoNextWrongDelaySec, data?.autoNextDelaySec, 4),
-      soundVolumePercent: sanitizeInteger(data?.soundVolumePercent, 180, 0, 300),
+      soundVolumePercent: sanitizeNumberInRange(data?.soundVolumePercent, 180, 0, 500),
       shortcutOption1: normalizeShortcutSetting(data?.shortcutOption1, "1"),
       shortcutOption2: normalizeShortcutSetting(data?.shortcutOption2, "2"),
       shortcutOption3: normalizeShortcutSetting(data?.shortcutOption3, "3"),
@@ -2728,9 +2707,10 @@ function buildAnswerExplanationHtml(question) {
 
   parts.push(`
     <div class="feedback-explanation-block handbook-block search-tool-block">
+      <div class="feedback-explanation-title">查證工具</div>
       <div class="search-tool-row">
-        <span class="secondary-meta">答對 +1 分，答錯 / 逾時 / 不會 -1 分。</span>
         <button class="ghost-btn aux-btn search-question-btn">搜尋此題</button>
+        <span class="secondary-meta">直接顯示本題的手冊對照、關鍵詞與查證重點，不再跳出外部搜尋頁。</span>
       </div>
     </div>
   `);
@@ -3086,17 +3066,50 @@ function truncateText(text, maxLen = 80) {
     return num >= 10 ? `${num.toFixed(0)} 秒` : `${num.toFixed(1)} 秒`;
   }
 
-  function sanitizeInteger(value, fallback = 0, min = null, max = null) {
+  function sanitizeInteger(value, fallback = 0) {
     const num = Number.parseInt(value, 10);
-    let out = Number.isFinite(num) ? num : fallback;
-    if (min != null) out = Math.max(Number(min), out);
-    if (max != null) out = Math.min(Number(max), out);
-    return out;
+    return Number.isFinite(num) ? num : fallback;
+  }
+
+  function sanitizeNumberInRange(value, fallback = 0, min = 0, max = 100) {
+    const num = Number.parseFloat(value);
+    if (!Number.isFinite(num)) return fallback;
+    return Math.min(max, Math.max(min, num));
   }
 
   function sanitizeNonNegativeNumber(value, fallback = 0) {
     const num = Number.parseFloat(value);
     return Number.isFinite(num) && num >= 0 ? num : fallback;
+  }
+
+
+  function updateSoundVolumeLabel() {
+    if (els.soundVolumeValue) {
+      const pct = sanitizeNumberInRange(settings?.soundVolumePercent, 180, 0, 500);
+      els.soundVolumeValue.textContent = `${Math.round(pct)}%`;
+    }
+  }
+
+  function getSoundVolumeGain() {
+    const pct = sanitizeNumberInRange(settings?.soundVolumePercent, 180, 0, 500);
+    return pct / 100;
+  }
+
+  function playVolumeTest() {
+    playCorrectChime();
+  }
+
+  function emergencySaveAndReload() {
+    try {
+      if (session) saveSession();
+      saveProgress();
+      saveSettings();
+      const stamp = new Date().toISOString();
+      sessionStorage.setItem("driver-quiz-emergency-reload", stamp);
+    } catch (error) {
+      console.warn("emergencySaveAndReload failed", error);
+    }
+    window.location.reload();
   }
 
   function escapeHtml(value) {
@@ -3115,5 +3128,6 @@ function truncateText(text, maxLen = 80) {
   window.DriverQuizMemory = {
     buildPayload: buildFullMemoryPayload,
     applyPayload: applyFullMemoryPayload,
+    emergencyReload: emergencySaveAndReload,
   };
 })();

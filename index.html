@@ -21,7 +21,10 @@
         <h1>駕訓班筆試練習</h1>
         <p class="subtitle">正式筆試練習、錯題本、積分追蹤、手冊對照說明、快捷鍵答題、單字卡與限時作答</p>
       </div>
-      <button id="installBtn" class="ghost-btn hidden">安裝到主畫面</button>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button id="panicReloadBtn" class="ghost-btn" type="button" onclick="window.DriverQuizMemory?.emergencyReload?.() || window.location.reload()">卡住？保存後重整</button>
+        <button id="installBtn" class="ghost-btn hidden">安裝到主畫面</button>
+      </div>
     </header>
 
     <section class="panel info-panel collapsed-panel">
@@ -30,14 +33,13 @@
         <div class="info-grid">
           <div>
             <strong>目前版本</strong>
-            <p id="versionSummary">v18.1：支援電腦／平板／手機瀏覽器與 PWA 安裝，整合完整題庫、積分追蹤、手冊對照、JSON 匯入匯出與 Firebase 手動雲端同步。</p>
+            <p id="versionSummary">v19.2：已整合完整題庫、PWA、本機記憶、JSON 匯入匯出、Firebase 手動同步、手機登入、同步前本機快照還原與手機緊急保存重整。</p>
           </div>
           <div>
             <strong>建議使用方式</strong>
-            <p>第一次使用者只須點擊「開始練習」即可作答；其餘設定皆可之後再調整。電腦與手機皆盡量以少按鈕完成常用操作。</p>
+            <p>第一次使用只須按「開始練習」即可。電腦、平板、手機皆可使用；平常以本機記憶為主，需要時再手動上傳／下載雲端備份。</p>
           </div>
         </div>
-        <p class="scope-summary subtle" id="firstUseHint">第一次使用：直接按「開始練習」即可。需要時再展開進階設定或雲端同步。</p>
       </details>
     </section>
 
@@ -102,21 +104,9 @@
         <label><span>每題限時（秒，0=不限）</span><input id="answerTimeLimitInput" type="number" min="0" step="1" value="15"></label>
         <label><span>答對後自動跳題（秒，0=不自動）</span><input id="autoNextCorrectDelayInput" type="number" min="0" step="0.5" value="1"></label>
         <label><span>答錯後自動跳題（秒，0=不自動）</span><input id="autoNextWrongDelayInput" type="number" min="0" step="0.5" value="4"></label>
-        <label>
-          <span>提示音量（%）</span>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <input id="soundVolumeInput" type="range" min="0" max="300" step="5" value="180" style="flex:1;">
-            <strong id="soundVolumeValue">180%</strong>
-          </div>
-        </label>
+        <label><span>提示音量</span><input id="soundVolumeInput" type="range" min="0" max="500" step="10" value="180"><small id="soundVolumeValue">180%</small></label>
+        <label><span>音量測試</span><button id="soundTestBtn" class="ghost-btn" type="button">播放提示音</button></label>
       </div>
-      <div class="actions compact" style="margin-top:8px;">
-        <span class="secondary-meta">快捷套用積分篩選：</span>
-        <button id="quickFilterZeroBtn" type="button" class="ghost-btn aux-btn">考沒考過題（=0）</button>
-        <button id="quickFilterNegativeBtn" type="button" class="ghost-btn aux-btn">考錯過題目（&lt;0）</button>
-        <button id="quickFilterClearBtn" type="button" class="ghost-btn aux-btn">清除快捷篩選</button>
-      </div>
-      <p class="scope-summary subtle" id="quickFilterHint">這三個按鈕只是幫你快速套用進階區的積分篩選條件（=0、&lt;0、不限），不會和原本進階設定衝突。</p>
       <div class="grid advanced-grid shortcut-grid three-col-desktop">
         <label><span>選項 1 快捷鍵</span><input id="shortcutOption1Input" type="text" maxlength="12" value="1" placeholder="1"></label>
         <label><span>選項 2 快捷鍵</span><input id="shortcutOption2Input" type="text" maxlength="12" value="2" placeholder="2"></label>
@@ -185,7 +175,7 @@
       </details>
     </section>
 
-    <main id="mainContent" class="panel quiz-panel empty-state"><p>第一次使用者只須點擊「開始練習」即可開始作答；其餘設定可之後再調整。</p></main>
+    <main id="mainContent" class="panel quiz-panel empty-state"><p>第一次使用只須點擊「開始練習」即可，題目會顯示在這裡。</p></main>
 
     <section class="panel reward-panel">
       <div class="review-header"><h2>學習獎勵</h2><p>用覆蓋率、連續答對與累計作答推進徽章，讓刷題更有回饋。</p></div>
@@ -204,7 +194,7 @@
   <script src="questions.js"></script>
   <script src="handbook_explanations.js"></script>
   <script src="handbook_pages.js"></script>
-  <script src="app.js?v=20260330stable"></script>
-  <script type="module" src="firebase-ui.js?v=20260330stable"></script>
+  <script src="app.js?v=20260330v192"></script>
+  <script type="module" src="firebase-ui.js?v=20260330v192"></script>
 </body>
 </html>

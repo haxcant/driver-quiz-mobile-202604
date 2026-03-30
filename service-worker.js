@@ -1,18 +1,18 @@
-const CACHE_NAME = "driver-quiz-pwa-v18-ui-audio-filters";
+const CACHE_NAME = "driver-quiz-pwa-v19-2-audio-recovery";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./app.js?v=20260330v181",
+  "./app.js?v=20260330v192",
   "./questions.js",
   "./handbook_explanations.js",
   "./handbook_pages.js",
   "./manifest.webmanifest",
   "./firebase-init.js",
-  "./firebase-auth.js?v=20260330v181",
-  "./firebase-sync-smoke.js?v=20260330v181",
-  "./firebase-backup.js?v=20260330v181",
-  "./firebase-ui.js?v=20260330v181",
+  "./firebase-auth.js?v=20260330v192",
+  "./firebase-sync-smoke.js?v=20260330v192",
+  "./firebase-backup.js?v=20260330v192",
+  "./firebase-ui.js?v=20260330v192",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];

@@ -2,6 +2,8 @@ import { auth, db } from "./firebase-init.js";
 import { doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const CHUNK_CHARS = 150000;
+const MAX_CHUNKS = 12;
+const MAX_TOTAL_BYTES = 3600000;
 const SNAPSHOT_KEY = "driver_quiz_pre_sync_snapshot_v1";
 const UPLOAD_META_KEY = "driver_quiz_cloud_upload_meta_v1";
 const MIN_UPLOAD_INTERVAL_MS = 60000;
@@ -142,11 +144,14 @@ export async function uploadFullMemoryBackup(buildPayloadFn) {
     const payload = buildPayloadFn();
     const json = JSON.stringify(payload);
     const payloadBytes = new TextEncoder().encode(json).length;
-    if (payloadBytes > 400000) {
-      throw new Error("完整資料備份偏大，為保守控制雲端用量，目前限制上傳 400KB 以內。請先改用本機 JSON 匯出。");
+    if (payloadBytes > MAX_TOTAL_BYTES) {
+      throw new Error(`完整資料備份偏大（${payloadBytes} bytes），為避免第三方託管資源被過度占用，目前雲端同步上限約 ${MAX_TOTAL_BYTES} bytes。請先改用本機 JSON 匯出。`);
     }
     const checksum = await sha256Hex(json);
     const chunks = splitIntoChunks(json);
+    if (chunks.length > MAX_CHUNKS) {
+      throw new Error(`完整資料備份分塊後超過 ${MAX_CHUNKS} 塊，請先改用本機 JSON 匯出。`);
+    }
     const answeredCount = getAnsweredCountFromPayload(payload);
     const metaRef = doc(db, "users", user.uid, "sync", "meta");
 

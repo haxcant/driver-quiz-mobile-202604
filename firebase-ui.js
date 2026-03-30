@@ -152,9 +152,9 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   try {
     modules = {
-      auth: await import("./firebase-auth.js?v=20260330stable"),
-      smoke: await import("./firebase-sync-smoke.js?v=20260330stable"),
-      backup: await import("./firebase-backup.js?v=20260330stable"),
+      auth: await import("./firebase-auth.js?v=20260330v192"),
+      smoke: await import("./firebase-sync-smoke.js?v=20260330v192"),
+      backup: await import("./firebase-backup.js?v=20260330v192"),
     };
   } catch (err) {
     console.error("firebase modules import failed", err);
