@@ -1,6 +1,5 @@
-const CACHE_NAME = "driver-quiz-v5-mobile";
 
-const CACHE_NAME = "driver-quiz-pwa-v14-official-choice-restore";
+const CACHE_NAME = "driver-quiz-pwa-v15-android-numpad1-fix";
 const CORE_ASSETS = [
   "./",
   "./index.html",

@@ -5,25 +5,6 @@
   const IMAGE_ISSUES_KEY = "driver-quiz-image-issues-v1";
   const IMPORTED_WRONGS_KEY = "driver-quiz-imported-wrongs-v1";
   const MEMORY_EXPORT_VERSION = 1;
-  const SETTINGS_SCHEMA_VERSION = 2;
-  const DEFAULT_SETTINGS = Object.freeze({
-    maskTextBeforeAnswer: false,
-    examScope: "official_small_car",
-    practiceMode: "practice",
-    questionMode: "imageToText",
-    questionCount: 20,
-    masteryTarget: 2,
-    scoreFilterOperator: "any",
-    scoreFilterValue: 0,
-    answerTimeLimitSec: 15,
-    autoNextCorrectDelaySec: 1,
-    autoNextWrongDelaySec: 4,
-    shortcutOption1: "1",
-    shortcutOption2: "2",
-    shortcutOption3: "3",
-    shortcutOption4: "4",
-    shortcutNext: "Enter",
-  });
   const LEGACY_PROGRESS_KEYS = ["driver-quiz-progress-v5", "driver-quiz-progress-v3", "driver-quiz-progress-v2", "driver-quiz-progress-v5"];
   const LEGACY_SESSION_KEYS = ["driver-quiz-session-v4"];
   const LEGACY_SETTINGS_KEYS = ["driver-quiz-settings-v4"];
@@ -404,35 +385,28 @@ const HANDBOOK_RULES = [
     });
     els.clearWrongBookBtn?.addEventListener("click", () => {
       if (!confirm("確定要清空目前範圍的錯題本嗎？")) return;
-      try {
-        clearAllTimers();
-        getScopedQuestions(getSelectedScope()).forEach((q) => {
-          const item = questionProgress(q.id);
-          item.inWrongBook = false;
-          item.masteryStreak = 0;
-        });
-        importedWrongs = [];
-        saveProgress();
-        saveImportedWrongs();
-        if (session?.filters?.practiceMode === "wrongOnly") {
-          session = null;
-          try { localStorage.removeItem(SESSION_KEY); } catch {}
-        }
-        safelyRefreshAllViews();
-      } catch (error) {
-        console.error("clearWrongBook failed", error);
-        alert("清空錯題本時發生畫面錯誤，資料已盡量重置。重新整理頁面後應可恢復正常。");
-      }
+      getScopedQuestions(getSelectedScope()).forEach((q) => {
+        const item = questionProgress(q.id);
+        item.inWrongBook = false;
+        item.masteryStreak = 0;
+      });
+      saveProgress();
+      refreshStats();
+      refreshRewards();
+      renderWrongBook();
+      renderSessionOrEmpty();
     });
     els.clearAllProgressBtn?.addEventListener("click", () => {
-      if (!confirm("確定要清空所有作答紀錄、積分、設定、圖示標記與目前題組嗎？")) return;
-      try {
-        fullyResetAllLearningMemory();
-        safelyRefreshAllViews();
-      } catch (error) {
-        console.error("clearAllProgress failed", error);
-        alert("清空全部記憶時發生畫面錯誤，資料已盡量重置。重新整理頁面後應可恢復正常。");
-      }
+      if (!confirm("確定要清空所有作答紀錄、積分與目前題組嗎？")) return;
+      clearAllTimers();
+      progress = defaultProgress();
+      session = null;
+      saveProgress();
+      localStorage.removeItem(SESSION_KEY);
+      refreshStats();
+      refreshRewards();
+      renderWrongBook();
+      renderSessionOrEmpty();
     });
     els.installBtn?.addEventListener("click", async () => {
       if (!deferredPrompt) return;
@@ -467,54 +441,6 @@ const HANDBOOK_RULES = [
     refreshRewards();
     renderWrongBook();
     renderSessionOrEmpty();
-  }
-
-  function safelyRefreshAllViews() {
-    try {
-      hydrateControlsFromSettings();
-      buildCategorySelect();
-      refreshScopeSummary();
-      refreshFilterSummary();
-      refreshStats();
-      refreshRewards();
-      renderWrongBook();
-      renderSessionOrEmpty();
-    } catch (error) {
-      console.warn("safelyRefreshAllViews warning", error);
-      clearAllTimers();
-      setQuizChromeMode("idle");
-      if (els.mainContent) {
-        els.mainContent.className = "panel quiz-panel empty-state";
-        els.mainContent.innerHTML = "<p>資料已重置。若畫面仍不穩定，重新整理即可。</p>";
-      }
-      if (els.wrongBookList) {
-        els.wrongBookList.className = "wrong-list empty-state";
-        els.wrongBookList.textContent = "目前沒有錯題。";
-      }
-    }
-  }
-
-  function fullyResetAllLearningMemory() {
-    clearAllTimers();
-    progress = defaultProgress();
-    session = null;
-    settings = defaultSettings();
-    imageIssues = {};
-    importedWrongs = [];
-    try {
-      localStorage.removeItem(STORAGE_KEY);
-      localStorage.removeItem(SESSION_KEY);
-      localStorage.removeItem(SETTINGS_KEY);
-      localStorage.removeItem(IMAGE_ISSUES_KEY);
-      localStorage.removeItem(IMPORTED_WRONGS_KEY);
-      for (const legacyKey of [...LEGACY_PROGRESS_KEYS, ...LEGACY_SESSION_KEYS, ...LEGACY_SETTINGS_KEYS]) {
-        localStorage.removeItem(legacyKey);
-      }
-    } catch {}
-    saveProgress();
-    saveSettings();
-    saveImageIssues();
-    saveImportedWrongs();
   }
 
   function hydrateControlsFromSettings() {
@@ -778,7 +704,7 @@ function renderQuestion() {
           <div class="utility-row compact compact-question-actions">
             <div class="secondary-meta">答對 +1 分，答錯 / 逾時 / 不會 -1 分。</div>
             <div class="inline-action-group">
-              <button id="searchQuestionQuickBtn" class="ghost-btn aux-btn">搜尋此題</button>
+              <button id="searchQuestionQuickBtn" class="ghost-btn aux-btn">查題重點</button>
               <button id="dontKnowBtn" class="ghost-btn aux-btn">不會（-1）</button>
             </div>
           </div>
@@ -1837,7 +1763,26 @@ function renderWrongBook() {
   }
 
   function sanitizeImportedSettings(data, fallback = settings) {
-    return normalizeLoadedSettings(data, fallback || defaultSettings());
+    const base = { ...(fallback || loadSettings()) };
+    if (!data || typeof data !== "object") return base;
+    return {
+      ...base,
+      examScope: data.examScope || base.examScope,
+      practiceMode: data.practiceMode || base.practiceMode,
+      questionMode: data.questionMode || base.questionMode,
+      questionCount: Number(data.questionCount || base.questionCount || 20),
+      masteryTarget: Number(data.masteryTarget || base.masteryTarget || 2),
+      scoreFilterOperator: data.scoreFilterOperator || base.scoreFilterOperator || "any",
+      scoreFilterValue: sanitizeInteger(data.scoreFilterValue, base.scoreFilterValue ?? 0),
+      answerTimeLimitSec: sanitizeNonNegativeNumber(data.answerTimeLimitSec, base.answerTimeLimitSec ?? 15),
+      autoNextCorrectDelaySec: sanitizeNonNegativeNumber(data.autoNextCorrectDelaySec, data.autoNextDelaySec, base.autoNextCorrectDelaySec ?? 1),
+      autoNextWrongDelaySec: sanitizeNonNegativeNumber(data.autoNextWrongDelaySec, data.autoNextDelaySec, base.autoNextWrongDelaySec ?? 4),
+      shortcutOption1: normalizeShortcutSetting(data.shortcutOption1, base.shortcutOption1 || "1"),
+      shortcutOption2: normalizeShortcutSetting(data.shortcutOption2, base.shortcutOption2 || "2"),
+      shortcutOption3: normalizeShortcutSetting(data.shortcutOption3, base.shortcutOption3 || "3"),
+      shortcutOption4: normalizeShortcutSetting(data.shortcutOption4, base.shortcutOption4 || "4"),
+      shortcutNext: normalizeShortcutSetting(data.shortcutNext, base.shortcutNext || "Enter"),
+    };
   }
 
   function sanitizeImportedSession(data) {
@@ -2071,59 +2016,31 @@ function renderWrongBook() {
     localStorage.setItem(SESSION_KEY, JSON.stringify(session));
   }
 
-  function defaultSettings() {
-    return {
-      settingsSchemaVersion: SETTINGS_SCHEMA_VERSION,
-      ...DEFAULT_SETTINGS,
-    };
-  }
-
-  function normalizeLoadedSettings(data, fallback = null) {
-    const base = { ...(fallback || defaultSettings()) };
-    const raw = data && typeof data === "object" ? data : {};
-    const settingsSchemaVersion = Number(raw.settingsSchemaVersion || 0);
-
-    let autoNextCorrectDelaySec = sanitizeNonNegativeNumber(raw.autoNextCorrectDelaySec, raw.autoNextDelaySec, base.autoNextCorrectDelaySec ?? 1);
-    let autoNextWrongDelaySec = sanitizeNonNegativeNumber(raw.autoNextWrongDelaySec, raw.autoNextDelaySec, base.autoNextWrongDelaySec ?? 4);
-
-    if (settingsSchemaVersion < SETTINGS_SCHEMA_VERSION) {
-      if (autoNextCorrectDelaySec === 0 && autoNextWrongDelaySec === 0) {
-        autoNextCorrectDelaySec = 1;
-        autoNextWrongDelaySec = 4;
-      }
-      if (autoNextCorrectDelaySec === 1.5) autoNextCorrectDelaySec = 1;
-      if (autoNextWrongDelaySec === 3) autoNextWrongDelaySec = 4;
-    }
-
-    return {
-      ...base,
-      settingsSchemaVersion: SETTINGS_SCHEMA_VERSION,
-      examScope: raw.examScope || base.examScope,
-      practiceMode: raw.practiceMode || base.practiceMode,
-      questionMode: raw.questionMode || base.questionMode,
-      questionCount: Number(raw.questionCount || base.questionCount || 20),
-      masteryTarget: Number(raw.masteryTarget || base.masteryTarget || 2),
-      scoreFilterOperator: raw.scoreFilterOperator || base.scoreFilterOperator || "any",
-      scoreFilterValue: sanitizeInteger(raw.scoreFilterValue, base.scoreFilterValue ?? 0),
-      answerTimeLimitSec: sanitizeNonNegativeNumber(raw.answerTimeLimitSec, base.answerTimeLimitSec ?? 15),
-      autoNextCorrectDelaySec,
-      autoNextWrongDelaySec,
-      shortcutOption1: normalizeShortcutSetting(raw.shortcutOption1, base.shortcutOption1 || "1"),
-      shortcutOption2: normalizeShortcutSetting(raw.shortcutOption2, base.shortcutOption2 || "2"),
-      shortcutOption3: normalizeShortcutSetting(raw.shortcutOption3, base.shortcutOption3 || "3"),
-      shortcutOption4: normalizeShortcutSetting(raw.shortcutOption4, base.shortcutOption4 || "4"),
-      shortcutNext: normalizeShortcutSetting(raw.shortcutNext, base.shortcutNext || "Enter"),
-    };
-  }
-
   function loadSettings() {
     const data = readStorageObject(SETTINGS_KEY, LEGACY_SETTINGS_KEYS);
-    return normalizeLoadedSettings(data, defaultSettings());
+    return {
+      maskTextBeforeAnswer: false,
+      examScope: data?.examScope || "official_small_car",
+      practiceMode: data?.practiceMode || "practice",
+      questionMode: data?.questionMode || "imageToText",
+      questionCount: Number(data?.questionCount || 20),
+      masteryTarget: Number(data?.masteryTarget || 2),
+      scoreFilterOperator: data?.scoreFilterOperator || "any",
+      scoreFilterValue: sanitizeInteger(data?.scoreFilterValue, 0),
+      answerTimeLimitSec: sanitizeNonNegativeNumber(data?.answerTimeLimitSec, 15),
+      autoNextCorrectDelaySec: sanitizeNonNegativeNumber(data?.autoNextCorrectDelaySec, data?.autoNextDelaySec, 1),
+      autoNextWrongDelaySec: sanitizeNonNegativeNumber(data?.autoNextWrongDelaySec, data?.autoNextDelaySec, 4),
+      shortcutOption1: normalizeShortcutSetting(data?.shortcutOption1, "1"),
+      shortcutOption2: normalizeShortcutSetting(data?.shortcutOption2, "2"),
+      shortcutOption3: normalizeShortcutSetting(data?.shortcutOption3, "3"),
+      shortcutOption4: normalizeShortcutSetting(data?.shortcutOption4, "4"),
+      shortcutNext: normalizeShortcutSetting(data?.shortcutNext, "Enter"),
+    };
   }
 
   function saveSettings() {
     try {
-      localStorage.setItem(SETTINGS_KEY, JSON.stringify({ ...defaultSettings(), ...(settings || {}), settingsSchemaVersion: SETTINGS_SCHEMA_VERSION }));
+      localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
     } catch (error) {
       console.warn("saveSettings failed", error);
     }
@@ -2425,19 +2342,17 @@ function renderWrongBook() {
         `查證重點：${String(officialFallback.title || "題目重點")}`,
         String(officialFallback.text || "").trim()
       );
-    }
-
-    if (query) {
-      try { navigator.clipboard?.writeText?.(query); } catch {}
-      const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-      let opened = null;
+    } else if (query) {
       try {
-        opened = window.open(searchUrl, "_blank", "noopener,noreferrer");
+        navigator.clipboard?.writeText?.(query);
       } catch {}
-      if (opened) return;
-      lines.push(`建議檢索詞：${query}`, "（已嘗試複製到剪貼簿；若沒自動開新分頁，可手動貼上搜尋）");
+      lines.push(
+        "目前沒有自動對上的手冊段落。",
+        `建議檢索詞：${query}`,
+        "（檢索詞已嘗試複製到剪貼簿）"
+      );
     } else {
-      lines.push("目前沒有可用的搜尋關鍵詞。");
+      lines.push("目前沒有可用的查題重點。");
     }
 
     window.alert(lines.filter(Boolean).join("\n\n"));
@@ -2711,7 +2626,7 @@ function buildOfficialFallbackExplanation(question, keywords) {
   if (answer) {
     return {
       title: sourceName,
-      text: `本題正確答案是「${answer}」。${keyLabel ? `可優先檢查這些主題詞：${keyLabel}。` : "如手冊對應仍不夠清楚，可直接按下方按鈕搜尋此題。"}`,
+      text: `本題正確答案是「${answer}」。${keyLabel ? `可優先檢查這些主題詞：${keyLabel}。` : "如手冊對應仍不夠清楚，可用下方按鈕直接搜尋此題。"}`,
       kind: "official"
     };
   }
@@ -2760,7 +2675,7 @@ function buildAnswerExplanationHtml(question) {
     parts.push(`
       <div class="feedback-explanation-block handbook-block fallback">
         <div class="feedback-explanation-title">題目重點</div>
-        <div>目前沒有自動對上的說明，你可以直接用下方按鈕搜尋此題並查證。</div>
+        <div>目前沒有自動對上的說明，你可以直接用下方按鈕把此題送到搜尋引擎查證。</div>
       </div>
     `);
   }
@@ -2769,8 +2684,8 @@ function buildAnswerExplanationHtml(question) {
     <div class="feedback-explanation-block handbook-block search-tool-block">
       <div class="feedback-explanation-title">查證工具</div>
       <div class="search-tool-row">
-        <button class="ghost-btn aux-btn search-question-btn">搜尋此題</button>
-        <span class="secondary-meta">優先直接開啟本題搜尋；若瀏覽器擋下外部分頁，會改顯示手冊對照與建議檢索詞。</span>
+        <button class="ghost-btn aux-btn search-question-btn">查題重點</button>
+        <span class="secondary-meta">直接顯示本題的手冊對照、關鍵詞與查證重點，不再跳出外部搜尋頁。</span>
       </div>
     </div>
   `);
@@ -2885,8 +2800,52 @@ function getOptionShortcutLabel(index) {
 function eventMatchesShortcut(event, shortcut) {
   if (!shortcut) return false;
   const expected = normalizeShortcutSetting(shortcut, shortcut);
-  if (expected === "Space") return event.code === "Space" || event.key === " ";
-  return String(event.key || "").toLowerCase() === String(expected).toLowerCase();
+  const key = String(event.key || "").toLowerCase();
+  const code = String(event.code || "");
+  const keyCode = Number(event.keyCode || event.which || 0);
+  const location = Number(event.location || 0);
+  const isNumpadLocation = location === 3 || code.startsWith("Numpad");
+
+  if (expected === "Space") return code === "Space" || event.key === " " || keyCode === 32;
+  if (expected === "Enter") return key === "enter" || code === "Enter" || code === "NumpadEnter" || keyCode === 13;
+
+  if (/^[0-9]$/.test(expected)) {
+    if (key === expected || code === `Digit${expected}` || code === `Numpad${expected}`) return true;
+    const topRowKeyCode = 48 + Number(expected);
+    const numpadKeyCode = 96 + Number(expected);
+    if (keyCode === topRowKeyCode || keyCode === numpadKeyCode) return true;
+
+    const legacyNumpadWhenNumLockOff = {
+      "0": [45],
+      "1": [35],
+      "2": [40],
+      "3": [34],
+      "4": [37],
+      "5": [12],
+      "6": [39],
+      "7": [36],
+      "8": [38],
+      "9": [33]
+    };
+    const legacyKeyNames = {
+      "0": ["insert"],
+      "1": ["end"],
+      "2": ["arrowdown", "down"],
+      "3": ["pagedown"],
+      "4": ["arrowleft", "left"],
+      "5": ["clear"],
+      "6": ["arrowright", "right"],
+      "7": ["home"],
+      "8": ["arrowup", "up"],
+      "9": ["pageup"]
+    };
+    if (isNumpadLocation) {
+      if ((legacyNumpadWhenNumLockOff[expected] || []).includes(keyCode)) return true;
+      if ((legacyKeyNames[expected] || []).includes(key)) return true;
+    }
+    return false;
+  }
+  return key === String(expected).toLowerCase();
 }
 
 function handleGlobalShortcuts(event) {
