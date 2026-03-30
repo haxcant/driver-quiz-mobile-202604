@@ -5,27 +5,35 @@ import {
   getRedirectResult,
   onAuthStateChanged,
   signOut,
+  browserLocalPersistence,
+  setPersistence,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-const REDIRECT_FLAG_KEY = "driver_quiz_firebase_redirect_pending_v1";
+const REDIRECT_FLAG_KEY = "driver_quiz_firebase_redirect_pending_v2";
 
 function isMobileLike() {
   return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
 }
 
-export async function loginWithGoogle() {
+async function ensurePersistence() {
   try {
-    if (isMobileLike()) {
-      try { localStorage.setItem(REDIRECT_FLAG_KEY, "1"); } catch {}
-      await signInWithRedirect(auth, googleProvider);
-      return { mode: "redirect" };
-    }
-    await signInWithPopup(auth, googleProvider);
+    await setPersistence(auth, browserLocalPersistence);
+  } catch (err) {
+    console.warn("setPersistence failed", err);
+  }
+}
+
+export async function loginWithGoogle() {
+  await ensurePersistence();
+  try {
+    // Popup-first is more robust on GitHub Pages / non-Firebase Hosting.
+    const cred = await signInWithPopup(auth, googleProvider);
     try { localStorage.removeItem(REDIRECT_FLAG_KEY); } catch {}
-    return { mode: "popup" };
+    return { mode: "popup", credential: cred };
   } catch (err) {
     const code = String(err?.code || "");
-    if (code.includes("popup") || code.includes("blocked")) {
+    const shouldFallback = code.includes("popup") || code.includes("blocked") || code.includes("cancelled") || code.includes("closed");
+    if (shouldFallback) {
       try { localStorage.setItem(REDIRECT_FLAG_KEY, "1"); } catch {}
       await signInWithRedirect(auth, googleProvider);
       return { mode: "redirect-fallback" };
@@ -35,6 +43,7 @@ export async function loginWithGoogle() {
 }
 
 export async function finishRedirectLogin() {
+  await ensurePersistence();
   try {
     const result = await getRedirectResult(auth);
     try { localStorage.removeItem(REDIRECT_FLAG_KEY); } catch {}

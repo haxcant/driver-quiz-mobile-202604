@@ -113,6 +113,7 @@ export async function getCloudBackupMetaSummary() {
       updatedUid: String(meta.updatedUid || ""),
       updatedAt: meta.updatedAt?.toDate ? meta.updatedAt.toDate().toISOString() : String(meta.updatedAt || ""),
       version: Number(meta.version || 1),
+      answeredCount: Number(meta.answeredCount || 0),
     };
   } catch (error) {
     throw new Error(explainError(error));
