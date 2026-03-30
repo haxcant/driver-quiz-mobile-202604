@@ -16,10 +16,15 @@
 </head>
 <script type="module">
   import { loginWithGoogle, logoutFirebase, watchAuthState, finishRedirectLogin } from "./firebase-auth.js";
+  import { smokeWrite, smokeRead } from "./firebase-sync-smoke.js";
 
   const userInfo = document.getElementById("firebase-user-info");
   const btnLogin = document.getElementById("btn-google-login");
   const btnLogout = document.getElementById("btn-google-logout");
+
+  const btnSmokeWrite = document.getElementById("btn-smoke-write");
+  const btnSmokeRead = document.getElementById("btn-smoke-read");
+  const output = document.getElementById("sync-test-output");
 
   await finishRedirectLogin();
 
@@ -41,15 +46,41 @@
     }
   });
 
+  btnSmokeWrite.addEventListener("click", async () => {
+    try {
+      output.textContent = "寫入中...";
+      await smokeWrite();
+      output.textContent = "寫入成功";
+    } catch (err) {
+      console.error(err);
+      output.textContent = "寫入失敗：\n" + (err?.message || String(err));
+    }
+  });
+
+  btnSmokeRead.addEventListener("click", async () => {
+    try {
+      output.textContent = "讀取中...";
+      const data = await smokeRead();
+      output.textContent = JSON.stringify(data, null, 2);
+    } catch (err) {
+      console.error(err);
+      output.textContent = "讀取失敗：\n" + (err?.message || String(err));
+    }
+  });
+
   watchAuthState((user) => {
     if (user) {
       userInfo.textContent = `已登入：${user.displayName || "(無名稱)"} | ${user.email || "(無 email)"} | uid=${user.uid}`;
       btnLogin.style.display = "none";
       btnLogout.style.display = "";
+      btnSmokeWrite.disabled = false;
+      btnSmokeRead.disabled = false;
     } else {
       userInfo.textContent = "尚未登入";
       btnLogin.style.display = "";
       btnLogout.style.display = "none";
+      btnSmokeWrite.disabled = true;
+      btnSmokeRead.disabled = true;
     }
   });
 </script>
@@ -235,15 +266,24 @@
         <button id="exportMemoryBtn" class="ghost-btn">匯出完整記憶</button>
         <button id="importMemoryBtn" class="ghost-btn">匯入學習檔案</button>
         <input id="importMemoryInput" type="file" accept="application/json,.json,text/html,.html" hidden>
+        <button id="btn-google-login" type="button">Google 登入</button>
+        <button id="btn-google-logout" type="button" style="display:none;">登出</button>
+
         <section id="firebase-auth-panel" style="margin:16px 0; padding:12px; border:1px solid #ccc; border-radius:12px;">
           <div style="margin-bottom:8px; font-weight:600;">雲端同步登入</div>
 
           <div id="firebase-user-info" style="margin-bottom:8px;">
             尚未登入
           </div>
+        <section id="firebase-sync-test" style="margin:16px 0; padding:12px; border:1px solid #ccc; border-radius:12px;">
+          <div style="margin-bottom:8px; font-weight:600;">Firestore 測試</div>
 
-          <button id="btn-google-login" type="button">Google 登入</button>
-          <button id="btn-google-logout" type="button" style="display:none;">登出</button>
+          <button id="btn-smoke-write" type="button">寫入測試資料</button>
+          <button id="btn-smoke-read" type="button">讀取測試資料</button>
+
+          <pre id="sync-test-output" style="white-space:pre-wrap; margin-top:8px;"></pre>
+        </section>
+
         </section>
         <button id="clearWrongBookBtn" class="ghost-btn danger">清空錯題本</button>
         <button id="clearAllProgressBtn" class="ghost-btn danger">清空全部記憶</button>
