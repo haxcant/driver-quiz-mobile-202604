@@ -1,18 +1,18 @@
-const CACHE_NAME = "driver-quiz-pwa-v19-2-audio-recovery";
+const CACHE_NAME = "driver-quiz-pwa-v17-imagefix1";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./app.js?v=20260330v192",
+  "./app.js?v=20260330stable",
   "./questions.js",
   "./handbook_explanations.js",
   "./handbook_pages.js",
   "./manifest.webmanifest",
   "./firebase-init.js",
-  "./firebase-auth.js?v=20260330v192",
-  "./firebase-sync-smoke.js?v=20260330v192",
-  "./firebase-backup.js?v=20260330v192",
-  "./firebase-ui.js?v=20260330v192",
+  "./firebase-auth.js?v=20260330stable",
+  "./firebase-sync-smoke.js?v=20260330stable",
+  "./firebase-backup.js?v=20260330stable",
+  "./firebase-ui.js?v=20260330stable",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];
@@ -40,16 +40,34 @@ self.addEventListener("fetch", (event) => {
 
   const isNavigate = event.request.mode === "navigate";
   const isCriticalAsset = /\.(html|js|css)$/.test(url.pathname);
+  const isImageAsset = /\.(png|jpg|jpeg|webp|gif|svg)$/.test(url.pathname);
 
   if (isNavigate || isCriticalAsset) {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
           return response;
         })
         .catch(() => caches.match(event.request).then((cached) => cached || caches.match("./index.html")))
+    );
+    return;
+  }
+
+  if (isImageAsset) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }
@@ -59,8 +77,10 @@ self.addEventListener("fetch", (event) => {
       if (cached) return cached;
       return fetch(event.request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
           return response;
         });
     })
