@@ -6,14 +6,16 @@ export async function smokeWrite() {
   if (!user) throw new Error("尚未登入");
 
   const ref = doc(db, "users", user.uid, "sync", "meta");
-
-  await setDoc(ref, {
-    schemaVersion: 1,
-    updatedAt: serverTimestamp(),
-    updatedBy: user.email || "",
-    testValue: "hello-firestore"
-  }, { merge: true });
-
+  await setDoc(
+    ref,
+    {
+      schemaVersion: 1,
+      updatedAt: serverTimestamp(),
+      updatedBy: user.email || "",
+      testValue: "hello-firestore"
+    },
+    { merge: true }
+  );
   return true;
 }
 
@@ -23,9 +25,6 @@ export async function smokeRead() {
 
   const ref = doc(db, "users", user.uid, "sync", "meta");
   const snap = await getDoc(ref);
-
-  if (!snap.exists()) {
-    return null;
-  }
+  if (!snap.exists()) return null;
   return snap.data();
 }

@@ -704,7 +704,7 @@ function renderQuestion() {
           <div class="utility-row compact compact-question-actions">
             <div class="secondary-meta">答對 +1 分，答錯 / 逾時 / 不會 -1 分。</div>
             <div class="inline-action-group">
-              <button id="searchQuestionQuickBtn" class="ghost-btn aux-btn">查題重點</button>
+              <button id="searchQuestionQuickBtn" class="ghost-btn aux-btn">搜尋此題</button>
               <button id="dontKnowBtn" class="ghost-btn aux-btn">不會（-1）</button>
             </div>
           </div>
@@ -2323,39 +2323,37 @@ function renderWrongBook() {
   }
 
   function openQuestionSearch(question) {
-    const keywords = extractQuestionKeywordCandidates(question);
-    const handbook = getHandbookExplanation(question);
-    const officialFallback = buildOfficialFallbackExplanation(question, keywords);
     const query = buildQuestionSearchQuery(question);
-    const lines = [
-      `題目：${buildQuestionPreview(question)}`,
-      `正確答案：${String(question?.answer || "未提供")}`,
-    ];
+    const prompt = buildQuestionPreview(question);
+    if (!query) {
+      window.alert(`目前沒有可用的搜尋關鍵詞。
 
-    if (handbook) {
-      lines.push(
-        `手冊對照：第 ${String(handbook.page || "?")} 頁／${String(handbook.title || "相關章節")}`,
-        String(handbook.text || "").trim()
-      );
-    } else if (officialFallback) {
-      lines.push(
-        `查證重點：${String(officialFallback.title || "題目重點")}`,
-        String(officialFallback.text || "").trim()
-      );
-    } else if (query) {
-      try {
-        navigator.clipboard?.writeText?.(query);
-      } catch {}
-      lines.push(
-        "目前沒有自動對上的手冊段落。",
-        `建議檢索詞：${query}`,
-        "（檢索詞已嘗試複製到剪貼簿）"
-      );
-    } else {
-      lines.push("目前沒有可用的查題重點。");
+題目：${prompt}`);
+      return;
     }
 
-    window.alert(lines.filter(Boolean).join("\n\n"));
+    const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    let opened = null;
+    try {
+      opened = window.open(url, "_blank", "noopener,noreferrer");
+    } catch (err) {
+      opened = null;
+    }
+
+    if (opened) return;
+
+    try {
+      navigator.clipboard?.writeText?.(query);
+    } catch {}
+
+    window.alert([
+      "瀏覽器阻擋了外部搜尋分頁。",
+      `題目：${prompt}`,
+      `建議檢索詞：${query}`,
+      "（檢索詞已嘗試複製到剪貼簿）"
+    ].join("
+
+"));
   }
 
   function bindQuestionSearchButton(question) {
@@ -2684,8 +2682,8 @@ function buildAnswerExplanationHtml(question) {
     <div class="feedback-explanation-block handbook-block search-tool-block">
       <div class="feedback-explanation-title">查證工具</div>
       <div class="search-tool-row">
-        <button class="ghost-btn aux-btn search-question-btn">查題重點</button>
-        <span class="secondary-meta">直接顯示本題的手冊對照、關鍵詞與查證重點，不再跳出外部搜尋頁。</span>
+        <button class="ghost-btn aux-btn search-question-btn">搜尋此題</button>
+        <span class="secondary-meta">直接把本題送到搜尋引擎查證；若瀏覽器阻擋彈窗，會複製檢索詞並提示你手動搜尋。</span>
       </div>
     </div>
   `);
@@ -2800,52 +2798,8 @@ function getOptionShortcutLabel(index) {
 function eventMatchesShortcut(event, shortcut) {
   if (!shortcut) return false;
   const expected = normalizeShortcutSetting(shortcut, shortcut);
-  const key = String(event.key || "").toLowerCase();
-  const code = String(event.code || "");
-  const keyCode = Number(event.keyCode || event.which || 0);
-  const location = Number(event.location || 0);
-  const isNumpadLocation = location === 3 || code.startsWith("Numpad");
-
-  if (expected === "Space") return code === "Space" || event.key === " " || keyCode === 32;
-  if (expected === "Enter") return key === "enter" || code === "Enter" || code === "NumpadEnter" || keyCode === 13;
-
-  if (/^[0-9]$/.test(expected)) {
-    if (key === expected || code === `Digit${expected}` || code === `Numpad${expected}`) return true;
-    const topRowKeyCode = 48 + Number(expected);
-    const numpadKeyCode = 96 + Number(expected);
-    if (keyCode === topRowKeyCode || keyCode === numpadKeyCode) return true;
-
-    const legacyNumpadWhenNumLockOff = {
-      "0": [45],
-      "1": [35],
-      "2": [40],
-      "3": [34],
-      "4": [37],
-      "5": [12],
-      "6": [39],
-      "7": [36],
-      "8": [38],
-      "9": [33]
-    };
-    const legacyKeyNames = {
-      "0": ["insert"],
-      "1": ["end"],
-      "2": ["arrowdown", "down"],
-      "3": ["pagedown"],
-      "4": ["arrowleft", "left"],
-      "5": ["clear"],
-      "6": ["arrowright", "right"],
-      "7": ["home"],
-      "8": ["arrowup", "up"],
-      "9": ["pageup"]
-    };
-    if (isNumpadLocation) {
-      if ((legacyNumpadWhenNumLockOff[expected] || []).includes(keyCode)) return true;
-      if ((legacyKeyNames[expected] || []).includes(key)) return true;
-    }
-    return false;
-  }
-  return key === String(expected).toLowerCase();
+  if (expected === "Space") return event.code === "Space" || event.key === " ";
+  return String(event.key || "").toLowerCase() === String(expected).toLowerCase();
 }
 
 function handleGlobalShortcuts(event) {
