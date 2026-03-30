@@ -1,4 +1,4 @@
-const CACHE_NAME = "driver-quiz-pwa-v17-firebase-ui-privacyfix";
+const CACHE_NAME = "driver-quiz-pwa-v17-firebase-login-loadfix";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -10,9 +10,9 @@ const CORE_ASSETS = [
   "./manifest.webmanifest",
   "./firebase-init.js",
   "./firebase-auth.js",
-  "./firebase-sync-smoke.js?v=20260330f",
-  "./firebase-backup.js?v=20260330f",
-  "./firebase-ui.js?v=20260330f",
+  "./firebase-sync-smoke.js?v=20260330g",
+  "./firebase-backup.js?v=20260330g",
+  "./firebase-ui.js?v=20260330g",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];

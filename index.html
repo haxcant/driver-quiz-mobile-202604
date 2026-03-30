@@ -205,11 +205,16 @@
       <details id="firebaseSyncDetails" class="fold-panel">
         <summary><span id="firebaseSummaryText">雲端同步：未登入（展開登入選項）</span></summary>
         <div class="firebase-mini-wrap" style="padding-top:12px;">
+          <p class="scope-summary subtle" id="firebase-help-text">最簡說明：本機資料平常不會自動改動。登入後只會先檢查雲端是否有備份，再由你決定是否載入。雲端同步預設採手動上傳／下載。</p>
           <div id="firebase-name-line" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
             <strong id="firebase-display-name">尚未登入</strong>
             <button id="btn-firebase-toggle-private" type="button" class="ghost-btn" style="display:none; padding:6px 10px;">👁</button>
           </div>
           <div id="firebase-private-info" class="scope-summary subtle" style="display:none; margin-bottom:10px;"></div>
+          <div id="firebase-owner-note" class="scope-summary subtle" style="margin-bottom:10px; display:none;">
+            若要啟用雲端同步，請將名稱 / 信箱 / UID 提供給擁有者加入白名單。未開通者仍可使用本機功能與 JSON 匯入匯出。
+          </div>
+          <div id="firebase-sync-reminder" class="scope-summary subtle" style="margin-bottom:10px;"></div>
           <div class="actions compact">
             <button id="btn-google-login" type="button" class="ghost-btn">Google 登入</button>
             <button id="btn-google-logout" type="button" class="ghost-btn" style="display:none;">登出</button>
@@ -217,6 +222,7 @@
             <button id="btn-smoke-read" type="button" class="ghost-btn" disabled>讀取測試資料</button>
             <button id="btn-cloud-upload" type="button" class="ghost-btn" disabled>上傳雲端備份</button>
             <button id="btn-cloud-download" type="button" class="ghost-btn" disabled>下載雲端備份</button>
+            <button id="btn-local-restore" type="button" class="ghost-btn" disabled>還原同步前本機備份</button>
           </div>
           <pre id="sync-test-output" style="white-space:pre-wrap; margin-top:8px;"></pre>
         </div>
@@ -259,6 +265,6 @@
   <script src="handbook_explanations.js"></script>
   <script src="handbook_pages.js"></script>
   <script src="app.js?v=20260330f"></script>
-  <script type="module" src="firebase-ui.js?v=20260330f"></script>
+  <script type="module" src="firebase-ui.js?v=20260330g"></script>
 </body>
 </html>
