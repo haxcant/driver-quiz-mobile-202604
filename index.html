@@ -14,6 +14,45 @@
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="styles.css">
 </head>
+<script type="module">
+  import { loginWithGoogle, logoutFirebase, watchAuthState, finishRedirectLogin } from "./firebase-auth.js";
+
+  const userInfo = document.getElementById("firebase-user-info");
+  const btnLogin = document.getElementById("btn-google-login");
+  const btnLogout = document.getElementById("btn-google-logout");
+
+  await finishRedirectLogin();
+
+  btnLogin.addEventListener("click", async () => {
+    try {
+      await loginWithGoogle();
+    } catch (err) {
+      console.error(err);
+      alert("Google 登入失敗，請看 console。");
+    }
+  });
+
+  btnLogout.addEventListener("click", async () => {
+    try {
+      await logoutFirebase();
+    } catch (err) {
+      console.error(err);
+      alert("登出失敗。");
+    }
+  });
+
+  watchAuthState((user) => {
+    if (user) {
+      userInfo.textContent = `已登入：${user.displayName || "(無名稱)"} | ${user.email || "(無 email)"} | uid=${user.uid}`;
+      btnLogin.style.display = "none";
+      btnLogout.style.display = "";
+    } else {
+      userInfo.textContent = "尚未登入";
+      btnLogin.style.display = "";
+      btnLogout.style.display = "none";
+    }
+  });
+</script>
 <body>
   <div class="app-shell">
     <header class="topbar">
@@ -196,6 +235,16 @@
         <button id="exportMemoryBtn" class="ghost-btn">匯出完整記憶</button>
         <button id="importMemoryBtn" class="ghost-btn">匯入學習檔案</button>
         <input id="importMemoryInput" type="file" accept="application/json,.json,text/html,.html" hidden>
+        <section id="firebase-auth-panel" style="margin:16px 0; padding:12px; border:1px solid #ccc; border-radius:12px;">
+          <div style="margin-bottom:8px; font-weight:600;">雲端同步登入</div>
+
+          <div id="firebase-user-info" style="margin-bottom:8px;">
+            尚未登入
+          </div>
+
+          <button id="btn-google-login" type="button">Google 登入</button>
+          <button id="btn-google-logout" type="button" style="display:none;">登出</button>
+        </section>
         <button id="clearWrongBookBtn" class="ghost-btn danger">清空錯題本</button>
         <button id="clearAllProgressBtn" class="ghost-btn danger">清空全部記憶</button>
       </div>
