@@ -28,15 +28,15 @@
       <details class="fold-panel">
         <summary>使用說明與版本資訊</summary>
         <div class="info-grid">
-        <div>
-          <strong>目前版本</strong>
-          <p id="versionSummary">已整合完整題庫、積分系統與《駕駛人手冊》解答說明。</p>
+          <div>
+            <strong>目前版本</strong>
+            <p id="versionSummary">已整合完整題庫、積分系統與《駕駛人手冊》解答說明。</p>
+          </div>
+          <div>
+            <strong>建議使用方式</strong>
+            <p>先用正式筆試模式刷題，再用積分篩選與單字卡專攻低分題，最後以模擬考驗證覆蓋率。</p>
+          </div>
         </div>
-        <div>
-          <strong>建議使用方式</strong>
-          <p>先用正式筆試模式刷題，再用積分篩選與單字卡專攻低分題，最後以模擬考驗證覆蓋率。</p>
-        </div>
-      </div>
       </details>
     </section>
 
@@ -96,60 +96,21 @@
 
       <details class="fold-panel advanced-fold"><summary>進階設定</summary>
       <div class="grid advanced-grid three-col-desktop">
-        <label>
-          <span>積分篩選</span>
-          <select id="scoreFilterOperatorSelect">
-            <option value="any" selected>不限</option>
-            <option value="gt">大於</option>
-            <option value="lt">小於</option>
-            <option value="eq">等於</option>
-          </select>
-        </label>
-        <label>
-          <span>積分門檻（自填）</span>
-          <input id="scoreFilterValueInput" type="number" step="1" value="0" placeholder="例如 0、1、-2">
-        </label>
-        <label>
-          <span>每題限時（秒，0=不限）</span>
-          <input id="answerTimeLimitInput" type="number" min="0" step="1" value="15">
-        </label>
-        <label>
-          <span>答對後自動跳題（秒，0=不自動）</span>
-          <input id="autoNextCorrectDelayInput" type="number" min="0" step="0.5" value="1">
-        </label>
-        <label>
-          <span>答錯後自動跳題（秒，0=不自動）</span>
-          <input id="autoNextWrongDelayInput" type="number" min="0" step="0.5" value="4">
-        </label>
+        <label><span>積分篩選</span><select id="scoreFilterOperatorSelect"><option value="any" selected>不限</option><option value="gt">大於</option><option value="lt">小於</option><option value="eq">等於</option></select></label>
+        <label><span>積分門檻（自填）</span><input id="scoreFilterValueInput" type="number" step="1" value="0" placeholder="例如 0、1、-2"></label>
+        <label><span>每題限時（秒，0=不限）</span><input id="answerTimeLimitInput" type="number" min="0" step="1" value="15"></label>
+        <label><span>答對後自動跳題（秒，0=不自動）</span><input id="autoNextCorrectDelayInput" type="number" min="0" step="0.5" value="1"></label>
+        <label><span>答錯後自動跳題（秒，0=不自動）</span><input id="autoNextWrongDelayInput" type="number" min="0" step="0.5" value="4"></label>
       </div>
-
       <div class="grid advanced-grid shortcut-grid three-col-desktop">
-        <label>
-          <span>選項 1 快捷鍵</span>
-          <input id="shortcutOption1Input" type="text" maxlength="12" value="1" placeholder="1">
-        </label>
-        <label>
-          <span>選項 2 快捷鍵</span>
-          <input id="shortcutOption2Input" type="text" maxlength="12" value="2" placeholder="2">
-        </label>
-        <label>
-          <span>選項 3 快捷鍵</span>
-          <input id="shortcutOption3Input" type="text" maxlength="12" value="3" placeholder="3">
-        </label>
-        <label>
-          <span>選項 4 快捷鍵</span>
-          <input id="shortcutOption4Input" type="text" maxlength="12" value="4" placeholder="4">
-        </label>
-        <label>
-          <span>下一題快捷鍵</span>
-          <input id="shortcutNextInput" type="text" maxlength="12" value="Enter" placeholder="Enter">
-        </label>
+        <label><span>選項 1 快捷鍵</span><input id="shortcutOption1Input" type="text" maxlength="12" value="1" placeholder="1"></label>
+        <label><span>選項 2 快捷鍵</span><input id="shortcutOption2Input" type="text" maxlength="12" value="2" placeholder="2"></label>
+        <label><span>選項 3 快捷鍵</span><input id="shortcutOption3Input" type="text" maxlength="12" value="3" placeholder="3"></label>
+        <label><span>選項 4 快捷鍵</span><input id="shortcutOption4Input" type="text" maxlength="12" value="4" placeholder="4"></label>
+        <label><span>下一題快捷鍵</span><input id="shortcutNextInput" type="text" maxlength="12" value="Enter" placeholder="Enter"></label>
       </div>
-
-
       <p id="scopeSummary" class="scope-summary">正式筆試模式只出普通小型車官方筆試題庫。</p>
       <p id="filterSummary" class="scope-summary subtle">目前未啟用積分篩選。</p>
-
       <input type="checkbox" id="maskTextToggle" hidden>
       <p class="scope-summary subtle">目前圖示題已取消文字遮罩，作答前就會完整顯示圖片。</p>
       </details>
@@ -164,31 +125,12 @@
 
     <section class="panel stats-panel">
       <div class="stats-grid six-grid">
-        <div class="stat-card">
-          <span class="stat-label">題庫總數</span>
-          <strong id="bankCount">-</strong>
-        </div>
-        <div class="stat-card">
-          <span class="stat-label">錯題本</span>
-          <strong id="wrongBookCount">-</strong>
-        </div>
-        <div class="stat-card">
-          <span class="stat-label">累計作答</span>
-          <strong id="answeredCount">-</strong>
-        </div>
-        <div class="stat-card">
-          <span class="stat-label">累計答對率</span>
-          <strong id="accuracyCount">-</strong>
-        </div>
-        <div class="stat-card highlight-card">
-          <span class="stat-label">正分覆蓋率（積分 ≥ 1）</span>
-          <strong id="masteredCoverageCount">-</strong>
-          <small id="masteredCoverageDetail">-</small>
-        </div>
-        <div class="stat-card">
-          <span class="stat-label">題庫總積分</span>
-          <strong id="totalPointsCount">-</strong>
-        </div>
+        <div class="stat-card"><span class="stat-label">題庫總數</span><strong id="bankCount">-</strong></div>
+        <div class="stat-card"><span class="stat-label">錯題本</span><strong id="wrongBookCount">-</strong></div>
+        <div class="stat-card"><span class="stat-label">累計作答</span><strong id="answeredCount">-</strong></div>
+        <div class="stat-card"><span class="stat-label">累計答對率</span><strong id="accuracyCount">-</strong></div>
+        <div class="stat-card highlight-card"><span class="stat-label">正分覆蓋率（積分 ≥ 1）</span><strong id="masteredCoverageCount">-</strong><small id="masteredCoverageDetail">-</small></div>
+        <div class="stat-card"><span class="stat-label">題庫總積分</span><strong id="totalPointsCount">-</strong></div>
       </div>
       <div class="actions compact">
         <button id="exportBtn" class="ghost-btn">匯出錯題JSON</button>
@@ -205,15 +147,13 @@
       <details id="firebaseSyncDetails" class="fold-panel">
         <summary><span id="firebaseSummaryText">雲端同步：未登入（展開登入選項）</span></summary>
         <div class="firebase-mini-wrap" style="padding-top:12px;">
-          <p class="scope-summary subtle" id="firebase-help-text">最簡說明：本機資料平常不會自動改動。登入後只會先檢查雲端是否有備份，再由你決定是否載入。雲端同步預設採手動上傳／下載。</p>
+          <p class="scope-summary subtle" id="firebase-help-text">最簡說明：本機資料平常不會自動改動。登入後只會顯示雲端備份摘要；只有按「下載雲端備份」時，才會詢問是否載入。載入前會先保存同步前本機備份。</p>
           <div id="firebase-name-line" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
             <strong id="firebase-display-name">尚未登入</strong>
             <button id="btn-firebase-toggle-private" type="button" class="ghost-btn" style="display:none; padding:6px 10px;">👁</button>
           </div>
           <div id="firebase-private-info" class="scope-summary subtle" style="display:none; margin-bottom:10px;"></div>
-          <div id="firebase-owner-note" class="scope-summary subtle" style="margin-bottom:10px; display:none;">
-            若要啟用雲端同步，請將名稱 / 信箱 / UID 提供給擁有者加入白名單。未開通者仍可使用本機功能與 JSON 匯入匯出。
-          </div>
+          <div id="firebase-owner-note" class="scope-summary subtle" style="margin-bottom:10px; display:none;">第三方託管資源額度有限。若要啟用雲端同步，請先登入 Google，並將名稱 / 信箱 / UID 提供給擁有者加入白名單。未開通者仍可使用本機功能與 JSON 匯入匯出。</div>
           <div id="firebase-cloud-meta" class="scope-summary subtle" style="margin-bottom:10px;"></div>
           <div id="firebase-sync-reminder" class="scope-summary subtle" style="margin-bottom:10px;"></div>
           <div class="actions compact">
@@ -230,34 +170,18 @@
       </details>
     </section>
 
-    <main id="mainContent" class="panel quiz-panel empty-state">
-      <p>按「開始練習」後會在這裡顯示題目。</p>
-    </main>
+    <main id="mainContent" class="panel quiz-panel empty-state"><p>按「開始練習」後會在這裡顯示題目。</p></main>
 
     <section class="panel reward-panel">
-      <div class="review-header">
-        <h2>學習獎勵</h2>
-        <p>用覆蓋率、連續答對與累計作答推進徽章，讓刷題更有回饋。</p>
-      </div>
+      <div class="review-header"><h2>學習獎勵</h2><p>用覆蓋率、連續答對與累計作答推進徽章，讓刷題更有回饋。</p></div>
       <div class="reward-grid">
-        <div class="reward-card main">
-          <div class="reward-level" id="rewardLevelLabel">-</div>
-          <div class="reward-next" id="rewardNextGoal">-</div>
-          <div class="reward-progress-wrap"><div id="rewardProgressBar" class="reward-progress-bar"></div></div>
-          <p id="rewardEncouragement" class="reward-note">-</p>
-        </div>
-        <div class="reward-card">
-          <strong>已解鎖徽章</strong>
-          <div id="badgeList" class="badge-list"></div>
-        </div>
+        <div class="reward-card main"><div class="reward-level" id="rewardLevelLabel">-</div><div class="reward-next" id="rewardNextGoal">-</div><div class="reward-progress-wrap"><div id="rewardProgressBar" class="reward-progress-bar"></div></div><p id="rewardEncouragement" class="reward-note">-</p></div>
+        <div class="reward-card"><strong>已解鎖徽章</strong><div id="badgeList" class="badge-list"></div></div>
       </div>
     </section>
 
     <section class="panel review-panel">
-      <div class="review-header">
-        <h2>錯題本</h2>
-        <p>答錯、逾時或按「不會」都會加入。連續答對達設定次數後移出。</p>
-      </div>
+      <div class="review-header"><h2>錯題本</h2><p>答錯、逾時或按「不會」都會加入。連續答對達設定次數後移出。</p></div>
       <div id="wrongBookList" class="wrong-list empty-state">目前沒有錯題。</div>
     </section>
   </div>
@@ -265,7 +189,7 @@
   <script src="questions.js"></script>
   <script src="handbook_explanations.js"></script>
   <script src="handbook_pages.js"></script>
-  <script src="app.js?v=20260330f"></script>
-  <script type="module" src="firebase-ui.js?v=20260330g"></script>
+  <script src="app.js?v=20260330stable"></script>
+  <script type="module" src="firebase-ui.js?v=20260330stable"></script>
 </body>
 </html>

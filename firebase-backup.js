@@ -4,6 +4,7 @@ import { doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gst
 const CHUNK_CHARS = 150000;
 const SNAPSHOT_KEY = "driver_quiz_pre_sync_snapshot_v1";
 const UPLOAD_META_KEY = "driver_quiz_cloud_upload_meta_v1";
+const MIN_UPLOAD_INTERVAL_MS = 60000;
 
 function requireUser() {
   const user = auth.currentUser;
@@ -40,7 +41,17 @@ function nowIso() {
 }
 
 export function getAnsweredCountFromPayload(payload) {
-  return Number(payload?.progress?.meta?.totalAnswered || 0);
+  const direct = Number(payload?.progress?.meta?.totalAnswered || 0);
+  if (Number.isFinite(direct) && direct > 0) return direct;
+  const byQuestion = payload?.progress?.byQuestion;
+  if (byQuestion && typeof byQuestion === "object") {
+    let total = 0;
+    for (const item of Object.values(byQuestion)) {
+      total += Number(item?.totalSeen || 0);
+    }
+    return total;
+  }
+  return 0;
 }
 
 export function readLocalUploadMeta() {
@@ -65,10 +76,7 @@ export function savePreSyncSnapshot(buildPayloadFn) {
   if (typeof buildPayloadFn !== "function") throw new Error("找不到完整資料匯出函式。");
   const payload = buildPayloadFn();
   try {
-    localStorage.setItem(SNAPSHOT_KEY, JSON.stringify({
-      savedAt: nowIso(),
-      payload
-    }));
+    localStorage.setItem(SNAPSHOT_KEY, JSON.stringify({ savedAt: nowIso(), payload }));
   } catch (err) {
     console.warn("savePreSyncSnapshot failed", err);
   }
@@ -125,10 +133,19 @@ export async function uploadFullMemoryBackup(buildPayloadFn) {
     const user = requireUser();
     if (typeof buildPayloadFn !== "function") throw new Error("找不到完整資料匯出函式。");
 
+    const localMeta = readLocalUploadMeta();
+    const lastAt = Date.parse(String(localMeta.uploadedAt || ""));
+    if (Number.isFinite(lastAt) && Date.now() - lastAt < MIN_UPLOAD_INTERVAL_MS) {
+      throw new Error("距離上次成功上傳不到 60 秒，請稍後再試，避免重複寫入。");
+    }
+
     const payload = buildPayloadFn();
     const json = JSON.stringify(payload);
-    const checksum = await sha256Hex(json);
     const payloadBytes = new TextEncoder().encode(json).length;
+    if (payloadBytes > 400000) {
+      throw new Error("完整資料備份偏大，為保守控制雲端用量，目前限制上傳 400KB 以內。請先改用本機 JSON 匯出。");
+    }
+    const checksum = await sha256Hex(json);
     const chunks = splitIntoChunks(json);
     const answeredCount = getAnsweredCountFromPayload(payload);
     const metaRef = doc(db, "users", user.uid, "sync", "meta");
