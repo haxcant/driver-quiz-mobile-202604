@@ -197,6 +197,7 @@ const HANDBOOK_RULES = [
     exportWrongPrintBtn: document.getElementById("exportWrongPrintBtn"),
     exportMemoryBtn: document.getElementById("exportMemoryBtn"),
     importMemoryBtn: document.getElementById("importMemoryBtn"),
+    flattenScoresBtn: document.getElementById("flattenScoresBtn"),
     importMemoryInput: document.getElementById("importMemoryInput"),
     clearWrongBookBtn: document.getElementById("clearWrongBookBtn"),
     clearAllProgressBtn: document.getElementById("clearAllProgressBtn"),
@@ -388,6 +389,7 @@ const HANDBOOK_RULES = [
     els.exportWrongPrintBtn?.addEventListener("click", exportWrongBookPrintable);
     els.exportMemoryBtn?.addEventListener("click", exportFullMemory);
     els.importMemoryBtn?.addEventListener("click", () => els.importMemoryInput?.click());
+    els.flattenScoresBtn?.addEventListener("click", flattenScoreDistribution);
     els.importMemoryInput?.addEventListener("change", handleImportLearningFile);
     els.maskTextToggle?.addEventListener("change", () => {
       settings.maskTextBeforeAnswer = !!els.maskTextToggle.checked;
@@ -1542,22 +1544,184 @@ function renderWrongBook() {
     URL.revokeObjectURL(a.href);
   }
 
-  function applyFullMemoryPayload(rawPayload, replaceAll = true) {
+  function computeProgressMetaFromByQuestion(byQuestion, fallbackMeta = {}) {
+    const meta = {
+      totalAnswered: 0,
+      totalCorrect: 0,
+      bestStreak: Number(fallbackMeta?.bestStreak || 0),
+      totalCompletedSessions: Number(fallbackMeta?.totalCompletedSessions || 0),
+    };
+    for (const item of Object.values(byQuestion || {})) {
+      meta.totalAnswered += Number(item?.totalSeen || 0);
+      meta.totalCorrect += Number(item?.totalCorrect || 0);
+    }
+    return meta;
+  }
+
+  function repairQuestionProgressRecord(raw) {
+    const item = { ...defaultQuestionProgress(), ...(raw || {}) };
+    const totalSeen = Math.max(0, Math.round(Number(item.totalSeen || 0)));
+    const totalCorrect = Math.max(0, Math.round(Number(item.totalCorrect || 0)));
+    const totalWrong = Math.max(0, Math.round(Number(item.totalWrong || 0)));
+    const computedScore = totalCorrect - totalWrong;
+    const rawScore = Number(item.score);
+    const score = Number.isFinite(rawScore) ? Math.round(rawScore) : computedScore;
+    return {
+      totalSeen,
+      totalCorrect,
+      totalWrong,
+      score,
+      inWrongBook: !!item.inWrongBook,
+      masteryStreak: Math.max(0, Math.round(Number(item.masteryStreak || 0))),
+      lastWrongAt: typeof item.lastWrongAt === "string" ? item.lastWrongAt : "",
+      lastSeenAt: typeof item.lastSeenAt === "string" ? item.lastSeenAt : "",
+    };
+  }
+
+  function repairProgressSnapshot(data) {
+    const base = defaultProgress();
+    const sourceByQuestion = data?.byQuestion && typeof data.byQuestion === "object" ? data.byQuestion : {};
+    for (const [id, raw] of Object.entries(sourceByQuestion)) {
+      base.byQuestion[id] = repairQuestionProgressRecord(raw);
+    }
+    const sourceMeta = data?.meta && typeof data.meta === "object" ? data.meta : {};
+    base.meta = computeProgressMetaFromByQuestion(base.byQuestion, sourceMeta);
+    return base;
+  }
+
+  function compareCoveragePriority(a, b) {
+    const aSeen = Number(a?.totalSeen || 0);
+    const bSeen = Number(b?.totalSeen || 0);
+    if (aSeen !== bSeen) return aSeen - bSeen;
+    const aScore = Number(a?.score || 0);
+    const bScore = Number(b?.score || 0);
+    if (aScore !== bScore) return aScore - bScore;
+    const aCorrect = Number(a?.totalCorrect || 0);
+    const bCorrect = Number(b?.totalCorrect || 0);
+    if (aCorrect !== bCorrect) return aCorrect - bCorrect;
+    const aSeenAt = typeof a?.lastSeenAt === "string" ? a.lastSeenAt : "";
+    const bSeenAt = typeof b?.lastSeenAt === "string" ? b.lastSeenAt : "";
+    if (aSeenAt !== bSeenAt) return aSeenAt.localeCompare(bSeenAt);
+    return 0;
+  }
+
+  function compareConservativePriority(a, b) {
+    const aScore = Number(a?.score || 0);
+    const bScore = Number(b?.score || 0);
+    if (aScore !== bScore) return bScore - aScore;
+    const aWrongBook = !!a?.inWrongBook;
+    const bWrongBook = !!b?.inWrongBook;
+    if (aWrongBook !== bWrongBook) return aWrongBook ? -1 : 1;
+    const aWrong = Number(a?.totalWrong || 0);
+    const bWrong = Number(b?.totalWrong || 0);
+    if (aWrong !== bWrong) return bWrong - aWrong;
+    const aStreak = Number(a?.masteryStreak || 0);
+    const bStreak = Number(b?.masteryStreak || 0);
+    if (aStreak !== bStreak) return aStreak - bStreak;
+    const aWrongAt = typeof a?.lastWrongAt === "string" ? a.lastWrongAt : "";
+    const bWrongAt = typeof b?.lastWrongAt === "string" ? b.lastWrongAt : "";
+    if (aWrongAt !== bWrongAt) return bWrongAt.localeCompare(aWrongAt);
+    const aSeenAt = typeof a?.lastSeenAt === "string" ? a.lastSeenAt : "";
+    const bSeenAt = typeof b?.lastSeenAt === "string" ? b.lastSeenAt : "";
+    if (aSeenAt !== bSeenAt) return bSeenAt.localeCompare(aSeenAt);
+    return 0;
+  }
+
+  function chooseMergedQuestionRecord(localRecord, incomingRecord, mode = "conservative") {
+    const local = repairQuestionProgressRecord(localRecord);
+    const incoming = repairQuestionProgressRecord(incomingRecord);
+    if (JSON.stringify(local) === JSON.stringify(incoming)) return local;
+    if (mode === "coverage") {
+      return compareCoveragePriority(local, incoming) >= 0 ? local : incoming;
+    }
+    return compareConservativePriority(local, incoming) <= 0 ? local : incoming;
+  }
+
+  function flattenScoreDistribution() {
+    const current = Object.values(progress?.byQuestion || {});
+    const changedCount = current.reduce((sum, item) => sum + ((Number(item?.score || 0) > 1 || Number(item?.score || 0) < -1) ? 1 : 0), 0);
+    if (!changedCount) {
+      alert(`目前沒有需要平坦化的題目。
+
+只有積分大於 1 或小於 -1 的題目會被調整。
+此操作不會改變作答次數，只會把積分壓回 -1、0、1 區間。`);
+      return;
+    }
+    if (!window.confirm(`將平坦化 ${changedCount} 題的積分：
+- 大於 1 的題目改為 1
+- 小於 -1 的題目改為 -1
+
+此操作不會改變作答次數，但會改變本題積分。
+
+確定要繼續嗎？`)) return;
+    if (!window.confirm(`最後確認：這會把高積分與低積分題壓回 ±1，常用於修整舊檔或避免累積分數過度膨脹。
+
+按「確定」才會執行。`)) return;
+    for (const item of Object.values(progress?.byQuestion || {})) {
+      const score = Number(item?.score || 0);
+      if (score > 1) item.score = 1;
+      else if (score < -1) item.score = -1;
+    }
+    progress.meta = computeProgressMetaFromByQuestion(progress.byQuestion, progress.meta);
+    saveProgress();
+    refreshStats();
+    refreshRewards();
+    renderWrongBook();
+    renderSessionOrEmpty();
+    alert(`已完成平坦化，共調整 ${changedCount} 題。
+
+說明：
+- 大於 1 的積分已改為 1
+- 小於 -1 的積分已改為 -1
+- 0、1、-1 不變
+
+建議之後重新匯出一份完整記憶 JSON 作為新備份。`);
+  }
+
+  function askFullMemoryImportMode(contextLabel = "匯入完整記憶") {
+    const answer = window.prompt(`${contextLabel}：請輸入模式代號
+
+1 = 覆蓋本機
+2 = 覆蓋率優先合併（放水取高）
+3 = 保守合併（低分優先）
+
+說明：
+- 覆蓋：用匯入資料完整取代本機
+- 覆蓋率優先：盡量保留較高覆蓋率 / 較高分，適合快速刷題
+- 保守合併：優先保留較低分、較需要複習的一側
+
+取消 = 不匯入`, "1");
+    if (answer === null) return null;
+    const normalized = String(answer).trim();
+    if (normalized === "1") return "replace";
+    if (normalized === "2") return "coverage";
+    if (normalized === "3") return "conservative";
+    alert(`未輸入有效代號，已取消匯入。
+請輸入 1、2 或 3。`);
+    return null;
+  }
+
+  function applyFullMemoryPayload(rawPayload, importModeOrReplaceAll = true) {
     const parsed = rawPayload || {};
-    const importedProgress = sanitizeImportedProgress(parsed.progress || parsed.memory?.progress || parsed.data?.progress);
+    const importedProgress = repairProgressSnapshot(parsed.progress || parsed.memory?.progress || parsed.data?.progress);
     const importedSettings = sanitizeImportedSettings(parsed.settings || parsed.memory?.settings || parsed.data?.settings, settings);
     const importedImageIssues = sanitizeImportedImageIssues(parsed.imageIssues || parsed.memory?.imageIssues || parsed.data?.imageIssues);
 
-    if (replaceAll) {
+    let importMode = importModeOrReplaceAll;
+    if (typeof importModeOrReplaceAll === "boolean") importMode = importModeOrReplaceAll ? "replace" : "conservative";
+    if (!["replace", "coverage", "conservative"].includes(String(importMode || ""))) importMode = "replace";
+
+    if (importMode === "replace") {
       progress = importedProgress;
       settings = importedSettings;
       imageIssues = importedImageIssues;
     } else {
-      progress = mergeProgress(progress, importedProgress);
+      progress = mergeProgress(progress, importedProgress, String(importMode));
       settings = { ...settings, ...importedSettings };
       imageIssues = mergeImageIssues(imageIssues, importedImageIssues);
     }
 
+    progress = repairProgressSnapshot(progress);
     session = null;
     importedWrongs = [];
     saveProgress();
@@ -1579,11 +1743,16 @@ function renderWrongBook() {
       renderWarning = "\n\n資料已匯入，但畫面更新時出現警告；重新整理頁面即可。";
     }
 
+    const modeLabel = importMode === "coverage" ? "覆蓋率優先合併（放水取高）" : importMode === "conservative" ? "保守合併（低分優先）" : "覆蓋匯入";
+
     return {
       ok: true,
-      replaceAll,
+      replaceAll: importMode === "replace",
+      mode: importMode,
       warning: renderWarning,
-      message: (replaceAll ? "完整記憶已覆蓋匯入。" : "完整記憶已合併匯入。") + "\n\n為避免舊作答狀態造成卡住，匯入後已自動清除進行中的考試。" + renderWarning,
+      message: `${modeLabel} 已完成。
+
+說明：本次匯入不再直接相加統計，已改用較安全的整筆挑選方式，避免同源資料互相合併後數值異常膨脹。若是舊 JSON 檔，系統也已自動重算總統計。` + renderWarning,
     };
   }
 
@@ -1706,9 +1875,10 @@ function renderWrongBook() {
       }
 
       if (kind === "full-memory") {
-        const replaceAll = window.confirm("按「確定」= 用匯入檔覆蓋目前本機全部學習記憶；按「取消」= 與目前記憶合併。");
-        const result = applyFullMemoryPayload(parsed, replaceAll);
-        alert(result.message);
+        const importMode = askFullMemoryImportMode("匯入完整記憶");
+        if (!importMode) return;
+        const result = applyFullMemoryPayload(parsed, importMode);
+        alert(result.message + "\n\n模式說明：\n- 覆蓋：完整取代本機\n- 覆蓋率優先合併：放水取高，適合快速刷題\n- 保守合併：低分優先，適合避免弱點被沖淡");
       } else if (kind === "wrong-book" || kind === "wrong-array" || kind === "wrong-print") {
 
         const items = Array.isArray(parsed) ? parsed : Array.isArray(parsed.items) ? parsed.items : [];
@@ -1808,27 +1978,7 @@ function renderWrongBook() {
   }
 
   function sanitizeImportedProgress(data) {
-    const base = defaultProgress();
-    const byQuestion = data?.byQuestion && typeof data.byQuestion === "object" ? data.byQuestion : {};
-    for (const [id, raw] of Object.entries(byQuestion)) {
-      const item = { ...defaultQuestionProgress(), ...(raw || {}) };
-      base.byQuestion[id] = {
-        totalSeen: Number(item.totalSeen || 0),
-        totalCorrect: Number(item.totalCorrect || 0),
-        totalWrong: Number(item.totalWrong || 0),
-        score: Number(item.score || 0),
-        inWrongBook: !!item.inWrongBook,
-        masteryStreak: Number(item.masteryStreak || 0),
-        lastWrongAt: typeof item.lastWrongAt === "string" ? item.lastWrongAt : "",
-        lastSeenAt: typeof item.lastSeenAt === "string" ? item.lastSeenAt : "",
-      };
-    }
-    const meta = data?.meta && typeof data.meta === "object" ? data.meta : {};
-    base.meta.totalAnswered = Number(meta.totalAnswered || 0);
-    base.meta.totalCorrect = Number(meta.totalCorrect || 0);
-    base.meta.bestStreak = Number(meta.bestStreak || 0);
-    base.meta.totalCompletedSessions = Number(meta.totalCompletedSessions || 0);
-    return base;
+    return repairProgressSnapshot(data);
   }
 
   function sanitizeImportedSettings(data, fallback = settings) {
@@ -1873,29 +2023,25 @@ function renderWrongBook() {
     return data && typeof data === "object" ? data : {};
   }
 
-  function mergeProgress(localProgress, importedProgress) {
-    const merged = sanitizeImportedProgress(localProgress);
-    const incoming = sanitizeImportedProgress(importedProgress);
-    for (const [id, inc] of Object.entries(incoming.byQuestion)) {
-      const cur = merged.byQuestion[id] || defaultQuestionProgress();
-      merged.byQuestion[id] = {
-        totalSeen: Number(cur.totalSeen || 0) + Number(inc.totalSeen || 0),
-        totalCorrect: Number(cur.totalCorrect || 0) + Number(inc.totalCorrect || 0),
-        totalWrong: Number(cur.totalWrong || 0) + Number(inc.totalWrong || 0),
-        score: Number(cur.score || 0) + Number(inc.score || 0),
-        inWrongBook: !!(cur.inWrongBook || inc.inWrongBook),
-        masteryStreak: Math.max(Number(cur.masteryStreak || 0), Number(inc.masteryStreak || 0)),
-        lastWrongAt: maxIsoString(cur.lastWrongAt, inc.lastWrongAt),
-        lastSeenAt: maxIsoString(cur.lastSeenAt, inc.lastSeenAt),
-      };
+  function mergeProgress(localProgress, importedProgress, mode = "conservative") {
+    const merged = repairProgressSnapshot(localProgress);
+    const incoming = repairProgressSnapshot(importedProgress);
+    const ids = new Set([...Object.keys(merged.byQuestion || {}), ...Object.keys(incoming.byQuestion || {})]);
+    const byQuestion = {};
+    for (const id of ids) {
+      const localItem = merged.byQuestion[id];
+      const incomingItem = incoming.byQuestion[id];
+      if (localItem && incomingItem) byQuestion[id] = chooseMergedQuestionRecord(localItem, incomingItem, mode);
+      else if (incomingItem) byQuestion[id] = repairQuestionProgressRecord(incomingItem);
+      else if (localItem) byQuestion[id] = repairQuestionProgressRecord(localItem);
     }
-    merged.meta = {
-      totalAnswered: Number(merged.meta.totalAnswered || 0) + Number(incoming.meta.totalAnswered || 0),
-      totalCorrect: Number(merged.meta.totalCorrect || 0) + Number(incoming.meta.totalCorrect || 0),
-      bestStreak: Math.max(Number(merged.meta.bestStreak || 0), Number(incoming.meta.bestStreak || 0)),
-      totalCompletedSessions: Number(merged.meta.totalCompletedSessions || 0) + Number(incoming.meta.totalCompletedSessions || 0),
+    return {
+      byQuestion,
+      meta: computeProgressMetaFromByQuestion(byQuestion, {
+        bestStreak: Math.max(Number(merged.meta?.bestStreak || 0), Number(incoming.meta?.bestStreak || 0)),
+        totalCompletedSessions: Math.max(Number(merged.meta?.totalCompletedSessions || 0), Number(incoming.meta?.totalCompletedSessions || 0)),
+      }),
     };
-    return merged;
   }
 
   function mergeImageIssues(localIssues, importedIssues) {
@@ -3133,5 +3279,7 @@ function truncateText(text, maxLen = 80) {
   window.DriverQuizMemory = {
     buildPayload: buildFullMemoryPayload,
     applyPayload: applyFullMemoryPayload,
+    askImportMode: askFullMemoryImportMode,
+    flattenScores: flattenScoreDistribution,
   };
 })();

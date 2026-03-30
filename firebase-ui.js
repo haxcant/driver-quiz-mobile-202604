@@ -152,9 +152,9 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   try {
     modules = {
-      auth: await import("./firebase-auth.js?v=20260330v192"),
-      smoke: await import("./firebase-sync-smoke.js?v=20260330v192"),
-      backup: await import("./firebase-backup.js?v=20260330v192"),
+      auth: await import("./firebase-auth.js?v=20260330stable"),
+      smoke: await import("./firebase-sync-smoke.js?v=20260330stable"),
+      backup: await import("./firebase-backup.js?v=20260330stable"),
     };
   } catch (err) {
     console.error("firebase modules import failed", err);
@@ -287,7 +287,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     btnLocalRestore.addEventListener("click", async () => {
       try {
         if (!window.DriverQuizMemory?.applyPayload) throw new Error("找不到完整資料匯入函式。")
-        const result = restorePreSyncSnapshot((payload, replaceAll) => window.DriverQuizMemory.applyPayload(payload, replaceAll));
+        const result = restorePreSyncSnapshot((payload, replaceAll) => window.DriverQuizMemory.applyPayload(payload, replaceAll ? "replace" : "conservative"));
         setOutput(result?.message || "已還原同步前本機備份。");
         updateReminder();
       } catch (err) {

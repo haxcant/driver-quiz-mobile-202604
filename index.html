@@ -30,7 +30,7 @@
         <div class="info-grid">
           <div>
             <strong>目前版本</strong>
-            <p id="versionSummary">v19.4：已整合完整題庫、快捷篩選、圖片載入修補、提示音量調整與《駕駛人手冊》解答說明。</p>
+            <p id="versionSummary">v20.0：已整合完整題庫、快捷篩選、音量調整、圖片載入修補、三種完整記憶匯入模式（覆蓋／覆蓋率優先／保守）與積分平坦化工具。</p>
           </div>
           <div>
             <strong>建議使用方式</strong>
@@ -39,7 +39,7 @@
         </div>
         <div style="margin-top:12px; font-size:0.95rem; color:#475569; line-height:1.65;">
           <strong>第一次使用</strong>
-          <p style="margin:6px 0 0;">第一次使用者只須點擊 <strong>開始練習</strong> 即可。建議先提升覆蓋率，再練錯題，最後用模擬考驗證。也請定期下載 JSON 備份，以免雲端託管額度或服務狀況影響資料存取。</p>
+          <p style="margin:6px 0 0;">第一次使用者只須點擊 <strong>開始練習</strong> 即可。建議先提升覆蓋率，再練錯題，最後用模擬考驗證。匯入完整記憶時可自行選擇覆蓋、覆蓋率優先合併或保守合併；也請定期下載 JSON 備份，以免雲端託管額度或服務狀況影響資料存取。</p>
         </div>
       </details>
     </section>
@@ -149,6 +149,7 @@
         <button id="exportWrongPrintBtn" class="ghost-btn">下載本輪錯題（列印版）</button>
         <button id="exportMemoryBtn" class="ghost-btn">匯出完整記憶</button>
         <button id="importMemoryBtn" class="ghost-btn">匯入學習檔案</button>
+        <button id="flattenScoresBtn" class="ghost-btn">平坦化積分（±1）</button>
         <input id="importMemoryInput" type="file" accept="application/json,.json,text/html,.html" hidden>
         <button id="clearWrongBookBtn" class="ghost-btn danger">清空錯題本</button>
         <button id="clearAllProgressBtn" class="ghost-btn danger">清空全部記憶</button>
@@ -180,7 +181,7 @@
           <pre id="sync-test-output" style="white-space:pre-wrap; margin-top:8px;"></pre>
         <div style="margin-top:12px; font-size:0.95rem; color:#475569; line-height:1.65;">
           <strong>第一次使用</strong>
-          <p style="margin:6px 0 0;">第一次使用者只須點擊 <strong>開始練習</strong> 即可。建議先提升覆蓋率，再練錯題，最後用模擬考驗證。也請定期下載 JSON 備份，以免雲端託管額度或服務狀況影響資料存取。</p>
+          <p style="margin:6px 0 0;">第一次使用者只須點擊 <strong>開始練習</strong> 即可。建議先提升覆蓋率，再練錯題，最後用模擬考驗證。匯入完整記憶時可自行選擇覆蓋、覆蓋率優先合併或保守合併；也請定期下載 JSON 備份，以免雲端託管額度或服務狀況影響資料存取。</p>
         </div>
       </details>
     </section>
@@ -205,6 +206,6 @@
   <script src="handbook_explanations.js"></script>
   <script src="handbook_pages.js"></script>
   <script src="app.js?v=20260331v194"></script>
-  <script type="module" src="firebase-ui.js?v=20260331v194"></script>
+  <script type="module" src="firebase-ui.js?v=20260331v200"></script>
 </body>
 </html>
