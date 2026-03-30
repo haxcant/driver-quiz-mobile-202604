@@ -1,0 +1,22 @@
+{
+  "name": "駕訓班筆試練習（整合版）",
+  "short_name": "駕訓班練習",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1120",
+  "theme_color": "#0f172a",
+  "lang": "zh-Hant",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "description": "手機優化版駕訓班筆試練習 PWA，支援錯題本、模擬考、單字卡與官方題庫。"
+}

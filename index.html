@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>駕訓班筆試練習</title>
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="手機可用的駕訓班筆試練習 PWA，可看圖選答案、文字題四選一／是非題、模擬考、錯題本、單字卡與積分追蹤。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1>駕訓班筆試練習</h1>
+        <p class="subtitle">正式筆試練習、錯題本、積分追蹤、手冊對照說明、快捷鍵答題、單字卡與限時作答</p>
+      </div>
+      <button id="installBtn" class="ghost-btn hidden">安裝到主畫面</button>
+    </header>
+
+    <section class="panel info-panel collapsed-panel">
+      <details class="fold-panel">
+        <summary>使用說明與版本資訊</summary>
+        <div class="info-grid">
+        <div>
+          <strong>目前版本</strong>
+          <p id="versionSummary">已整合完整題庫、積分系統與《駕駛人手冊》解答說明。</p>
+        </div>
+        <div>
+          <strong>建議使用方式</strong>
+          <p>先用正式筆試模式刷題，再用積分篩選與單字卡專攻低分題，最後以模擬考驗證覆蓋率。</p>
+        </div>
+      </div>
+      </details>
+    </section>
+
+    <section class="panel controls-panel">
+      <div class="grid two-col three-col-desktop">
+        <label>
+          <span>考試範圍</span>
+          <select id="examScopeSelect">
+            <option value="official_small_car" selected>正式筆試模式（普通小型車）</option>
+            <option value="official_plus_mechanical">加強學習模式（正式筆試＋機械常識）</option>
+            <option value="full_extended">完整延伸模式（全部題庫）</option>
+          </select>
+        </label>
+        <label>
+          <span>練習模式</span>
+          <select id="practiceModeSelect">
+            <option value="practice">一般練習</option>
+            <option value="wrongOnly">只練錯題</option>
+            <option value="exam">模擬考</option>
+            <option value="flashcard">單字卡複習</option>
+          </select>
+        </label>
+        <label>
+          <span>題型</span>
+          <select id="questionModeSelect">
+            <option value="imageToText">看圖選名稱</option>
+            <option value="textToImage">看名稱選圖</option>
+            <option value="mixed">混合題型</option>
+          </select>
+        </label>
+        <label>
+          <span>分類</span>
+          <select id="categorySelect"></select>
+        </label>
+        <label>
+          <span>題數</span>
+          <select id="questionCountSelect">
+            <option value="10">10 題</option>
+            <option value="20" selected>20 題</option>
+            <option value="30">30 題</option>
+            <option value="40">40 題</option>
+            <option value="50">50 題</option>
+            <option value="100">100 題</option>
+            <option value="200">200 題</option>
+            <option value="9999">全部可用題目</option>
+          </select>
+        </label>
+        <label>
+          <span>答對幾次後移出錯題</span>
+          <select id="masterySelect">
+            <option value="1">1 次</option>
+            <option value="2" selected>2 次</option>
+            <option value="3">3 次</option>
+          </select>
+        </label>
+      </div>
+
+      <details class="fold-panel advanced-fold"><summary>進階設定</summary>
+      <div class="grid advanced-grid three-col-desktop">
+        <label>
+          <span>積分篩選</span>
+          <select id="scoreFilterOperatorSelect">
+            <option value="any" selected>不限</option>
+            <option value="gt">大於</option>
+            <option value="lt">小於</option>
+            <option value="eq">等於</option>
+          </select>
+        </label>
+        <label>
+          <span>積分門檻（自填）</span>
+          <input id="scoreFilterValueInput" type="number" step="1" value="0" placeholder="例如 0、1、-2">
+        </label>
+        <label>
+          <span>每題限時（秒，0=不限）</span>
+          <input id="answerTimeLimitInput" type="number" min="0" step="1" value="15">
+        </label>
+        <label>
+          <span>答對後自動跳題（秒，0=不自動）</span>
+          <input id="autoNextCorrectDelayInput" type="number" min="0" step="0.5" value="1">
+        </label>
+        <label>
+          <span>答錯後自動跳題（秒，0=不自動）</span>
+          <input id="autoNextWrongDelayInput" type="number" min="0" step="0.5" value="4">
+        </label>
+      </div>
+
+      <div class="grid advanced-grid shortcut-grid three-col-desktop">
+        <label>
+          <span>選項 1 快捷鍵</span>
+          <input id="shortcutOption1Input" type="text" maxlength="12" value="1" placeholder="1">
+        </label>
+        <label>
+          <span>選項 2 快捷鍵</span>
+          <input id="shortcutOption2Input" type="text" maxlength="12" value="2" placeholder="2">
+        </label>
+        <label>
+          <span>選項 3 快捷鍵</span>
+          <input id="shortcutOption3Input" type="text" maxlength="12" value="3" placeholder="3">
+        </label>
+        <label>
+          <span>選項 4 快捷鍵</span>
+          <input id="shortcutOption4Input" type="text" maxlength="12" value="4" placeholder="4">
+        </label>
+        <label>
+          <span>下一題快捷鍵</span>
+          <input id="shortcutNextInput" type="text" maxlength="12" value="Enter" placeholder="Enter">
+        </label>
+      </div>
+
+
+      <p id="scopeSummary" class="scope-summary">正式筆試模式只出普通小型車官方筆試題庫。</p>
+      <p id="filterSummary" class="scope-summary subtle">目前未啟用積分篩選。</p>
+
+      <input type="checkbox" id="maskTextToggle" hidden>
+      <p class="scope-summary subtle">目前圖示題已取消文字遮罩，作答前就會完整顯示圖片。</p>
+      </details>
+
+      <div class="actions">
+        <button id="startBtn" class="primary-btn">開始練習</button>
+        <button id="continueBtn" class="secondary-btn">繼續上次題組</button>
+        <button id="imageReviewBtn" class="ghost-btn">圖示檢視模式</button>
+        <button id="resetSessionBtn" class="ghost-btn">清除目前題組</button>
+      </div>
+    </section>
+
+    <section class="panel stats-panel">
+      <div class="stats-grid six-grid">
+        <div class="stat-card">
+          <span class="stat-label">題庫總數</span>
+          <strong id="bankCount">-</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">錯題本</span>
+          <strong id="wrongBookCount">-</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">累計作答</span>
+          <strong id="answeredCount">-</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">累計答對率</span>
+          <strong id="accuracyCount">-</strong>
+        </div>
+        <div class="stat-card highlight-card">
+          <span class="stat-label">正分覆蓋率（積分 ≥ 1）</span>
+          <strong id="masteredCoverageCount">-</strong>
+          <small id="masteredCoverageDetail">-</small>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">題庫總積分</span>
+          <strong id="totalPointsCount">-</strong>
+        </div>
+      </div>
+      <div class="actions compact">
+        <button id="exportBtn" class="ghost-btn">匯出錯題JSON</button>
+        <button id="exportWrongPrintBtn" class="ghost-btn">下載本輪錯題（列印版）</button>
+        <button id="exportMemoryBtn" class="ghost-btn">匯出完整記憶</button>
+        <button id="importMemoryBtn" class="ghost-btn">匯入學習檔案</button>
+        <input id="importMemoryInput" type="file" accept="application/json,.json,text/html,.html" hidden>
+        <button id="clearWrongBookBtn" class="ghost-btn danger">清空錯題本</button>
+        <button id="clearAllProgressBtn" class="ghost-btn danger">清空全部記憶</button>
+      </div>
+    </section>
+
+
+
+    <main id="mainContent" class="panel quiz-panel empty-state">
+      <p>按「開始練習」後會在這裡顯示題目。</p>
+    </main>
+
+    <section class="panel reward-panel">
+      <div class="review-header">
+        <h2>學習獎勵</h2>
+        <p>用覆蓋率、連續答對與累計作答推進徽章，讓刷題更有回饋。</p>
+      </div>
+      <div class="reward-grid">
+        <div class="reward-card main">
+          <div class="reward-level" id="rewardLevelLabel">-</div>
+          <div class="reward-next" id="rewardNextGoal">-</div>
+          <div class="reward-progress-wrap"><div id="rewardProgressBar" class="reward-progress-bar"></div></div>
+          <p id="rewardEncouragement" class="reward-note">-</p>
+        </div>
+        <div class="reward-card">
+          <strong>已解鎖徽章</strong>
+          <div id="badgeList" class="badge-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel review-panel">
+      <div class="review-header">
+        <h2>錯題本</h2>
+        <p>答錯、逾時或按「不會」都會加入。連續答對達設定次數後移出。</p>
+      </div>
+      <div id="wrongBookList" class="wrong-list empty-state">目前沒有錯題。</div>
+    </section>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="handbook_explanations.js"></script>
+  <script src="handbook_pages.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

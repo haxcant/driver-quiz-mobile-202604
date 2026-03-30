@@ -1,0 +1,3151 @@
+(() => {
+  const STORAGE_KEY = "driver-quiz-progress-v6";
+  const SESSION_KEY = "driver-quiz-session-v6";
+  const SETTINGS_KEY = "driver-quiz-settings-v6";
+  const IMAGE_ISSUES_KEY = "driver-quiz-image-issues-v1";
+  const IMPORTED_WRONGS_KEY = "driver-quiz-imported-wrongs-v1";
+  const MEMORY_EXPORT_VERSION = 1;
+  const SETTINGS_SCHEMA_VERSION = 2;
+  const DEFAULT_SETTINGS = Object.freeze({
+    maskTextBeforeAnswer: false,
+    examScope: "official_small_car",
+    practiceMode: "practice",
+    questionMode: "imageToText",
+    questionCount: 20,
+    masteryTarget: 2,
+    scoreFilterOperator: "any",
+    scoreFilterValue: 0,
+    answerTimeLimitSec: 15,
+    autoNextCorrectDelaySec: 1,
+    autoNextWrongDelaySec: 4,
+    shortcutOption1: "1",
+    shortcutOption2: "2",
+    shortcutOption3: "3",
+    shortcutOption4: "4",
+    shortcutNext: "Enter",
+  });
+  const LEGACY_PROGRESS_KEYS = ["driver-quiz-progress-v5", "driver-quiz-progress-v3", "driver-quiz-progress-v2", "driver-quiz-progress-v5"];
+  const LEGACY_SESSION_KEYS = ["driver-quiz-session-v4"];
+  const LEGACY_SETTINGS_KEYS = ["driver-quiz-settings-v4"];
+
+  const ALL_QUESTIONS = Array.isArray(window.QUESTION_BANK) ? window.QUESTION_BANK.slice() : [];
+  const QUESTION_MAP = new Map(ALL_QUESTIONS.map((q) => [q.id, q]));
+  const HANDBOOK_EXPLANATIONS = window.HANDBOOK_EXPLANATIONS || {};
+  const HANDBOOK_PAGES = window.HANDBOOK_PAGES || [];
+  const CATEGORY_LABELS = {
+    all: "全部分類",
+    warning_sign: "警告標誌",
+    direction_sign: "指示/導行標誌",
+    instruction_sign: "指示標誌",
+    prohibition_sign: "禁制標誌",
+    restriction_sign: "限制標誌",
+    traffic_sign: "官方標誌題庫",
+    regulatory_sign: "管制／規定標誌",
+    road_marking: "交通標線",
+    traffic_signal: "交通號誌",
+    police_signal: "警察手勢",
+    bike_hand_signal: "機車手勢",
+    dashboard_indicator: "儀表燈號",
+    construction_sign: "施工標誌",
+    route_sign: "路線指示",
+    service_sign: "服務設施標誌",
+    traffic_law_choice: "汽車法規選擇題",
+    traffic_law_truefalse: "汽車法規是非題",
+    mechanical_choice: "機械常識選擇題",
+    mechanical_truefalse: "機械常識是非題",
+    single: "單題練習"
+  };
+  const PRACTICE_MODE_LABELS = {
+    practice: "一般練習",
+    wrongOnly: "只練錯題",
+    exam: "模擬考",
+    flashcard: "單字卡複習",
+  };
+  const QUESTION_MODE_LABELS = {
+    imageToText: "看圖選名稱",
+    textToImage: "看名稱選圖",
+    mixed: "混合題型",
+    textChoice: "文字選擇題",
+    trueFalse: "是非題",
+  };
+  const EXAM_SCOPE_LABELS = {
+    official_small_car: "正式筆試模式（普通小型車）",
+    official_plus_mechanical: "加強學習模式（正式筆試＋機械常識）",
+    full_extended: "完整延伸模式（全部題庫）",
+  };
+  const EXAM_SCOPE_DESCRIPTIONS = {
+    official_small_car: "只出普通小型車官方筆試題庫：汽車法規選擇題、汽車法規是非題、汽車標誌選擇題、汽車標誌是非題。",
+    official_plus_mechanical: "在正式筆試模式上，再加入機械常識選擇題與機械常識是非題。",
+    full_extended: "包含全部題庫：官方筆試題庫、機械常識，以及講義延伸圖示題。"
+  };
+  const SCORE_FILTER_LABELS = {
+    any: "不限",
+    gt: ">",
+    lt: "<",
+    eq: "="
+  };
+  const REWARD_LEVELS = [
+    { key: "starter", label: "起步徽章", minPct: 0, nextPct: 10, note: "先把低分題刷起來，讓更多題目進入正分區。" },
+    { key: "bronze", label: "銅牌學習者", minPct: 10, nextPct: 30, note: "你已經開始建立穩定記憶，接下來把熟題擴大到三成。" },
+    { key: "silver", label: "銀牌學習者", minPct: 30, nextPct: 60, note: "基礎覆蓋率已成形，接下來把中間分數題拉到熟練。" },
+    { key: "gold", label: "金牌學習者", minPct: 60, nextPct: 85, note: "你已經有很高覆蓋率，再把邊緣題清掉就很接近穩定上榜。" },
+    { key: "diamond", label: "鑽石學習者", minPct: 85, nextPct: 100, note: "高覆蓋率區間。接下來維持錯題修正與模擬考穩定度。" },
+  ];
+
+
+const HANDBOOK_RULES = [
+  { aliases: ["警告標誌"], page: 24, title: "警告標誌", text: "警告標誌為紅色正三角形，用來提醒前方可能出現特殊路況，駕駛人應提高警覺並預作防範。" },
+  { aliases: ["停車再開"], page: 24, title: "遵行標誌", text: "停車再開標誌表示車輛必須先停車觀察，確認安全後才能再開。" },
+  { aliases: ["讓路"], page: 24, title: "遵行標誌", text: "讓路標誌表示車輛必須慢行或停車，先讓幹線道車輛優先通行，再視情況續行。" },
+  { aliases: ["單行道"], page: 24, title: "遵行標誌", text: "單行道標誌表示該道路為單向行車，進入後應依標誌所示方向行駛。" },
+  { aliases: ["遵行方向", "道路遵行方向"], page: 24, title: "遵行標誌", text: "道路遵行方向標誌用來告示車輛應遵行的行駛方向。" },
+  { aliases: ["靠右行駛"], page: 25, title: "禁止標誌", text: "靠右行駛標誌表示車輛必須靠分向設施的右側行駛。" },
+  { aliases: ["禁止進入", "禁止任何車輛進入"], page: 25, title: "禁止標誌", text: "禁止進入標誌表示任何車輛都不准由該方向進入。" },
+  { aliases: ["禁止迴車"], page: 25, title: "禁止標誌", text: "禁止迴車標誌表示前段道路不准迴車。" },
+  { aliases: ["禁止超車"], page: 25, title: "禁止標誌", text: "禁止超車標誌表示該路段禁止超車。" },
+  { aliases: ["禁止停車"], page: 25, title: "禁止標誌", text: "禁止停車標誌表示不得停放車輛，但臨時停車不在此限。" },
+  { aliases: ["禁止臨時停車"], page: 25, title: "禁止標誌", text: "禁止臨時停車標誌表示該處連臨時停車也不允許。" },
+  { aliases: ["禁止會車"], page: 25, title: "禁止標誌", text: "禁止會車標誌表示應讓已進入前方路段的來車優先通過，中途不得交會。" },
+  { aliases: ["車輛總重限制"], page: 26, title: "限制標誌", text: "車輛總重限制標誌表示道路或橋梁可承載的重量有限，超限車輛不得通行。" },
+  { aliases: ["車輛寬度限制"], page: 26, title: "限制標誌", text: "車輛寬度限制標誌表示前方道路條件特殊，超過標示寬度的車輛不得通行。" },
+  { aliases: ["車輛高度限制"], page: 26, title: "限制標誌", text: "車輛高度限制標誌表示前方構造物高度有限，超高車輛不得通行。" },
+  { aliases: ["車輛長度限制"], page: 26, title: "限制標誌", text: "車輛長度限制標誌表示前方道路或構造物對車長有限制，超長車輛不得通行。" },
+  { aliases: ["最高速限"], page: 40, title: "速限標誌", text: "設有速限標誌或標線時，車輛應依其規定行駛，不得超速。" },
+  { aliases: ["最低速限"], page: 40, title: "速限標誌", text: "最低速限標誌表示行駛速率不得低於標示值，以免影響車流安全。" },
+  { aliases: ["國道路線編號"], page: 26, title: "指示標誌", text: "國道路線編號標誌用來指示國道路線之編號。" },
+  { aliases: ["省道路線編號", "一般省道", "快速公路"], page: 26, title: "指示標誌", text: "省道路線編號標誌包含一般省道（藍底）與快速公路（紅底），用以指示省道路線之編號。" },
+  { aliases: ["市、縣道路線編號", "市縣道路線編號", "縣、鄉道路線編號", "縣鄉道路線編號"], page: 26, title: "指示標誌", text: "縣、鄉道路線編號標誌用來指示縣道或鄉道路線之編號。" },
+  { aliases: ["地名方向指示"], page: 26, title: "指示標誌", text: "地名方向指示標誌用來指示可通往的地點、方向與公路路線編號。" },
+  { aliases: ["地名里程"], page: 26, title: "指示標誌", text: "地名里程標誌用來指示可通往地點及其里程。" },
+  { aliases: ["地名標誌"], page: 26, title: "指示標誌", text: "地名標誌用來表示已到達某行政區或特定地點。" },
+  { aliases: ["停車處"], page: 26, title: "指示標誌", text: "停車處標誌用來指示公共停車場的位置。" },
+  { aliases: ["此路不通"], page: 26, title: "指示標誌", text: "此路不通標誌表示前方道路無出口，不能通行。" },
+  { aliases: ["道路施工"], page: 27, title: "輔助標誌", text: "施工標誌表示前方道路施工，車輛應減速慢行或依指示改道。" },
+  { aliases: ["分道"], page: 24, title: "警告標誌", text: "分道標誌提醒駕駛人注意分道行駛。" },
+  { aliases: ["注意號誌"], page: 24, title: "警告標誌", text: "注意號誌標誌提醒前方設有號誌路口，應依號誌指示行車。" },
+  { aliases: ["圓環"], page: 24, title: "警告標誌／圓環路權", text: "圓環標誌提醒駕駛人減速慢行，並讓已進入圓環內側或環道的車輛優先通行。" },
+  { aliases: ["當心行人"], page: 24, title: "警告標誌", text: "當心行人標誌提醒駕駛人減速慢行並注意行人。" },
+  { aliases: ["慢行"], page: 24, title: "警告標誌", text: "慢行標誌表示前方環境需要減速慢行，並作隨時停車準備。" },
+  { aliases: ["有柵門鐵路平交道"], page: 24, title: "警告標誌", text: "有柵門鐵路平交道標誌提醒前方將有平交道，應減速並視情況及時停車。" },
+  { aliases: ["無柵門鐵路平交道"], page: 52, title: "平交道注意事項", text: "無柵門平交道前更應落實停、看、聽，確認兩側確無列車後再通過。" },
+  { aliases: ["行車分向線"], page: 28, title: "指示標線", text: "行車分向線為黃色虛線，用來劃分雙向車道，提醒車輛靠右分向行駛。" },
+  { aliases: ["車道線"], page: 28, title: "指示標線", text: "車道線為白色虛線，用來劃分同向各車道，指示車輛依車道行駛。" },
+  { aliases: ["路面邊線"], page: 28, title: "指示標線", text: "路面邊線為白色實線，用來標示路肩或路面外側邊緣。" },
+  { aliases: ["快慢車道分隔線"], page: 28, title: "指示標線", text: "快慢車道分隔線為白色實線，用來劃分快車道與慢車道。" },
+  { aliases: ["左彎待轉區線", "左轉待轉區"], page: 28, title: "指示標線", text: "左彎待轉區線表示左轉車輛可先進入待轉區等待，再依號誌完成左轉。" },
+  { aliases: ["斑馬紋行人穿越道", "斑馬紋行人穿越道線"], page: 28, title: "指示標線", text: "斑馬紋行人穿越道線多設於路段中，供行人穿越道路使用。" },
+  { aliases: ["枕木紋行人穿越道", "枕木紋行人穿越道線"], page: 28, title: "指示標線", text: "枕木紋行人穿越道線多設於交岔路口，提供行人穿越路口之專用空間。" },
+  { aliases: ["指向線"], page: 28, title: "指示標線", text: "指向線以箭頭標示車輛應行駛的方向。" },
+  { aliases: ["分向限制線"], page: 26, title: "禁制標線", text: "分向限制線為雙黃實線，用來劃分雙向車道，禁止車輛跨越行駛，也不得迴轉。" },
+  { aliases: ["雙向禁止超車線"], page: 26, title: "禁制標線", text: "雙向禁止超車線為雙黃實線，表示雙向車輛都禁止超車、跨越或迴轉。" },
+  { aliases: ["單向禁止超車線"], page: 27, title: "禁制標線", text: "單向禁止超車線為黃實線配黃虛線，實線側禁止超車，虛線側在安全情況下才可超車。" },
+  { aliases: ["禁止變換車道線", "雙邊禁止變換車道線", "單邊禁止變換車道線"], page: 26, title: "禁制標線", text: "禁止變換車道線為白實線或白實線配白虛線，用來限制車輛變換車道。" },
+  { aliases: ["禁止停車線"], page: 26, title: "禁制標線", text: "禁止停車線為黃實線，表示該路段不得停車。" },
+  { aliases: ["禁止臨時停車線"], page: 26, title: "禁制標線", text: "禁止臨時停車線為紅實線，表示該路段連臨時停車也不允許。" },
+  { aliases: ["停止線"], page: 26, title: "禁制標線", text: "停止線為白色實線，車輛停止時前懸部分不得超越此線。" },
+  { aliases: ["機慢車停等區", "機慢車停等區線"], page: 26, title: "禁制標線", text: "機慢車停等區供大型重型機車以外之機慢車在紅燈時停等，其他車種不得占用。" },
+  { aliases: ["禁行機車"], page: 26, title: "禁制標線", text: "禁行機車標字表示該車道禁止大型重型機車以外之機車通行。" },
+  { aliases: ["網狀線"], page: 27, title: "禁制標線", text: "網狀線用來告示駕駛人不得在其範圍內臨時停車，以避免阻塞。" },
+  { aliases: ["槽化線"], page: 27, title: "禁制標線", text: "槽化線用來引導車流按指定路線行駛，並禁止跨越與停車。" },
+  { aliases: ["近障礙物線"], page: 27, title: "警告標線", text: "近障礙物線提醒前方有固定性障礙物，車輛應謹慎行駛，且禁止超車。" },
+  { aliases: ["路中障礙物體線"], page: 27, title: "警告標線", text: "路中障礙物體線用來表示路中障礙物，提醒駕駛人提高警覺。" },
+  { aliases: ["圓形綠燈", "圓形黃燈", "圓形紅燈", "箭頭綠燈", "行車管制號誌"], page: 29, title: "行車管制號誌", text: "行車管制號誌以紅、黃、綠燈控制通行：圓形綠燈准許直行或依規定左右轉，圓形黃燈表示紅燈將至，圓形紅燈表示禁止通行；箭頭綠燈則僅准許依箭頭方向行駛。" },
+  { aliases: ["行人專用號誌"], page: 29, title: "行人專用號誌", text: "行人專用號誌中，站立行人紅燈表示禁止進入道路；行走行人綠燈表示可穿越道路，綠燈閃爍時已在道路上的人應儘速通過。" },
+  { aliases: ["車道管制號誌"], page: 30, title: "車道管制號誌", text: "車道管制號誌常見兩種：垂直向下箭頭綠燈表示准許車輛在箭頭所指車道上行駛；叉形紅燈表示禁止車輛駛入該車道。" },
+  { aliases: ["特種閃光黃燈號誌", "特種閃光「黃燈」號誌", "閃光黃燈"], page: 30, title: "特種閃光號誌", text: "閃光黃燈表示警告，車輛應減速接近，注意安全後小心通過。" },
+  { aliases: ["特種閃光紅燈號誌", "特種閃光「紅燈」號誌", "閃光紅燈"], page: 30, title: "特種閃光號誌", text: "閃光紅燈表示停車再開，車輛應先停於交岔路口前，確認安全後再續行。" },
+  { aliases: ["行人穿越道號誌"], page: 30, title: "特種交通號誌", text: "行人穿越道號誌以雙閃黃燈提醒駕駛人前方有斑馬紋行人穿越道，接近時應減速，如有行人穿越，須停於停止線前讓行人優先。" },
+  { aliases: ["鐵路平交道號誌", "鐵路平交道"], page: 30, title: "特種交通號誌／平交道", text: "平交道號誌雙紅燈交替閃爍時，表示行人與車輛都禁止進入平交道；行經平交道應落實停、看、聽。" },
+  { aliases: ["前後來車停止", "全部車輛停止", "右面來車停止", "左面來車停止", "右面來車速行", "左面來車速行", "右面來車左轉彎", "左面來車左轉彎", "前面來車停止"], page: 31, title: "交通指揮手勢", text: "交通指揮手勢大致分為停止、速行與轉彎三類；當號誌與交通指揮並用時，應優先遵從交通指揮人員的手勢。" },
+  { aliases: ["靠山壁車", "道路外緣車"], page: 39, title: "山區道路優先路權", text: "山區會車時，靠山壁車輛應讓道路外緣車輛優先通過。" },
+  { aliases: ["下坡車", "上坡車", "狹窄坡道"], page: 39, title: "狹窄坡道路權", text: "未劃分向車道的狹窄坡道上，下坡車應停車讓上坡車先行；但若下坡車已在坡道中途，上坡車應先禮讓。" },
+  { aliases: ["右轉", "右轉方向"], page: 45, title: "交岔路口右轉", text: "右轉前應在距交岔路口30公尺前顯示右轉方向燈，先換入外側車道、右轉車道或慢車道，再進入路口後右轉。" },
+  { aliases: ["左轉", "左右轉方向", "左轉方向"], page: 46, title: "交岔路口左轉", text: "左轉前應在距交岔路口30公尺前顯示方向燈，換入內側車道或左轉車道，並行至交岔路口中心處後再左轉，不得搶先占用來車道。" },
+  { aliases: ["兩段式左轉", "機慢車兩段左轉"], page: 46, title: "機車兩段式左轉", text: "看到兩段式左轉標誌或禁行機車標誌時，機車應依規定採兩段式左轉。" },
+  { aliases: ["迴車"], page: 46, title: "迴車", text: "迴車前應暫停並顯示左轉燈或手勢，看清無來往車輛及行人後才可迴轉；有彎道、坡路、狹路、狹橋、隧道標誌或平交道處不得迴車。" },
+  { aliases: ["超車"], page: 44, title: "超車", text: "超越同車道前車前，應先按鳴喇叭二單響或變換燈光一次；待前車減速靠邊或表示允讓後，始可由左側保持安全間隔超越。" },
+  { aliases: ["變換車道"], page: 42, title: "變換車道", text: "變換車道前應先顯示欲變換方向的方向燈，確認安全距離並讓直行車先行後再變換，不得以逼近或驟然變換車道迫使他車讓道。" },
+  { aliases: ["行人穿越道"], page: 71, title: "行人優先", text: "行近行人穿越道前應減速慢行，在穿越道上有人通行時，應暫停讓行人先行通過。左、右轉跨越穿越道時，距離行人行進方向3公尺內應停讓。" },
+  { aliases: ["安全帶"], page: 58, title: "安全帶", text: "汽車駕駛人、前座及後座乘客都應繫妥安全帶；肩帶應繞過肩膀橫過胸前，腰帶固定在腹部下方的髖骨位置。" },
+  { aliases: ["安全座椅", "幼童用座椅"], page: 58, title: "安全座椅", text: "2歲以下幼童應坐於後座攜帶式嬰兒床或後向幼童座椅；2至4歲且18公斤以下者應使用幼童用座椅；較大兒童則應在後座使用安全帶。" },
+  { aliases: ["手持方式使用行動電話", "行動電話", "電腦", "分心駕駛"], page: 66, title: "分心駕駛", text: "駕駛時以手持方式使用行動電話、電腦或其他裝置，屬分心駕駛，容易錯失關鍵路況資訊並增加事故風險。" },
+  { aliases: ["娛樂性顯示設備"], page: 59, title: "娛樂性顯示設備", text: "起駛前應關閉駕駛人視線範圍內的娛樂性顯示設備，駕駛時不得操作或觀看。" },
+  { aliases: ["酒駕", "飲酒", "酒精濃度"], page: 67, title: "酒後駕車與行車安全", text: "飲酒會讓反應時間變長、判斷力下降與視野縮小；飲酒後絕不開車，應改由指定駕駛、計程車、大眾運輸或代駕返家。" },
+  { aliases: ["超速"], page: 41, title: "超速駕駛", text: "超速是重要肇事原因之一，會讓駕駛人反應不及，也會提高事故傷害嚴重度。" },
+  { aliases: ["內輪差", "大型車"], page: 78, title: "大型車內輪差與視野死角", text: "大型車轉彎時內輪差明顯，且視野死角大；看到大型車打方向燈時應減速或暫停，避免進入其內輪差與死角範圍。" },
+  { aliases: ["隧道"], page: 55, title: "行駛於長隧道", text: "行經隧道應開亮頭燈、保持安全距離、避免任意變換車道；隧道內不得臨時停車、迴車、倒車或超車。" },
+  { aliases: ["高速公路", "快速公路", "市區快速道路"], page: 49, title: "高、快速公路注意事項", text: "行駛高、快速公路前應依速限行駛、保持安全距離、變換車道前先顯示方向燈並確認安全，且不得在車道中迴轉、倒車或任意停車。" },
+  { aliases: ["爬坡道"], page: 49, title: "高、快速公路注意事項", text: "在設有爬坡道的長陡坡路段，車速低於最低速限的車輛應行駛爬坡道，其他車輛不得利用爬坡道超車。" },
+  { aliases: ["安全距離"], page: 73, title: "路段中行車", text: "一般道路上建議小型車與前車保持至少2秒時距；高速或快速公路則依速率換算更長的安全距離。" },
+  { aliases: ["疲勞駕駛"], page: 66, title: "疲勞駕駛", text: "疲勞會大幅提高事故風險，持續開車以不超過2小時為宜，若感到疲倦應儘速停車休息。" },
+  { aliases: ["防禦駕駛"], page: 82, title: "防禦駕駛", text: "防禦駕駛的核心是不只避免撞到別人，也要避免被別人撞到；應預先發現危險並採取保護自己的反應。" },
+  { aliases: ["安全帽"], page: 59, title: "安全帽", text: "機車駕駛人及附載人員都應正確配戴經檢驗合格的安全帽，扣環需確實繫緊。" },
+  { aliases: ["幼童專用車", "校車", "教練車", "身心障礙者用特製車"], page: 80, title: "特殊車輛避讓", text: "遇到幼童專用車、校車、身心障礙者用特製車、教練車或道路考驗用車，駕駛人都應予以禮讓。" },
+  { aliases: ["消防車", "救護車", "警備車", "工程救險車", "毒性化學物質災害事故應變車"], page: 80, title: "緊急任務車輛避讓", text: "遇執行緊急任務的消防車、救護車等，不論來自何方都應立即避讓，不得併駛、超越或跟隨急駛。" },
+];
+
+  const els = {
+    examScopeSelect: document.getElementById("examScopeSelect"),
+    practiceModeSelect: document.getElementById("practiceModeSelect"),
+    questionModeSelect: document.getElementById("questionModeSelect"),
+    categorySelect: document.getElementById("categorySelect"),
+    questionCountSelect: document.getElementById("questionCountSelect"),
+    masterySelect: document.getElementById("masterySelect"),
+    scoreFilterOperatorSelect: document.getElementById("scoreFilterOperatorSelect"),
+    scoreFilterValueInput: document.getElementById("scoreFilterValueInput"),
+    answerTimeLimitInput: document.getElementById("answerTimeLimitInput"),
+    autoNextCorrectDelayInput: document.getElementById("autoNextCorrectDelayInput"),
+    autoNextWrongDelayInput: document.getElementById("autoNextWrongDelayInput"),
+    maskTextToggle: document.getElementById("maskTextToggle"),
+    shortcutOption1Input: document.getElementById("shortcutOption1Input"),
+    shortcutOption2Input: document.getElementById("shortcutOption2Input"),
+    shortcutOption3Input: document.getElementById("shortcutOption3Input"),
+    shortcutOption4Input: document.getElementById("shortcutOption4Input"),
+    shortcutNextInput: document.getElementById("shortcutNextInput"),
+    startBtn: document.getElementById("startBtn"),
+    continueBtn: document.getElementById("continueBtn"),
+    imageReviewBtn: document.getElementById("imageReviewBtn"),
+    resetSessionBtn: document.getElementById("resetSessionBtn"),
+    exportBtn: document.getElementById("exportBtn"),
+    exportWrongPrintBtn: document.getElementById("exportWrongPrintBtn"),
+    exportMemoryBtn: document.getElementById("exportMemoryBtn"),
+    importMemoryBtn: document.getElementById("importMemoryBtn"),
+    importMemoryInput: document.getElementById("importMemoryInput"),
+    clearWrongBookBtn: document.getElementById("clearWrongBookBtn"),
+    clearAllProgressBtn: document.getElementById("clearAllProgressBtn"),
+    bankCount: document.getElementById("bankCount"),
+    wrongBookCount: document.getElementById("wrongBookCount"),
+    answeredCount: document.getElementById("answeredCount"),
+    accuracyCount: document.getElementById("accuracyCount"),
+    masteredCoverageCount: document.getElementById("masteredCoverageCount"),
+    masteredCoverageDetail: document.getElementById("masteredCoverageDetail"),
+    totalPointsCount: document.getElementById("totalPointsCount"),
+    mainContent: document.getElementById("mainContent"),
+    wrongBookList: document.getElementById("wrongBookList"),
+    installBtn: document.getElementById("installBtn"),
+    versionSummary: document.getElementById("versionSummary"),
+    scopeSummary: document.getElementById("scopeSummary"),
+    filterSummary: document.getElementById("filterSummary"),
+    rewardLevelLabel: document.getElementById("rewardLevelLabel"),
+    rewardNextGoal: document.getElementById("rewardNextGoal"),
+    rewardProgressBar: document.getElementById("rewardProgressBar"),
+    rewardEncouragement: document.getElementById("rewardEncouragement"),
+    badgeList: document.getElementById("badgeList"),
+  };
+
+  let progress = loadProgress();
+  let session = loadSession();
+  let settings = loadSettings();
+  let imageIssues = loadImageIssues();
+  let importedWrongs = loadImportedWrongs();
+  let deferredPrompt = null;
+  let answerTimeoutId = null;
+  let countdownIntervalId = null;
+  let autoNextTimeoutId = null;
+  let feedbackCountdownIntervalId = null;
+  let activeTimerState = null;
+  let quizAudioContext = null;
+  let audioUnlocked = false;
+
+  init();
+
+
+  function setQuizChromeMode(mode) {
+    const body = document.body;
+    if (!body) return;
+    body.classList.remove("quiz-mode-active", "image-review-mode", "summary-mode");
+    if (mode === "question" || mode === "flashcard") body.classList.add("quiz-mode-active");
+    if (mode === "imageReview") body.classList.add("image-review-mode");
+    if (mode === "summary") body.classList.add("summary-mode");
+  }
+
+
+  function toggleExamDrawer(forceState = null) {
+    const drawer = document.getElementById("examDrawer");
+    const btn = document.getElementById("toggleDrawerBtn");
+    if (!drawer) return;
+    const nextOpen = forceState == null ? drawer.classList.contains("hidden") : !!forceState;
+    drawer.classList.toggle("hidden", !nextOpen);
+    if (btn) btn.textContent = nextOpen ? "收起面板" : "顯示面板";
+  }
+
+  function buildExamDrawerHtml(question = null) {
+    const scope = session?.filters?.scope || getSelectedScope();
+    const practiceMode = session?.filters?.practiceMode || "practice";
+    const questionMode = question ? currentQuestionMode(question.id) : (session?.filters?.questionMode || settings.questionMode || "imageToText");
+    const bankCount = String(els.bankCount?.textContent || "-");
+    const wrongCount = String(els.wrongBookCount?.textContent || "-");
+    const answered = String(els.answeredCount?.textContent || "-");
+    const accuracy = String(els.accuracyCount?.textContent || "-");
+    const positive = String(els.masteredCoverageCount?.textContent || "-");
+    const positiveDetail = String(els.masteredCoverageDetail?.textContent || "");
+    return `
+      <div class="exam-drawer hidden" id="examDrawer">
+        <div class="exam-drawer-card">
+          <div class="exam-drawer-title">考試面板</div>
+          <div class="exam-drawer-grid">
+            <div><strong>範圍</strong><div>${escapeHtml(EXAM_SCOPE_LABELS[scope] || scope)}</div></div>
+            <div><strong>模式</strong><div>${escapeHtml(PRACTICE_MODE_LABELS[practiceMode] || practiceMode)}</div></div>
+            <div><strong>題型</strong><div>${escapeHtml(QUESTION_MODE_LABELS[questionMode] || questionMode)}</div></div>
+            <div><strong>分類</strong><div>${escapeHtml(CATEGORY_LABELS[question?.category] || els.categorySelect?.value || "全部分類")}</div></div>
+            <div><strong>題庫總數</strong><div>${escapeHtml(bankCount)}</div></div>
+            <div><strong>錯題本</strong><div>${escapeHtml(wrongCount)}</div></div>
+            <div><strong>累計作答</strong><div>${escapeHtml(answered)}</div></div>
+            <div><strong>累計答對率</strong><div>${escapeHtml(accuracy)}</div></div>
+            <div><strong>正分覆蓋率</strong><div>${escapeHtml(positive)}</div></div>
+          </div>
+          <div class="exam-drawer-note">${escapeHtml(positiveDetail || "")}</div>
+          <div class="exam-drawer-note">${escapeHtml(refreshFilterSummaryText())}</div>
+          <div class="exam-drawer-actions">
+            <button id="drawerContinueBtn" class="secondary-btn">繼續答題</button>
+            <button id="drawerExitBtn" class="ghost-btn danger">退出本模式</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function buildExitSessionSummary() {
+    if (!session) return "目前沒有進行中的題組。";
+    const scope = EXAM_SCOPE_LABELS[session.filters?.scope || getSelectedScope()] || (session.filters?.scope || "");
+    const mode = PRACTICE_MODE_LABELS[session.filters?.practiceMode || "practice"] || (session.filters?.practiceMode || "");
+    const qmode = QUESTION_MODE_LABELS[session.filters?.questionMode || settings.questionMode || "imageToText"] || (session.filters?.questionMode || "");
+    const remaining = Math.max(0, (session.queue?.length || 0) - (session.index || 0));
+    return [
+      `目前模式：${mode}`,
+      `考試範圍：${scope}`,
+      `題型：${qmode}`,
+      `進度：第 ${Math.min((session.index || 0) + 1, session.queue?.length || 0)} / ${session.queue?.length || 0} 題`,
+      `本輪已答：${session.answered || 0} 題，答對 ${session.correct || 0} 題`,
+      `本輪目前連對：${session.currentStreak || 0} 題`,
+      `剩餘：${remaining} 題`,
+      ``,
+      `確定要退出目前模式嗎？`
+    ].join("\n");
+  }
+
+  function confirmExitCurrentMode() {
+    if (!session) return;
+    if (!window.confirm(buildExitSessionSummary())) return;
+    clearAllTimers();
+    session = null;
+    localStorage.removeItem(SESSION_KEY);
+    renderSessionOrEmpty();
+  }
+
+  function init() {
+    window.addEventListener("pointerdown", unlockAudio, { passive: true });
+    window.addEventListener("keydown", unlockAudio, { passive: true });
+    hydrateControlsFromSettings();
+    buildCategorySelect();
+    refreshScopeSummary();
+    refreshFilterSummary();
+    refreshStats();
+    refreshRewards();
+    renderWrongBook();
+    renderSessionOrEmpty();
+    wireEvents();
+    registerPWA();
+  }
+
+  function wireEvents() {
+    els.examScopeSelect?.addEventListener("change", () => {
+      settings.examScope = els.examScopeSelect.value || "official_small_car";
+      saveSettings();
+      buildCategorySelect();
+      refreshScopeSummary();
+      refreshFilterSummary();
+      refreshStats();
+      refreshRewards();
+      renderWrongBook();
+      renderSessionOrEmpty();
+    });
+
+    [
+      els.practiceModeSelect,
+      els.questionModeSelect,
+      els.questionCountSelect,
+      els.masterySelect,
+      els.scoreFilterOperatorSelect,
+      els.scoreFilterValueInput,
+      els.answerTimeLimitInput,
+      els.autoNextCorrectDelayInput,
+      els.autoNextWrongDelayInput,
+      els.categorySelect,
+      els.shortcutOption1Input,
+      els.shortcutOption2Input,
+      els.shortcutOption3Input,
+      els.shortcutOption4Input,
+      els.shortcutNextInput,
+    ].forEach((node) => {
+      node?.addEventListener("change", handleSettingChange);
+      node?.addEventListener("input", handleSettingChange);
+    });
+
+    els.startBtn?.addEventListener("click", startSessionFromControls);
+    els.continueBtn?.addEventListener("click", () => renderSessionOrEmpty());
+    els.imageReviewBtn?.addEventListener("click", renderImageReview);
+    els.resetSessionBtn?.addEventListener("click", () => {
+      if (!confirm("確定要清除目前題組嗎？")) return;
+      clearAllTimers();
+      localStorage.removeItem(SESSION_KEY);
+      session = null;
+      renderSessionOrEmpty();
+    });
+    els.exportBtn?.addEventListener("click", exportWrongBook);
+    els.exportWrongPrintBtn?.addEventListener("click", exportWrongBookPrintable);
+    els.exportMemoryBtn?.addEventListener("click", exportFullMemory);
+    els.importMemoryBtn?.addEventListener("click", () => els.importMemoryInput?.click());
+    els.importMemoryInput?.addEventListener("change", handleImportLearningFile);
+    els.maskTextToggle?.addEventListener("change", () => {
+      settings.maskTextBeforeAnswer = !!els.maskTextToggle.checked;
+      saveSettings();
+      renderSessionOrEmpty();
+    });
+    els.clearWrongBookBtn?.addEventListener("click", () => {
+      if (!confirm("確定要清空目前範圍的錯題本嗎？")) return;
+      try {
+        clearAllTimers();
+        getScopedQuestions(getSelectedScope()).forEach((q) => {
+          const item = questionProgress(q.id);
+          item.inWrongBook = false;
+          item.masteryStreak = 0;
+        });
+        importedWrongs = [];
+        saveProgress();
+        saveImportedWrongs();
+        if (session?.filters?.practiceMode === "wrongOnly") {
+          session = null;
+          try { localStorage.removeItem(SESSION_KEY); } catch {}
+        }
+        safelyRefreshAllViews();
+      } catch (error) {
+        console.error("clearWrongBook failed", error);
+        alert("清空錯題本時發生畫面錯誤，資料已盡量重置。重新整理頁面後應可恢復正常。");
+      }
+    });
+    els.clearAllProgressBtn?.addEventListener("click", () => {
+      if (!confirm("確定要清空所有作答紀錄、積分、設定、圖示標記與目前題組嗎？")) return;
+      try {
+        fullyResetAllLearningMemory();
+        safelyRefreshAllViews();
+      } catch (error) {
+        console.error("clearAllProgress failed", error);
+        alert("清空全部記憶時發生畫面錯誤，資料已盡量重置。重新整理頁面後應可恢復正常。");
+      }
+    });
+    els.installBtn?.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      els.installBtn.classList.add("hidden");
+    });
+    document.addEventListener("keydown", handleGlobalShortcuts);
+  }
+
+  function handleSettingChange() {
+    settings.examScope = getSelectedScope();
+    settings.practiceMode = els.practiceModeSelect?.value || "practice";
+    settings.questionMode = els.questionModeSelect?.value || "imageToText";
+    settings.questionCount = Number(els.questionCountSelect?.value || 20);
+    settings.masteryTarget = Number(els.masterySelect?.value || 2);
+    settings.scoreFilterOperator = els.scoreFilterOperatorSelect?.value || "any";
+    settings.scoreFilterValue = sanitizeInteger(els.scoreFilterValueInput?.value, 0);
+    settings.answerTimeLimitSec = sanitizeNonNegativeNumber(els.answerTimeLimitInput?.value, 15);
+    settings.autoNextCorrectDelaySec = sanitizeNonNegativeNumber(els.autoNextCorrectDelayInput?.value, 1);
+    settings.autoNextWrongDelaySec = sanitizeNonNegativeNumber(els.autoNextWrongDelayInput?.value, 4);
+    settings.shortcutOption1 = normalizeShortcutSetting(els.shortcutOption1Input?.value, "1");
+    settings.shortcutOption2 = normalizeShortcutSetting(els.shortcutOption2Input?.value, "2");
+    settings.shortcutOption3 = normalizeShortcutSetting(els.shortcutOption3Input?.value, "3");
+    settings.shortcutOption4 = normalizeShortcutSetting(els.shortcutOption4Input?.value, "4");
+    settings.shortcutNext = normalizeShortcutSetting(els.shortcutNextInput?.value, "Enter");
+    saveSettings();
+    refreshFilterSummary();
+    buildCategorySelect();
+    refreshStats();
+    refreshRewards();
+    renderWrongBook();
+    renderSessionOrEmpty();
+  }
+
+  function safelyRefreshAllViews() {
+    try {
+      hydrateControlsFromSettings();
+      buildCategorySelect();
+      refreshScopeSummary();
+      refreshFilterSummary();
+      refreshStats();
+      refreshRewards();
+      renderWrongBook();
+      renderSessionOrEmpty();
+    } catch (error) {
+      console.warn("safelyRefreshAllViews warning", error);
+      clearAllTimers();
+      setQuizChromeMode("idle");
+      if (els.mainContent) {
+        els.mainContent.className = "panel quiz-panel empty-state";
+        els.mainContent.innerHTML = "<p>資料已重置。若畫面仍不穩定，重新整理即可。</p>";
+      }
+      if (els.wrongBookList) {
+        els.wrongBookList.className = "wrong-list empty-state";
+        els.wrongBookList.textContent = "目前沒有錯題。";
+      }
+    }
+  }
+
+  function fullyResetAllLearningMemory() {
+    clearAllTimers();
+    progress = defaultProgress();
+    session = null;
+    settings = defaultSettings();
+    imageIssues = {};
+    importedWrongs = [];
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(SESSION_KEY);
+      localStorage.removeItem(SETTINGS_KEY);
+      localStorage.removeItem(IMAGE_ISSUES_KEY);
+      localStorage.removeItem(IMPORTED_WRONGS_KEY);
+      for (const legacyKey of [...LEGACY_PROGRESS_KEYS, ...LEGACY_SESSION_KEYS, ...LEGACY_SETTINGS_KEYS]) {
+        localStorage.removeItem(legacyKey);
+      }
+    } catch {}
+    saveProgress();
+    saveSettings();
+    saveImageIssues();
+    saveImportedWrongs();
+  }
+
+  function hydrateControlsFromSettings() {
+    if (els.examScopeSelect) els.examScopeSelect.value = settings.examScope || "official_small_car";
+    if (els.practiceModeSelect) els.practiceModeSelect.value = settings.practiceMode || "practice";
+    if (els.questionModeSelect) els.questionModeSelect.value = settings.questionMode || "imageToText";
+    if (els.questionCountSelect) els.questionCountSelect.value = String(settings.questionCount || 20);
+    if (els.masterySelect) els.masterySelect.value = String(settings.masteryTarget || 2);
+    if (els.scoreFilterOperatorSelect) els.scoreFilterOperatorSelect.value = settings.scoreFilterOperator || "any";
+    if (els.scoreFilterValueInput) els.scoreFilterValueInput.value = String(settings.scoreFilterValue ?? 0);
+    if (els.answerTimeLimitInput) els.answerTimeLimitInput.value = String(settings.answerTimeLimitSec ?? 15);
+    if (els.autoNextCorrectDelayInput) els.autoNextCorrectDelayInput.value = String(settings.autoNextCorrectDelaySec ?? 1);
+    if (els.autoNextWrongDelayInput) els.autoNextWrongDelayInput.value = String(settings.autoNextWrongDelaySec ?? 4);
+    if (els.shortcutOption1Input) els.shortcutOption1Input.value = settings.shortcutOption1 || "1";
+    if (els.shortcutOption2Input) els.shortcutOption2Input.value = settings.shortcutOption2 || "2";
+    if (els.shortcutOption3Input) els.shortcutOption3Input.value = settings.shortcutOption3 || "3";
+    if (els.shortcutOption4Input) els.shortcutOption4Input.value = settings.shortcutOption4 || "4";
+    if (els.shortcutNextInput) els.shortcutNextInput.value = settings.shortcutNext || "Enter";
+    if (els.maskTextToggle) els.maskTextToggle.checked = false;
+  }
+
+  function registerPWA() {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      els.installBtn?.classList.remove("hidden");
+    });
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+    }
+  }
+
+  function getSelectedScope() {
+    return els.examScopeSelect?.value || settings.examScope || "official_small_car";
+  }
+
+  function isOfficialSmallCarQuestion(question) {
+    return (
+      question.id.startsWith("sel-") ||
+      question.id.startsWith("tf-") ||
+      question.id.startsWith("traffic_law_choice-") ||
+      question.id.startsWith("traffic_law_truefalse-")
+    );
+  }
+
+  function isMechanicalQuestion(question) {
+    return question.id.startsWith("mechanical_choice-") || question.id.startsWith("mechanical_truefalse-");
+  }
+
+  function isQuestionInScope(question, scope) {
+    if (!question) return false;
+    if (scope === "official_small_car") return isOfficialSmallCarQuestion(question);
+    if (scope === "official_plus_mechanical") return isOfficialSmallCarQuestion(question) || isMechanicalQuestion(question);
+    return true;
+  }
+
+  function getScopedQuestions(scope = getSelectedScope()) {
+    return ALL_QUESTIONS.filter((q) => isQuestionInScope(q, scope));
+  }
+
+  function buildCategorySelect() {
+    const previousValue = els.categorySelect?.value || settings.category || "all";
+    const scopedQuestions = getScopedQuestions();
+    const categories = Array.from(new Set(scopedQuestions.map((q) => q.category)));
+    const options = [{ value: "all", label: CATEGORY_LABELS.all }];
+    categories.forEach((cat) => options.push({ value: cat, label: CATEGORY_LABELS[cat] || cat }));
+    if (!els.categorySelect) return;
+    els.categorySelect.innerHTML = options.map((opt) => `<option value="${escapeAttr(opt.value)}">${escapeHtml(opt.label)}</option>`).join("");
+    els.categorySelect.value = options.some((opt) => opt.value === previousValue) ? previousValue : "all";
+  }
+
+  function refreshScopeSummary() {
+    const scope = getSelectedScope();
+    const scopedCount = getScopedQuestions(scope).length;
+    const totalCount = ALL_QUESTIONS.length;
+    if (els.versionSummary) {
+      els.versionSummary.textContent = `${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
+    }
+    if (els.scopeSummary) {
+      els.scopeSummary.textContent = EXAM_SCOPE_DESCRIPTIONS[scope] || "";
+    }
+  }
+
+  function refreshFilterSummaryText() {
+    const operator = els.scoreFilterOperatorSelect?.value || settings.scoreFilterOperator || "any";
+    const value = sanitizeInteger(els.scoreFilterValueInput?.value ?? settings.scoreFilterValue, 0);
+    const timeLimit = sanitizeNonNegativeNumber(els.answerTimeLimitInput?.value ?? settings.answerTimeLimitSec, 15);
+    const autoNextCorrect = sanitizeNonNegativeNumber(els.autoNextCorrectDelayInput?.value ?? settings.autoNextCorrectDelaySec, 1);
+    const autoNextWrong = sanitizeNonNegativeNumber(els.autoNextWrongDelayInput?.value ?? settings.autoNextWrongDelaySec, 4);
+    let scoreText = "目前未啟用積分篩選。";
+    if (operator !== "any") {
+      scoreText = `目前只會抽出積分 ${SCORE_FILTER_LABELS[operator]} ${value} 的題目。`;
+    }
+    const timeText = `每題限時 ${timeLimit > 0 ? `${timeLimit} 秒` : "不限時"}；答對後 ${autoNextCorrect > 0 ? `${autoNextCorrect} 秒` : "不自動"}，答錯後 ${autoNextWrong > 0 ? `${autoNextWrong} 秒` : "不自動"}。`;
+    return `${scoreText} ${timeText}`;
+  }
+
+  function refreshFilterSummary() {
+    const summaryText = refreshFilterSummaryText();
+    if (els.filterSummary) {
+      els.filterSummary.textContent = summaryText;
+    }
+  }
+
+  function startSessionFromControls() {
+    clearAllTimers();
+    const masteryTarget = Number(els.masterySelect?.value || "2");
+    const category = els.categorySelect?.value || "all";
+    const practiceMode = els.practiceModeSelect?.value || "practice";
+    const questionMode = els.questionModeSelect?.value || "imageToText";
+    const requestedCount = Number(els.questionCountSelect?.value || "20");
+    const scope = getSelectedScope();
+    const scoreFilterOperator = els.scoreFilterOperatorSelect?.value || "any";
+    const scoreFilterValue = sanitizeInteger(els.scoreFilterValueInput?.value, 0);
+    const answerTimeLimitSec = sanitizeNonNegativeNumber(els.answerTimeLimitInput?.value, 15);
+    const autoNextCorrectDelaySec = sanitizeNonNegativeNumber(els.autoNextCorrectDelayInput?.value, 1);
+    const autoNextWrongDelaySec = sanitizeNonNegativeNumber(els.autoNextWrongDelayInput?.value, 4);
+
+    let pool = getScopedQuestions(scope).filter((q) => category === "all" ? true : q.category === category);
+    pool = applyScoreFilter(pool, scoreFilterOperator, scoreFilterValue);
+
+    if (practiceMode === "wrongOnly") {
+      pool = pool.filter((q) => questionProgress(q.id).inWrongBook);
+    }
+
+    if (!pool.length) {
+      const msg = practiceMode === "wrongOnly"
+        ? "目前這個範圍／分類在目前積分篩選下沒有錯題可練習。"
+        : "這個範圍／分類在目前積分篩選下沒有可用題目。";
+      alert(msg);
+      return;
+    }
+
+    const queue = shuffle(pool).slice(0, Math.min(requestedCount, pool.length));
+    const questionModeMap = {};
+    queue.forEach((question) => {
+      if (practiceMode === "flashcard") {
+        questionModeMap[question.id] = deduceQuestionMode(question, questionMode);
+      } else {
+        questionModeMap[question.id] = questionMode === "mixed"
+          ? deduceQuestionMode(question, Math.random() < 0.5 ? "imageToText" : "textToImage")
+          : deduceQuestionMode(question, questionMode);
+      }
+    });
+
+    session = {
+      queue: queue.map((q) => q.id),
+      index: 0,
+      answered: 0,
+      correct: 0,
+      wrongIds: [],
+      masteryTarget,
+      answeredMap: {},
+      questionModeMap,
+      createdAt: new Date().toISOString(),
+      filters: { scope, category, practiceMode, questionMode, requestedCount, scoreFilterOperator, scoreFilterValue, answerTimeLimitSec, autoNextCorrectDelaySec, autoNextWrongDelaySec },
+      lastAnsweredQuestionId: "",
+      currentStreak: 0,
+      bestStreak: 0,
+      flashRevealed: false,
+      pointsDelta: 0,
+    };
+    saveSession();
+    renderSessionOrEmpty();
+  }
+
+  function renderSessionOrEmpty() {
+    if (!session || !Array.isArray(session.queue) || !session.queue.length) {
+      clearAllTimers();
+      setQuizChromeMode("idle");
+      els.mainContent.className = "panel quiz-panel empty-state";
+      if (importedWrongs?.length) { renderImportedWrongs(); return; }
+      els.mainContent.innerHTML = "<p>按「開始練習」後會在這裡顯示題目。</p>";
+      return;
+    }
+    if (session.index >= session.queue.length) {
+      clearAllTimers();
+      renderSummary();
+      return;
+    }
+    if ((session.filters?.practiceMode || "practice") === "flashcard") renderFlashcard();
+    else renderQuestion();
+  }
+
+
+function renderQuestion() {
+  clearAllTimers();
+  setQuizChromeMode("question");
+  const question = currentQuestion();
+  if (!question) {
+    renderSummary();
+    return;
+  }
+
+  const progressPct = Math.round((session.index / Math.max(session.queue.length, 1)) * 100);
+  const practiceMode = session.filters?.practiceMode || "practice";
+  const questionMode = currentQuestionMode(question.id);
+  const optionPayload = questionMode === "textToImage" ? buildImageOptions(question) : buildTextOptions(question);
+  const questionScore = questionProgress(question.id).score;
+
+  const optionHtml = questionMode === "textToImage"
+    ? optionPayload.options.map((opt, idx) => `
+        <button class="image-option-btn" data-value="${escapeAttr(opt.id)}" data-index="${idx}">
+          <span class="image-option-label">選項 ${idx + 1}</span>
+          <span class="image-option-frame">
+            ${buildMaskedMedia(opt, { alt: opt.answer, reveal: false, className: "masked-media option-media" })}
+          </span>
+        </button>
+      `).join("")
+    : optionPayload.options.map((opt, idx) => `
+        <button class="option-btn" data-value="${escapeAttr(opt)}" data-index="${idx}">
+          <span class="option-kbd">${escapeHtml(getOptionShortcutLabel(idx))}</span>
+          <span class="option-text">${escapeHtml(opt)}</span>
+        </button>
+      `).join("");
+
+  const mediaHtml = questionMode !== "textToImage" && question.image
+    ? `<div class="image-card compact-image-card">${buildMaskedMedia(question, { alt: question.answer, reveal: false, className: "masked-media question-media" })}</div>`
+    : "";
+
+  const promptText = questionMode === "textToImage" ? `「${question.answer}」對應哪一個交通標誌？` : question.prompt;
+  const optionListClass = questionMode === "textToImage" ? "image-option-grid" : "option-list";
+  const scope = session.filters?.scope || getSelectedScope();
+  const timeLimit = session.filters?.answerTimeLimitSec || 0;
+  const contentLayoutClass = mediaHtml ? "question-content-grid has-media" : "question-content-grid";
+
+  els.mainContent.className = "panel quiz-panel exam-active";
+  els.mainContent.innerHTML = `
+    <div class="quiz-header compact">
+      <div class="badges">
+        <span class="badge accent-badge">第 ${session.index + 1} / ${session.queue.length} 題</span>
+        <span class="badge">${escapeHtml(EXAM_SCOPE_LABELS[scope] || scope)}</span>
+        <span class="badge">${escapeHtml(PRACTICE_MODE_LABELS[practiceMode] || practiceMode)}</span>
+        <span class="badge">${escapeHtml(QUESTION_MODE_LABELS[questionMode] || questionMode)}</span>
+        <span class="badge">${escapeHtml(CATEGORY_LABELS[question.category] || question.category)}</span>
+        <span class="badge ${questionScore > 0 ? "score-badge-positive" : questionScore < 0 ? "score-badge-negative" : ""}">本題積分 ${formatSignedNumber(questionScore)}</span>
+        <span class="badge">答對 ${session.correct}</span>
+        <span class="badge">答錯 ${session.wrongIds.length}</span>
+        <span class="badge">連對 ${session.currentStreak || 0}</span>
+      </div>
+    </div>
+    <div class="timer-wrap compact compact-tight">
+      <span id="timerBadge" class="badge timer-badge">${timeLimit > 0 ? `剩餘 ${formatSeconds(timeLimit)}` : "不限時"}</span>
+      <button id="pauseBtn" class="ghost-btn aux-btn">暫停</button>
+      <button id="toggleDrawerBtn" class="ghost-btn aux-btn">顯示面板</button>
+      <button id="exitModeBtn" class="ghost-btn danger">退出模式</button>
+      <span class="secondary-meta">快捷鍵：${escapeHtml(buildShortcutSummary())} ｜ Space 暫停 / Esc 退出</span>
+    </div>
+    <div class="timer-bar-wrap"><div id="timerBar" class="timer-bar"></div></div>
+    <div class="progress-wrap compact"><div class="progress-bar" style="width:${progressPct}%"></div></div>
+    ${buildExamDrawerHtml(question)}
+    <div class="quiz-card question-session-card bright compact-question-card">
+      <div class="question-topline">
+        <p class="prompt">${escapeHtml(promptText)}</p>
+        <div class="question-source">出處：${escapeHtml(buildQuestionOriginLabel(question))}</div>
+      </div>
+      <div class="${contentLayoutClass}">
+        ${mediaHtml ? `<div class="question-media-col">${mediaHtml}</div>` : ""}
+        <div class="question-main-col">
+          <div id="optionList" class="${optionListClass}">${optionHtml}</div>
+          <div class="utility-row compact compact-question-actions">
+            <div class="secondary-meta">答對 +1 分，答錯 / 逾時 / 不會 -1 分。</div>
+            <div class="inline-action-group">
+              <button id="searchQuestionQuickBtn" class="ghost-btn aux-btn">搜尋此題</button>
+              <button id="dontKnowBtn" class="ghost-btn aux-btn">不會（-1）</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="feedbackMount"></div>
+    </div>
+  `;
+
+  Array.from(document.querySelectorAll(questionMode === "textToImage" ? ".image-option-btn" : ".option-btn")).forEach((btn) => {
+    btn.addEventListener("click", () => handleAnswer(question, btn.dataset.value, optionPayload, { selectedLabel: resolveSelectedLabel(questionMode, btn.dataset.value) }));
+  });
+  document.getElementById("dontKnowBtn")?.addEventListener("click", () => {
+    handleAnswer(question, "__dont_know__", optionPayload, { forcedWrong: true, selectedLabel: "不會", reason: "dontKnow" });
+  });
+  document.getElementById("pauseBtn")?.addEventListener("click", togglePauseResume);
+  document.getElementById("toggleDrawerBtn")?.addEventListener("click", () => toggleExamDrawer());
+  document.getElementById("drawerContinueBtn")?.addEventListener("click", () => toggleExamDrawer(false));
+  document.getElementById("drawerExitBtn")?.addEventListener("click", confirmExitCurrentMode);
+  document.getElementById("exitModeBtn")?.addEventListener("click", confirmExitCurrentMode);
+  bindQuestionSearchButton(question);
+  startQuestionTimer(question);
+}
+
+function renderFlashcard() {
+  clearAllTimers();
+  setQuizChromeMode("flashcard");
+  const question = currentQuestion();
+  if (!question) {
+    renderSummary();
+    return;
+  }
+
+  const progressPct = Math.round((session.index / Math.max(session.queue.length, 1)) * 100);
+  const questionMode = currentQuestionMode(question.id);
+  const scope = session.filters?.scope || getSelectedScope();
+  const qp = questionProgress(question.id);
+  const revealed = !!session.flashRevealed;
+  const promptText = question.prompt || question.answer;
+
+  const frontContent = question.image
+    ? `
+      <div class="flashcard-image">${buildMaskedMedia(question, { alt: question.answer, reveal: false, className: "masked-media question-media" })}</div>
+      <p class="flashcard-front-prompt">${escapeHtml(promptText)}</p>
+      <p class="secondary-meta">先看圖與題目，想一遍答案，再翻面確認。</p>
+    `
+    : `
+      <p class="flashcard-front-prompt">${escapeHtml(promptText)}</p>
+      <p class="secondary-meta">先自己回想答案，再翻面確認。</p>
+    `;
+
+  const backContent = `
+    <div class="flashcard-question-ref"><strong>題目：</strong>${escapeHtml(promptText)}</div>
+    ${question.image ? `<div class="flashcard-image">${buildMaskedMedia(question, { alt: question.answer, reveal: true, className: "masked-media question-media" })}</div>` : ""}
+    <p class="flashcard-answer">${escapeHtml(question.answer)}</p>
+    ${buildAnswerExplanationHtml(question)}
+    <p class="secondary-meta">本題目前積分 ${formatSignedNumber(qp.score)} ・ 題型 ${escapeHtml(QUESTION_MODE_LABELS[questionMode] || questionMode)} ・ 瀏覽快捷鍵：← 上一張／→ 下一張</p>
+  `;
+
+  els.mainContent.className = "panel quiz-panel exam-active";
+  els.mainContent.innerHTML = `
+    <div class="quiz-header">
+      <div class="badges">
+        <span class="badge accent-badge">第 ${session.index + 1} / ${session.queue.length} 張</span>
+        <span class="badge">${escapeHtml(EXAM_SCOPE_LABELS[scope] || scope)}</span>
+        <span class="badge">單字卡複習</span>
+        <span class="badge">${escapeHtml(CATEGORY_LABELS[question.category] || question.category)}</span>
+        <span class="badge ${qp.score > 0 ? "score-badge-positive" : qp.score < 0 ? "score-badge-negative" : ""}">本題積分 ${formatSignedNumber(qp.score)}</span>
+      </div>
+      <div class="badges">
+        <span class="badge">已評分 ${session.answered}</span>
+        <span class="badge">連續記得 ${session.currentStreak || 0}</span>
+      </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" style="width:${progressPct}%"></div></div>
+    ${buildExamDrawerHtml(question)}
+    <div class="flashcard-wrap">
+      <div class="flashcard ${revealed ? "back" : "front"}">
+        <div class="question-source">出處：${escapeHtml(buildQuestionOriginLabel(question))}</div>
+        ${revealed ? backContent : frontContent}
+      </div>
+      <div class="flashcard-toolbar"><button id="pauseBtn" class="ghost-btn aux-btn">暫停</button><button id="toggleDrawerBtn" class="ghost-btn aux-btn">顯示面板</button><button id="exitModeBtn" class="ghost-btn danger">退出模式</button><span class="secondary-meta">快捷鍵：← / → ｜ Space 暫停 / Esc 退出</span></div>
+      <div class="flashcard-actions">
+        <button id="prevCardBtn" class="secondary-btn" ${session.index <= 0 ? "disabled" : ""}>上一張</button>
+        ${revealed
+          ? `<button id="knownBtn" class="primary-btn">知道（+1）</button>
+             <button id="unknownBtn" class="ghost-btn aux-btn">還不會（-1）</button>`
+          : `<button id="flipBtn" class="primary-btn">翻面看答案</button>`}
+        <button id="nextCardBtn" class="secondary-btn">下一張</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("toggleDrawerBtn")?.addEventListener("click", () => toggleExamDrawer());
+  document.getElementById("drawerContinueBtn")?.addEventListener("click", () => toggleExamDrawer(false));
+  document.getElementById("drawerExitBtn")?.addEventListener("click", confirmExitCurrentMode);
+  document.getElementById("exitModeBtn")?.addEventListener("click", confirmExitCurrentMode);
+  document.getElementById("flipBtn")?.addEventListener("click", () => {
+    session.flashRevealed = true;
+    saveSession();
+    renderFlashcard();
+  });
+  document.getElementById("knownBtn")?.addEventListener("click", () => {
+    handleFlashcardGrade(question, true);
+  });
+  document.getElementById("unknownBtn")?.addEventListener("click", () => {
+    handleFlashcardGrade(question, false);
+  });
+  document.getElementById("prevCardBtn")?.addEventListener("click", goToPreviousFlashcard);
+  document.getElementById("nextCardBtn")?.addEventListener("click", goToNextFlashcardWithoutGrading);
+  bindQuestionSearchButton(question);
+}
+
+function goToPreviousFlashcard() {
+  if (!session || session.index <= 0) return;
+  session.index -= 1;
+  session.flashRevealed = false;
+  saveSession();
+  renderSessionOrEmpty();
+}
+
+function goToNextFlashcardWithoutGrading() {
+  if (!session) return;
+  session.index += 1;
+  session.flashRevealed = false;
+  saveSession();
+  renderSessionOrEmpty();
+}
+
+
+  function unlockAudio() {
+    try {
+      if (!quizAudioContext) {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return;
+        quizAudioContext = new Ctx();
+      }
+      if (quizAudioContext.state === "suspended") quizAudioContext.resume();
+      audioUnlocked = true;
+    } catch {
+      audioUnlocked = false;
+    }
+  }
+
+  function playCorrectChime() {
+    try {
+      unlockAudio();
+      if (!quizAudioContext) return;
+      const now = quizAudioContext.currentTime;
+      const master = quizAudioContext.createGain();
+      master.gain.setValueAtTime(0.0001, now);
+      master.gain.exponentialRampToValueAtTime(0.08, now + 0.02);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 0.8);
+      master.connect(quizAudioContext.destination);
+
+      [523.25, 659.25, 783.99].forEach((freq, idx) => {
+        const osc = quizAudioContext.createOscillator();
+        const gain = quizAudioContext.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, now + idx * 0.12);
+        gain.gain.setValueAtTime(0.0001, now + idx * 0.12);
+        gain.gain.exponentialRampToValueAtTime(0.25, now + idx * 0.12 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.12 + 0.22);
+        osc.connect(gain);
+        gain.connect(master);
+        osc.start(now + idx * 0.12);
+        osc.stop(now + idx * 0.12 + 0.24);
+      });
+    } catch {}
+  }
+
+  function playWrongBuzz() {
+    try {
+      unlockAudio();
+      if (!quizAudioContext) return;
+      const now = quizAudioContext.currentTime;
+      const master = quizAudioContext.createGain();
+      master.gain.setValueAtTime(0.0001, now);
+      master.gain.exponentialRampToValueAtTime(0.08, now + 0.01);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 0.45);
+      master.connect(quizAudioContext.destination);
+
+      [220, 180].forEach((freq, idx) => {
+        const osc = quizAudioContext.createOscillator();
+        const gain = quizAudioContext.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(freq, now + idx * 0.14);
+        gain.gain.setValueAtTime(0.0001, now + idx * 0.14);
+        gain.gain.exponentialRampToValueAtTime(0.2, now + idx * 0.14 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.14 + 0.18);
+        osc.connect(gain);
+        gain.connect(master);
+        osc.start(now + idx * 0.14);
+        osc.stop(now + idx * 0.14 + 0.2);
+      });
+    } catch {}
+  }
+
+
+  function handleFlashcardGrade(question, known) {
+    if (session.answeredMap[question.id]) return;
+    if (known) playCorrectChime();
+    else playWrongBuzz();
+
+    applyQuestionResult(question, {
+      isCorrect: !!known,
+      selectedValue: known ? "__known__" : "__unknown__",
+      selectedLabel: known ? "知道" : "還不會",
+      mode: currentQuestionMode(question.id),
+      reason: known ? "flashcardKnown" : "flashcardUnknown",
+    });
+
+    const qp = questionProgress(question.id);
+    const autoNextDelaySec = sanitizeNonNegativeNumber(known ? session.filters?.autoNextCorrectDelaySec : session.filters?.autoNextWrongDelaySec, known ? 1 : 4);
+    els.mainContent.querySelector(".flashcard-actions")?.insertAdjacentHTML("beforeend", `
+      <div class="feedback ${known ? "good" : "bad"}">
+        <div class="feedback-title ${known ? "good" : "bad"}">${known ? "已標記為知道" : "已標記為還不會"}</div>
+        <div>本題積分現在為 <strong>${formatSignedNumber(qp.score)}</strong></div>
+        <div class="feedback-countdown" id="flashcardNextCountdown"></div>
+      </div>
+    `);
+    scheduleNext(autoNextDelaySec, "flashcardNextCountdown", advanceToNextQuestion);
+  }
+
+  function handleAnswer(question, selectedValue, optionPayload, meta = {}) {
+    if (session.answeredMap[question.id]) return;
+    clearAllTimers();
+
+    const questionMode = currentQuestionMode(question.id);
+    const isCorrect = meta.forcedWrong
+      ? false
+      : questionMode === "textToImage"
+        ? selectedValue === question.id
+        : question.kind === "true_false"
+          ? canonicalizeTrueFalseValue(selectedValue) === canonicalizeTrueFalseValue(question.answer)
+          : selectedValue === question.answer;
+
+    if (isCorrect) playCorrectChime();
+    else playWrongBuzz();
+
+    applyQuestionResult(question, {
+      isCorrect,
+      selectedValue,
+      selectedLabel: meta.selectedLabel || resolveSelectedLabel(questionMode, selectedValue),
+      mode: questionMode,
+      reason: meta.reason || "answered",
+    });
+
+    revealCurrentMaskedMedia();
+    Array.from(document.querySelectorAll(questionMode === "textToImage" ? ".image-option-btn" : ".option-btn")).forEach((btn) => {
+      btn.disabled = true;
+      if (questionMode === "textToImage") {
+        const buttonQuestion = getQuestion(btn.dataset.value);
+        const imageAnswer = buttonQuestion ? buttonQuestion.id : btn.dataset.value;
+        if (imageAnswer === question.id) btn.classList.add("correct");
+        if (btn.dataset.value === selectedValue && imageAnswer !== question.id) btn.classList.add("wrong");
+      } else {
+        const answer = btn.dataset.value;
+        const isAnswerMatch = question.kind === "true_false"
+          ? canonicalizeTrueFalseValue(answer) === canonicalizeTrueFalseValue(question.answer)
+          : answer === question.answer;
+        const isSelectedMatch = question.kind === "true_false"
+          ? canonicalizeTrueFalseValue(answer) === canonicalizeTrueFalseValue(selectedValue)
+          : answer === selectedValue;
+        if (isAnswerMatch) btn.classList.add("correct");
+        if (isSelectedMatch && !isAnswerMatch) btn.classList.add("wrong");
+      }
+    });
+    document.getElementById("dontKnowBtn")?.setAttribute("disabled", "disabled");
+
+    const practiceMode = session.filters?.practiceMode || "practice";
+    const feedbackMount = document.getElementById("feedbackMount");
+    const sourceMeta = buildSourceMeta(question);
+    const autoNextDelaySec = sanitizeNonNegativeNumber(isCorrect ? session.filters?.autoNextCorrectDelaySec : session.filters?.autoNextWrongDelaySec, isCorrect ? 1 : 4);
+    const qp = questionProgress(question.id);
+    const extraStatus = meta.reason === "timeout" ? "逾時未作答，已視為錯誤。" : meta.reason === "dontKnow" ? "已標記為不會，視為錯誤。" : "";
+
+    if (practiceMode === "exam") {
+      feedbackMount.innerHTML = `
+        <div class="feedback neutral">
+          <div class="feedback-title">已作答</div>
+          <div>你的狀態：<strong>${escapeHtml(meta.selectedLabel || "已作答")}</strong></div>
+          <div>本題積分：<strong>${formatSignedNumber(qp.score)}</strong></div>
+          <small>模擬考模式不立即顯示正解，結束後統一回顧。${escapeHtml(extraStatus)}</small>
+          <div class="actions compact">
+            <button id="nextBtn" class="primary-btn next-btn">${session.index + 1 >= session.queue.length ? "看結果" : "下一題"}</button>
+            <span class="feedback-countdown" id="nextCountdown"></span>
+          </div>
+        </div>
+      `;
+    } else {
+      feedbackMount.innerHTML = `
+        <div class="feedback ${isCorrect ? "good" : "bad"}">
+          <div class="feedback-title ${isCorrect ? "good" : "bad"}">${isCorrect ? "答對了" : "答錯了"}</div>
+          <div>正確答案：<strong>${escapeHtml(question.answer)}</strong></div>
+          <div>本題積分：<strong>${formatSignedNumber(qp.score)}</strong></div>
+          ${extraStatus ? `<div>${escapeHtml(extraStatus)}</div>` : ""}
+          ${buildAnswerExplanationHtml(question)}
+          <small>${escapeHtml(sourceMeta)}</small>
+          <div class="actions compact">
+            <button id="nextBtn" class="primary-btn next-btn">${session.index + 1 >= session.queue.length ? "看結果" : "下一題"}</button>
+            <span class="feedback-countdown" id="nextCountdown"></span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById("nextBtn")?.addEventListener("click", advanceToNextQuestion);
+    scheduleNext(autoNextDelaySec, "nextCountdown");
+  }
+
+  function applyQuestionResult(question, { isCorrect, selectedValue, selectedLabel, mode, reason }) {
+    const qp = questionProgress(question.id);
+    session.answered += 1;
+    session.lastAnsweredQuestionId = question.id;
+    session.pointsDelta += isCorrect ? 1 : -1;
+    if (isCorrect) {
+      session.correct += 1;
+      session.currentStreak = (session.currentStreak || 0) + 1;
+      session.bestStreak = Math.max(session.bestStreak || 0, session.currentStreak);
+    } else {
+      session.wrongIds.push(question.id);
+      session.currentStreak = 0;
+    }
+
+    session.answeredMap[question.id] = {
+      questionId: question.id,
+      selectedValue,
+      selectedLabel,
+      isCorrect,
+      mode,
+      reason,
+    };
+
+    qp.totalSeen += 1;
+    qp.score += isCorrect ? 1 : -1;
+    qp.lastSeenAt = new Date().toISOString();
+    if (isCorrect) {
+      qp.totalCorrect += 1;
+      if (qp.inWrongBook) {
+        qp.masteryStreak += 1;
+        if (qp.masteryStreak >= (session.masteryTarget || 2)) {
+          qp.inWrongBook = false;
+          qp.masteryStreak = 0;
+        }
+      }
+    } else {
+      qp.totalWrong += 1;
+      qp.inWrongBook = true;
+      qp.masteryStreak = 0;
+      qp.lastWrongAt = new Date().toISOString();
+    }
+
+    progress.meta.totalAnswered += 1;
+    if (isCorrect) progress.meta.totalCorrect += 1;
+    progress.meta.bestStreak = Math.max(progress.meta.bestStreak || 0, session.bestStreak || 0);
+    saveProgress();
+    saveSession();
+    refreshStats();
+    refreshRewards();
+    renderWrongBook();
+  }
+
+  function renderSummary() {
+    clearAllTimers();
+    setQuizChromeMode("summary");
+    const scorePct = session.queue.length ? Math.round((session.correct / session.queue.length) * 100) : 0;
+    const practiceMode = session.filters?.practiceMode || "practice";
+    const scope = session.filters?.scope || getSelectedScope();
+    const answeredRecords = session.queue
+      .map((id) => ({ question: getQuestion(id), record: session.answeredMap[id] }))
+      .filter((x) => x.question && x.record);
+    const wrongRecords = answeredRecords.filter((x) => !x.record.isCorrect);
+    progress.meta.totalCompletedSessions += 1;
+    saveProgress();
+    refreshRewards();
+
+    els.mainContent.className = "panel quiz-panel";
+    els.mainContent.innerHTML = `
+      <div class="summary-card">
+        <h2>${practiceMode === "exam" ? "模擬考完成" : practiceMode === "flashcard" ? "單字卡複習完成" : "本次練習完成"}</h2>
+        <div class="summary-grid">
+          <div class="summary-mini-card"><span class="stat-label">範圍</span><strong>${escapeHtml(EXAM_SCOPE_LABELS[scope] || scope)}</strong></div>
+          <div class="summary-mini-card"><span class="stat-label">模式</span><strong>${escapeHtml(PRACTICE_MODE_LABELS[practiceMode] || practiceMode)}</strong></div>
+          <div class="summary-mini-card"><span class="stat-label">本次題數</span><strong>${session.queue.length}</strong></div>
+          <div class="summary-mini-card"><span class="stat-label">正確率</span><strong>${scorePct}%</strong></div>
+          <div class="summary-mini-card"><span class="stat-label">最長連續答對</span><strong>${session.bestStreak || 0}</strong></div>
+          <div class="summary-mini-card"><span class="stat-label">本次積分變化</span><strong>${formatSignedNumber(session.pointsDelta || 0)}</strong></div>
+        </div>
+        <p class="session-encouragement">${buildSessionEncouragement(scorePct, session.bestStreak || 0, practiceMode)}</p>
+        <p class="note">錯題已加入錯題本。若之後在錯題本模式連續答對達設定次數，會自動移出。</p>
+        ${wrongRecords.length ? `
+          <div>
+            <h3>本次錯題</h3>
+            <div class="wrong-list">
+              ${wrongRecords.map(({ question, record }) => `
+                <div class="wrong-item detail">
+                  ${question.image ? `<img class="wrong-thumb" src="${escapeAttr(question.image)}" alt="${escapeAttr(question.answer)}">` : `<div class="wrong-thumb wrong-thumb-text">文字題</div>`}
+                  <div class="wrong-item-main">
+                    <div class="wrong-item-title">${escapeHtml(buildQuestionPreview(question))}</div>
+                    <div class="wrong-item-meta">${escapeHtml(CATEGORY_LABELS[question.category] || question.category)} ・ ${escapeHtml(QUESTION_MODE_LABELS[record.mode] || record.mode)}</div>
+                    ${buildOptionPreview(question) ? `<div class="wrong-item-note">選項：${escapeHtml(buildOptionPreview(question))}</div>` : ""}
+                    <div class="wrong-item-note">你的答案：${escapeHtml(record.selectedLabel)} ｜ 正確答案：${escapeHtml(question.answer)}</div>
+                    ${buildAnswerExplanationHtml(question)}
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        ` : `<div class="feedback good"><div class="feedback-title good">本次全對</div><div>這組題目沒有錯題。</div></div>`}
+        <div class="actions">
+          <button id="retryWrongBtn" class="primary-btn">只練本次錯題</button>
+          <button id="flashcardWrongBtn" class="secondary-btn">錯題單字卡複習</button>
+          <button id="newSessionBtn" class="ghost-btn">重新開始新題組</button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById("newSessionBtn")?.addEventListener("click", () => {
+      localStorage.removeItem(SESSION_KEY);
+      session = null;
+      renderSessionOrEmpty();
+    });
+    document.getElementById("retryWrongBtn")?.addEventListener("click", () => retrySummaryWrong("wrongOnly"));
+    document.getElementById("flashcardWrongBtn")?.addEventListener("click", () => retrySummaryWrong("flashcard"));
+  }
+
+  function retrySummaryWrong(mode) {
+    if (!session?.wrongIds?.length) {
+      alert("本次沒有錯題。");
+      return;
+    }
+    const questionMode = els.questionModeSelect?.value || "imageToText";
+    const newQueue = shuffle(session.wrongIds.slice());
+    const questionModeMap = {};
+    newQueue.forEach((id) => {
+      const q = getQuestion(id);
+      questionModeMap[id] = deduceQuestionMode(q, questionMode === "mixed" ? (Math.random() < 0.5 ? "imageToText" : "textToImage") : questionMode);
+    });
+    session = {
+      queue: newQueue,
+      index: 0,
+      answered: 0,
+      correct: 0,
+      wrongIds: [],
+      masteryTarget: Number(els.masterySelect?.value || "2"),
+      answeredMap: {},
+      questionModeMap,
+      createdAt: new Date().toISOString(),
+      filters: {
+        scope: getSelectedScope(),
+        category: "all",
+        practiceMode: mode,
+        questionMode,
+        requestedCount: newQueue.length,
+        scoreFilterOperator: settings.scoreFilterOperator || "any",
+        scoreFilterValue: settings.scoreFilterValue || 0,
+        answerTimeLimitSec: sanitizeNonNegativeNumber(settings.answerTimeLimitSec, 15),
+        autoNextCorrectDelaySec: sanitizeNonNegativeNumber(settings.autoNextCorrectDelaySec, 1),
+        autoNextWrongDelaySec: sanitizeNonNegativeNumber(settings.autoNextWrongDelaySec, 4),
+      },
+      lastAnsweredQuestionId: "",
+      currentStreak: 0,
+      bestStreak: 0,
+      flashRevealed: false,
+      pointsDelta: 0,
+    };
+    saveSession();
+    renderSessionOrEmpty();
+  }
+
+
+function renderWrongBook() {
+  const scope = getSelectedScope();
+  const wrongQuestions = applyScoreFilter(
+    getScopedQuestions(scope).filter((q) => questionProgress(q.id).inWrongBook),
+    els.scoreFilterOperatorSelect?.value || settings.scoreFilterOperator || "any",
+    sanitizeInteger(els.scoreFilterValueInput?.value ?? settings.scoreFilterValue, 0)
+  ).sort((a, b) => {
+    const ap = questionProgress(a.id);
+    const bp = questionProgress(b.id);
+    return (bp.lastWrongAt || "").localeCompare(ap.lastWrongAt || "");
+  });
+
+  if (!wrongQuestions.length) {
+    els.wrongBookList.className = "wrong-list empty-state";
+    els.wrongBookList.textContent = "目前這個範圍在目前篩選條件下沒有錯題。";
+    return;
+  }
+
+  els.wrongBookList.className = "wrong-list";
+  els.wrongBookList.innerHTML = wrongQuestions.map((q) => {
+    const qp = questionProgress(q.id);
+    return `
+      <div class="wrong-item detail">
+        ${q.image ? `<img class="wrong-thumb" src="${escapeAttr(q.image)}" alt="${escapeAttr(q.answer)}">` : `<div class="wrong-thumb wrong-thumb-text">文字題</div>`}
+        <div class="wrong-item-main">
+          <div class="wrong-item-title">${escapeHtml(buildQuestionPreview(q))}</div>
+          <div class="wrong-item-meta">
+            ${escapeHtml(CATEGORY_LABELS[q.category] || q.category)}
+            ・答錯 ${qp.totalWrong} 次
+            ・錯題移除進度 ${qp.masteryStreak || 0}/${Number(els.masterySelect?.value || "2")}
+          </div>
+          <div class="wrong-item-note">正確答案：${escapeHtml(q.answer)}</div>
+          ${buildOptionPreview(q) ? `<div class="wrong-item-note">選項：${escapeHtml(buildOptionPreview(q))}</div>` : ""}
+          <div class="wrong-item-note">本題積分 <span class="wrong-item-score ${qp.score > 0 ? "score-badge-positive" : qp.score < 0 ? "score-badge-negative" : ""}">${formatSignedNumber(qp.score)}</span></div>
+        </div>
+        <div class="actions compact">
+          <button class="small-btn" data-practice-id="${escapeAttr(q.id)}">練這題</button>
+          <button class="small-btn" data-flash-id="${escapeAttr(q.id)}">單字卡</button>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  Array.from(els.wrongBookList.querySelectorAll("[data-practice-id]")).forEach((btn) => {
+    btn.addEventListener("click", () => startSingleQuestionSession(btn.dataset.practiceId, "wrongOnly"));
+  });
+  Array.from(els.wrongBookList.querySelectorAll("[data-flash-id]")).forEach((btn) => {
+    btn.addEventListener("click", () => startSingleQuestionSession(btn.dataset.flashId, "flashcard"));
+  });
+}
+  function startSingleQuestionSession(questionId, practiceMode) {
+    const q = getQuestion(questionId);
+    if (!q) return;
+    const questionMode = els.questionModeSelect?.value || "imageToText";
+    session = {
+      queue: [questionId],
+      index: 0,
+      answered: 0,
+      correct: 0,
+      wrongIds: [],
+      masteryTarget: Number(els.masterySelect?.value || "2"),
+      answeredMap: {},
+      questionModeMap: { [questionId]: deduceQuestionMode(q, questionMode === "mixed" ? "imageToText" : questionMode) },
+      createdAt: new Date().toISOString(),
+      filters: {
+        scope: getSelectedScope(),
+        category: "single",
+        practiceMode,
+        questionMode,
+        requestedCount: 1,
+        scoreFilterOperator: settings.scoreFilterOperator || "any",
+        scoreFilterValue: settings.scoreFilterValue || 0,
+        answerTimeLimitSec: sanitizeNonNegativeNumber(settings.answerTimeLimitSec, 15),
+        autoNextCorrectDelaySec: sanitizeNonNegativeNumber(settings.autoNextCorrectDelaySec, 1),
+        autoNextWrongDelaySec: sanitizeNonNegativeNumber(settings.autoNextWrongDelaySec, 4),
+      },
+      lastAnsweredQuestionId: "",
+      currentStreak: 0,
+      bestStreak: 0,
+      flashRevealed: false,
+      pointsDelta: 0,
+    };
+    saveSession();
+    renderSessionOrEmpty();
+  }
+
+  function refreshStats() {
+    const scope = getSelectedScope();
+    const scopedQuestions = getScopedQuestions(scope);
+    const entries = scopedQuestions.map((q) => questionProgress(q.id));
+    const answered = entries.reduce((sum, x) => sum + (x.totalSeen || 0), 0);
+    const correct = entries.reduce((sum, x) => sum + (x.totalCorrect || 0), 0);
+    const wrongBookCount = entries.filter((x) => x.inWrongBook).length;
+    const accuracy = answered ? Math.round((correct / answered) * 100) : 0;
+    const positiveCount = scopedQuestions.filter((q) => questionProgress(q.id).score >= 1).length;
+    let positivePct = scopedQuestions.length ? Math.round((positiveCount / scopedQuestions.length) * 1000) / 10 : 0;
+    if (positiveCount > 0 && positivePct === 0) positivePct = 0.1;
+    const masteredCount = scopedQuestions.filter((q) => questionProgress(q.id).score > 1).length;
+    const totalPoints = entries.reduce((sum, x) => sum + (x.score || 0), 0);
+
+    if (els.bankCount) els.bankCount.textContent = String(scopedQuestions.length);
+    if (els.wrongBookCount) els.wrongBookCount.textContent = String(wrongBookCount);
+    if (els.answeredCount) els.answeredCount.textContent = String(answered);
+    if (els.accuracyCount) els.accuracyCount.textContent = answered ? `${accuracy}%` : "-";
+    if (els.masteredCoverageCount) els.masteredCoverageCount.textContent = `${positivePct}%`;
+    if (els.masteredCoverageDetail) els.masteredCoverageDetail.textContent = `正分 ${positiveCount} / ${scopedQuestions.length} 題；其中 >1 有 ${masteredCount} 題；本輪答對 ${session?.correct || 0} 題`;
+    if (els.totalPointsCount) els.totalPointsCount.textContent = formatSignedNumber(totalPoints);
+  }
+
+  function refreshRewards() {
+    const scope = getSelectedScope();
+    const scopedQuestions = getScopedQuestions(scope);
+    const masteredCount = scopedQuestions.filter((q) => questionProgress(q.id).score >= 1).length;
+    const coveragePct = scopedQuestions.length ? (100 * masteredCount / scopedQuestions.length) : 0;
+    const answered = scopedQuestions.reduce((sum, q) => sum + questionProgress(q.id).totalSeen, 0);
+    const bestStreak = progress.meta.bestStreak || 0;
+    const level = getRewardLevel(coveragePct);
+    const nextTargetPct = Math.min(level.nextPct, 100);
+    const currentFloor = level.minPct;
+    const progressToNext = nextTargetPct === currentFloor
+      ? 100
+      : Math.max(0, Math.min(100, ((coveragePct - currentFloor) / (nextTargetPct - currentFloor)) * 100));
+
+    if (els.rewardLevelLabel) els.rewardLevelLabel.textContent = `目前等級：${level.label}`;
+    if (els.rewardNextGoal) {
+      els.rewardNextGoal.textContent = nextTargetPct >= 100
+        ? `目前已到最高覆蓋級別。繼續維持模擬考穩定度與低分題清理。`
+        : `距離下一級還需要把「正分覆蓋率（積分 ≥ 1）」推到 ${nextTargetPct.toFixed(0)}%。目前 ${coveragePct.toFixed(1)}%。`;
+    }
+    if (els.rewardProgressBar) els.rewardProgressBar.style.width = `${progressToNext}%`;
+    if (els.rewardEncouragement) {
+      els.rewardEncouragement.textContent = `${level.note} 目前此範圍累計作答 ${answered} 題，歷史最佳連續答對 ${bestStreak} 題。`;
+    }
+    if (els.badgeList) {
+      const badges = buildBadges(coveragePct, answered, bestStreak);
+      els.badgeList.innerHTML = badges.map((badge) => `
+        <span class="badge-chip ${badge.locked ? "locked" : ""}">${escapeHtml(badge.label)}</span>
+      `).join("");
+    }
+  }
+
+  function getRewardLevel(coveragePct) {
+    let current = REWARD_LEVELS[0];
+    for (const level of REWARD_LEVELS) {
+      if (coveragePct >= level.minPct) current = level;
+    }
+    return current;
+  }
+
+  function buildBadges(coveragePct, answered, bestStreak) {
+    return [
+      { label: coveragePct >= 10 ? "覆蓋率 10%" : "覆蓋率 10%（未解鎖）", locked: coveragePct < 10 },
+      { label: coveragePct >= 30 ? "覆蓋率 30%" : "覆蓋率 30%（未解鎖）", locked: coveragePct < 30 },
+      { label: coveragePct >= 60 ? "覆蓋率 60%" : "覆蓋率 60%（未解鎖）", locked: coveragePct < 60 },
+      { label: coveragePct >= 85 ? "覆蓋率 85%" : "覆蓋率 85%（未解鎖）", locked: coveragePct < 85 },
+      { label: answered >= 100 ? "累計作答 100 題" : "累計作答 100 題（未解鎖）", locked: answered < 100 },
+      { label: answered >= 500 ? "累計作答 500 題" : "累計作答 500 題（未解鎖）", locked: answered < 500 },
+      { label: bestStreak >= 10 ? "連續答對 10 題" : "連續答對 10 題（未解鎖）", locked: bestStreak < 10 },
+      { label: bestStreak >= 30 ? "連續答對 30 題" : "連續答對 30 題（未解鎖）", locked: bestStreak < 30 },
+    ];
+  }
+
+  function exportWrongBook() {
+    const scope = getSelectedScope();
+    const payload = getScopedQuestions(scope)
+      .filter((q) => questionProgress(q.id).inWrongBook)
+      .map((q) => ({
+        id: q.id,
+        answer: q.answer,
+        prompt: q.prompt,
+        options: q.options,
+        category: q.category,
+        image: q.image,
+        stats: { ...questionProgress(q.id) },
+        source: q.source,
+        origin: buildQuestionOriginLabel(q),
+      }));
+
+    const envelope = {
+      app: "driver-quiz-pwa",
+      type: "wrong-book-export",
+      version: 2,
+      exportedAt: new Date().toISOString(),
+      scope,
+      items: payload,
+    };
+
+    const blob = new Blob([JSON.stringify(envelope, null, 2)], { type: "application/json;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `wrong-book-${scope}-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  function buildPrintableWrongPayload() {
+    if (!session || !session.queue?.length) return [];
+    return session.queue
+      .map((id) => ({ question: getQuestion(id), record: session.answeredMap?.[id] }))
+      .filter((x) => x.question && x.record && !x.record.isCorrect)
+      .map(({ question, record }) => ({
+        id: question.id,
+        prompt: buildQuestionPreview(question),
+        myChoice: record.selectedLabel || "",
+        correctAnswer: question.answer,
+        origin: buildQuestionOriginLabel(question),
+        image: question.image || "",
+        stats: { ...questionProgress(question.id) },
+        source: question.source || "",
+      }));
+  }
+
+  function blobToDataUrl(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ""));
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async function enrichPrintableWrongPayloadWithImages(payload) {
+    const enriched = [];
+    for (const item of payload) {
+      let imageDataUrl = item.image || "";
+      if (imageDataUrl && !/^data:/i.test(imageDataUrl)) {
+        try {
+          const resp = await fetch(imageDataUrl);
+          if (resp.ok) {
+            const blob = await resp.blob();
+            imageDataUrl = await blobToDataUrl(blob);
+          }
+        } catch (err) {
+          console.warn("embed image failed", item.id, err);
+        }
+      }
+      enriched.push({ ...item, image: imageDataUrl || "" });
+    }
+    return enriched;
+  }
+
+  function buildPrintableWrongHtml(payload) {
+    const envelope = {
+      app: "driver-quiz-pwa",
+      type: "wrong-print-export",
+      version: 2,
+      exportedAt: new Date().toISOString(),
+      items: payload,
+    };
+    const dataJson = JSON.stringify(envelope, null, 2);
+    const rows = payload.map((item, idx) => `
+      <article class="wrong-card">
+        <h2>${idx + 1}. ${escapeHtml(item.prompt)}</h2>
+        ${item.image ? `<div class="wrong-print-image"><img src="${escapeAttr(item.image)}" alt="${escapeAttr(item.correctAnswer || "題圖")}"></div>` : ""}
+        <div><strong>我的選擇：</strong>${escapeHtml(item.myChoice || "未作答")}</div>
+        <div><strong>正確答案：</strong>${escapeHtml(item.correctAnswer || "")}</div>
+        <div><strong>題目出處：</strong>${escapeHtml(item.origin || "")}</div>
+      </article>
+    `).join("");
+    return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><title>錯題列印版</title><style>
+      body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px;color:#111827;line-height:1.7;background:#fff}
+      h1{margin:0 0 8px} .meta{color:#475569;margin-bottom:24px} .wrong-card{border:1px solid #cbd5e1;border-radius:14px;padding:16px;margin:0 0 14px;break-inside:avoid}
+      h2{margin:0 0 10px;font-size:1.05rem} .wrong-print-image{margin:0 0 12px} .wrong-print-image img{max-width:100%;max-height:240px;border:1px solid #cbd5e1;border-radius:10px;display:block;background:#fff}
+      @media print{body{padding:0.8cm} .wrong-card{page-break-inside:avoid}}
+    </style></head><body><h1>錯題列印版</h1><p class="meta">匯出日期：${escapeHtml(new Date().toLocaleString())}｜共 ${payload.length} 題</p>${rows}<script id="wrongExportData" type="application/json">${dataJson.replace(/</g, "\u003c")}</script></body></html>`;
+  }
+
+  async function exportWrongBookPrintable() {
+    const payload = buildPrintableWrongPayload();
+    if (!payload.length) {
+      alert("目前沒有可匯出的本輪錯題。請先完成一輪作答，且至少有 1 題答錯。");
+      return;
+    }
+    const enrichedPayload = await enrichPrintableWrongPayloadWithImages(payload);
+    const html = buildPrintableWrongHtml(enrichedPayload);
+    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `wrong-review-${new Date().toISOString().slice(0,10)}.html`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function exportFullMemory() {
+    const payload = {
+      app: "driver-quiz-pwa",
+      type: "full-memory-export",
+      version: MEMORY_EXPORT_VERSION,
+      exportedAt: new Date().toISOString(),
+      storageKeys: {
+        progress: STORAGE_KEY,
+        session: SESSION_KEY,
+        settings: SETTINGS_KEY,
+        imageIssues: IMAGE_ISSUES_KEY,
+      },
+      progress,
+      session,
+      settings,
+      imageIssues,
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `driver-quiz-memory-${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  function normalizeImportedWrongItem(item) {
+    const q = getQuestion(item?.id) || null;
+    const stats = item?.stats && typeof item.stats === "object" ? item.stats : (item?.progress && typeof item.progress === "object" ? item.progress : null);
+    const normalizedStats = stats ? {
+      totalSeen: Number(stats.totalSeen || stats.seen || 0),
+      totalCorrect: Number(stats.totalCorrect || stats.correct || 0),
+      totalWrong: Number(stats.totalWrong || stats.wrong || 0),
+      score: Number(stats.score || 0),
+      inWrongBook: stats.inWrongBook !== undefined ? !!stats.inWrongBook : true,
+      masteryStreak: Number(stats.masteryStreak || 0),
+      lastWrongAt: typeof stats.lastWrongAt === "string" ? stats.lastWrongAt : "",
+      lastSeenAt: typeof stats.lastSeenAt === "string" ? stats.lastSeenAt : "",
+    } : null;
+    return {
+      id: String(item?.id || "").trim(),
+      prompt: String(item?.prompt || buildQuestionPreview(q) || "").trim(),
+      myChoice: String(item?.myChoice || item?.selectedLabel || "").trim(),
+      correctAnswer: String(item?.correctAnswer || item?.answer || (q?.answer || "")).trim(),
+      origin: String(item?.origin || buildQuestionOriginLabel(q) || "").trim(),
+      image: String(q?.image || (typeof item?.image === "string" && /^data:/i.test(item.image) ? "" : (item?.image || ""))).trim(),
+      stats: normalizedStats,
+    };
+  }
+
+  function buildProgressFromWrongImportItem(item) {
+    const base = defaultQuestionProgress();
+    if (item.stats) {
+      return {
+        totalSeen: Number(item.stats.totalSeen || 0),
+        totalCorrect: Number(item.stats.totalCorrect || 0),
+        totalWrong: Number(item.stats.totalWrong || 0),
+        score: Number(item.stats.score || 0),
+        inWrongBook: !!item.stats.inWrongBook,
+        masteryStreak: Number(item.stats.masteryStreak || 0),
+        lastWrongAt: item.stats.lastWrongAt || "",
+        lastSeenAt: item.stats.lastSeenAt || "",
+      };
+    }
+    return {
+      ...base,
+      totalSeen: 1,
+      totalWrong: 1,
+      score: -1,
+      inWrongBook: true,
+      lastWrongAt: new Date().toISOString(),
+      lastSeenAt: new Date().toISOString(),
+    };
+  }
+
+  function recalcProgressMetaFromQuestions(targetProgress) {
+    let totalAnswered = 0;
+    let totalCorrect = 0;
+    for (const item of Object.values(targetProgress?.byQuestion || {})) {
+      totalAnswered += Number(item?.totalSeen || 0);
+      totalCorrect += Number(item?.totalCorrect || 0);
+    }
+    targetProgress.meta = {
+      totalAnswered,
+      totalCorrect,
+      bestStreak: Number(targetProgress?.meta?.bestStreak || 0),
+      totalCompletedSessions: Number(targetProgress?.meta?.totalCompletedSessions || 0),
+    };
+    return targetProgress;
+  }
+
+  function applyImportedWrongsToProgress(items, replaceSameQuestion = false) {
+    const base = sanitizeImportedProgress(progress);
+    for (const raw of items) {
+      const item = normalizeImportedWrongItem(raw);
+      if (!item.id) continue;
+      const incoming = buildProgressFromWrongImportItem(item);
+      if (replaceSameQuestion || !base.byQuestion[item.id]) {
+        base.byQuestion[item.id] = incoming;
+      } else {
+        const cur = base.byQuestion[item.id] || defaultQuestionProgress();
+        base.byQuestion[item.id] = {
+          totalSeen: Number(cur.totalSeen || 0) + Number(incoming.totalSeen || 0),
+          totalCorrect: Number(cur.totalCorrect || 0) + Number(incoming.totalCorrect || 0),
+          totalWrong: Number(cur.totalWrong || 0) + Number(incoming.totalWrong || 0),
+          score: Number(cur.score || 0) + Number(incoming.score || 0),
+          inWrongBook: !!(cur.inWrongBook || incoming.inWrongBook),
+          masteryStreak: Math.max(Number(cur.masteryStreak || 0), Number(incoming.masteryStreak || 0)),
+          lastWrongAt: maxIsoString(cur.lastWrongAt, incoming.lastWrongAt),
+          lastSeenAt: maxIsoString(cur.lastSeenAt, incoming.lastSeenAt),
+        };
+      }
+    }
+    return recalcProgressMetaFromQuestions(base);
+  }
+
+  async function handleImportLearningFile(event) {
+    const file = event?.target?.files?.[0];
+    if (!file) return;
+    try {
+      const textRaw = await file.text();
+      const trimmed = textRaw.replace(/^﻿/, "").trim();
+      if (!trimmed) throw new Error("empty");
+
+      let parsed = null;
+      let kind = "";
+
+      if (/^<!doctype html/i.test(trimmed) || /<html[\s>]/i.test(trimmed)) {
+        const match = trimmed.match(/<script id=["']wrongExportData["'] type=["']application\/json["']>([\s\S]*?)<\/script>/i);
+        if (match) {
+          parsed = JSON.parse(match[1]);
+          kind = "wrong-print";
+        }
+      }
+
+      if (!parsed) {
+        parsed = JSON.parse(trimmed);
+        if (parsed && parsed.app === "driver-quiz-pwa" && parsed.type === "full-memory-export") kind = "full-memory";
+        else if (parsed && parsed.app === "driver-quiz-pwa" && parsed.type === "wrong-book-export") kind = "wrong-book";
+        else if (parsed && parsed.app === "driver-quiz-pwa" && parsed.type === "wrong-print-export") kind = "wrong-print";
+        else if (parsed && (parsed.progress || parsed.settings || parsed.session || parsed.imageIssues || parsed.memory || parsed.data || parsed.byQuestion || parsed.meta)) kind = "full-memory";
+        else if (Array.isArray(parsed)) kind = "wrong-array";
+      }
+
+      if (kind === "full-memory") {
+        const replaceAll = window.confirm("按「確定」= 用匯入檔覆蓋目前本機全部學習記憶；按「取消」= 與目前記憶合併。");
+        const importedProgress = sanitizeImportedProgress(parsed.progress || parsed.memory?.progress || parsed.data?.progress);
+        const importedSettings = sanitizeImportedSettings(parsed.settings || parsed.memory?.settings || parsed.data?.settings, settings);
+        const importedImageIssues = sanitizeImportedImageIssues(parsed.imageIssues || parsed.memory?.imageIssues || parsed.data?.imageIssues);
+
+        if (replaceAll) {
+          progress = importedProgress;
+          settings = importedSettings;
+          imageIssues = importedImageIssues;
+        } else {
+          progress = mergeProgress(progress, importedProgress);
+          settings = { ...settings, ...importedSettings };
+          imageIssues = mergeImageIssues(imageIssues, importedImageIssues);
+        }
+
+        session = null;
+        importedWrongs = [];
+        saveProgress();
+        saveSettings();
+        saveImageIssues();
+        saveImportedWrongs();
+        try { localStorage.removeItem(SESSION_KEY); } catch {}
+
+        let renderWarning = "";
+        try {
+          syncControlsFromSettings();
+          refreshCategoryOptions();
+          refreshStats();
+          refreshRewards();
+          renderWrongBook();
+          renderSessionOrEmpty();
+        } catch (renderErr) {
+          console.warn("post-import render warning", renderErr);
+          renderWarning = "\n\n資料已匯入，但畫面更新時出現警告；重新整理頁面即可。";
+        }
+        alert((replaceAll ? "完整記憶已覆蓋匯入。" : "完整記憶已合併匯入。") + "\n\n為避免舊作答狀態造成卡住，匯入後已自動清除進行中的考試。" + renderWarning);
+      } else if (kind === "wrong-book" || kind === "wrong-array" || kind === "wrong-print") {
+        const items = Array.isArray(parsed) ? parsed : Array.isArray(parsed.items) ? parsed.items : [];
+        const normalizedItems = items
+          .map((item) => normalizeImportedWrongItem(item))
+          .filter((item) => item.prompt && item.id && getQuestion(item.id));
+        if (!normalizedItems.length) throw new Error("empty wrongs");
+
+        const replaceSameQuestion = window.confirm(`按「確定」= 覆蓋同題既有積分/錯題狀態；按「取消」= 與目前記憶合併累加。\n\n注意：若匯入檔本身沒有附題目積分，系統會把這些題至少記成錯 1 次、積分 -1。`);
+        progress = applyImportedWrongsToProgress(normalizedItems, replaceSameQuestion);
+        session = null;
+        importedWrongs = [];
+        saveProgress();
+        saveImportedWrongs();
+        try { localStorage.removeItem(SESSION_KEY); } catch {}
+        syncControlsFromSettings();
+        refreshCategoryOptions();
+        refreshStats();
+        refreshRewards();
+        renderWrongBook();
+        renderSessionOrEmpty();
+        const negativeCount = normalizedItems.filter((item) => (questionProgress(item.id).score || 0) < 0).length;
+        alert(`已匯入 ${normalizedItems.length} 題錯題檔，並${replaceSameQuestion ? "覆蓋" : "合併"}到目前學習記憶。\n\n其中目前積分小於 0 的題數：${negativeCount} 題。\n\n匯入後不再保留大型預覽清單，現在可直接用積分篩選、開始考試，或從錯題本開單字卡。`);
+      } else {
+        throw new Error("unknown format");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("匯入失敗：請選擇本系統匯出的完整記憶 JSON、錯題 JSON，或錯題列印版 HTML。\n\n若這個檔案就是本系統剛匯出的完整記憶，請保留該檔並回報，我會依實際檔案格式再補相容。這版已支援完整記憶、錯題 JSON、錯題 HTML 及舊版裸陣列錯題 JSON。");
+    } finally {
+      if (els.importMemoryInput) els.importMemoryInput.value = "";
+    }
+  }
+
+  function loadImportedWrongs() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(IMPORTED_WRONGS_KEY) || "[]");
+      return Array.isArray(raw) ? raw.map((item) => normalizeImportedWrongItem(item)).filter((item) => item.prompt) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function compactImportedWrongItem(item) {
+    const normalized = normalizeImportedWrongItem(item);
+    return {
+      id: normalized.id,
+      prompt: normalized.prompt,
+      myChoice: normalized.myChoice,
+      correctAnswer: normalized.correctAnswer,
+      origin: normalized.origin,
+      image: normalized.image,
+      stats: normalized.stats ? { ...normalized.stats } : null,
+    };
+  }
+
+  function saveImportedWrongs() {
+    try {
+      const compact = (importedWrongs || []).map((item) => compactImportedWrongItem(item));
+      localStorage.setItem(IMPORTED_WRONGS_KEY, JSON.stringify(compact));
+    } catch (error) {
+      console.warn("saveImportedWrongs failed", error);
+      try { localStorage.removeItem(IMPORTED_WRONGS_KEY); } catch {}
+    }
+  }
+
+  function renderImportedWrongs() {
+    if (!importedWrongs?.length) return;
+    clearAllTimers();
+    setQuizChromeMode("summary");
+    els.mainContent.className = "panel quiz-panel";
+    els.mainContent.innerHTML = `
+      <div class="print-import-card">
+        <div class="review-header"><h2>匯入錯題檢視</h2><p>以下為你從先前匯出檔匯入的錯題清單。</p></div>
+        <div class="actions compact"><span class="badge accent-badge">共 ${importedWrongs.length} 題</span><button id="clearImportedWrongsBtn" class="ghost-btn danger">清除匯入內容</button></div>
+        <div class="secondary-meta">為避免大量匯入資料造成卡頓，這裡最多預覽前 120 題；但所有匯入的錯題與積分都已寫入學習記憶。</div>
+        <div class="wrong-list">
+          ${importedWrongs.slice(0, 120).map((item) => `
+            <div class="wrong-item detail">
+              ${item.image ? `<img class="wrong-thumb" src="${escapeAttr(item.image)}" alt="${escapeAttr(item.correctAnswer || "題圖")}">` : `<div class="wrong-thumb wrong-thumb-text">匯入</div>`}
+              <div class="wrong-item-main">
+                <div class="wrong-item-title">${escapeHtml(item.prompt)}</div>
+                <div class="wrong-item-note">我的選擇：${escapeHtml(item.myChoice || "未作答")}</div>
+                <div class="wrong-item-note">正確答案：${escapeHtml(item.correctAnswer || "")}</div>
+                <div class="wrong-item-meta">${escapeHtml(item.origin || "")}</div>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+    document.getElementById("clearImportedWrongsBtn")?.addEventListener("click", () => {
+      importedWrongs = [];
+      saveImportedWrongs();
+      renderSessionOrEmpty();
+    });
+  }
+
+  function sanitizeImportedProgress(data) {
+    const base = defaultProgress();
+    const byQuestion = data?.byQuestion && typeof data.byQuestion === "object" ? data.byQuestion : {};
+    for (const [id, raw] of Object.entries(byQuestion)) {
+      const item = { ...defaultQuestionProgress(), ...(raw || {}) };
+      base.byQuestion[id] = {
+        totalSeen: Number(item.totalSeen || 0),
+        totalCorrect: Number(item.totalCorrect || 0),
+        totalWrong: Number(item.totalWrong || 0),
+        score: Number(item.score || 0),
+        inWrongBook: !!item.inWrongBook,
+        masteryStreak: Number(item.masteryStreak || 0),
+        lastWrongAt: typeof item.lastWrongAt === "string" ? item.lastWrongAt : "",
+        lastSeenAt: typeof item.lastSeenAt === "string" ? item.lastSeenAt : "",
+      };
+    }
+    const meta = data?.meta && typeof data.meta === "object" ? data.meta : {};
+    base.meta.totalAnswered = Number(meta.totalAnswered || 0);
+    base.meta.totalCorrect = Number(meta.totalCorrect || 0);
+    base.meta.bestStreak = Number(meta.bestStreak || 0);
+    base.meta.totalCompletedSessions = Number(meta.totalCompletedSessions || 0);
+    return base;
+  }
+
+  function sanitizeImportedSettings(data, fallback = settings) {
+    return normalizeLoadedSettings(data, fallback || defaultSettings());
+  }
+
+  function sanitizeImportedSession(data) {
+    if (!data || !Array.isArray(data.queue) || !data.queue.length) return null;
+    return {
+      ...data,
+      answeredMap: data.answeredMap && typeof data.answeredMap === "object" ? data.answeredMap : {},
+      questionModeMap: data.questionModeMap && typeof data.questionModeMap === "object" ? data.questionModeMap : {},
+      wrongIds: Array.isArray(data.wrongIds) ? data.wrongIds : [],
+      filters: data.filters && typeof data.filters === "object" ? data.filters : {},
+      currentStreak: Number(data.currentStreak || 0),
+      bestStreak: Number(data.bestStreak || 0),
+      flashRevealed: !!data.flashRevealed,
+      pointsDelta: Number(data.pointsDelta || 0),
+    };
+  }
+
+  function sanitizeImportedImageIssues(data) {
+    return data && typeof data === "object" ? data : {};
+  }
+
+  function mergeProgress(localProgress, importedProgress) {
+    const merged = sanitizeImportedProgress(localProgress);
+    const incoming = sanitizeImportedProgress(importedProgress);
+    for (const [id, inc] of Object.entries(incoming.byQuestion)) {
+      const cur = merged.byQuestion[id] || defaultQuestionProgress();
+      merged.byQuestion[id] = {
+        totalSeen: Number(cur.totalSeen || 0) + Number(inc.totalSeen || 0),
+        totalCorrect: Number(cur.totalCorrect || 0) + Number(inc.totalCorrect || 0),
+        totalWrong: Number(cur.totalWrong || 0) + Number(inc.totalWrong || 0),
+        score: Number(cur.score || 0) + Number(inc.score || 0),
+        inWrongBook: !!(cur.inWrongBook || inc.inWrongBook),
+        masteryStreak: Math.max(Number(cur.masteryStreak || 0), Number(inc.masteryStreak || 0)),
+        lastWrongAt: maxIsoString(cur.lastWrongAt, inc.lastWrongAt),
+        lastSeenAt: maxIsoString(cur.lastSeenAt, inc.lastSeenAt),
+      };
+    }
+    merged.meta = {
+      totalAnswered: Number(merged.meta.totalAnswered || 0) + Number(incoming.meta.totalAnswered || 0),
+      totalCorrect: Number(merged.meta.totalCorrect || 0) + Number(incoming.meta.totalCorrect || 0),
+      bestStreak: Math.max(Number(merged.meta.bestStreak || 0), Number(incoming.meta.bestStreak || 0)),
+      totalCompletedSessions: Number(merged.meta.totalCompletedSessions || 0) + Number(incoming.meta.totalCompletedSessions || 0),
+    };
+    return merged;
+  }
+
+  function mergeImageIssues(localIssues, importedIssues) {
+    return { ...(localIssues || {}), ...(importedIssues || {}) };
+  }
+
+  function maxIsoString(a, b) {
+    const aa = typeof a === "string" ? a : "";
+    const bb = typeof b === "string" ? b : "";
+    if (!aa) return bb;
+    if (!bb) return aa;
+    return aa >= bb ? aa : bb;
+  }
+
+  function buildTextOptions(question) {
+    if (question.kind === "true_false") {
+      return { options: getTrueFalseOptions(question) };
+    }
+    if (Array.isArray(question.options) && question.options.length >= 2) {
+      const normalized = question.options.map(normalizeTrueFalseOption);
+      return { options: normalized };
+    }
+
+    const scopedQuestions = getScopedQuestions(session?.filters?.scope || getSelectedScope());
+    const sameCategoryAnswers = scopedQuestions.filter((q) => q.category === question.category && q.id !== question.id).map((q) => q.answer);
+    const fallbackAnswers = scopedQuestions.filter((q) => q.id !== question.id).map((q) => q.answer);
+    const optionPool = unique(shuffle(sameCategoryAnswers).concat(shuffle(fallbackAnswers))).filter((answer) => answer !== question.answer);
+    return { options: shuffle([question.answer, ...optionPool.slice(0, 3)]) };
+  }
+
+  function buildImageOptions(question) {
+    const scopedQuestions = getScopedQuestions(session?.filters?.scope || getSelectedScope());
+    const sameCategory = scopedQuestions.filter((q) => q.category === question.category && q.id !== question.id && q.image);
+    const fallback = scopedQuestions.filter((q) => q.id !== question.id && q.image);
+    const pool = shuffle(sameCategory).concat(shuffle(fallback));
+    const used = new Set([question.id]);
+    const picked = [question];
+    for (const candidate of pool) {
+      if (used.has(candidate.id)) continue;
+      used.add(candidate.id);
+      picked.push(candidate);
+      if (picked.length >= 4) break;
+    }
+    return { options: shuffle(picked) };
+  }
+
+  function shouldMaskText() {
+    return false;
+  }
+
+  function questionHasMask(question) {
+    return !!(question?.maskPct?.rects?.length || question?.mask?.rects?.length);
+  }
+
+  function buildMaskedMedia(question, { alt, reveal = false, className = "masked-media" } = {}) {
+    if (!question || !question.image) return "";
+    const maskRects = getMaskRects(question);
+    const useMask = shouldMaskText() && !reveal && maskRects.length;
+    return `
+      <div class="${escapeAttr(className)} ${useMask ? "has-mask" : ""}" data-mask-active="${useMask ? "true" : "false"}">
+        <img src="${escapeAttr(question.image)}" alt="${escapeAttr(alt || question.answer)}">
+        ${useMask ? `<div class="mask-layer">${maskRects.map((rect) => `<span class="mask-rect" style="left:${rect.x}%;top:${rect.y}%;width:${rect.w}%;height:${rect.h}%"></span>`).join("")}</div>` : ""}
+      </div>
+    `;
+  }
+
+  function getMaskRects(question) {
+    if (question?.maskPct?.rects?.length) return question.maskPct.rects;
+    if (question?.mask?.rects?.length && question.mask.imageWidth && question.mask.imageHeight) {
+      return question.mask.rects.map((r) => ({
+        x: (100 * r.x) / question.mask.imageWidth,
+        y: (100 * r.y) / question.mask.imageHeight,
+        w: (100 * r.w) / question.mask.imageWidth,
+        h: (100 * r.h) / question.mask.imageHeight
+      }));
+    }
+    return [];
+  }
+
+  function revealCurrentMaskedMedia() {
+    document.querySelectorAll(".masked-media.has-mask").forEach((node) => {
+      node.classList.add("revealed");
+      const layer = node.querySelector(".mask-layer");
+      if (layer) layer.remove();
+    });
+  }
+
+  function currentQuestion() {
+    if (!session || session.index >= session.queue.length) return null;
+    return getQuestion(session.queue[session.index]);
+  }
+
+  function deduceQuestionMode(question, requestedMode) {
+    if (!question) return requestedMode || "imageToText";
+    if (question.kind === "true_false") return "trueFalse";
+    if (!question.image) return "textChoice";
+    if (requestedMode === "textToImage") return "textToImage";
+    return "imageToText";
+  }
+
+  function currentQuestionMode(questionId) {
+    const question = typeof questionId === "string" ? getQuestion(questionId) : questionId;
+    const requestedMode = session?.questionModeMap?.[typeof questionId === "string" ? questionId : question?.id] || settings.questionMode || "imageToText";
+    return deduceQuestionMode(question, requestedMode);
+  }
+
+  function getQuestion(id) {
+    return QUESTION_MAP.get(id) || null;
+  }
+
+  function questionProgress(id) {
+    if (!progress.byQuestion[id]) {
+      progress.byQuestion[id] = defaultQuestionProgress();
+    }
+    const item = progress.byQuestion[id];
+    if (typeof item.score !== "number") item.score = 0;
+    if (typeof item.totalSeen !== "number") item.totalSeen = 0;
+    if (typeof item.totalCorrect !== "number") item.totalCorrect = 0;
+    if (typeof item.totalWrong !== "number") item.totalWrong = 0;
+    if (typeof item.inWrongBook !== "boolean") item.inWrongBook = false;
+    if (typeof item.masteryStreak !== "number") item.masteryStreak = 0;
+    if (typeof item.lastWrongAt !== "string") item.lastWrongAt = "";
+    if (typeof item.lastSeenAt !== "string") item.lastSeenAt = "";
+    return item;
+  }
+
+  function loadProgress() {
+    const data = readStorageObject(STORAGE_KEY, LEGACY_PROGRESS_KEYS);
+    const byQuestion = data?.byQuestion && typeof data.byQuestion === "object" ? data.byQuestion : {};
+    const meta = data?.meta && typeof data.meta === "object" ? data.meta : {};
+    return {
+      byQuestion,
+      meta: {
+        totalAnswered: Number(meta.totalAnswered || 0),
+        totalCorrect: Number(meta.totalCorrect || 0),
+        bestStreak: Number(meta.bestStreak || 0),
+        totalCompletedSessions: Number(meta.totalCompletedSessions || 0),
+      }
+    };
+  }
+
+  function saveProgress() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    } catch (error) {
+      console.warn("saveProgress failed", error);
+    }
+  }
+
+  function defaultProgress() {
+    return {
+      byQuestion: {},
+      meta: { totalAnswered: 0, totalCorrect: 0, bestStreak: 0, totalCompletedSessions: 0 }
+    };
+  }
+
+  function defaultQuestionProgress() {
+    return {
+      totalSeen: 0,
+      totalCorrect: 0,
+      totalWrong: 0,
+      score: 0,
+      inWrongBook: false,
+      masteryStreak: 0,
+      lastWrongAt: "",
+      lastSeenAt: "",
+    };
+  }
+
+  function loadSession() {
+    const data = readStorageObject(SESSION_KEY, LEGACY_SESSION_KEYS);
+    if (!data || !Array.isArray(data.queue)) return null;
+    return {
+      ...data,
+      answeredMap: data.answeredMap && typeof data.answeredMap === "object" ? data.answeredMap : {},
+      questionModeMap: data.questionModeMap && typeof data.questionModeMap === "object" ? data.questionModeMap : {},
+      wrongIds: Array.isArray(data.wrongIds) ? data.wrongIds : [],
+      filters: data.filters && typeof data.filters === "object" ? data.filters : {},
+      currentStreak: Number(data.currentStreak || 0),
+      bestStreak: Number(data.bestStreak || 0),
+      flashRevealed: !!data.flashRevealed,
+      pointsDelta: Number(data.pointsDelta || 0),
+    };
+  }
+
+  function saveSession() {
+    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+  }
+
+  function defaultSettings() {
+    return {
+      settingsSchemaVersion: SETTINGS_SCHEMA_VERSION,
+      ...DEFAULT_SETTINGS,
+    };
+  }
+
+  function normalizeLoadedSettings(data, fallback = null) {
+    const base = { ...(fallback || defaultSettings()) };
+    const raw = data && typeof data === "object" ? data : {};
+    const settingsSchemaVersion = Number(raw.settingsSchemaVersion || 0);
+
+    let autoNextCorrectDelaySec = sanitizeNonNegativeNumber(raw.autoNextCorrectDelaySec, raw.autoNextDelaySec, base.autoNextCorrectDelaySec ?? 1);
+    let autoNextWrongDelaySec = sanitizeNonNegativeNumber(raw.autoNextWrongDelaySec, raw.autoNextDelaySec, base.autoNextWrongDelaySec ?? 4);
+
+    if (settingsSchemaVersion < SETTINGS_SCHEMA_VERSION) {
+      if (autoNextCorrectDelaySec === 0 && autoNextWrongDelaySec === 0) {
+        autoNextCorrectDelaySec = 1;
+        autoNextWrongDelaySec = 4;
+      }
+      if (autoNextCorrectDelaySec === 1.5) autoNextCorrectDelaySec = 1;
+      if (autoNextWrongDelaySec === 3) autoNextWrongDelaySec = 4;
+    }
+
+    return {
+      ...base,
+      settingsSchemaVersion: SETTINGS_SCHEMA_VERSION,
+      examScope: raw.examScope || base.examScope,
+      practiceMode: raw.practiceMode || base.practiceMode,
+      questionMode: raw.questionMode || base.questionMode,
+      questionCount: Number(raw.questionCount || base.questionCount || 20),
+      masteryTarget: Number(raw.masteryTarget || base.masteryTarget || 2),
+      scoreFilterOperator: raw.scoreFilterOperator || base.scoreFilterOperator || "any",
+      scoreFilterValue: sanitizeInteger(raw.scoreFilterValue, base.scoreFilterValue ?? 0),
+      answerTimeLimitSec: sanitizeNonNegativeNumber(raw.answerTimeLimitSec, base.answerTimeLimitSec ?? 15),
+      autoNextCorrectDelaySec,
+      autoNextWrongDelaySec,
+      shortcutOption1: normalizeShortcutSetting(raw.shortcutOption1, base.shortcutOption1 || "1"),
+      shortcutOption2: normalizeShortcutSetting(raw.shortcutOption2, base.shortcutOption2 || "2"),
+      shortcutOption3: normalizeShortcutSetting(raw.shortcutOption3, base.shortcutOption3 || "3"),
+      shortcutOption4: normalizeShortcutSetting(raw.shortcutOption4, base.shortcutOption4 || "4"),
+      shortcutNext: normalizeShortcutSetting(raw.shortcutNext, base.shortcutNext || "Enter"),
+    };
+  }
+
+  function loadSettings() {
+    const data = readStorageObject(SETTINGS_KEY, LEGACY_SETTINGS_KEYS);
+    return normalizeLoadedSettings(data, defaultSettings());
+  }
+
+  function saveSettings() {
+    try {
+      localStorage.setItem(SETTINGS_KEY, JSON.stringify({ ...defaultSettings(), ...(settings || {}), settingsSchemaVersion: SETTINGS_SCHEMA_VERSION }));
+    } catch (error) {
+      console.warn("saveSettings failed", error);
+    }
+  }
+
+  function readStorageObject(primaryKey, legacyKeys = []) {
+    const keys = [primaryKey, ...legacyKeys];
+    for (const key of keys) {
+      try {
+        const raw = localStorage.getItem(key);
+        if (!raw) continue;
+        const parsed = JSON.parse(raw);
+        if (key !== primaryKey) localStorage.setItem(primaryKey, raw);
+        return parsed;
+      } catch {
+        continue;
+      }
+    }
+    return null;
+  }
+
+  function startQuestionTimer(question) {
+    const limitSec = sanitizeNonNegativeNumber(session?.filters?.answerTimeLimitSec, 0);
+    const timerBadge = document.getElementById("timerBadge");
+    const timerBar = document.getElementById("timerBar");
+    if (!timerBadge || !timerBar) return;
+    if (limitSec <= 0) {
+      activeTimerState = null;
+      timerBadge.textContent = "不限時";
+      timerBadge.classList.remove("warning", "danger");
+      timerBar.style.width = "100%";
+      updatePauseButton();
+      return;
+    }
+
+    activeTimerState = {
+      type: "answer",
+      questionId: question.id,
+      totalMs: limitSec * 1000,
+      remainingMs: limitSec * 1000,
+      paused: false,
+      onExpire: () => handleAnswer(question, "__timeout__", null, { forcedWrong: true, selectedLabel: "逾時未作答", reason: "timeout" }),
+    };
+    startActiveTimerLoop();
+  }
+
+  function scheduleNext(delaySec, countdownElementId, onExpire = advanceToNextQuestion) {
+    if (delaySec <= 0) {
+      activeTimerState = null;
+      updatePauseButton();
+      return;
+    }
+    activeTimerState = {
+      type: "autoNext",
+      totalMs: delaySec * 1000,
+      remainingMs: delaySec * 1000,
+      paused: false,
+      countdownElementId,
+      onExpire: typeof onExpire === "function" ? onExpire : (() => advanceToNextQuestion()),
+    };
+    startActiveTimerLoop();
+  }
+
+  function startActiveTimerLoop() {
+    if (!activeTimerState) return;
+    clearRawTimerHandles();
+    activeTimerState.lastTickAt = Date.now();
+    updateActiveTimerDisplay();
+    countdownIntervalId = window.setInterval(() => {
+      if (!activeTimerState || activeTimerState.paused) return;
+      const now = Date.now();
+      const delta = now - (activeTimerState.lastTickAt || now);
+      activeTimerState.lastTickAt = now;
+      activeTimerState.remainingMs = Math.max(0, activeTimerState.remainingMs - delta);
+      updateActiveTimerDisplay();
+      if (activeTimerState.remainingMs <= 0) {
+        const onExpire = activeTimerState.onExpire;
+        clearAllTimers();
+        onExpire?.();
+      }
+    }, 100);
+    answerTimeoutId = window.setTimeout(() => {
+      if (!activeTimerState || activeTimerState.paused) return;
+      const onExpire = activeTimerState.onExpire;
+      clearAllTimers();
+      onExpire?.();
+    }, activeTimerState.remainingMs + 50);
+    updatePauseButton();
+  }
+
+  function updateActiveTimerDisplay() {
+    const timerBadge = document.getElementById("timerBadge");
+    const timerBar = document.getElementById("timerBar");
+    const countdownEl = activeTimerState?.countdownElementId ? document.getElementById(activeTimerState.countdownElementId) : null;
+
+    if (!activeTimerState) {
+      if (timerBadge) timerBadge.classList.remove("warning", "danger");
+      if (countdownEl) countdownEl.textContent = "";
+      updatePauseButton();
+      return;
+    }
+
+    if (activeTimerState.type === "answer") {
+      const totalMs = Math.max(activeTimerState.totalMs, 1);
+      const remainingSec = activeTimerState.remainingMs / 1000;
+      if (timerBadge) {
+        timerBadge.textContent = `${activeTimerState.paused ? "已暫停｜" : "剩餘 "}${formatSeconds(remainingSec)}`;
+        timerBadge.classList.toggle("warning", !activeTimerState.paused && remainingSec <= Math.max(5, totalMs / 1000 * 0.3) && remainingSec > 2);
+        timerBadge.classList.toggle("danger", !activeTimerState.paused && remainingSec <= 2);
+      }
+      if (timerBar) timerBar.style.width = `${Math.max(0, Math.min(100, (activeTimerState.remainingMs / totalMs) * 100))}%`;
+    } else {
+      const remainingSec = activeTimerState.remainingMs / 1000;
+      if (timerBadge) {
+        timerBadge.textContent = `${activeTimerState.paused ? "已暫停｜" : "下題倒數 "}${formatSeconds(remainingSec)}`;
+        timerBadge.classList.remove("warning", "danger");
+      }
+      if (timerBar) timerBar.style.width = "100%";
+      if (countdownEl) countdownEl.textContent = `${formatSeconds(remainingSec)} 後自動跳題`;
+    }
+    updatePauseButton();
+  }
+
+  function updatePauseButton() {
+    const btn = document.getElementById("pauseBtn");
+    if (!btn) return;
+    if (!activeTimerState) {
+      btn.textContent = "暫停";
+      btn.disabled = true;
+      return;
+    }
+    btn.disabled = false;
+    btn.textContent = activeTimerState.paused ? "繼續" : "暫停";
+  }
+
+  function togglePauseResume() {
+    if (!activeTimerState) return;
+    if (activeTimerState.paused) {
+      activeTimerState.paused = false;
+      startActiveTimerLoop();
+      return;
+    }
+    pauseActiveTimer();
+  }
+
+  function pauseActiveTimer() {
+    if (!activeTimerState || activeTimerState.paused) return;
+    activeTimerState.paused = true;
+    clearRawTimerHandles();
+    updateActiveTimerDisplay();
+  }
+
+  function clearRawTimerHandles() {
+    if (answerTimeoutId) {
+      clearTimeout(answerTimeoutId);
+      answerTimeoutId = null;
+    }
+    if (countdownIntervalId) {
+      clearInterval(countdownIntervalId);
+      countdownIntervalId = null;
+    }
+    if (autoNextTimeoutId) {
+      clearTimeout(autoNextTimeoutId);
+      autoNextTimeoutId = null;
+    }
+    clearFeedbackCountdown();
+  }
+
+  function clearFeedbackCountdown() {
+    if (feedbackCountdownIntervalId) {
+      clearInterval(feedbackCountdownIntervalId);
+      feedbackCountdownIntervalId = null;
+    }
+  }
+
+  function clearAllTimers() {
+    clearRawTimerHandles();
+    activeTimerState = null;
+    updatePauseButton();
+  }
+
+  function advanceToNextQuestion() {
+    clearAllTimers();
+    if (!session) return;
+    session.index += 1;
+    session.flashRevealed = false;
+    saveSession();
+    renderSessionOrEmpty();
+  }
+
+
+  const GENERIC_KEYWORD_PATTERNS = [
+    /^(正確|錯誤|是|否|○|X)$/,
+    /^(可以|不可以|不得|應|應該|是否|何者|下列|其他|敘述|圖示|判斷|答案|選項)$/,
+    /^(左轉|右轉|直行|前方|後方|方向|內容|相關)$/,
+    /^(公尺|公里|秒|分鐘|題號|頁碼|分類|編號)$/,
+    /^依圖示判斷$/,
+    /^下列何者為正確敘述$/,
+    /^此題已先遮住圖示內的文字數字作答後自動顯示$/,
+    /^\d+(\.\d+)?(公尺|公里|秒|分鐘|題|頁|分|年|月|日)?$/
+  ];
+  const GENERIC_KEYWORD_SET = new Set([
+    "正確", "錯誤", "可以", "不可以", "不得", "應", "應該", "是否", "何者", "下列", "其他", "敘述", "圖示", "判斷", "答案", "選項",
+    "左轉", "右轉", "直行", "公尺", "公里", "秒", "分鐘", "前方", "後方", "方向", "相關", "內容", "注意", "車輛", "駕駛人", "道路", "顯示", "表示"
+  ]);
+
+  function isGenericKeyword(value) {
+    const text = String(value || "").replace(/\s+/g, " ").trim();
+    if (!text) return true;
+    if (text.length <= 1) return true;
+    if (GENERIC_KEYWORD_PATTERNS.some((pattern) => pattern.test(text))) return true;
+    if (GENERIC_KEYWORD_SET.has(text)) return true;
+    const tokens = splitTokens(text);
+    if (!tokens.length) return false;
+    if (tokens.every((token) => GENERIC_KEYWORD_SET.has(token) || GENERIC_KEYWORD_PATTERNS.some((pattern) => pattern.test(token)))) return true;
+    if (normalizeSearchText(text).length <= 2 && tokens.every((token) => token.length <= 2)) return true;
+    return false;
+  }
+
+  function finalizeKeywordCandidates(values) {
+    const list = [];
+    const seen = new Set();
+    for (const raw of values || []) {
+      const text = String(raw || "").replace(/\s+/g, " ").trim();
+      if (!text) continue;
+      if (isGenericKeyword(text)) continue;
+      const normalized = normalizeSearchText(text);
+      if (!normalized || seen.has(normalized)) continue;
+      if (normalized.length <= 3 && list.some((existing) => normalizeSearchText(existing).includes(normalized))) continue;
+      seen.add(normalized);
+      list.push(text);
+    }
+    return list.sort((a, b) => b.length - a.length);
+  }
+
+  function buildQuestionSearchProfile(question) {
+    if (!question) return { phrases: [], tokens: [], displayTerms: [] };
+    const prompt = String(question.prompt || "");
+    const answer = String(question.answer || "");
+    const options = Array.isArray(question.options) ? question.options.map((opt) => String(opt || "").trim()).filter(Boolean) : [];
+    const rawCandidates = [];
+    const addCandidate = (value) => {
+      const text = String(value || "").trim();
+      if (!text) return;
+      rawCandidates.push(text);
+    };
+
+    Array.from(prompt.matchAll(/「([^」]+)」/g)).forEach((m) => addCandidate(m[1]));
+    if (answer && !isGenericKeyword(answer)) addCandidate(answer);
+    options.forEach((opt) => {
+      if (!isGenericKeyword(opt)) addCandidate(opt);
+    });
+
+    const promptCore = prompt
+      .replace(/^依圖示判斷[，：:]?/, "")
+      .replace(/^下列何者為正確敘述[？?]?/, "")
+      .replace(/[（(]\d+[）)]/g, " ")
+      .replace(/[？?]$/, "")
+      .trim();
+    if (promptCore && promptCore.length <= 90 && !isGenericKeyword(promptCore)) addCandidate(promptCore);
+
+    [question?.source?.topicLabel].filter(Boolean).forEach(addCandidate);
+
+    const phrases = finalizeKeywordCandidates(rawCandidates);
+    const tokenSource = [promptCore, answer, ...options, question?.source?.topicLabel].filter(Boolean).join(" ");
+    const tokens = finalizeKeywordCandidates(splitTokens(tokenSource).filter((token) => token.length >= 2 && token.length <= 18));
+    const displayTerms = finalizeKeywordCandidates([...phrases, ...tokens]).slice(0, 5);
+    return { phrases, tokens, displayTerms };
+  }
+
+  function buildQuestionSearchQuery(question) {
+    const profile = buildQuestionSearchProfile(question);
+    const parts = [];
+    if (question?.prompt) parts.push(String(question.prompt).replace(/^依圖示判斷[，：:]?/, "").trim());
+    if (question?.answer && !isGenericKeyword(question.answer)) parts.push(question.answer);
+    if (profile.displayTerms.length) parts.push(profile.displayTerms.join(" "));
+    if (question?.source?.pdf) parts.push(question.source.pdf.replace(/\.pdf$/i, ""));
+    parts.push("駕駛人手冊");
+    return parts.join(" ").replace(/\s+/g, " ").trim();
+  }
+
+  function openQuestionSearch(question) {
+    const keywords = extractQuestionKeywordCandidates(question);
+    const handbook = getHandbookExplanation(question);
+    const officialFallback = buildOfficialFallbackExplanation(question, keywords);
+    const query = buildQuestionSearchQuery(question);
+    const lines = [
+      `題目：${buildQuestionPreview(question)}`,
+      `正確答案：${String(question?.answer || "未提供")}`,
+    ];
+
+    if (handbook) {
+      lines.push(
+        `手冊對照：第 ${String(handbook.page || "?")} 頁／${String(handbook.title || "相關章節")}`,
+        String(handbook.text || "").trim()
+      );
+    } else if (officialFallback) {
+      lines.push(
+        `查證重點：${String(officialFallback.title || "題目重點")}`,
+        String(officialFallback.text || "").trim()
+      );
+    }
+
+    if (query) {
+      try { navigator.clipboard?.writeText?.(query); } catch {}
+      const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+      let opened = null;
+      try {
+        opened = window.open(searchUrl, "_blank", "noopener,noreferrer");
+      } catch {}
+      if (opened) return;
+      lines.push(`建議檢索詞：${query}`, "（已嘗試複製到剪貼簿；若沒自動開新分頁，可手動貼上搜尋）");
+    } else {
+      lines.push("目前沒有可用的搜尋關鍵詞。");
+    }
+
+    window.alert(lines.filter(Boolean).join("\n\n"));
+  }
+
+  function bindQuestionSearchButton(question) {
+    const buttons = Array.from(document.querySelectorAll("#searchQuestionQuickBtn, .search-question-btn"));
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => openQuestionSearch(question));
+    });
+  }
+
+
+
+  function getBaseExplanationText(question) {
+    const text = String(question?.explanation || "").trim();
+    if (!text) return "";
+    if (/^依\s*.+整理。?$/.test(text)) return "";
+    return text;
+  }
+
+
+function getHandbookExplanation(question) {
+  const profile = buildQuestionSearchProfile(question);
+  const keywords = profile.displayTerms;
+  const semantic = findBestQuestionAwareHandbook(question, profile);
+  const dynamic = findBestHandbookRule(profile.phrases.length ? profile.phrases : keywords);
+  const snippet = findBestHandbookSnippet(question, profile.phrases.length ? profile.phrases : keywords);
+  const exact = HANDBOOK_EXPLANATIONS[question?.id] || null;
+  const exactRelevant = exact && isStaticHandbookRelevant(exact, keywords, question)
+    ? { ...exact, keyword: !isGenericKeyword(exact.keyword || "") ? (exact.keyword || "") : (keywords[0] || ""), kind: exact.kind || "manual", score: 160 }
+    : null;
+
+  const candidates = [exactRelevant, dynamic, semantic, snippet].filter(Boolean);
+  if (!candidates.length) return null;
+  candidates.sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
+  const picked = candidates[0];
+  if (picked && isGenericKeyword(picked.keyword || "")) picked.keyword = "";
+  return picked;
+}
+
+function shouldPreferDynamicHandbook(question, keywords) {
+  if (!question) return false;
+  const prompt = String(question.prompt || "");
+  return question.kind === "true_false"
+    || /依圖示判斷/.test(prompt)
+    || /下列何者為正確敘述/.test(prompt)
+    || (!!keywords.length && ["正確", "錯誤"].includes(String(question.answer || "")));
+}
+
+function extractQuestionKeywordCandidates(question) {
+  if (!question) return [];
+  return buildQuestionSearchProfile(question).displayTerms;
+}
+
+function findBestQuestionAwareHandbook(question, profile = buildQuestionSearchProfile(question)) {
+  if (!Array.isArray(HANDBOOK_PAGES) || !HANDBOOK_PAGES.length) return null;
+  const phrases = (profile?.phrases || []).slice(0, 8);
+  const tokens = (profile?.tokens || []).slice(0, 16);
+  if (!phrases.length && !tokens.length) return null;
+
+  let best = null;
+  HANDBOOK_PAGES.forEach((pageEntry) => {
+    const text = String(pageEntry?.text || "").trim();
+    if (!text) return;
+    const title = String(pageEntry?.title || "").trim();
+    const searchable = `${title} ${text}`;
+    const normalizedText = normalizeSearchText(searchable);
+    let score = 0;
+    let bestTerm = "";
+    let bestIndex = -1;
+
+    phrases.forEach((phrase) => {
+      const normalizedPhrase = normalizeSearchText(phrase);
+      if (!normalizedPhrase) return;
+      const exactIndex = normalizedText.indexOf(normalizedPhrase);
+      if (exactIndex >= 0) {
+        const localScore = 160 + normalizedPhrase.length * 3 + (title.includes(phrase) ? 25 : 0);
+        if (localScore > score) {
+          score = localScore;
+          bestTerm = phrase;
+          bestIndex = text.indexOf(phrase);
+        }
+        return;
+      }
+      if (tokenOverlap(phrase, searchable)) {
+        const localScore = 70 + commonTokenLength(phrase, searchable);
+        if (localScore > score) {
+          score = localScore;
+          bestTerm = phrase;
+          bestIndex = text.indexOf(splitTokens(phrase)[0] || phrase);
+        }
+      }
+    });
+
+    tokens.forEach((token) => {
+      if (isGenericKeyword(token)) return;
+      const normalizedToken = normalizeSearchText(token);
+      if (!normalizedToken) return;
+      if (normalizedText.includes(normalizedToken)) {
+        const localScore = 18 + normalizedToken.length + (title.includes(token) ? 10 : 0);
+        if (localScore > score) {
+          score = localScore;
+          bestTerm = token;
+          bestIndex = text.indexOf(token);
+        }
+      }
+    });
+
+    if (!best || score > best.score) {
+      if (score >= 34) {
+        best = {
+          title: pageEntry.title || "相關章節",
+          page: pageEntry.page,
+          text: extractSnippetAround(text, bestTerm, bestIndex),
+          keyword: isGenericKeyword(bestTerm) ? "" : bestTerm,
+          score,
+          kind: "manual-search"
+        };
+      }
+    }
+  });
+  return best;
+}
+
+
+function findBestHandbookRule(keywords) {
+  if (!keywords?.length) return null;
+  let best = null;
+  for (const rule of HANDBOOK_RULES) {
+    let score = 0;
+    for (const keyword of keywords) {
+      for (const alias of rule.aliases) {
+        if (keyword === alias) score = Math.max(score, 100 + alias.length);
+        else if (keyword.includes(alias)) score = Math.max(score, 80 + alias.length);
+        else if (alias.includes(keyword)) score = Math.max(score, 60 + keyword.length);
+        else if (tokenOverlap(keyword, alias)) score = Math.max(score, 40 + commonTokenLength(keyword, alias));
+      }
+    }
+    if (!best || score > best.score) best = score > 0 ? { ...rule, keyword: pickBestKeywordForRule(keywords, rule.aliases), score, kind: "manual" } : best;
+  }
+  return best && best.score > 0 ? best : null;
+}
+
+function findBestHandbookSnippet(question, keywords) {
+  if (!Array.isArray(HANDBOOK_PAGES) || !HANDBOOK_PAGES.length || !keywords?.length) return null;
+  const isSignQuestion = /sign|traffic_sign|warning_sign|instruction_sign|direction_sign|prohibition_sign|restriction_sign/i.test(String(question?.category || "")) || /汽車標誌/.test(String(question?.source?.pdf || ""));
+  const isLawQuestion = /traffic_law/.test(String(question?.category || ""));
+  let best = null;
+
+  for (const page of HANDBOOK_PAGES) {
+    const text = String(page?.text || "");
+    if (!text) continue;
+    let score = 0;
+    let bestKeyword = "";
+    let bestIndex = -1;
+    const normalizedPageText = normalizeSearchText(text);
+
+    for (const keyword of keywords) {
+      const normalizedKeyword = normalizeSearchText(keyword);
+      if (!normalizedKeyword) continue;
+      let localScore = 0;
+      let localIndex = text.indexOf(keyword);
+
+      if (localIndex >= 0) localScore = Math.max(localScore, 120 + keyword.length * 2);
+      const normalizedIndex = normalizedPageText.indexOf(normalizedKeyword);
+      if (normalizedIndex >= 0) localScore = Math.max(localScore, 90 + normalizedKeyword.length);
+      if (tokenOverlap(keyword, text)) localScore = Math.max(localScore, 40 + commonTokenLength(keyword, text));
+
+      if (localScore > score) {
+        score = localScore;
+        bestKeyword = keyword;
+        bestIndex = localIndex >= 0 ? localIndex : normalizedIndex;
+      }
+    }
+
+    if (!score) continue;
+    if (isSignQuestion && (page.page >= 20 && page.page <= 31 || page.page >= 113 && page.page <= 123)) score += 18;
+    if (isLawQuestion && page.page >= 32 && page.page <= 111) score += 10;
+    if (/依圖示判斷/.test(String(question?.prompt || "")) && String(question?.answer || "") && text.includes(String(question.answer))) score += 40;
+    if (/高速公路|快速公路|隧道|平交道/.test(String(question?.prompt || "") + String(question?.answer || "")) && page.page >= 47 && page.page <= 58) score += 14;
+    if (/安全帶|安全座椅|安全帽/.test(String(question?.prompt || "") + String(question?.answer || "")) && page.page >= 58 && page.page <= 60) score += 12;
+
+    const snippet = extractSnippetAround(text, bestKeyword || keywords[0] || "", bestIndex);
+    const candidate = {
+      page: page.page,
+      title: page.title || "駕駛人手冊",
+      text: snippet,
+      keyword: bestKeyword || keywords[0] || "",
+      score,
+      kind: "manual-search"
+    };
+    if (!best || candidate.score > best.score) best = candidate;
+  }
+
+  return best && best.score >= 45 ? best : null;
+}
+
+function pickBestKeywordForRule(keywords, aliases) {
+  for (const keyword of keywords) {
+    if (aliases.some((alias) => keyword === alias || keyword.includes(alias) || alias.includes(keyword))) return keyword;
+  }
+  return keywords[0] || "";
+}
+
+function tokenOverlap(a, b) {
+  const ta = splitTokens(a);
+  const tb = splitTokens(b);
+  return ta.some((token) => tb.includes(token));
+}
+
+function commonTokenLength(a, b) {
+  const ta = splitTokens(a);
+  const tb = splitTokens(b);
+  return ta.filter((token) => tb.includes(token)).join("").length;
+}
+
+function splitTokens(text) {
+  return String(text || "")
+    .replace(/[「」：:()（）,，。；;／/、]/g, " ")
+    .split(/\s+/)
+    .filter((token) => token && token.length >= 2);
+}
+
+function normalizeSearchText(text) {
+  return String(text || "").replace(/[「」：:()（）,，。；;／/\s、]/g, "");
+}
+
+function extractSnippetAround(text, keyword, indexHint = -1) {
+  const source = String(text || "").trim();
+  if (!source) return "";
+  const keywordIndex = indexHint >= 0 ? indexHint : (keyword ? source.indexOf(keyword) : -1);
+  if (keywordIndex >= 0) {
+    const start = Math.max(0, keywordIndex - 60);
+    const end = Math.min(source.length, keywordIndex + Math.max(150, keyword.length + 120));
+    return trimSnippet(source.slice(start, end), start > 0, end < source.length);
+  }
+  return trimSnippet(source.slice(0, 220), false, source.length > 220);
+}
+
+function trimSnippet(text, hasPrefixEllipsis, hasSuffixEllipsis) {
+  let snippet = String(text || "").replace(/\s+/g, " ").trim();
+  if (snippet.length > 220) snippet = `${snippet.slice(0, 217).trim()}…`;
+  if (hasPrefixEllipsis && !snippet.startsWith("…")) snippet = `…${snippet}`;
+  if (hasSuffixEllipsis && !snippet.endsWith("…")) snippet = `${snippet}…`;
+  return snippet;
+}
+
+function isStaticHandbookRelevant(exact, keywords, question) {
+  const text = `${exact?.title || ""} ${exact?.text || ""}`;
+  if (keywords.some((kw) => text.includes(kw))) return true;
+  if (question?.answer && !["正確", "錯誤"].includes(question.answer) && text.includes(question.answer)) return true;
+  return /警告標誌|禁制標誌|指示標誌|交通規則|安全駕駛/.test(text);
+}
+
+function buildOfficialFallbackExplanation(question, keywords) {
+  const answer = String(question?.answer || "").trim();
+  const sourceName = question?.source?.pdf ? "官方題庫重點" : "題目重點";
+  const displayTerms = (keywords || []).filter((kw) => !isGenericKeyword(kw)).slice(0, 3);
+  const keyLabel = displayTerms.join(" / ");
+  if (!question) return null;
+
+  if (question.kind === "true_false") {
+    return {
+      title: sourceName,
+      text: `本題在官方題庫中的判定為「${answer || "未標示"}」。${keyLabel ? `可先從這些主題詞複習：${keyLabel}。` : "可先記住題幹描述與正確判定。"}`,
+      kind: "official"
+    };
+  }
+
+  if (answer) {
+    return {
+      title: sourceName,
+      text: `本題正確答案是「${answer}」。${keyLabel ? `可優先檢查這些主題詞：${keyLabel}。` : "如手冊對應仍不夠清楚，可直接按下方按鈕搜尋此題。"}`,
+      kind: "official"
+    };
+  }
+
+  return null;
+}
+
+function buildAnswerExplanationHtml(question) {
+  const parts = [];
+  const base = getBaseExplanationText(question);
+  const keywords = extractQuestionKeywordCandidates(question);
+  const handbook = getHandbookExplanation(question);
+  const officialFallback = buildOfficialFallbackExplanation(question, keywords);
+
+  if (base) {
+    parts.push(`
+      <div class="feedback-explanation-block">
+        <div class="feedback-explanation-title">題庫補充說明</div>
+        <div>${escapeHtml(base)}</div>
+      </div>
+    `);
+  }
+
+  if (handbook) {
+    const safeKeyword = handbook.keyword && !isGenericKeyword(handbook.keyword) ? handbook.keyword : "";
+    parts.push(`
+      <div class="feedback-explanation-block handbook-block ${escapeAttr(handbook.kind || "manual")}">
+        <div class="feedback-explanation-title">駕駛人手冊說明</div>
+        ${safeKeyword ? `<div class="handbook-keyword">檢索詞：${escapeHtml(safeKeyword)}</div>` : ""}
+        <div>${escapeHtml(handbook.text || "")}</div>
+        <small>來源：駕駛人手冊 第 ${escapeHtml(String(handbook.page || "?"))} 頁 ・ ${escapeHtml(handbook.title || "相關章節")}</small>
+      </div>
+    `);
+  }
+
+  if (!handbook && officialFallback) {
+    parts.push(`
+      <div class="feedback-explanation-block handbook-block official">
+        <div class="feedback-explanation-title">${escapeHtml(officialFallback.title)}</div>
+        <div>${escapeHtml(officialFallback.text)}</div>
+      </div>
+    `);
+  }
+
+  if (!parts.length) {
+    parts.push(`
+      <div class="feedback-explanation-block handbook-block fallback">
+        <div class="feedback-explanation-title">題目重點</div>
+        <div>目前沒有自動對上的說明，你可以直接用下方按鈕搜尋此題並查證。</div>
+      </div>
+    `);
+  }
+
+  parts.push(`
+    <div class="feedback-explanation-block handbook-block search-tool-block">
+      <div class="feedback-explanation-title">查證工具</div>
+      <div class="search-tool-row">
+        <button class="ghost-btn aux-btn search-question-btn">搜尋此題</button>
+        <span class="secondary-meta">優先直接開啟本題搜尋；若瀏覽器擋下外部分頁，會改顯示手冊對照與建議檢索詞。</span>
+      </div>
+    </div>
+  `);
+
+  return `<div class="answer-explanation-stack">${parts.join("")}</div>`;
+}
+
+  function buildSourceMeta(question) {
+    const sourcePage = question.source && question.source.page ? `PDF 第 ${question.source.page} 頁` : "來源頁未知";
+    return [
+      sourcePage,
+      question.source?.signCode || "",
+      question.source?.questionNo ? `題號 ${question.source.questionNo}` : "",
+      question.source?.topicLabel || "",
+    ].filter(Boolean).join(" / ");
+  }
+
+  function buildQuestionOriginLabel(question) {
+    const source = question?.source || {};
+    const sourceName = source.pdf ? String(source.pdf).replace(/\.pdf$/i, "") : "題庫來源未標示";
+    const bits = [sourceName];
+    if (source.questionNo) bits.push(`題號 ${source.questionNo}`);
+    if (source.page) bits.push(`第 ${source.page} 頁`);
+    if (source.classCode) bits.push(`分類 ${source.classCode}`);
+    if (source.topicLabel) bits.push(source.topicLabel);
+    return bits.join(" ／ ");
+  }
+
+  function resolveSelectedLabel(questionMode, selectedValue) {
+    if (selectedValue === "__dont_know__") return "不會";
+    if (selectedValue === "__timeout__") return "逾時未作答";
+    if (questionMode === "textToImage") return getQuestion(selectedValue)?.answer || selectedValue;
+    return normalizeTrueFalseOption(selectedValue);
+  }
+
+  function canonicalizeTrueFalseValue(value) {
+    if (value === true) return "正確";
+    if (value === false) return "錯誤";
+    if (["○", "是", "正確"].includes(value)) return "正確";
+    if (["X", "否", "錯誤"].includes(value)) return "錯誤";
+    return value;
+  }
+
+  function getTrueFalseOptions(question) {
+    const answerCanonical = canonicalizeTrueFalseValue(question?.answer);
+    const optionCanonical = Array.isArray(question?.options)
+      ? question.options.map(canonicalizeTrueFalseValue)
+      : [];
+    if (answerCanonical === "正確" || answerCanonical === "錯誤" || optionCanonical.includes("正確") || optionCanonical.includes("錯誤")) {
+      return ["正確", "錯誤"];
+    }
+    return ["是", "否"];
+  }
+
+  function normalizeTrueFalseOption(value) {
+    const canonical = canonicalizeTrueFalseValue(value);
+    if (canonical === "正確" || canonical === "錯誤") return canonical;
+    return value;
+  }
+
+  function applyScoreFilter(questions, operator, value) {
+    if (!Array.isArray(questions)) return [];
+    if (!operator || operator === "any") return questions.slice();
+    const threshold = Number(value || 0);
+    return questions.filter((q) => {
+      const score = Number(questionProgress(q.id).score || 0);
+      if (operator === "gt") return score > threshold;
+      if (operator === "lt") return score < threshold;
+      if (operator === "eq") return score === threshold;
+      return true;
+    });
+  }
+
+  function buildSessionEncouragement(scorePct, bestStreak, practiceMode) {
+    if (practiceMode === "flashcard") {
+      return bestStreak >= 10
+        ? `這輪單字卡連續記得 ${bestStreak} 題，已經很接近穩定熟記。`
+        : `單字卡適合快速掃過低分題；把不熟題反覆刷到正分區最有效。`;
+    }
+    if (scorePct >= 90) return `這組表現已經很穩，下一步應改用積分篩選，專打低分與零分題。`;
+    if (scorePct >= 70) return `基礎已經有了，建議把「積分 < 1」作為篩選條件，集中補弱點。`;
+    if (bestStreak >= 5) return `你已有一段連續答對，代表不是完全不會，接下來要縮小知識缺口。`;
+    return `先不要追求刷很多題，先把低分題反覆做對，覆蓋率會上升得更快。`;
+  }
+
+
+function normalizeShortcutSetting(value, fallback) {
+  const raw = String(value ?? fallback ?? "").trim();
+  if (!raw) return fallback;
+  const lowered = raw.toLowerCase();
+  if (lowered === "enter") return "Enter";
+  if (lowered === "space") return "Space";
+  if (lowered === "arrowleft") return "ArrowLeft";
+  if (lowered === "arrowright") return "ArrowRight";
+  return raw.length === 1 ? raw : fallback;
+}
+
+function buildShortcutSummary() {
+  return [
+    `1:${settings.shortcutOption1 || "1"}`,
+    `2:${settings.shortcutOption2 || "2"}`,
+    `3:${settings.shortcutOption3 || "3"}`,
+    `4:${settings.shortcutOption4 || "4"}`,
+    `下一題:${settings.shortcutNext || "Enter"}`,
+  ].join(" ｜ ");
+}
+
+function getOptionShortcutLabel(index) {
+  return [settings.shortcutOption1 || "1", settings.shortcutOption2 || "2", settings.shortcutOption3 || "3", settings.shortcutOption4 || "4"][index] || String(index + 1);
+}
+
+function eventMatchesShortcut(event, shortcut) {
+  if (!shortcut) return false;
+  const expected = normalizeShortcutSetting(shortcut, shortcut);
+  if (expected === "Space") return event.code === "Space" || event.key === " ";
+  return String(event.key || "").toLowerCase() === String(expected).toLowerCase();
+}
+
+function handleGlobalShortcuts(event) {
+  const target = event.target;
+  const tag = target?.tagName?.toLowerCase();
+  if (tag === "input" || tag === "select" || tag === "textarea" || target?.isContentEditable) return;
+  if (!session || !session.queue?.length) return;
+
+  if (event.key === "Escape") {
+    event.preventDefault();
+    confirmExitCurrentMode();
+    return;
+  }
+  if (event.code === "Space" || event.key === " ") {
+    event.preventDefault();
+    togglePauseResume();
+    return;
+  }
+
+  const practiceMode = session.filters?.practiceMode || "practice";
+  if (practiceMode === "flashcard") {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToPreviousFlashcard();
+      return;
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToNextFlashcardWithoutGrading();
+      return;
+    }
+    if (eventMatchesShortcut(event, settings.shortcutNext || "Enter")) {
+      const flipBtn = document.getElementById("flipBtn");
+      if (flipBtn) {
+        event.preventDefault();
+        flipBtn.click();
+      }
+    }
+    return;
+  }
+
+  const current = currentQuestion();
+  if (!current) return;
+  const alreadyAnswered = !!session.answeredMap[current.id];
+  if (alreadyAnswered) {
+    if (eventMatchesShortcut(event, settings.shortcutNext || "Enter")) {
+      const nextBtn = document.getElementById("nextBtn");
+      if (nextBtn) {
+        event.preventDefault();
+        nextBtn.click();
+      }
+    }
+    return;
+  }
+
+  const optionButtons = Array.from(document.querySelectorAll("#optionList .option-btn, #optionList .image-option-btn"));
+  const shortcuts = [settings.shortcutOption1, settings.shortcutOption2, settings.shortcutOption3, settings.shortcutOption4];
+  const matchedIndex = shortcuts.findIndex((shortcut) => eventMatchesShortcut(event, shortcut));
+  if (matchedIndex >= 0 && optionButtons[matchedIndex]) {
+    event.preventDefault();
+    optionButtons[matchedIndex].click();
+  }
+}
+
+
+function loadImageIssues() {
+  try {
+    return JSON.parse(localStorage.getItem(IMAGE_ISSUES_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function saveImageIssues() {
+  try {
+    localStorage.setItem(IMAGE_ISSUES_KEY, JSON.stringify(imageIssues || {}));
+  } catch (error) {
+    console.warn("saveImageIssues failed", error);
+  }
+}
+
+function imageReviewQuestions() {
+  const scope = getSelectedScope();
+  const category = els.categorySelect?.value || "all";
+  return getScopedQuestions(scope)
+    .filter((q) => q.image)
+    .filter((q) => category === "all" ? true : q.category === category)
+    .sort((a, b) => {
+      const sa = a.source || {};
+      const sb = b.source || {};
+      const pa = Number(sa.page || 0);
+      const pb = Number(sb.page || 0);
+      if (pa !== pb) return pa - pb;
+      const qa = Number(sa.questionNo || 0);
+      const qb = Number(sb.questionNo || 0);
+      return qa - qb || String(a.id).localeCompare(String(b.id));
+    });
+}
+
+function renderImageReview() {
+  clearAllTimers();
+  setQuizChromeMode("imageReview");
+  const list = imageReviewQuestions();
+  const scope = getSelectedScope();
+  els.mainContent.className = "panel quiz-panel exam-active";
+  if (!list.length) {
+    els.mainContent.innerHTML = `<div class="empty-state">目前這個範圍 / 分類下沒有可檢視的圖片題。</div>`;
+    return;
+  }
+  els.mainContent.innerHTML = `
+    <div class="review-header">
+      <h2>圖示檢視模式</h2>
+      <p>依目前範圍與分類展開顯示圖片、題目、正確答案，可勾選有問題的題號後匯出回報。</p>
+    </div>
+    <div class="actions compact">
+      <span class="badge accent-badge">${escapeHtml(EXAM_SCOPE_LABELS[scope] || scope)}</span>
+      <span class="badge">共 ${list.length} 題圖片題</span>
+      <button id="exportImageIssuesBtn" class="secondary-btn">匯出已標記題號</button>
+      <button id="clearImageIssuesBtn" class="ghost-btn">清除所有圖示標記</button>
+    </div>
+    <div class="image-review-grid">
+      ${list.map((q) => {
+        const src = q.source || {};
+        const issue = imageIssues[q.id] || {};
+        const titleBits = [
+          src.questionNo ? `題號 ${src.questionNo}` : q.id,
+          src.pdf ? src.pdf.replace(/\.pdf$/i, "") : "",
+          src.page ? `第 ${src.page} 頁` : ""
+        ].filter(Boolean).join(" ・ ");
+        return `
+          <div class="image-review-card">
+            <div class="image-review-top">
+              <div class="image-review-title">${escapeHtml(titleBits)}</div>
+              <label class="issue-check"><input type="checkbox" data-issue-id="${escapeAttr(q.id)}" ${issue.flag ? "checked" : ""}> 標記有問題</label>
+            </div>
+            <div class="image-review-body">
+              <img class="image-review-thumb" src="${escapeAttr(q.image)}" alt="${escapeAttr(q.answer)}">
+              <div class="image-review-main">
+                <div class="wrong-item-title">${escapeHtml(buildQuestionPreview(q))}</div>
+                ${buildOptionPreview(q) ? `<div class="wrong-item-note">選項：${escapeHtml(buildOptionPreview(q))}</div>` : ""}
+                <div class="wrong-item-note">正確答案：${escapeHtml(q.answer)}</div>
+                <input class="issue-note-input" data-issue-note-id="${escapeAttr(q.id)}" type="text" value="${escapeAttr(issue.note || "")}" placeholder="可選填：例如圖片抓錯、圖與題不符">
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
+  Array.from(els.mainContent.querySelectorAll("[data-issue-id]")).forEach((node) => {
+    node.addEventListener("change", () => {
+      const id = node.dataset.issueId;
+      imageIssues[id] = imageIssues[id] || {};
+      imageIssues[id].flag = !!node.checked;
+      saveImageIssues();
+    });
+  });
+  Array.from(els.mainContent.querySelectorAll("[data-issue-note-id]")).forEach((node) => {
+    node.addEventListener("change", () => {
+      const id = node.dataset.issueNoteId;
+      imageIssues[id] = imageIssues[id] || {};
+      imageIssues[id].note = String(node.value || "").trim();
+      saveImageIssues();
+    });
+  });
+  document.getElementById("exportImageIssuesBtn")?.addEventListener("click", exportImageIssues);
+  document.getElementById("clearImageIssuesBtn")?.addEventListener("click", () => {
+    if (!confirm("確定要清除所有圖示標記嗎？")) return;
+    imageIssues = {};
+    saveImageIssues();
+    renderImageReview();
+  });
+}
+
+function exportImageIssues() {
+  const payload = imageReviewQuestions()
+    .filter((q) => imageIssues[q.id]?.flag || String(imageIssues[q.id]?.note || "").trim())
+    .map((q) => ({
+      id: q.id,
+      questionNo: q.source?.questionNo || "",
+      page: q.source?.page || "",
+      pdf: q.source?.pdf || "",
+      prompt: buildQuestionPreview(q),
+      answer: q.answer,
+      note: String(imageIssues[q.id]?.note || "").trim()
+    }));
+  if (!payload.length) {
+    alert("目前沒有已標記的圖示題。");
+    return;
+  }
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `image-issues-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function buildQuestionPreview(question) {
+  const prompt = String(question?.prompt || "").replace(/^依圖示判斷，?/, "依圖示判斷：");
+  if (prompt) return truncateText(prompt, 150);
+  return truncateText(String(question?.answer || ""), 110);
+}
+
+function buildOptionPreview(question) {
+  if (Array.isArray(question?.options) && question.options.length) return question.options.join(" / ");
+  if (question?.kind === "true_false") return getTrueFalseOptions(question).join(" / ");
+  return "";
+}
+
+function truncateText(text, maxLen = 80) {
+  const raw = String(text || "").replace(/\s+/g, " ").trim();
+  return raw.length > maxLen ? `${raw.slice(0, maxLen - 1)}…` : raw;
+}
+
+  function shuffle(arr) {
+    const copy = arr.slice();
+    for (let i = copy.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function unique(arr) {
+    return Array.from(new Set(arr));
+  }
+
+  function formatSignedNumber(value) {
+    const num = Number(value || 0);
+    return num > 0 ? `+${num}` : String(num);
+  }
+
+  function formatSeconds(value) {
+    const num = Math.max(0, Number(value || 0));
+    return num >= 10 ? `${num.toFixed(0)} 秒` : `${num.toFixed(1)} 秒`;
+  }
+
+  function sanitizeInteger(value, fallback = 0) {
+    const num = Number.parseInt(value, 10);
+    return Number.isFinite(num) ? num : fallback;
+  }
+
+  function sanitizeNonNegativeNumber(value, fallback = 0) {
+    const num = Number.parseFloat(value);
+    return Number.isFinite(num) && num >= 0 ? num : fallback;
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function escapeAttr(value) {
+    return escapeHtml(value);
+  }
+})();
