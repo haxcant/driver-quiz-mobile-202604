@@ -1566,12 +1566,14 @@ function renderWrongBook() {
     const computedScore = totalCorrect - totalWrong;
     const rawScore = Number(item.score);
     const score = Number.isFinite(rawScore) ? Math.round(rawScore) : computedScore;
+    const hasExplicitWrongBook = raw && Object.prototype.hasOwnProperty.call(raw, "inWrongBook");
+    const inferredWrongBook = score < 0 || totalWrong > totalCorrect;
     return {
       totalSeen,
       totalCorrect,
       totalWrong,
       score,
-      inWrongBook: !!item.inWrongBook,
+      inWrongBook: hasExplicitWrongBook ? !!item.inWrongBook : inferredWrongBook,
       masteryStreak: Math.max(0, Math.round(Number(item.masteryStreak || 0))),
       lastWrongAt: typeof item.lastWrongAt === "string" ? item.lastWrongAt : "",
       lastSeenAt: typeof item.lastSeenAt === "string" ? item.lastSeenAt : "",
@@ -1782,16 +1784,22 @@ function renderWrongBook() {
 
   function buildProgressFromWrongImportItem(item) {
     const base = defaultQuestionProgress();
+    const nowIso = new Date().toISOString();
     if (item.stats) {
+      const totalSeen = Math.max(1, Number(item.stats.totalSeen || 0));
+      const totalCorrect = Math.max(0, Number(item.stats.totalCorrect || 0));
+      const totalWrong = Math.max(1, Number(item.stats.totalWrong || 0));
+      const rawScore = Number(item.stats.score);
+      const score = Number.isFinite(rawScore) ? Math.min(Math.round(rawScore), -1) : -1;
       return {
-        totalSeen: Number(item.stats.totalSeen || 0),
-        totalCorrect: Number(item.stats.totalCorrect || 0),
-        totalWrong: Number(item.stats.totalWrong || 0),
-        score: Number(item.stats.score || 0),
-        inWrongBook: !!item.stats.inWrongBook,
-        masteryStreak: Number(item.stats.masteryStreak || 0),
-        lastWrongAt: item.stats.lastWrongAt || "",
-        lastSeenAt: item.stats.lastSeenAt || "",
+        totalSeen,
+        totalCorrect,
+        totalWrong,
+        score,
+        inWrongBook: true,
+        masteryStreak: 0,
+        lastWrongAt: item.stats.lastWrongAt || nowIso,
+        lastSeenAt: item.stats.lastSeenAt || nowIso,
       };
     }
     return {
@@ -1800,8 +1808,9 @@ function renderWrongBook() {
       totalWrong: 1,
       score: -1,
       inWrongBook: true,
-      lastWrongAt: new Date().toISOString(),
-      lastSeenAt: new Date().toISOString(),
+      masteryStreak: 0,
+      lastWrongAt: nowIso,
+      lastSeenAt: nowIso,
     };
   }
 
@@ -1830,15 +1839,15 @@ function renderWrongBook() {
       if (replaceSameQuestion || !base.byQuestion[item.id]) {
         base.byQuestion[item.id] = incoming;
       } else {
-        const cur = base.byQuestion[item.id] || defaultQuestionProgress();
+        const cur = repairQuestionProgressRecord(base.byQuestion[item.id] || defaultQuestionProgress());
         base.byQuestion[item.id] = {
-          totalSeen: Number(cur.totalSeen || 0) + Number(incoming.totalSeen || 0),
-          totalCorrect: Number(cur.totalCorrect || 0) + Number(incoming.totalCorrect || 0),
-          totalWrong: Number(cur.totalWrong || 0) + Number(incoming.totalWrong || 0),
-          score: Number(cur.score || 0) + Number(incoming.score || 0),
-          inWrongBook: !!(cur.inWrongBook || incoming.inWrongBook),
-          masteryStreak: Math.max(Number(cur.masteryStreak || 0), Number(incoming.masteryStreak || 0)),
-          lastWrongAt: maxIsoString(cur.lastWrongAt, incoming.lastWrongAt),
+          totalSeen: Math.max(Number(cur.totalSeen || 0), Number(incoming.totalSeen || 0), 1),
+          totalCorrect: Math.max(Number(cur.totalCorrect || 0), Number(incoming.totalCorrect || 0), 0),
+          totalWrong: Math.max(Number(cur.totalWrong || 0), Number(incoming.totalWrong || 0), 1),
+          score: Math.min(Number(cur.score || 0), Number(incoming.score || -1), -1),
+          inWrongBook: true,
+          masteryStreak: 0,
+          lastWrongAt: maxIsoString(cur.lastWrongAt, incoming.lastWrongAt) || new Date().toISOString(),
           lastSeenAt: maxIsoString(cur.lastSeenAt, incoming.lastSeenAt),
         };
       }
@@ -1887,7 +1896,7 @@ function renderWrongBook() {
           .filter((item) => item.prompt && item.id && getQuestion(item.id));
         if (!normalizedItems.length) throw new Error("empty wrongs");
 
-        const replaceSameQuestion = window.confirm(`按「確定」= 覆蓋同題既有積分/錯題狀態；按「取消」= 與目前記憶合併累加。\n\n注意：若匯入檔本身沒有附題目積分，系統會把這些題至少記成錯 1 次、積分 -1。`);
+        const replaceSameQuestion = window.confirm(`按「確定」= 覆蓋同題既有積分/錯題狀態；按「取消」= 與目前記憶安全合併（不再累加、至少保留為錯題且積分 <= -1）。\n\n注意：若匯入檔本身沒有附題目積分，系統會把這些題至少記成錯 1 次、積分 -1。`);
         progress = applyImportedWrongsToProgress(normalizedItems, replaceSameQuestion);
         session = null;
         importedWrongs = [];
@@ -1901,7 +1910,7 @@ function renderWrongBook() {
         renderWrongBook();
         renderSessionOrEmpty();
         const negativeCount = normalizedItems.filter((item) => (questionProgress(item.id).score || 0) < 0).length;
-        alert(`已匯入 ${normalizedItems.length} 題錯題檔，並${replaceSameQuestion ? "覆蓋" : "合併"}到目前學習記憶。\n\n其中目前積分小於 0 的題數：${negativeCount} 題。\n\n匯入後不再保留大型預覽清單，現在可直接用積分篩選、開始考試，或從錯題本開單字卡。`);
+        alert(`已匯入 ${normalizedItems.length} 題錯題檔，並${replaceSameQuestion ? "覆蓋" : "安全合併"}到目前學習記憶。\n\n其中目前積分小於 0 的題數：${negativeCount} 題。\n\n說明：錯題匯入現在不再累加分數；若同題已存在，系統至少會保留為錯題且積分 <= -1。\n\n匯入後不再保留大型預覽清單，現在可直接用積分篩選、開始考試，或從錯題本開單字卡。`);
       } else {
         throw new Error("unknown format");
       }
