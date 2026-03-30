@@ -12,7 +12,7 @@
 - 學習獎勵與徽章
 
 ## 啟動方式
-
+site is live at https://haxcant.github.io/driver-quiz-mobile-202604/
 ### Windows
 直接雙擊：
 
