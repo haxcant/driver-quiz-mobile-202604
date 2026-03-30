@@ -1461,7 +1461,7 @@ function renderWrongBook() {
     URL.revokeObjectURL(url);
   }
 
-  function buildFullMemoryPayloadObject() {
+  function buildFullMemoryPayload() {
     return {
       app: "driver-quiz-pwa",
       type: "full-memory-export",
@@ -1481,7 +1481,7 @@ function renderWrongBook() {
   }
 
   function exportFullMemory() {
-    const payload = buildFullMemoryPayloadObject();
+    const payload = buildFullMemoryPayload();
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
@@ -1490,7 +1490,8 @@ function renderWrongBook() {
     URL.revokeObjectURL(a.href);
   }
 
-  function applyImportedFullMemoryPayload(parsed, replaceAll = true) {
+  function applyFullMemoryPayload(rawPayload, replaceAll = true) {
+    const parsed = rawPayload || {};
     const importedProgress = sanitizeImportedProgress(parsed.progress || parsed.memory?.progress || parsed.data?.progress);
     const importedSettings = sanitizeImportedSettings(parsed.settings || parsed.memory?.settings || parsed.data?.settings, settings);
     const importedImageIssues = sanitizeImportedImageIssues(parsed.imageIssues || parsed.memory?.imageIssues || parsed.data?.imageIssues);
@@ -1525,6 +1526,7 @@ function renderWrongBook() {
       console.warn("post-import render warning", renderErr);
       renderWarning = "\n\n資料已匯入，但畫面更新時出現警告；重新整理頁面即可。";
     }
+
     return {
       ok: true,
       replaceAll,
@@ -1533,7 +1535,7 @@ function renderWrongBook() {
     };
   }
 
-  function normalizeImportedWrongItem  function normalizeImportedWrongItem(item) {
+  function normalizeImportedWrongItem(item) {
     const q = getQuestion(item?.id) || null;
     const stats = item?.stats && typeof item.stats === "object" ? item.stats : (item?.progress && typeof item.progress === "object" ? item.progress : null);
     const normalizedStats = stats ? {
@@ -1653,13 +1655,10 @@ function renderWrongBook() {
 
       if (kind === "full-memory") {
         const replaceAll = window.confirm("按「確定」= 用匯入檔覆蓋目前本機全部學習記憶；按「取消」= 與目前記憶合併。");
-        const importedProgress = sanitizeImportedProgress(parsed.progress || parsed.memory?.progress || parsed.data?.progress);
-        const importedSettings = sanitizeImportedSettings(parsed.settings || parsed.memory?.settings || parsed.data?.settings, settings);
-        const importedImageIssues = sanitizeImportedImageIssues(parsed.imageIssues || parsed.memory?.imageIssues || parsed.data?.imageIssues);
-
-        const result = applyImportedFullMemoryPayload(parsed, replaceAll);
+        const result = applyFullMemoryPayload(parsed, replaceAll);
         alert(result.message);
       } else if (kind === "wrong-book" || kind === "wrong-array" || kind === "wrong-print") {
+
         const items = Array.isArray(parsed) ? parsed : Array.isArray(parsed.items) ? parsed.items : [];
         const normalizedItems = items
           .map((item) => normalizeImportedWrongItem(item))
@@ -2369,9 +2368,7 @@ function renderWrongBook() {
       `題目：${prompt}`,
       `建議檢索詞：${query}`,
       "（檢索詞已嘗試複製到剪貼簿）"
-    ].join("
-
-"));
+    ].join("\n\n"));
   }
 
   function bindQuestionSearchButton(question) {
@@ -2701,7 +2698,7 @@ function buildAnswerExplanationHtml(question) {
       <div class="feedback-explanation-title">查證工具</div>
       <div class="search-tool-row">
         <button class="ghost-btn aux-btn search-question-btn">搜尋此題</button>
-        <span class="secondary-meta">直接把本題送到搜尋引擎查證；若瀏覽器阻擋彈窗，會複製檢索詞並提示你手動搜尋。</span>
+        <span class="secondary-meta">直接顯示本題的手冊對照、關鍵詞與查證重點，不再跳出外部搜尋頁。</span>
       </div>
     </div>
   `);
@@ -3079,9 +3076,9 @@ function truncateText(text, maxLen = 80) {
   function escapeAttr(value) {
     return escapeHtml(value);
   }
+
   window.DriverQuizMemory = {
-    buildPayload: buildFullMemoryPayloadObject,
-    applyPayload: applyImportedFullMemoryPayload,
-    getMemoryExportVersion: () => MEMORY_EXPORT_VERSION,
+    buildPayload: buildFullMemoryPayload,
+    applyPayload: applyFullMemoryPayload,
   };
 })();
