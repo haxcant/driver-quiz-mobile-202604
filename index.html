@@ -30,13 +30,14 @@
         <div class="info-grid">
           <div>
             <strong>目前版本</strong>
-            <p id="versionSummary">已整合完整題庫、積分系統與《駕駛人手冊》解答說明。</p>
+            <p id="versionSummary">v18.1：支援電腦／平板／手機瀏覽器與 PWA 安裝，整合完整題庫、積分追蹤、手冊對照、JSON 匯入匯出與 Firebase 手動雲端同步。</p>
           </div>
           <div>
             <strong>建議使用方式</strong>
-            <p>先用正式筆試模式刷題，再用積分篩選與單字卡專攻低分題，最後以模擬考驗證覆蓋率。</p>
+            <p>第一次使用者只須點擊「開始練習」即可作答；其餘設定皆可之後再調整。電腦與手機皆盡量以少按鈕完成常用操作。</p>
           </div>
         </div>
+        <p class="scope-summary subtle" id="firstUseHint">第一次使用：直接按「開始練習」即可。需要時再展開進階設定或雲端同步。</p>
       </details>
     </section>
 
@@ -101,7 +102,21 @@
         <label><span>每題限時（秒，0=不限）</span><input id="answerTimeLimitInput" type="number" min="0" step="1" value="15"></label>
         <label><span>答對後自動跳題（秒，0=不自動）</span><input id="autoNextCorrectDelayInput" type="number" min="0" step="0.5" value="1"></label>
         <label><span>答錯後自動跳題（秒，0=不自動）</span><input id="autoNextWrongDelayInput" type="number" min="0" step="0.5" value="4"></label>
+        <label>
+          <span>提示音量（%）</span>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <input id="soundVolumeInput" type="range" min="0" max="300" step="5" value="180" style="flex:1;">
+            <strong id="soundVolumeValue">180%</strong>
+          </div>
+        </label>
       </div>
+      <div class="actions compact" style="margin-top:8px;">
+        <span class="secondary-meta">快捷套用積分篩選：</span>
+        <button id="quickFilterZeroBtn" type="button" class="ghost-btn aux-btn">考沒考過題（=0）</button>
+        <button id="quickFilterNegativeBtn" type="button" class="ghost-btn aux-btn">考錯過題目（&lt;0）</button>
+        <button id="quickFilterClearBtn" type="button" class="ghost-btn aux-btn">清除快捷篩選</button>
+      </div>
+      <p class="scope-summary subtle" id="quickFilterHint">這三個按鈕只是幫你快速套用進階區的積分篩選條件（=0、&lt;0、不限），不會和原本進階設定衝突。</p>
       <div class="grid advanced-grid shortcut-grid three-col-desktop">
         <label><span>選項 1 快捷鍵</span><input id="shortcutOption1Input" type="text" maxlength="12" value="1" placeholder="1"></label>
         <label><span>選項 2 快捷鍵</span><input id="shortcutOption2Input" type="text" maxlength="12" value="2" placeholder="2"></label>
@@ -170,7 +185,7 @@
       </details>
     </section>
 
-    <main id="mainContent" class="panel quiz-panel empty-state"><p>按「開始練習」後會在這裡顯示題目。</p></main>
+    <main id="mainContent" class="panel quiz-panel empty-state"><p>第一次使用者只須點擊「開始練習」即可開始作答；其餘設定可之後再調整。</p></main>
 
     <section class="panel reward-panel">
       <div class="review-header"><h2>學習獎勵</h2><p>用覆蓋率、連續答對與累計作答推進徽章，讓刷題更有回饋。</p></div>
