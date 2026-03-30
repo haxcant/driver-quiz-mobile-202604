@@ -1461,8 +1461,8 @@ function renderWrongBook() {
     URL.revokeObjectURL(url);
   }
 
-  function exportFullMemory() {
-    const payload = {
+  function buildFullMemoryPayloadObject() {
+    return {
       app: "driver-quiz-pwa",
       type: "full-memory-export",
       version: MEMORY_EXPORT_VERSION,
@@ -1478,6 +1478,10 @@ function renderWrongBook() {
       settings,
       imageIssues,
     };
+  }
+
+  function exportFullMemory() {
+    const payload = buildFullMemoryPayloadObject();
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
@@ -1486,7 +1490,50 @@ function renderWrongBook() {
     URL.revokeObjectURL(a.href);
   }
 
-  function normalizeImportedWrongItem(item) {
+  function applyImportedFullMemoryPayload(parsed, replaceAll = true) {
+    const importedProgress = sanitizeImportedProgress(parsed.progress || parsed.memory?.progress || parsed.data?.progress);
+    const importedSettings = sanitizeImportedSettings(parsed.settings || parsed.memory?.settings || parsed.data?.settings, settings);
+    const importedImageIssues = sanitizeImportedImageIssues(parsed.imageIssues || parsed.memory?.imageIssues || parsed.data?.imageIssues);
+
+    if (replaceAll) {
+      progress = importedProgress;
+      settings = importedSettings;
+      imageIssues = importedImageIssues;
+    } else {
+      progress = mergeProgress(progress, importedProgress);
+      settings = { ...settings, ...importedSettings };
+      imageIssues = mergeImageIssues(imageIssues, importedImageIssues);
+    }
+
+    session = null;
+    importedWrongs = [];
+    saveProgress();
+    saveSettings();
+    saveImageIssues();
+    saveImportedWrongs();
+    try { localStorage.removeItem(SESSION_KEY); } catch {}
+
+    let renderWarning = "";
+    try {
+      syncControlsFromSettings();
+      refreshCategoryOptions();
+      refreshStats();
+      refreshRewards();
+      renderWrongBook();
+      renderSessionOrEmpty();
+    } catch (renderErr) {
+      console.warn("post-import render warning", renderErr);
+      renderWarning = "\n\n資料已匯入，但畫面更新時出現警告；重新整理頁面即可。";
+    }
+    return {
+      ok: true,
+      replaceAll,
+      warning: renderWarning,
+      message: (replaceAll ? "完整記憶已覆蓋匯入。" : "完整記憶已合併匯入。") + "\n\n為避免舊作答狀態造成卡住，匯入後已自動清除進行中的考試。" + renderWarning,
+    };
+  }
+
+  function normalizeImportedWrongItem  function normalizeImportedWrongItem(item) {
     const q = getQuestion(item?.id) || null;
     const stats = item?.stats && typeof item.stats === "object" ? item.stats : (item?.progress && typeof item.progress === "object" ? item.progress : null);
     const normalizedStats = stats ? {
@@ -1610,37 +1657,8 @@ function renderWrongBook() {
         const importedSettings = sanitizeImportedSettings(parsed.settings || parsed.memory?.settings || parsed.data?.settings, settings);
         const importedImageIssues = sanitizeImportedImageIssues(parsed.imageIssues || parsed.memory?.imageIssues || parsed.data?.imageIssues);
 
-        if (replaceAll) {
-          progress = importedProgress;
-          settings = importedSettings;
-          imageIssues = importedImageIssues;
-        } else {
-          progress = mergeProgress(progress, importedProgress);
-          settings = { ...settings, ...importedSettings };
-          imageIssues = mergeImageIssues(imageIssues, importedImageIssues);
-        }
-
-        session = null;
-        importedWrongs = [];
-        saveProgress();
-        saveSettings();
-        saveImageIssues();
-        saveImportedWrongs();
-        try { localStorage.removeItem(SESSION_KEY); } catch {}
-
-        let renderWarning = "";
-        try {
-          syncControlsFromSettings();
-          refreshCategoryOptions();
-          refreshStats();
-          refreshRewards();
-          renderWrongBook();
-          renderSessionOrEmpty();
-        } catch (renderErr) {
-          console.warn("post-import render warning", renderErr);
-          renderWarning = "\n\n資料已匯入，但畫面更新時出現警告；重新整理頁面即可。";
-        }
-        alert((replaceAll ? "完整記憶已覆蓋匯入。" : "完整記憶已合併匯入。") + "\n\n為避免舊作答狀態造成卡住，匯入後已自動清除進行中的考試。" + renderWarning);
+        const result = applyImportedFullMemoryPayload(parsed, replaceAll);
+        alert(result.message);
       } else if (kind === "wrong-book" || kind === "wrong-array" || kind === "wrong-print") {
         const items = Array.isArray(parsed) ? parsed : Array.isArray(parsed.items) ? parsed.items : [];
         const normalizedItems = items
@@ -2351,7 +2369,9 @@ function renderWrongBook() {
       `題目：${prompt}`,
       `建議檢索詞：${query}`,
       "（檢索詞已嘗試複製到剪貼簿）"
-    ].join("\n\n"));
+    ].join("
+
+"));
   }
 
   function bindQuestionSearchButton(question) {
@@ -3059,9 +3079,9 @@ function truncateText(text, maxLen = 80) {
   function escapeAttr(value) {
     return escapeHtml(value);
   }
-})();    alert([
-      "瀏覽器阻擋了外部搜尋分頁。",
-      `題目：${prompt}`,
-      `建議檢索詞：${query}`,
-      "（檢索詞已嘗試複製到剪貼簿）"
-    ].join("\n\n"));
+  window.DriverQuizMemory = {
+    buildPayload: buildFullMemoryPayloadObject,
+    applyPayload: applyImportedFullMemoryPayload,
+    getMemoryExportVersion: () => MEMORY_EXPORT_VERSION,
+  };
+})();

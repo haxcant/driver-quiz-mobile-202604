@@ -204,7 +204,7 @@
     <section class="panel firebase-panel">
       <div class="review-header">
         <h2>雲端同步</h2>
-        <p>使用 Google 登入後，可做 Firestore 連線測試；確認可用後再接完整資料同步。</p>
+        <p>使用 Google 登入後，可做 Firestore 連線測試；平常仍以本機儲存為主；這裡只做完整資料匯出的手動上傳／下載。</p>
       </div>
       <div id="firebase-user-info" style="margin-bottom:8px;">尚未登入</div>
       <div class="actions compact">
@@ -212,6 +212,8 @@
         <button id="btn-google-logout" type="button" class="ghost-btn" style="display:none;">登出</button>
         <button id="btn-smoke-write" type="button" class="ghost-btn" disabled>寫入測試資料</button>
         <button id="btn-smoke-read" type="button" class="ghost-btn" disabled>讀取測試資料</button>
+        <button id="btn-cloud-upload" type="button" class="ghost-btn" disabled>上傳雲端備份</button>
+        <button id="btn-cloud-download" type="button" class="ghost-btn" disabled>下載雲端備份</button>
       </div>
       <pre id="sync-test-output" style="white-space:pre-wrap; margin-top:8px;"></pre>
     </section>
@@ -250,10 +252,10 @@
     </section>
   </div>
 
-<script src="questions.js"></script>
+  <script src="questions.js"></script>
   <script src="handbook_explanations.js"></script>
   <script src="handbook_pages.js"></script>
-  <script src="app.js?v=20260330d"></script>
-  <script type="module" src="./firebase-ui.js?v=20260330d"></script>
+  <script src="app.js?v=20260330c"></script>
+  <script type="module" src="firebase-ui.js?v=20260330c"></script>
 </body>
 </html>

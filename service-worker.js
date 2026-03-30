@@ -1,17 +1,17 @@
-const CACHE_NAME = "driver-quiz-pwa-v17-firebase-recover-20260330d";
+const CACHE_NAME = "driver-quiz-pwa-v17-firebase-ui-hotfix";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./app.js?v=20260330d",
+  "./app.js?v=20260330c",
   "./questions.js",
   "./handbook_explanations.js",
   "./handbook_pages.js",
   "./manifest.webmanifest",
   "./firebase-init.js",
   "./firebase-auth.js",
-  "./firebase-sync-smoke.js?v=20260330d",
-  "./firebase-ui.js?v=20260330d",
+  "./firebase-sync-smoke.js?v=20260330c",
+  "./firebase-ui.js?v=20260330c",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];
@@ -37,7 +37,7 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
-  const isNavigate = event.request.mode === "navigate";
+  const isNavigate = event.request.mode === 'navigate';
   const isCriticalAsset = /\.(html|js|css)$/.test(url.pathname);
 
   if (isNavigate || isCriticalAsset) {
@@ -48,7 +48,7 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           return response;
         })
-        .catch(() => caches.match(event.request).then((cached) => cached || caches.match("./index.html")))
+        .catch(() => caches.match(event.request).then((cached) => cached || caches.match('./index.html')))
     );
     return;
   }
@@ -62,7 +62,7 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           return response;
         })
-        .catch(() => caches.match("./index.html"))
+        .catch(() => caches.match('./index.html'));
     })
   );
 });
