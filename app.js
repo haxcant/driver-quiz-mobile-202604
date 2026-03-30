@@ -174,9 +174,15 @@ const HANDBOOK_RULES = [
     masterySelect: document.getElementById("masterySelect"),
     scoreFilterOperatorSelect: document.getElementById("scoreFilterOperatorSelect"),
     scoreFilterValueInput: document.getElementById("scoreFilterValueInput"),
+    quickFilterUnseenBtn: document.getElementById("quickFilterUnseenBtn"),
+    quickFilterWrongBtn: document.getElementById("quickFilterWrongBtn"),
+    quickFilterClearBtn: document.getElementById("quickFilterClearBtn"),
     answerTimeLimitInput: document.getElementById("answerTimeLimitInput"),
     autoNextCorrectDelayInput: document.getElementById("autoNextCorrectDelayInput"),
     autoNextWrongDelayInput: document.getElementById("autoNextWrongDelayInput"),
+    soundVolumeInput: document.getElementById("soundVolumeInput"),
+    soundVolumeValue: document.getElementById("soundVolumeValue"),
+    soundTestBtn: document.getElementById("soundTestBtn"),
     maskTextToggle: document.getElementById("maskTextToggle"),
     shortcutOption1Input: document.getElementById("shortcutOption1Input"),
     shortcutOption2Input: document.getElementById("shortcutOption2Input"),
@@ -352,6 +358,7 @@ const HANDBOOK_RULES = [
       els.answerTimeLimitInput,
       els.autoNextCorrectDelayInput,
       els.autoNextWrongDelayInput,
+      els.soundVolumeInput,
       els.categorySelect,
       els.shortcutOption1Input,
       els.shortcutOption2Input,
@@ -365,6 +372,10 @@ const HANDBOOK_RULES = [
 
     els.startBtn?.addEventListener("click", startSessionFromControls);
     els.continueBtn?.addEventListener("click", () => renderSessionOrEmpty());
+    els.quickFilterUnseenBtn?.addEventListener("click", () => applyQuickScoreFilter("eq", 0));
+    els.quickFilterWrongBtn?.addEventListener("click", () => applyQuickScoreFilter("lt", 0));
+    els.quickFilterClearBtn?.addEventListener("click", () => applyQuickScoreFilter("any", 0));
+    els.soundTestBtn?.addEventListener("click", () => playCorrectChime());
     els.imageReviewBtn?.addEventListener("click", renderImageReview);
     els.resetSessionBtn?.addEventListener("click", () => {
       if (!confirm("確定要清除目前題組嗎？")) return;
@@ -418,6 +429,40 @@ const HANDBOOK_RULES = [
     document.addEventListener("keydown", handleGlobalShortcuts);
   }
 
+  function applyQuickScoreFilter(operator, value) {
+    if (els.scoreFilterOperatorSelect) els.scoreFilterOperatorSelect.value = operator;
+    if (els.scoreFilterValueInput) els.scoreFilterValueInput.value = String(value ?? 0);
+    handleSettingChange();
+  }
+
+  function updateSoundVolumeLabel() {
+    if (els.soundVolumeValue) els.soundVolumeValue.textContent = `${Math.round(sanitizeNonNegativeNumber(settings.soundVolumePct, 180))}%`;
+  }
+
+  function getSoundVolumeGain() {
+    return Math.max(0, sanitizeNonNegativeNumber(settings.soundVolumePct, 180)) / 100;
+  }
+
+  function attachResilientImageHandlers(root = document) {
+    root.querySelectorAll?.("img").forEach((img) => {
+      if (img.dataset.retryBound === "1") return;
+      img.dataset.retryBound = "1";
+      img.addEventListener("error", () => {
+        if (img.dataset.retryTried === "1") {
+          img.classList.add("image-load-failed");
+          img.title = "圖片載入失敗，可嘗試重新整理或點右上角卡住後重整。";
+          return;
+        }
+        img.dataset.retryTried = "1";
+        try {
+          const u = new URL(img.currentSrc || img.src, window.location.href);
+          u.searchParams.set("img_retry", String(Date.now()));
+          img.src = u.toString();
+        } catch {}
+      });
+    });
+  }
+
   function handleSettingChange() {
     settings.examScope = getSelectedScope();
     settings.practiceMode = els.practiceModeSelect?.value || "practice";
@@ -429,12 +474,14 @@ const HANDBOOK_RULES = [
     settings.answerTimeLimitSec = sanitizeNonNegativeNumber(els.answerTimeLimitInput?.value, 15);
     settings.autoNextCorrectDelaySec = sanitizeNonNegativeNumber(els.autoNextCorrectDelayInput?.value, 1);
     settings.autoNextWrongDelaySec = sanitizeNonNegativeNumber(els.autoNextWrongDelayInput?.value, 4);
+    settings.soundVolumePct = sanitizeNonNegativeNumber(els.soundVolumeInput?.value, 180);
     settings.shortcutOption1 = normalizeShortcutSetting(els.shortcutOption1Input?.value, "1");
     settings.shortcutOption2 = normalizeShortcutSetting(els.shortcutOption2Input?.value, "2");
     settings.shortcutOption3 = normalizeShortcutSetting(els.shortcutOption3Input?.value, "3");
     settings.shortcutOption4 = normalizeShortcutSetting(els.shortcutOption4Input?.value, "4");
     settings.shortcutNext = normalizeShortcutSetting(els.shortcutNextInput?.value, "Enter");
     saveSettings();
+    updateSoundVolumeLabel();
     refreshFilterSummary();
     buildCategorySelect();
     refreshStats();
@@ -454,6 +501,8 @@ const HANDBOOK_RULES = [
     if (els.answerTimeLimitInput) els.answerTimeLimitInput.value = String(settings.answerTimeLimitSec ?? 15);
     if (els.autoNextCorrectDelayInput) els.autoNextCorrectDelayInput.value = String(settings.autoNextCorrectDelaySec ?? 1);
     if (els.autoNextWrongDelayInput) els.autoNextWrongDelayInput.value = String(settings.autoNextWrongDelaySec ?? 4);
+    if (els.soundVolumeInput) els.soundVolumeInput.value = String(settings.soundVolumePct ?? 180);
+    updateSoundVolumeLabel();
     if (els.shortcutOption1Input) els.shortcutOption1Input.value = settings.shortcutOption1 || "1";
     if (els.shortcutOption2Input) els.shortcutOption2Input.value = settings.shortcutOption2 || "2";
     if (els.shortcutOption3Input) els.shortcutOption3Input.value = settings.shortcutOption3 || "3";
@@ -517,7 +566,7 @@ const HANDBOOK_RULES = [
     const scopedCount = getScopedQuestions(scope).length;
     const totalCount = ALL_QUESTIONS.length;
     if (els.versionSummary) {
-      els.versionSummary.textContent = `${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
+      els.versionSummary.textContent = `v19.3｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
     }
     if (els.scopeSummary) {
       els.scopeSummary.textContent = EXAM_SCOPE_DESCRIPTIONS[scope] || "";
@@ -530,7 +579,7 @@ const HANDBOOK_RULES = [
     const timeLimit = sanitizeNonNegativeNumber(els.answerTimeLimitInput?.value ?? settings.answerTimeLimitSec, 15);
     const autoNextCorrect = sanitizeNonNegativeNumber(els.autoNextCorrectDelayInput?.value ?? settings.autoNextCorrectDelaySec, 1);
     const autoNextWrong = sanitizeNonNegativeNumber(els.autoNextWrongDelayInput?.value ?? settings.autoNextWrongDelaySec, 4);
-    let scoreText = "目前未啟用積分篩選。";
+    let scoreText = "目前未啟用積分篩選；可用上方快捷按鈕快速套用「=0」或「<0」。";
     if (operator !== "any") {
       scoreText = `目前只會抽出積分 ${SCORE_FILTER_LABELS[operator]} ${value} 的題目。`;
     }
@@ -613,7 +662,8 @@ const HANDBOOK_RULES = [
       setQuizChromeMode("idle");
       els.mainContent.className = "panel quiz-panel empty-state";
       if (importedWrongs?.length) { renderImportedWrongs(); return; }
-      els.mainContent.innerHTML = "<p>按「開始練習」後會在這裡顯示題目。</p>";
+      els.mainContent.innerHTML = "<p>第一次使用者只須點擊「開始練習」即可，題目會顯示在這裡。</p>";
+      attachResilientImageHandlers(els.mainContent);
       return;
     }
     if (session.index >= session.queue.length) {
@@ -726,6 +776,7 @@ function renderQuestion() {
   document.getElementById("drawerExitBtn")?.addEventListener("click", confirmExitCurrentMode);
   document.getElementById("exitModeBtn")?.addEventListener("click", confirmExitCurrentMode);
   bindQuestionSearchButton(question);
+  attachResilientImageHandlers(els.mainContent);
   startQuestionTimer(question);
 }
 
@@ -816,6 +867,7 @@ function renderFlashcard() {
   document.getElementById("prevCardBtn")?.addEventListener("click", goToPreviousFlashcard);
   document.getElementById("nextCardBtn")?.addEventListener("click", goToNextFlashcardWithoutGrading);
   bindQuestionSearchButton(question);
+  attachResilientImageHandlers(els.mainContent);
 }
 
 function goToPreviousFlashcard() {
@@ -856,7 +908,7 @@ function goToNextFlashcardWithoutGrading() {
       const now = quizAudioContext.currentTime;
       const master = quizAudioContext.createGain();
       master.gain.setValueAtTime(0.0001, now);
-      master.gain.exponentialRampToValueAtTime(0.08, now + 0.02);
+      master.gain.exponentialRampToValueAtTime(Math.max(0.0001, 0.08 * getSoundVolumeGain()), now + 0.02);
       master.gain.exponentialRampToValueAtTime(0.0001, now + 0.8);
       master.connect(quizAudioContext.destination);
 
@@ -883,7 +935,7 @@ function goToNextFlashcardWithoutGrading() {
       const now = quizAudioContext.currentTime;
       const master = quizAudioContext.createGain();
       master.gain.setValueAtTime(0.0001, now);
-      master.gain.exponentialRampToValueAtTime(0.08, now + 0.01);
+      master.gain.exponentialRampToValueAtTime(Math.max(0.0001, 0.08 * getSoundVolumeGain()), now + 0.01);
       master.gain.exponentialRampToValueAtTime(0.0001, now + 0.45);
       master.connect(quizAudioContext.destination);
 
@@ -2047,6 +2099,7 @@ function renderWrongBook() {
       answerTimeLimitSec: sanitizeNonNegativeNumber(data?.answerTimeLimitSec, 15),
       autoNextCorrectDelaySec: sanitizeNonNegativeNumber(data?.autoNextCorrectDelaySec, data?.autoNextDelaySec, 1),
       autoNextWrongDelaySec: sanitizeNonNegativeNumber(data?.autoNextWrongDelaySec, data?.autoNextDelaySec, 4),
+      soundVolumePct: sanitizeNonNegativeNumber(data?.soundVolumePct, 180),
       shortcutOption1: normalizeShortcutSetting(data?.shortcutOption1, "1"),
       shortcutOption2: normalizeShortcutSetting(data?.shortcutOption2, "2"),
       shortcutOption3: normalizeShortcutSetting(data?.shortcutOption3, "3"),
@@ -3076,38 +3129,6 @@ function truncateText(text, maxLen = 80) {
   function escapeAttr(value) {
     return escapeHtml(value);
   }
-
-
-
-  function showImageLoadHint(img) {
-    if (!img || !img.parentElement) return;
-    const existing = img.parentElement.querySelector('.image-load-hint');
-    if (existing) return;
-    const hint = document.createElement('div');
-    hint.className = 'image-load-hint';
-    hint.style.marginTop = '8px';
-    hint.style.fontSize = '0.9rem';
-    hint.style.color = 'var(--muted, #94a3b8)';
-    hint.textContent = '圖片載入失敗，可先點右上角「卡住？保存後重整」或重新整理再試。';
-    img.parentElement.appendChild(hint);
-  }
-
-  document.addEventListener('error', (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLImageElement)) return;
-    const src = target.getAttribute('src') || '';
-    if (!src) return;
-    if (!/assets\//.test(src)) return;
-
-    if (target.dataset.retryAssetLoad === '1') {
-      showImageLoadHint(target);
-      return;
-    }
-
-    target.dataset.retryAssetLoad = '1';
-    const separator = src.includes('?') ? '&' : '?';
-    target.src = `${src}${separator}reload=${Date.now()}`;
-  }, true);
 
   window.DriverQuizMemory = {
     buildPayload: buildFullMemoryPayload,

@@ -21,10 +21,7 @@
         <h1>駕訓班筆試練習</h1>
         <p class="subtitle">正式筆試練習、錯題本、積分追蹤、手冊對照說明、快捷鍵答題、單字卡與限時作答</p>
       </div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <button id="panicReloadBtn" class="ghost-btn" type="button" onclick="window.DriverQuizMemory?.emergencyReload?.() || window.location.reload()">卡住？保存後重整</button>
-        <button id="installBtn" class="ghost-btn hidden">安裝到主畫面</button>
-      </div>
+      <button id="installBtn" class="ghost-btn hidden">安裝到主畫面</button>
     </header>
 
     <section class="panel info-panel collapsed-panel">
@@ -33,12 +30,16 @@
         <div class="info-grid">
           <div>
             <strong>目前版本</strong>
-            <p id="versionSummary">v19.2：已整合完整題庫、PWA、本機記憶、JSON 匯入匯出、Firebase 手動同步、手機登入、同步前本機快照還原與手機緊急保存重整。</p>
+            <p id="versionSummary">v19.4：已整合完整題庫、快捷篩選、圖片載入修補、提示音量調整與《駕駛人手冊》解答說明。</p>
           </div>
           <div>
             <strong>建議使用方式</strong>
-            <p>第一次使用只須按「開始練習」即可。電腦、平板、手機皆可使用；平常以本機記憶為主，需要時再手動上傳／下載雲端備份。</p>
+            <p>先按「開始練習」提升覆蓋率，再用錯題／低分題加強，最後用模擬考驗證。預設答對後自動跳題 1 秒、答錯後自動跳題 4 秒。</p>
           </div>
+        </div>
+        <div style="margin-top:12px; font-size:0.95rem; color:#475569; line-height:1.65;">
+          <strong>第一次使用</strong>
+          <p style="margin:6px 0 0;">第一次使用者只須點擊 <strong>開始練習</strong> 即可。建議先提升覆蓋率，再練錯題，最後用模擬考驗證。也請定期下載 JSON 備份，以免雲端託管額度或服務狀況影響資料存取。</p>
         </div>
       </details>
     </section>
@@ -114,6 +115,12 @@
         <label><span>選項 4 快捷鍵</span><input id="shortcutOption4Input" type="text" maxlength="12" value="4" placeholder="4"></label>
         <label><span>下一題快捷鍵</span><input id="shortcutNextInput" type="text" maxlength="12" value="Enter" placeholder="Enter"></label>
       </div>
+      <div class="actions compact" style="margin-top:10px;">
+        <button id="quickFilterUnseenBtn" type="button" class="ghost-btn">考沒考過題（=0）</button>
+        <button id="quickFilterWrongBtn" type="button" class="ghost-btn">考錯過題目（&lt;0）</button>
+        <button id="quickFilterClearBtn" type="button" class="ghost-btn">清除快捷篩選</button>
+      </div>
+      <p class="scope-summary subtle" style="margin-top:8px;">快捷按鈕會直接套用進階設定中的積分篩選，不會與原本的進階功能衝突。</p>
       <p id="scopeSummary" class="scope-summary">正式筆試模式只出普通小型車官方筆試題庫。</p>
       <p id="filterSummary" class="scope-summary subtle">目前未啟用積分篩選。</p>
       <input type="checkbox" id="maskTextToggle" hidden>
@@ -171,11 +178,14 @@
             <button id="btn-local-restore" type="button" class="ghost-btn" disabled>還原同步前本機備份</button>
           </div>
           <pre id="sync-test-output" style="white-space:pre-wrap; margin-top:8px;"></pre>
+        <div style="margin-top:12px; font-size:0.95rem; color:#475569; line-height:1.65;">
+          <strong>第一次使用</strong>
+          <p style="margin:6px 0 0;">第一次使用者只須點擊 <strong>開始練習</strong> 即可。建議先提升覆蓋率，再練錯題，最後用模擬考驗證。也請定期下載 JSON 備份，以免雲端託管額度或服務狀況影響資料存取。</p>
         </div>
       </details>
     </section>
 
-    <main id="mainContent" class="panel quiz-panel empty-state"><p>第一次使用只須點擊「開始練習」即可，題目會顯示在這裡。</p></main>
+    <main id="mainContent" class="panel quiz-panel empty-state"><p>第一次使用者只須點擊「開始練習」即可，題目會顯示在這裡。</p></main>
 
     <section class="panel reward-panel">
       <div class="review-header"><h2>學習獎勵</h2><p>用覆蓋率、連續答對與累計作答推進徽章，讓刷題更有回饋。</p></div>
@@ -194,7 +204,7 @@
   <script src="questions.js"></script>
   <script src="handbook_explanations.js"></script>
   <script src="handbook_pages.js"></script>
-  <script src="app.js?v=20260330v192"></script>
-  <script type="module" src="firebase-ui.js?v=20260330v192"></script>
+  <script src="app.js?v=20260331v194"></script>
+  <script type="module" src="firebase-ui.js?v=20260331v194"></script>
 </body>
 </html>
