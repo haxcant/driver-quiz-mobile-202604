@@ -1191,6 +1191,17 @@ function goToNextFlashcardWithoutGrading() {
     });
     document.getElementById("retryWrongBtn")?.addEventListener("click", () => retrySummaryWrong("wrongOnly"));
     document.getElementById("flashcardWrongBtn")?.addEventListener("click", () => retrySummaryWrong("flashcard"));
+    try {
+      window.dispatchEvent(new CustomEvent("driverquiz:session-completed", {
+        detail: {
+          totalAnswered: Number(progress?.meta?.totalAnswered || 0),
+          totalCorrect: Number(progress?.meta?.totalCorrect || 0),
+          bestStreak: Number(progress?.meta?.bestStreak || 0),
+          sessionQuestionCount: Number(session?.queue?.length || 0),
+          completedAt: new Date().toISOString(),
+        }
+      }));
+    } catch {}
   }
 
   function retrySummaryWrong(mode) {
@@ -3519,11 +3530,17 @@ function truncateText(text, maxLen = 80) {
     return escapeHtml(value);
   }
 
+  function isSessionInProgress() {
+    return !!(session && Array.isArray(session.queue) && session.queue.length && Number(session.index || 0) < session.queue.length && document.body.classList.contains("quiz-mode-active"));
+  }
+
   window.DriverQuizMemory = {
     buildPayload: buildFullMemoryPayload,
     applyPayload: applyFullMemoryPayload,
     askImportMode: askFullMemoryImportMode,
     flattenScores: flattenScoreDistribution,
     restorePreImportSnapshot,
+    getAnsweredCount: () => Number(progress?.meta?.totalAnswered || 0),
+    isSessionInProgress,
   };
 })();

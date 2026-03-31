@@ -58,6 +58,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   };
   const localAnsweredCount = () => {
     try {
+      const fast = window.DriverQuizMemory?.getAnsweredCount?.();
+      if (Number.isFinite(Number(fast))) return Math.max(0, Number(fast));
       return modules?.backup?.getAnsweredCountFromPayload(window.DriverQuizMemory?.buildPayload?.()) || 0;
     } catch {
       return 0;
@@ -162,6 +164,7 @@ if (btnLogin) {
     if (!readAutoUploadEnabled()) return;
     if (autoUploadInFlight) return;
     if (!window.DriverQuizMemory?.buildPayload) return;
+    if (window.DriverQuizMemory?.isSessionInProgress?.()) return;
     if (document.visibilityState && document.visibilityState !== "visible") return;
 
     const now = Date.now();
@@ -188,8 +191,7 @@ if (btnLogin) {
       const result = await modules.backup.uploadFullMemoryBackup(() => window.DriverQuizMemory.buildPayload());
       await refreshCloudMeta();
       updateReminder();
-      setOutput(result?.message || `已自動上傳雲端備份。${reason ? `
-原因：${reason}` : ""}`);
+      updateAutoUploadStatus(result?.skipped ? " 已檢查，雲端內容相同。" : " 已於本次完成後自動上傳。");
     } catch (err) {
       console.error("auto upload failed", err);
       updateAutoUploadStatus(` 自動上傳暫停：${err?.message || String(err)}`);
@@ -266,9 +268,9 @@ if (btnLogin) {
   if (btnLogin) btnLogin.textContent = "載入登入模組...";
   try {
     modules = {
-      auth: await import("./firebase-auth.js?v=20260331v213"),
-      smoke: await import("./firebase-sync-smoke.js?v=20260331v213"),
-      backup: await import("./firebase-backup.js?v=20260331v213"),
+      auth: await import("./firebase-auth.js?v=20260401v214"),
+      smoke: await import("./firebase-sync-smoke.js?v=20260401v214"),
+      backup: await import("./firebase-backup.js?v=20260401v214"),
     };
   } catch (err) {
     console.error("firebase modules import failed", err);
@@ -451,15 +453,24 @@ ${err?.message || String(err)}`);
     });
   }
 
-  window.addEventListener("driverquiz:progress-saved", () => {
+  window.addEventListener("driverquiz:progress-saved", (event) => {
+    const totalAnswered = Number(event?.detail?.totalAnswered || 0);
     updateReminder();
-    scheduleAutoUploadCheck("本地作答進度增加");
+    updateAutoUploadStatus(totalAnswered > 0 ? ` 本地累計作答：約 ${totalAnswered} 題。` : "");
+  });
+
+  window.addEventListener("driverquiz:session-completed", (event) => {
+    const count = Number(event?.detail?.sessionQuestionCount || 0);
+    updateReminder();
+    scheduleAutoUploadCheck(count > 0 ? `本次題組完成（${count} 題）` : "本次題組完成");
   });
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
       refreshCloudMeta().then(() => {
         updateReminder();
-        scheduleAutoUploadCheck("頁面恢復可見");
+        if (!window.DriverQuizMemory?.isSessionInProgress?.()) {
+          scheduleAutoUploadCheck("頁面恢復可見");
+        }
       }).catch((err) => console.error("visibility refresh failed", err));
     }
   });
