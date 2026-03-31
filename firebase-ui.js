@@ -24,7 +24,14 @@ window.addEventListener("DOMContentLoaded", async () => {
   let privateVisible = false;
 
   const setOutput = (msg) => {
+    if (details) details.open = true;
     if (output) output.textContent = msg || "";
+  };
+  const setButtonBusy = (btn, busyText, busy) => {
+    if (!btn) return;
+    if (!btn.dataset.originalText) btn.dataset.originalText = btn.textContent || "";
+    btn.disabled = !!busy;
+    btn.textContent = busy ? busyText : (btn.dataset.originalText || btn.textContent || "");
   };
   const masked = (value, keep = 2) => {
     const s = String(value || "").trim();
@@ -116,7 +123,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         togglePrivateBtn.textContent = privateVisible ? "🙈" : "👁";
         togglePrivateBtn.title = privateVisible ? "隱藏個資" : "顯示個資";
       }
-      if (btnLogin) btnLogin.style.display = "none";
+      if (btnLogin) { btnLogin.style.display = "none"; setButtonBusy(btnLogin, "登入中...", false); }
       if (btnLogout) btnLogout.style.display = "";
       setSyncButtonsEnabled(true);
       setRestoreEnabled();
@@ -137,7 +144,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       privateInfoEl.textContent = "";
     }
     if (togglePrivateBtn) togglePrivateBtn.style.display = "none";
-    if (btnLogin) btnLogin.style.display = "";
+    if (btnLogin) { btnLogin.style.display = ""; setButtonBusy(btnLogin, "登入中...", false); }
     if (btnLogout) btnLogout.style.display = "none";
     if (btnLocalRestore) btnLocalRestore.disabled = !modules?.backup?.getPreSyncSnapshotInfo?.();
     setSyncButtonsEnabled(false);
@@ -154,7 +161,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     modules = {
       auth: await import("./firebase-auth.js?v=20260330stable"),
       smoke: await import("./firebase-sync-smoke.js?v=20260330stable"),
-      backup: await import("./firebase-backup.js?v=20260331v203"),
+      backup: await import("./firebase-backup.js?v=20260330stable"),
     };
   } catch (err) {
     console.error("firebase modules import failed", err);
@@ -183,18 +190,17 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   if (btnLogin) {
     btnLogin.addEventListener("click", async () => {
-      const oldText = btnLogin.textContent;
       try {
-        btnLogin.disabled = true;
-        btnLogin.textContent = "登入中...";
-        setOutput("登入中...若手機沒有彈出 Google 視窗，請允許彈出視窗；若仍無反應，請稍後再按一次或先重新整理頁面。");
+        setButtonBusy(btnLogin, "登入中...", true);
+        setOutput("登入中...若手機沒有彈出 Google 視窗，請允許彈出視窗，或改用桌面瀏覽器登入。
+若已看到帳號選擇視窗，請稍候幾秒等待登入完成。
+");
         await loginWithGoogle();
       } catch (err) {
         console.error(err);
         setOutput("Google 登入失敗：" + (err?.message || String(err)));
       } finally {
-        btnLogin.disabled = false;
-        btnLogin.textContent = oldText;
+        setButtonBusy(btnLogin, "登入中...", false);
       }
     });
   }
@@ -258,6 +264,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   if (btnCloudDownload) {
     btnCloudDownload.addEventListener("click", async () => {
       try {
+        setButtonBusy(btnCloudDownload, "下載中...", true);
         if (!window.DriverQuizMemory?.applyPayload || !window.DriverQuizMemory?.buildPayload) {
           throw new Error("找不到完整資料匯入／匯出函式。");
         }
@@ -285,6 +292,8 @@ window.addEventListener("DOMContentLoaded", async () => {
       } catch (err) {
         console.error(err);
         setOutput("雲端下載失敗：\n" + (err?.message || String(err)));
+      } finally {
+        setButtonBusy(btnCloudDownload, "下載中...", false);
       }
     });
   }
