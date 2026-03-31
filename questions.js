@@ -13920,7 +13920,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 2 頁第 001 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 2 頁第 001 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-002",
@@ -13941,7 +13948,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 2 頁第 002 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 2 頁第 002 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-003",
@@ -13983,7 +13997,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 2 頁第 004 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 2 頁第 004 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-005",
@@ -14067,7 +14088,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 2 頁第 008 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 2 頁第 008 題整理。 法規依據：道路交通安全規則第98條。 補充：同向多車道路段車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第98條",
+        "note": "同向多車道路段車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-009",
@@ -14277,7 +14305,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 3 頁第 018 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 3 頁第 018 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-019",
@@ -14298,7 +14333,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 3 頁第 019 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 3 頁第 019 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-020",
@@ -14655,7 +14697,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 4 頁第 039 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 4 頁第 039 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-040",
@@ -14697,7 +14746,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 4 頁第 041 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 4 頁第 041 題整理。 法規依據：道路交通安全規則第84條。 補充：危險物品裝載及警示規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-042",
@@ -14739,7 +14795,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 043 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 043 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-044",
@@ -14760,7 +14823,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 044 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 044 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-045",
@@ -14781,7 +14851,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 045 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 045 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-046",
@@ -14802,7 +14879,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 046 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 046 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-047",
@@ -14823,7 +14907,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 047 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 047 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-048",
@@ -14844,7 +14935,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 048 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 048 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-049",
@@ -14907,7 +15005,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 051 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 051 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-054",
@@ -14949,7 +15059,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 055 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 055 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-056",
@@ -14970,7 +15087,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 056 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 056 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-057",
@@ -15012,7 +15141,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 058 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 058 題整理。 法規依據：道路交通安全規則第60條。 補充：考領各級駕照之資格與年齡。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第60條",
+        "note": "考領各級駕照之資格與年齡"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-059",
@@ -15054,7 +15190,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 060 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 060 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-061",
@@ -15075,7 +15218,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 061 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 061 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-062",
@@ -15096,7 +15251,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 062 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 062 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-063",
@@ -15138,7 +15300,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 064 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 064 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-066",
@@ -15180,7 +15354,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 067 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 067 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-068",
@@ -15222,7 +15408,19 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 069 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 069 題整理。 法規依據：道路交通安全規則第91條；道路交通安全規則第102條。 補充：起駛、轉彎、變換車道之燈光或手勢；交岔路口左右轉與車道使用。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口左右轉與車道使用"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-070",
@@ -15243,7 +15441,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 070 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 070 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-071",
@@ -15264,7 +15469,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 071 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 071 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-072",
@@ -15285,7 +15497,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 072 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 072 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-073",
@@ -15306,7 +15525,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 073 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 6 頁第 073 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-074",
@@ -15348,7 +15574,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 075 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 075 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-076",
@@ -15390,7 +15628,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 077 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 077 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-078",
@@ -15411,7 +15656,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 078 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 078 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-080",
@@ -15432,7 +15684,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 080 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 080 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-081",
@@ -15453,7 +15717,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 081 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 081 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-082",
@@ -15474,7 +15745,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 082 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 082 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-083",
@@ -15495,7 +15773,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 083 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 083 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-084",
@@ -15516,7 +15801,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 084 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 084 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-085",
@@ -15537,7 +15829,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 085 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 085 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-086",
@@ -15558,7 +15862,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 086 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 086 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-087",
@@ -15621,7 +15932,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 089 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 089 題整理。 法規依據：道路交通安全規則第64條。 補充：體格檢查與健康條件。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第64條",
+        "note": "體格檢查與健康條件"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-090",
@@ -15642,7 +15960,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 090 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 090 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-091",
@@ -15663,7 +15988,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 091 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 091 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-094",
@@ -15684,7 +16016,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 094 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 094 題整理。 法規依據：道路交通管理處罰條例第21條。 補充：無照、越級、吊扣期間或容許無照駕駛之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第21條",
+        "note": "無照、越級、吊扣期間或容許無照駕駛之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-095",
@@ -15705,7 +16044,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 095 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 095 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-096",
@@ -15768,7 +16114,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 100 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 100 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-101",
@@ -15789,7 +16142,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 101 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 101 題整理。 法規依據：道路交通安全規則第84條。 補充：危險物品裝載及警示規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-102",
@@ -15810,7 +16170,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 102 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 102 題整理。 法規依據：道路交通安全規則第84條。 補充：危險物品裝載及警示規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-103",
@@ -15831,7 +16198,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 103 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 103 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-104",
@@ -15852,7 +16226,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 104 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 104 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-105",
@@ -15873,7 +16259,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 105 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 105 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-106",
@@ -15894,7 +16287,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 106 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 106 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-107",
@@ -15915,7 +16315,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 107 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 107 題整理。 法規依據：道路交通安全規則第95條。 補充：未劃設分向設施道路應靠右行駛。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第95條",
+        "note": "未劃設分向設施道路應靠右行駛"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-109",
@@ -15936,7 +16343,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 109 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 109 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-110",
@@ -15957,7 +16371,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 110 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 110 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-111",
@@ -15978,7 +16399,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 111 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 111 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-112",
@@ -16062,7 +16490,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 115 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 115 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-116",
@@ -16083,7 +16518,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 116 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 116 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-117",
@@ -16104,7 +16546,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 117 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 117 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-118",
@@ -16125,7 +16574,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 118 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 118 題整理。 法規依據：道路交通安全規則第98條。 補充：同向多車道路段車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第98條",
+        "note": "同向多車道路段車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-119",
@@ -16146,7 +16602,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 119 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 119 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-120",
@@ -16209,7 +16672,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 122 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 122 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-123",
@@ -16251,7 +16721,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 124 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 124 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-125",
@@ -16272,7 +16749,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 125 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 125 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-126",
@@ -16293,7 +16777,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 126 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 126 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-127",
@@ -16335,7 +16826,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 128 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 10 頁第 128 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-129",
@@ -16524,7 +17022,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 137 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 137 題整理。 法規依據：道路交通安全規則第100條。 補充：會車、山路、峻狹坡、夜間會車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第100條",
+        "note": "會車、山路、峻狹坡、夜間會車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-138",
@@ -16545,7 +17050,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 138 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 138 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-139",
@@ -16587,7 +17099,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 140 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 140 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-141",
@@ -16608,7 +17127,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 141 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 141 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-142",
@@ -16650,7 +17176,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 143 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 143 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-144",
@@ -16671,7 +17204,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 144 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 144 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-145",
@@ -16692,7 +17232,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 145 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 145 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-146",
@@ -16755,7 +17302,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 148 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 148 題整理。 法規依據：道路交通安全規則第100條。 補充：會車、山路、峻狹坡、夜間會車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第100條",
+        "note": "會車、山路、峻狹坡、夜間會車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-149",
@@ -16797,7 +17351,19 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 150 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 11 頁第 150 題整理。 法規依據：道路交通安全規則第104條；道路交通管理處罰條例第54條。 補充：平交道通過規則；平交道違規之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第54條",
+        "note": "平交道違規之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-151",
@@ -16839,7 +17405,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 152 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 152 題整理。 法規依據：道路交通安全規則第106條。 補充：迴車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第106條",
+        "note": "迴車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-153",
@@ -16860,7 +17433,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 153 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 153 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-154",
@@ -16881,7 +17461,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 154 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 154 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-155",
@@ -16986,7 +17573,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 159 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 159 題整理。 法規依據：道路交通安全規則第60條。 補充：考領各級駕照之資格與年齡。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第60條",
+        "note": "考領各級駕照之資格與年齡"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-160",
@@ -17007,7 +17601,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 160 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 160 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-161",
@@ -17028,7 +17629,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 161 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 161 題整理。 法規依據：道路交通管理處罰條例第31條。 補充：未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-162",
@@ -17070,7 +17678,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 163 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 163 題整理。 法規依據：道路交通安全規則第84條。 補充：危險物品裝載及警示規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-164",
@@ -17091,7 +17706,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 164 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 164 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-165",
@@ -17112,7 +17734,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 165 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 165 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-166",
@@ -17133,7 +17762,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 166 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 166 題整理。 法規依據：道路交通管理處罰條例第24條。 補充：道路交通安全講習制度。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第24條",
+        "note": "道路交通安全講習制度"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-167",
@@ -17154,7 +17790,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 167 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 167 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-168",
@@ -17175,7 +17818,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 168 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 168 題整理。 法規依據：道路交通管理處罰條例第21條。 補充：無照、越級、吊扣期間或容許無照駕駛之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第21條",
+        "note": "無照、越級、吊扣期間或容許無照駕駛之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-169",
@@ -17196,7 +17846,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 169 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 169 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-170",
@@ -17217,7 +17879,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 170 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 170 題整理。 法規依據：道路交通管理處罰條例第35條。 補充：酒駕、拒測與毒駕之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第35條",
+        "note": "酒駕、拒測與毒駕之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-171",
@@ -17259,7 +17928,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 172 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 172 題整理。 法規依據：道路交通管理處罰條例第43條。 補充：危險駕駛、競駛、超速40公里以上或噪音車之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第43條",
+        "note": "危險駕駛、競駛、超速40公里以上或噪音車之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-173",
@@ -17322,7 +17998,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 175 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 175 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-176",
@@ -17406,7 +18089,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 179 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 179 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-180",
@@ -17427,7 +18117,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 180 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 180 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-181",
@@ -17448,7 +18150,19 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 181 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 181 題整理。 法規依據：道路交通安全規則第90條；道路交通管理處罰條例第31-1條。 補充：駕駛中不得手持通訊裝置；手持通訊裝置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得手持通訊裝置"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31-1條",
+        "note": "手持通訊裝置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-182",
@@ -17469,7 +18183,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 182 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 182 題整理。 法規依據：道路交通管理處罰條例第35條。 補充：酒駕、拒測與毒駕之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第35條",
+        "note": "酒駕、拒測與毒駕之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-183",
@@ -17490,7 +18211,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 183 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 183 題整理。 法規依據：道路交通管理處罰條例第24條。 補充：道路交通安全講習制度。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第24條",
+        "note": "道路交通安全講習制度"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-184",
@@ -17511,7 +18239,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 184 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 184 題整理。 法規依據：道路交通管理處罰條例第43條。 補充：危險駕駛、競駛、超速40公里以上或噪音車之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第43條",
+        "note": "危險駕駛、競駛、超速40公里以上或噪音車之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-185",
@@ -17532,7 +18267,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 185 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 185 題整理。 法規依據：道路交通管理處罰條例第24條。 補充：道路交通安全講習制度。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第24條",
+        "note": "道路交通安全講習制度"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-186",
@@ -17553,7 +18295,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 186 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 186 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-187",
@@ -17574,7 +18328,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 187 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 187 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-188",
@@ -17637,7 +18398,24 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 190 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 190 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條；道路交通管理處罰條例第16條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記；未依規定辦理變更登記之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第16條",
+        "note": "未依規定辦理變更登記之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-191",
@@ -17658,7 +18436,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 191 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 191 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-192",
@@ -17679,7 +18464,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 192 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 192 題整理。 法規依據：道路交通管理處罰條例第33條。 補充：高速或快速公路違反管制規定之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第33條",
+        "note": "高速或快速公路違反管制規定之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-193",
@@ -17700,7 +18492,19 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 193 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 193 題整理。 法規依據：道路交通安全規則第93條；道路交通管理處罰條例第40條。 補充：一般道路速限規則；一般超速或低於最低速限之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第93條",
+        "note": "一般道路速限規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第40條",
+        "note": "一般超速或低於最低速限之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-194",
@@ -17721,7 +18525,19 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 194 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 194 題整理。 法規依據：道路交通安全規則第102條；道路交通管理處罰條例第53條。 補充：交岔路口轉彎、號誌、指揮與讓車規則；闖紅燈與紅燈右轉之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第53條",
+        "note": "闖紅燈與紅燈右轉之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-195",
@@ -17742,7 +18558,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 195 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 195 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-196",
@@ -17763,7 +18586,19 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 196 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 196 題整理。 法規依據：道路交通安全規則第77條；道路交通管理處罰條例第29條。 補充：裝載貨物之長寬高及乘載規定；超限裝載、超重或未依規定過磅之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第29條",
+        "note": "超限裝載、超重或未依規定過磅之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-197",
@@ -17784,7 +18619,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 197 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 197 題整理。 法規依據：道路交通安全規則第104條；道路交通管理處罰條例第54條。 補充：平交道通過規則；平交道違規之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第54條",
+        "note": "平交道違規之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-198",
@@ -17805,7 +18652,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 198 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 198 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-199",
@@ -17826,7 +18680,19 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 199 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 199 題整理。 法規依據：道路交通安全規則第84條；道路交通管理處罰條例第29條。 補充：危險物品裝載及警示規定；危險物品裝載違規之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第29條",
+        "note": "危險物品裝載違規之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-200",
@@ -17868,7 +18734,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 201 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 201 題整理。 法規依據：道路交通安全規則第84條。 補充：危險物品裝載及警示規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-202",
@@ -17952,7 +18825,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 205 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 205 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-206",
@@ -17994,7 +18879,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 207 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 207 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-208",
@@ -18015,7 +18912,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 208 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 208 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-209",
@@ -18036,7 +18945,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 209 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 209 題整理。 法規依據：道路交通管理處罰條例第21條。 補充：無照、越級、吊扣期間或容許無照駕駛之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第21條",
+        "note": "無照、越級、吊扣期間或容許無照駕駛之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-210",
@@ -18099,7 +19015,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 212 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 212 題整理。 法規依據：道路交通管理處罰條例第53條。 補充：闖紅燈與紅燈右轉之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第53條",
+        "note": "闖紅燈與紅燈右轉之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-213",
@@ -18120,7 +19043,24 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 213 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 213 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條；道路交通管理處罰條例第16條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記；未依規定辦理變更登記之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第16條",
+        "note": "未依規定辦理變更登記之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-214",
@@ -18141,7 +19081,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 214 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 214 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-215",
@@ -18162,7 +19109,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 215 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 215 題整理。 法規依據：道路交通管理處罰條例第21條。 補充：無照、越級、吊扣期間或容許無照駕駛之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第21條",
+        "note": "無照、越級、吊扣期間或容許無照駕駛之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-216",
@@ -18183,7 +19137,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 216 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 216 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-217",
@@ -18204,7 +19165,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 217 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 217 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-218",
@@ -18225,7 +19198,24 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 218 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 218 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條；道路交通管理處罰條例第16條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記；未依規定辦理變更登記之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第16條",
+        "note": "未依規定辦理變更登記之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-219",
@@ -18246,7 +19236,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 219 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 219 題整理。 法規依據：道路交通管理處罰條例第43條。 補充：危險駕駛、競駛、超速40公里以上或噪音車之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第43條",
+        "note": "危險駕駛、競駛、超速40公里以上或噪音車之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-220",
@@ -18330,7 +19327,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 223 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 223 題整理。 法規依據：道路交通管理處罰條例第24條。 補充：道路交通安全講習制度。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第24條",
+        "note": "道路交通安全講習制度"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-224",
@@ -18351,7 +19355,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 224 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 224 題整理。 法規依據：道路交通管理處罰條例第35條。 補充：酒駕、拒測與毒駕之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第35條",
+        "note": "酒駕、拒測與毒駕之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-225",
@@ -18372,7 +19383,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 225 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 225 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-226",
@@ -18393,7 +19411,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 226 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 226 題整理。 法規依據：道路交通管理處罰條例第24條。 補充：道路交通安全講習制度。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第24條",
+        "note": "道路交通安全講習制度"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-227",
@@ -18414,7 +19439,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 227 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 227 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-228",
@@ -18519,7 +19551,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 232 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 232 題整理。 法規依據：高速公路及快速公路交通管制規則第6條。 補充：高速或快速公路行車安全距離。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第6條",
+        "note": "高速或快速公路行車安全距離"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-233",
@@ -18540,7 +19579,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 233 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 233 題整理。 法規依據：高速公路及快速公路交通管制規則第12條。 補充：高速或快速公路停車與路肩暫停規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第12條",
+        "note": "高速或快速公路停車與路肩暫停規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-234",
@@ -18561,7 +19607,19 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 234 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 234 題整理。 法規依據：高速公路及快速公路交通管制規則第8條；道路交通安全規則第84條。 補充：高速或快速公路車道使用規則；危險物品裝載及警示規定。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第8條",
+        "note": "高速或快速公路車道使用規則"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-235",
@@ -18603,7 +19661,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 236 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 236 題整理。 法規依據：高速公路及快速公路交通管制規則第3條。 補充：高速公路及快速公路管理機關。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第3條",
+        "note": "高速公路及快速公路管理機關"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-237",
@@ -18624,7 +19689,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 237 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 237 題整理。 法規依據：高速公路及快速公路交通管制規則第14條。 補充：上高速或快速公路前檢查車況及途中不得缺水缺電缺燃料。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第14條",
+        "note": "上高速或快速公路前檢查車況及途中不得缺水缺電缺燃料"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-238",
@@ -18666,7 +19738,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 239 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 239 題整理。 法規依據：高速公路及快速公路交通管制規則第5條。 補充：高速或快速公路速限及低能見度行車。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第5條",
+        "note": "高速或快速公路速限及低能見度行車"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-240",
@@ -18687,7 +19766,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 240 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 240 題整理。 法規依據：高速公路及快速公路交通管制規則第5條。 補充：高速或快速公路速限及低能見度行車。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第5條",
+        "note": "高速或快速公路速限及低能見度行車"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-241",
@@ -18792,7 +19878,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 245 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 18 頁第 245 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-246",
@@ -18876,7 +19969,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 249 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 249 題整理。 法規依據：高速公路及快速公路交通管制規則第9條。 補充：高速或快速公路禁止事項。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第9條",
+        "note": "高速或快速公路禁止事項"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-250",
@@ -18897,7 +19997,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 250 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 250 題整理。 法規依據：道路交通標誌標線號誌設置規則第12條。 補充：國道路線編號標誌樣式。",
+    "lawBasis": [
+      {
+        "law": "道路交通標誌標線號誌設置規則",
+        "article": "第12條",
+        "note": "國道路線編號標誌樣式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-251",
@@ -18918,7 +20025,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 251 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 251 題整理。 法規依據：高速公路及快速公路交通管制規則第8條。 補充：高速或快速公路車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第8條",
+        "note": "高速或快速公路車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-252",
@@ -18960,7 +20074,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 253 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 253 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-254",
@@ -19023,7 +20144,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 256 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 256 題整理。 法規依據：高速公路及快速公路交通管制規則第7條。 補充：由交流道或匝道進入主線之規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第7條",
+        "note": "由交流道或匝道進入主線之規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-257",
@@ -19107,7 +20235,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 260 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 260 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-261",
@@ -19149,7 +20284,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 262 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 262 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-263",
@@ -19170,7 +20312,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 263 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 19 頁第 263 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-264",
@@ -19212,7 +20361,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 20 頁第 265 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 20 頁第 265 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-266",
@@ -19233,7 +20389,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 20 頁第 266 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 20 頁第 266 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-267",
@@ -19422,7 +20585,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 20 頁第 275 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 20 頁第 275 題整理。 法規依據：道路交通管理處罰條例第35條。 補充：酒駕、拒測與毒駕之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第35條",
+        "note": "酒駕、拒測與毒駕之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-276",
@@ -19548,7 +20718,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 21 頁第 281 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 21 頁第 281 題整理。 法規依據：道路交通管理處罰條例第35條。 補充：酒駕、拒測與毒駕之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第35條",
+        "note": "酒駕、拒測與毒駕之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-282",
@@ -19569,7 +20746,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 21 頁第 282 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 21 頁第 282 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-283",
@@ -19695,7 +20879,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 21 頁第 288 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 21 頁第 288 題整理。 法規依據：道路交通管理處罰條例第31條。 補充：未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-289",
@@ -19758,7 +20949,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 291 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 291 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-292",
@@ -19779,7 +20977,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 292 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 292 題整理。 法規依據：道路交通管理處罰條例第24條。 補充：道路交通安全講習制度。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第24條",
+        "note": "道路交通安全講習制度"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-293",
@@ -19800,7 +21005,19 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 293 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 293 題整理。 法規依據：道路交通安全規則第93條；道路交通管理處罰條例第40條。 補充：一般道路速限規則；一般超速或低於最低速限之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第93條",
+        "note": "一般道路速限規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第40條",
+        "note": "一般超速或低於最低速限之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-294",
@@ -19842,7 +21059,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 295 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 295 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-296",
@@ -19863,7 +21087,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 296 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 296 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-297",
@@ -19884,7 +21115,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 297 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 297 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-298",
@@ -19926,7 +21164,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 299 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 22 頁第 299 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-300",
@@ -20052,7 +21297,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 305 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 305 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-306",
@@ -20073,7 +21325,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 306 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 306 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-307",
@@ -20094,7 +21353,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 307 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 307 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-308",
@@ -20115,7 +21386,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 308 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 308 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-309",
@@ -20220,7 +21498,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 313 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 313 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-314",
@@ -20241,7 +21526,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 314 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 314 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-315",
@@ -20262,7 +21554,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 315 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 315 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-316",
@@ -20346,7 +21645,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 319 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 23 頁第 319 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-320",
@@ -21186,7 +22492,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 26 頁第 359 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 26 頁第 359 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-360",
@@ -21648,7 +22961,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 382 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 382 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-383",
@@ -21669,7 +22994,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 383 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 383 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-384",
@@ -21690,7 +23027,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 384 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 384 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-385",
@@ -21711,7 +23055,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 385 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 385 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-386",
@@ -21732,7 +23083,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 386 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 386 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-387",
@@ -21774,7 +23137,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 388 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 388 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-389",
@@ -21795,7 +23165,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 389 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 389 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-390",
@@ -21837,7 +23214,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 391 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 391 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-392",
@@ -21858,7 +23242,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 392 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 392 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-393",
@@ -21879,7 +23270,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 393 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 28 頁第 393 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-394",
@@ -21921,7 +23319,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 395 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 395 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-396",
@@ -21942,7 +23347,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 396 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 396 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-397",
@@ -21984,7 +23396,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 398 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 398 題整理。 法規依據：道路交通安全規則第97條。 補充：雙向二車道路段行駛及分向線規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第97條",
+        "note": "雙向二車道路段行駛及分向線規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-399",
@@ -22005,7 +23424,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 399 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 399 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-400",
@@ -22110,7 +23536,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 404 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 404 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-405",
@@ -22152,7 +23585,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 406 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 406 題整理。 法規依據：高速公路及快速公路交通管制規則第6條。 補充：高速或快速公路行車安全距離。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第6條",
+        "note": "高速或快速公路行車安全距離"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-407",
@@ -22215,7 +23655,19 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 30 頁第 409 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 30 頁第 409 題整理。 法規依據：高速公路及快速公路交通管制規則第6條；道路交通管理處罰條例第33條。 補充：高速或快速公路行車安全距離；高速或快速公路違反管制規定之處罰。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第6條",
+        "note": "高速或快速公路行車安全距離"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第33條",
+        "note": "高速或快速公路違反管制規定之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-410",
@@ -22299,7 +23751,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 30 頁第 413 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 30 頁第 413 題整理。 法規依據：高速公路及快速公路交通管制規則第8條。 補充：高速或快速公路車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第8條",
+        "note": "高速或快速公路車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-414",
@@ -22320,7 +23779,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 30 頁第 414 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 30 頁第 414 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-415",
@@ -22402,7 +23873,14 @@ window.QUESTION_BANK = [
       "page": 30,
       "questionNo": "418"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 30 頁第 418 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 30 頁第 418 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-419",
@@ -22528,7 +24006,19 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 31 頁第 424 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 31 頁第 424 題整理。 法規依據：道路交通安全規則第102條；道路交通管理處罰條例第53條。 補充：交岔路口轉彎、號誌、指揮與讓車規則；闖紅燈與紅燈右轉之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第53條",
+        "note": "闖紅燈與紅燈右轉之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-425",
@@ -22549,7 +24039,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 31 頁第 425 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 31 頁第 425 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-426",
@@ -22633,7 +24130,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 31 頁第 431 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 31 頁第 431 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-432",
@@ -22654,7 +24163,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 31 頁第 432 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 31 頁第 432 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-433",
@@ -22696,7 +24217,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 32 頁第 434 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 32 頁第 434 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-435",
@@ -22717,7 +24250,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 32 頁第 435 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 32 頁第 435 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-436",
@@ -22738,7 +24283,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 32 頁第 436 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 32 頁第 436 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-437",
@@ -22759,7 +24311,19 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 32 頁第 437 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 32 頁第 437 題整理。 法規依據：道路交通安全規則第94條；道路交通安全規則第102條。 補充：大眾捷運系統車輛共用通行之避讓；共用通行交岔路口之通行規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第94條",
+        "note": "大眾捷運系統車輛共用通行之避讓"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "共用通行交岔路口之通行規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-438",
@@ -22906,7 +24470,19 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 444 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 444 題整理。 法規依據：道路交通安全規則第103條；道路交通管理處罰條例第44條。 補充：行近行人穿越道應暫停讓行人；未讓行人或致人受傷之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第44條",
+        "note": "未讓行人或致人受傷之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-445",
@@ -22927,7 +24503,19 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 445 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 445 題整理。 法規依據：道路交通安全規則第103條；道路交通管理處罰條例第44條。 補充：行近行人穿越道應暫停讓行人；未讓行人或致人受傷之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第44條",
+        "note": "未讓行人或致人受傷之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-446",
@@ -22948,7 +24536,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 446 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 446 題整理。 法規依據：道路交通安全規則第90條。 補充：駕駛中不得操作或觀看有礙安全之顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得操作或觀看有礙安全之顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-447",
@@ -22969,7 +24564,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 447 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 447 題整理。 法規依據：道路交通安全規則第90條。 補充：駕駛中不得操作或觀看有礙安全之顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得操作或觀看有礙安全之顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-448",
@@ -23011,7 +24613,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 449 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 449 題整理。 法規依據：道路交通安全規則第90條。 補充：駕駛中不得操作或觀看有礙安全之顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得操作或觀看有礙安全之顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-450",
@@ -23032,7 +24641,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 450 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 33 頁第 450 題整理。 法規依據：道路交通安全規則第90條。 補充：駕駛中不得操作或觀看有礙安全之顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得操作或觀看有礙安全之顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-001",
@@ -23152,7 +24768,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 2 頁第 006 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 2 頁第 006 題整理。 法規依據：道路交通管理處罰條例第53條。 補充：闖紅燈與紅燈右轉之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第53條",
+        "note": "闖紅燈與紅燈右轉之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-007",
@@ -23212,7 +24835,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 2 頁第 009 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 2 頁第 009 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-010",
@@ -23272,7 +24902,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 2 頁第 012 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 2 頁第 012 題整理。 法規依據：道路交通管理處罰條例第43條。 補充：危險駕駛、競駛、超速40公里以上或噪音車之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第43條",
+        "note": "危險駕駛、競駛、超速40公里以上或噪音車之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-013",
@@ -23432,7 +25069,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 3 頁第 020 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 3 頁第 020 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-021",
@@ -23452,7 +25096,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 3 頁第 021 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 3 頁第 021 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-022",
@@ -23492,7 +25143,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 3 頁第 023 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 3 頁第 023 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-024",
@@ -23632,7 +25290,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 3 頁第 030 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 3 頁第 030 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-031",
@@ -24012,7 +25677,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 049 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 049 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-051",
@@ -24032,7 +25709,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 051 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 051 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-052",
@@ -24052,7 +25736,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 052 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 052 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-053",
@@ -24072,7 +25763,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 053 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 053 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-054",
@@ -24112,7 +25810,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 055 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 055 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-056",
@@ -24132,7 +25837,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 056 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 056 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-057",
@@ -24192,7 +25904,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 059 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 059 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-060",
@@ -24212,7 +25931,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 060 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 060 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-061",
@@ -24232,7 +25958,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 061 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 061 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-062",
@@ -24252,7 +25985,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 062 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 062 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-063",
@@ -24272,7 +26012,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 063 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 063 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-064",
@@ -24292,7 +26039,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 064 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 064 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-065",
@@ -24312,7 +26066,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 065 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 065 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-066",
@@ -24332,7 +26093,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 066 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 066 題整理。 法規依據：道路交通安全規則第64條。 補充：體格檢查與健康條件。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第64條",
+        "note": "體格檢查與健康條件"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-067",
@@ -24352,7 +26120,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 067 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 067 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-068",
@@ -24372,7 +26147,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 068 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 068 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-069",
@@ -24392,7 +26174,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 069 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 069 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-070",
@@ -24432,7 +26221,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 071 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 071 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-072",
@@ -24452,7 +26248,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 072 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 072 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-073",
@@ -24552,7 +26355,24 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 077 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 077 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條；道路交通管理處罰條例第16條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記；未依規定辦理變更登記之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第16條",
+        "note": "未依規定辦理變更登記之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-078",
@@ -24572,7 +26392,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 078 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 078 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-079",
@@ -24592,7 +26419,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 079 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 5 頁第 079 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-080",
@@ -24632,7 +26466,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 081 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 081 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-082",
@@ -24672,7 +26513,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 083 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 083 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-084",
@@ -24692,7 +26540,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 084 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 084 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-085",
@@ -24732,7 +26587,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 086 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 086 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-087",
@@ -24752,7 +26614,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 087 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 087 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-088",
@@ -24772,7 +26641,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 088 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 088 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-089",
@@ -24792,7 +26668,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 089 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 089 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-090",
@@ -24872,7 +26755,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 093 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 093 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-094",
@@ -24892,7 +26782,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 094 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 094 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-095",
@@ -24912,7 +26809,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 095 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 095 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-096",
@@ -24932,7 +26836,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 096 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 096 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-097",
@@ -24972,7 +26883,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 098 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 098 題整理。 法規依據：道路交通安全規則第100條。 補充：會車、山路、峻狹坡、夜間會車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第100條",
+        "note": "會車、山路、峻狹坡、夜間會車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-099",
@@ -25012,7 +26930,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 100 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 6 頁第 100 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-101",
@@ -25052,7 +26977,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 102 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 102 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-103",
@@ -25092,7 +27024,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 104 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 104 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-105",
@@ -25132,7 +27071,24 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 106 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 106 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條；道路交通管理處罰條例第16條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記；未依規定辦理變更登記之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第16條",
+        "note": "未依規定辦理變更登記之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-107",
@@ -25152,7 +27108,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 107 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 107 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-108",
@@ -25172,7 +27135,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 108 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 108 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-109",
@@ -25192,7 +27162,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 109 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 109 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-110",
@@ -25212,7 +27189,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 110 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 110 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-111",
@@ -25252,7 +27236,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 112 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 112 題整理。 法規依據：道路交通管理處罰條例第53條。 補充：闖紅燈與紅燈右轉之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第53條",
+        "note": "闖紅燈與紅燈右轉之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-113",
@@ -25272,7 +27263,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 113 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 113 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-114",
@@ -25292,7 +27290,19 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 114 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 114 題整理。 法規依據：高速公路及快速公路交通管制規則第6條；道路交通管理處罰條例第33條。 補充：高速或快速公路行車安全距離；高速或快速公路違反管制規定之處罰。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第6條",
+        "note": "高速或快速公路行車安全距離"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第33條",
+        "note": "高速或快速公路違反管制規定之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-115",
@@ -25332,7 +27342,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 116 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 116 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-117",
@@ -25372,7 +27389,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 118 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 118 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-119",
@@ -25392,7 +27416,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 119 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 119 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-120",
@@ -25412,7 +27448,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 120 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 7 頁第 120 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-121",
@@ -25472,7 +27515,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 123 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 123 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-124",
@@ -25532,7 +27582,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 126 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 126 題整理。 法規依據：道路交通管理處罰條例第35條。 補充：酒駕、拒測與毒駕之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第35條",
+        "note": "酒駕、拒測與毒駕之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-127",
@@ -25572,7 +27629,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 128 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 128 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-129",
@@ -25612,7 +27676,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 130 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 130 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-131",
@@ -25672,7 +27743,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 133 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 133 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-134",
@@ -25692,7 +27770,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 134 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 134 題整理。 法規依據：道路交通安全規則第62條。 補充：不得報考駕照之情形。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第62條",
+        "note": "不得報考駕照之情形"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-135",
@@ -25712,7 +27797,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 135 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 135 題整理。 法規依據：道路交通管理處罰條例第24條。 補充：道路交通安全講習制度。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第24條",
+        "note": "道路交通安全講習制度"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-136",
@@ -25752,7 +27844,19 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 137 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 137 題整理。 法規依據：道路交通安全規則第91條；道路交通安全規則第102條。 補充：起駛、轉彎、變換車道之燈光或手勢；交岔路口左右轉與車道使用。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口左右轉與車道使用"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-138",
@@ -25812,7 +27916,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 140 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 140 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-141",
@@ -25852,7 +27963,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 142 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 142 題整理。 法規依據：高速公路及快速公路交通管制規則第8條。 補充：高速或快速公路車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第8條",
+        "note": "高速或快速公路車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-143",
@@ -25872,7 +27990,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 143 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 143 題整理。 法規依據：道路交通安全規則第97條。 補充：雙向二車道路段行駛及分向線規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第97條",
+        "note": "雙向二車道路段行駛及分向線規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-144",
@@ -25892,7 +28017,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 144 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 144 題整理。 法規依據：道路交通安全規則第97條。 補充：雙向二車道路段行駛及分向線規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第97條",
+        "note": "雙向二車道路段行駛及分向線規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-145",
@@ -25992,7 +28124,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 149 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 149 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-150",
@@ -26012,7 +28151,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 150 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 150 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-151",
@@ -26052,7 +28198,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 152 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 152 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-153",
@@ -26072,7 +28225,19 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 153 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 153 題整理。 法規依據：道路交通安全規則第90條；道路交通管理處罰條例第31-1條。 補充：駕駛中不得手持通訊裝置；手持通訊裝置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得手持通訊裝置"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31-1條",
+        "note": "手持通訊裝置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-154",
@@ -26132,7 +28297,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 156 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 156 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-157",
@@ -26152,7 +28324,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 157 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 9 頁第 157 題整理。 法規依據：道路交通安全規則第100條。 補充：會車、山路、峻狹坡、夜間會車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第100條",
+        "note": "會車、山路、峻狹坡、夜間會車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-158",
@@ -26172,7 +28351,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 158 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 158 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-159",
@@ -26192,7 +28378,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 159 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 159 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-160",
@@ -26252,7 +28445,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 162 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 162 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-163",
@@ -26272,7 +28472,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 163 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 163 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-164",
@@ -26292,7 +28499,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 164 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 164 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-165",
@@ -26332,7 +28546,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 166 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 166 題整理。 法規依據：道路交通安全規則第95條。 補充：未劃設分向設施道路應靠右行駛。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第95條",
+        "note": "未劃設分向設施道路應靠右行駛"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-167",
@@ -26352,7 +28573,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 167 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 167 題整理。 法規依據：道路交通安全規則第97條。 補充：雙向二車道路段行駛及分向線規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第97條",
+        "note": "雙向二車道路段行駛及分向線規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-168",
@@ -26372,7 +28600,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 168 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 168 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-169",
@@ -26392,7 +28627,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 169 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 169 題整理。 法規依據：道路交通安全規則第98條。 補充：同向多車道路段車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第98條",
+        "note": "同向多車道路段車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-170",
@@ -26412,7 +28654,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 170 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 170 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-171",
@@ -26452,7 +28701,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 172 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 172 題整理。 法規依據：高速公路及快速公路交通管制規則第8條。 補充：高速或快速公路車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第8條",
+        "note": "高速或快速公路車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-173",
@@ -26472,7 +28728,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 173 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 173 題整理。 法規依據：道路交通安全規則第110條。 補充：倒車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第110條",
+        "note": "倒車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-174",
@@ -26492,7 +28755,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 174 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 174 題整理。 法規依據：道路交通安全規則第98條。 補充：同向多車道路段車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第98條",
+        "note": "同向多車道路段車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-175",
@@ -26532,7 +28802,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 176 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 176 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-177",
@@ -26552,7 +28829,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 177 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 10 頁第 177 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-178",
@@ -26572,7 +28856,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 178 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 178 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-179",
@@ -26592,7 +28883,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 179 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 179 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-180",
@@ -26632,7 +28930,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 181 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 181 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-182",
@@ -26672,7 +28977,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 183 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 183 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-184",
@@ -26692,7 +29004,19 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 184 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 184 題整理。 法規依據：道路交通安全規則第91條；道路交通安全規則第102條。 補充：起駛、轉彎、變換車道之燈光或手勢；交岔路口左右轉與車道使用。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口左右轉與車道使用"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-185",
@@ -26752,7 +29076,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 187 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 187 題整理。 法規依據：道路交通安全規則第98條。 補充：同向多車道路段車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第98條",
+        "note": "同向多車道路段車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-188",
@@ -26772,7 +29103,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 188 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 188 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-189",
@@ -26792,7 +29130,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 189 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 189 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-190",
@@ -26812,7 +29157,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 190 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 190 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-191",
@@ -26832,7 +29184,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 191 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 191 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-192",
@@ -26852,7 +29211,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 192 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 192 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-193",
@@ -26872,7 +29238,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 193 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 193 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-194",
@@ -26932,7 +29305,19 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 196 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 196 題整理。 法規依據：道路交通安全規則第104條；道路交通管理處罰條例第54條。 補充：平交道通過規則；平交道違規之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第54條",
+        "note": "平交道違規之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-197",
@@ -26952,7 +29337,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 197 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 11 頁第 197 題整理。 法規依據：道路交通安全規則第106條。 補充：迴車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第106條",
+        "note": "迴車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-198",
@@ -26972,7 +29364,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 198 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 198 題整理。 法規依據：道路交通安全規則第97條。 補充：雙向二車道路段行駛及分向線規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第97條",
+        "note": "雙向二車道路段行駛及分向線規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-199",
@@ -26992,7 +29391,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 199 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 199 題整理。 法規依據：道路交通安全規則第106條。 補充：迴車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第106條",
+        "note": "迴車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-200",
@@ -27012,7 +29418,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 200 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 200 題整理。 法規依據：道路交通安全規則第106條。 補充：迴車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第106條",
+        "note": "迴車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-201",
@@ -27092,7 +29505,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 204 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 204 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-205",
@@ -27112,7 +29532,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 205 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 205 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-206",
@@ -27132,7 +29559,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 206 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 206 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-207",
@@ -27152,7 +29586,19 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 207 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 207 題整理。 法規依據：道路交通安全規則第104條；道路交通管理處罰條例第54條。 補充：平交道通過規則；平交道違規之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第54條",
+        "note": "平交道違規之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-208",
@@ -27172,7 +29618,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 208 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 208 題整理。 法規依據：道路交通安全規則第110條。 補充：倒車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第110條",
+        "note": "倒車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-209",
@@ -27192,7 +29645,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 209 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 209 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-210",
@@ -27232,7 +29692,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 211 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 211 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-212",
@@ -27252,7 +29719,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 212 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 212 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-213",
@@ -27272,7 +29746,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 213 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 213 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-214",
@@ -27292,7 +29773,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 214 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 214 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-215",
@@ -27332,7 +29825,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 216 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 216 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-217",
@@ -27352,7 +29857,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 217 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 12 頁第 217 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-218",
@@ -27372,7 +29884,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 218 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 218 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-219",
@@ -27392,7 +29911,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 219 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 219 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-220",
@@ -27432,7 +29958,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 221 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 221 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-222",
@@ -27452,7 +29985,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 222 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 222 題整理。 法規依據：道路交通安全規則第84條。 補充：危險物品裝載及警示規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-223",
@@ -27512,7 +30052,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 225 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 225 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-226",
@@ -27532,7 +30079,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 226 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 226 題整理。 法規依據：道路交通安全規則第60條；道路交通安全規則第61條。 補充：考領各級駕照之資格與年齡；持照得駕駛之車種範圍。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第60條",
+        "note": "考領各級駕照之資格與年齡"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第61條",
+        "note": "持照得駕駛之車種範圍"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-227",
@@ -27552,7 +30111,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 227 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 227 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-228",
@@ -27572,7 +30138,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 228 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 228 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-229",
@@ -27612,7 +30185,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 230 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 230 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-231",
@@ -27632,7 +30212,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 231 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 231 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-232",
@@ -27652,7 +30239,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 232 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 232 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-233",
@@ -27672,7 +30266,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 233 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 233 題整理。 法規依據：道路交通管理處罰條例第24條。 補充：道路交通安全講習制度。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第24條",
+        "note": "道路交通安全講習制度"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-234",
@@ -27692,7 +30293,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 234 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 234 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-235",
@@ -27712,7 +30320,19 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 235 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 13 頁第 235 題整理。 法規依據：道路交通安全規則第91條；道路交通安全規則第102條。 補充：起駛、轉彎、變換車道之燈光或手勢；交岔路口左右轉與車道使用。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口左右轉與車道使用"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-236",
@@ -27732,7 +30352,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 236 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 236 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-237",
@@ -27752,7 +30379,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 237 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 237 題整理。 法規依據：道路交通管理處罰條例第3條。 補充：道路、臨時停車及停車之定義。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第3條",
+        "note": "道路、臨時停車及停車之定義"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-238",
@@ -27772,7 +30406,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 238 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 238 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-239",
@@ -27792,7 +30433,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 239 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 239 題整理。 法規依據：道路交通管理處罰條例第35條。 補充：酒駕、拒測與毒駕之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第35條",
+        "note": "酒駕、拒測與毒駕之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-240",
@@ -27812,7 +30460,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 240 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 240 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-241",
@@ -27832,7 +30492,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 241 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 241 題整理。 法規依據：道路交通安全規則第90條；道路交通管理處罰條例第31-1條。 補充：駕駛中不得手持通訊裝置；手持通訊裝置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得手持通訊裝置"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31-1條",
+        "note": "手持通訊裝置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-242",
@@ -27850,7 +30522,14 @@ window.QUESTION_BANK = [
       "page": 14,
       "questionNo": "242"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 242 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 242 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-243",
@@ -27910,7 +30589,24 @@ window.QUESTION_BANK = [
       "topicCode": "05",
       "topicLabel": "注意大型車行駛及轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 245 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 245 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條；道路交通管理處罰條例第16條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記；未依規定辦理變更登記之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第16條",
+        "note": "未依規定辦理變更登記之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-246",
@@ -27930,7 +30626,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 246 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 246 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-247",
@@ -27950,7 +30653,24 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 247 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 247 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條；道路交通管理處罰條例第16條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記；未依規定辦理變更登記之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第16條",
+        "note": "未依規定辦理變更登記之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-248",
@@ -28010,7 +30730,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 250 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 250 題整理。 法規依據：道路交通管理處罰條例第53條。 補充：闖紅燈與紅燈右轉之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第53條",
+        "note": "闖紅燈與紅燈右轉之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-251",
@@ -28030,7 +30757,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 251 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 251 題整理。 法規依據：道路交通安全規則第106條。 補充：迴車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第106條",
+        "note": "迴車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-252",
@@ -28050,7 +30784,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 252 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 252 題整理。 法規依據：道路交通安全規則第106條。 補充：迴車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第106條",
+        "note": "迴車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-253",
@@ -28070,7 +30811,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 253 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 253 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-254",
@@ -28110,7 +30858,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 255 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 255 題整理。 法規依據：道路交通管理處罰條例第35條。 補充：酒駕、拒測與毒駕之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第35條",
+        "note": "酒駕、拒測與毒駕之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-256",
@@ -28150,7 +30905,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 257 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 257 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-258",
@@ -28170,7 +30932,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 258 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 258 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-259",
@@ -28230,7 +30999,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 261 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 261 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-262",
@@ -28290,7 +31066,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 264 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 264 題整理。 法規依據：高速公路及快速公路交通管制規則第9條。 補充：高速或快速公路禁止事項。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第9條",
+        "note": "高速或快速公路禁止事項"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-265",
@@ -28310,7 +31093,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 265 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 265 題整理。 法規依據：道路交通管理處罰條例第43條。 補充：危險駕駛、競駛、超速40公里以上或噪音車之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第43條",
+        "note": "危險駕駛、競駛、超速40公里以上或噪音車之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-266",
@@ -28330,7 +31120,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 266 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 266 題整理。 法規依據：高速公路及快速公路交通管制規則第9條。 補充：高速或快速公路禁止事項。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第9條",
+        "note": "高速或快速公路禁止事項"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-267",
@@ -28350,7 +31147,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 267 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 267 題整理。 法規依據：高速公路及快速公路交通管制規則第2條。 補充：高速公路、匝道、主線車道等名詞定義。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第2條",
+        "note": "高速公路、匝道、主線車道等名詞定義"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-268",
@@ -28370,7 +31174,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 268 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 268 題整理。 法規依據：高速公路及快速公路交通管制規則第2條。 補充：高速公路、匝道、主線車道等名詞定義。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第2條",
+        "note": "高速公路、匝道、主線車道等名詞定義"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-269",
@@ -28410,7 +31221,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 270 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 270 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-271",
@@ -28430,7 +31248,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 271 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 271 題整理。 法規依據：高速公路及快速公路交通管制規則第2條。 補充：高速公路、匝道、主線車道等名詞定義。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第2條",
+        "note": "高速公路、匝道、主線車道等名詞定義"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-272",
@@ -28450,7 +31275,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 272 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 272 題整理。 法規依據：高速公路及快速公路交通管制規則第9條。 補充：高速或快速公路禁止事項。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第9條",
+        "note": "高速或快速公路禁止事項"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-273",
@@ -28470,7 +31302,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 273 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 273 題整理。 法規依據：高速公路及快速公路交通管制規則第9條。 補充：高速或快速公路禁止事項。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第9條",
+        "note": "高速或快速公路禁止事項"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-274",
@@ -28510,7 +31349,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 275 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 275 題整理。 法規依據：高速公路及快速公路交通管制規則第2條。 補充：高速公路、匝道、主線車道等名詞定義。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第2條",
+        "note": "高速公路、匝道、主線車道等名詞定義"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-276",
@@ -28530,7 +31376,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 276 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 276 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-277",
@@ -28550,7 +31403,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 277 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 277 題整理。 法規依據：高速公路及快速公路交通管制規則第2條。 補充：高速公路、匝道、主線車道等名詞定義。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第2條",
+        "note": "高速公路、匝道、主線車道等名詞定義"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-278",
@@ -28570,7 +31430,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 278 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 278 題整理。 法規依據：高速公路及快速公路交通管制規則第9條。 補充：高速或快速公路禁止事項。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第9條",
+        "note": "高速或快速公路禁止事項"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-279",
@@ -28610,7 +31477,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 280 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 280 題整理。 法規依據：高速公路及快速公路交通管制規則第12條。 補充：高速或快速公路停車與路肩暫停規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第12條",
+        "note": "高速或快速公路停車與路肩暫停規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-281",
@@ -28650,7 +31524,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 282 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 282 題整理。 法規依據：高速公路及快速公路交通管制規則第12條。 補充：高速或快速公路停車與路肩暫停規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第12條",
+        "note": "高速或快速公路停車與路肩暫停規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-283",
@@ -28690,7 +31571,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 284 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 284 題整理。 法規依據：高速公路及快速公路交通管制規則第2條。 補充：高速公路、匝道、主線車道等名詞定義。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第2條",
+        "note": "高速公路、匝道、主線車道等名詞定義"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-285",
@@ -28710,7 +31598,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 285 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 285 題整理。 法規依據：道路交通安全規則第110條。 補充：倒車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第110條",
+        "note": "倒車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-286",
@@ -28808,7 +31703,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 290 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 290 題整理。 法規依據：高速公路及快速公路交通管制規則第5條。 補充：高速或快速公路速限及低能見度行車。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第5條",
+        "note": "高速或快速公路速限及低能見度行車"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-291",
@@ -28828,7 +31730,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 291 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 16 頁第 291 題整理。 法規依據：高速公路及快速公路交通管制規則第14條。 補充：上高速或快速公路前檢查車況及途中不得缺水缺電缺燃料。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第14條",
+        "note": "上高速或快速公路前檢查車況及途中不得缺水缺電缺燃料"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-292",
@@ -28868,7 +31777,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 293 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 293 題整理。 法規依據：高速公路及快速公路交通管制規則第8條。 補充：高速或快速公路車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第8條",
+        "note": "高速或快速公路車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-294",
@@ -28888,7 +31804,19 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 294 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 294 題整理。 法規依據：高速公路及快速公路交通管制規則第8條；高速公路及快速公路交通管制規則第9條。 補充：高速或快速公路車道使用規則；高速或快速公路禁止事項。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第8條",
+        "note": "高速或快速公路車道使用規則"
+      },
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第9條",
+        "note": "高速或快速公路禁止事項"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-295",
@@ -28948,7 +31876,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 297 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 297 題整理。 法規依據：高速公路及快速公路交通管制規則第5條。 補充：高速或快速公路速限及低能見度行車。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第5條",
+        "note": "高速或快速公路速限及低能見度行車"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-298",
@@ -28968,7 +31903,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 298 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 298 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-299",
@@ -28988,7 +31930,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 299 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 299 題整理。 法規依據：道路交通管理處罰條例第43條。 補充：危險駕駛、競駛、超速40公里以上或噪音車之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第43條",
+        "note": "危險駕駛、競駛、超速40公里以上或噪音車之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-300",
@@ -29128,7 +32077,19 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 306 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 306 題整理。 法規依據：高速公路及快速公路交通管制規則第7條；高速公路及快速公路交通管制規則第11條。 補充：由交流道或匝道進入主線之規則；高速或快速公路變換車道規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第7條",
+        "note": "由交流道或匝道進入主線之規則"
+      },
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第11條",
+        "note": "高速或快速公路變換車道規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-307",
@@ -29168,7 +32129,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 308 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 308 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-309",
@@ -29188,7 +32156,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 309 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 309 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-310",
@@ -29208,7 +32183,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 310 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 17 頁第 310 題整理。 法規依據：高速公路及快速公路交通管制規則第6條。 補充：高速或快速公路行車安全距離。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第6條",
+        "note": "高速或快速公路行車安全距離"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-311",
@@ -29228,7 +32210,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 311 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 311 題整理。 法規依據：道路交通安全規則第110條。 補充：倒車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第110條",
+        "note": "倒車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-312",
@@ -29248,7 +32237,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 312 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 312 題整理。 法規依據：高速公路及快速公路交通管制規則第11條。 補充：高速或快速公路變換車道規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第11條",
+        "note": "高速或快速公路變換車道規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-313",
@@ -29268,7 +32264,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 313 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 313 題整理。 法規依據：道路交通安全規則第84條。 補充：危險物品裝載及警示規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-314",
@@ -29288,7 +32291,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 314 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 314 題整理。 法規依據：道路交通安全規則第84條。 補充：危險物品裝載及警示規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第84條",
+        "note": "危險物品裝載及警示規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-315",
@@ -29308,7 +32318,19 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 315 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 315 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-316",
@@ -29348,7 +32370,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 317 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 317 題整理。 法規依據：道路交通安全規則第110條。 補充：倒車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第110條",
+        "note": "倒車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-318",
@@ -29368,7 +32397,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 318 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 318 題整理。 法規依據：道路交通管理處罰條例第43條。 補充：危險駕駛、競駛、超速40公里以上或噪音車之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第43條",
+        "note": "危險駕駛、競駛、超速40公里以上或噪音車之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-319",
@@ -29428,7 +32464,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 321 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 321 題整理。 法規依據：高速公路及快速公路交通管制規則第8條。 補充：高速或快速公路車道使用規則。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第8條",
+        "note": "高速或快速公路車道使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-322",
@@ -29448,7 +32491,19 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 322 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 322 題整理。 法規依據：高速公路及快速公路交通管制規則第8條；高速公路及快速公路交通管制規則第9條。 補充：高速或快速公路車道使用規則；高速或快速公路禁止事項。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第8條",
+        "note": "高速或快速公路車道使用規則"
+      },
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第9條",
+        "note": "高速或快速公路禁止事項"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-323",
@@ -29488,7 +32543,19 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 324 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 324 題整理。 法規依據：道路交通安全規則第77條；道路交通管理處罰條例第29條。 補充：裝載貨物之長寬高及乘載規定；超限裝載、超重或未依規定過磅之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第29條",
+        "note": "超限裝載、超重或未依規定過磅之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-325",
@@ -29508,7 +32575,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 325 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 325 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-326",
@@ -29528,7 +32602,19 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 326 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 326 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-327",
@@ -29568,7 +32654,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 328 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 18 頁第 328 題整理。 法規依據：高速公路及快速公路交通管制規則第9條。 補充：高速或快速公路禁止事項。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第9條",
+        "note": "高速或快速公路禁止事項"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-329",
@@ -29668,7 +32761,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 333 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 333 題整理。 法規依據：高速公路及快速公路交通管制規則第6條。 補充：高速或快速公路行車安全距離。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第6條",
+        "note": "高速或快速公路行車安全距離"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-334",
@@ -29708,7 +32808,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 335 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 335 題整理。 法規依據：高速公路及快速公路交通管制規則第6條。 補充：高速或快速公路行車安全距離。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第6條",
+        "note": "高速或快速公路行車安全距離"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-336",
@@ -29748,7 +32855,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 337 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 337 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-338",
@@ -29908,7 +33022,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 345 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 345 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-346",
@@ -29948,7 +33069,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 347 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 347 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-348",
@@ -29968,7 +33096,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 348 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 19 頁第 348 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-349",
@@ -29988,7 +33128,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 349 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 349 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-350",
@@ -30008,7 +33160,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 350 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 350 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-351",
@@ -30028,7 +33192,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 351 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 351 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-352",
@@ -30048,7 +33219,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 352 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 352 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-353",
@@ -30108,7 +33286,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 355 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 355 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-356",
@@ -30148,7 +33333,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 357 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 357 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-358",
@@ -30168,7 +33360,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 358 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 358 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-359",
@@ -30188,7 +33387,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 359 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 20 頁第 359 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-360",
@@ -30388,7 +33594,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 369 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 369 題整理。 法規依據：道路交通管理處罰條例第31條。 補充：未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-370",
@@ -30488,7 +33701,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 374 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 374 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-375",
@@ -30508,7 +33728,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 375 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 375 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-376",
@@ -30528,7 +33755,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 376 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 376 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-377",
@@ -30548,7 +33782,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 377 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 377 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-378",
@@ -30568,7 +33809,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 378 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 378 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-379",
@@ -30608,7 +33856,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 380 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 380 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-381",
@@ -30708,7 +33963,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 22 頁第 385 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 22 頁第 385 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-386",
@@ -30768,7 +34030,19 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 22 頁第 388 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 22 頁第 388 題整理。 法規依據：道路交通安全規則第102條；道路交通管理處罰條例第53條。 補充：交岔路口轉彎、號誌、指揮與讓車規則；闖紅燈與紅燈右轉之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第53條",
+        "note": "闖紅燈與紅燈右轉之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-389",
@@ -30868,7 +34142,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 22 頁第 393 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 22 頁第 393 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-394",
@@ -31068,7 +34349,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 23 頁第 403 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 23 頁第 403 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-404",
@@ -31188,7 +34481,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 23 頁第 409 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 23 頁第 409 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-410",
@@ -31248,7 +34548,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 23 頁第 412 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 23 頁第 412 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-413",
@@ -31488,7 +34800,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 424 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 424 題整理。 法規依據：道路交通管理處罰條例第43條。 補充：危險駕駛、競駛、超速40公里以上或噪音車之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第43條",
+        "note": "危險駕駛、競駛、超速40公里以上或噪音車之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-425",
@@ -31688,7 +35007,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 434 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 434 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-435",
@@ -31708,7 +35034,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 435 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 435 題整理。 法規依據：道路交通管理處罰條例第43條。 補充：危險駕駛、競駛、超速40公里以上或噪音車之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第43條",
+        "note": "危險駕駛、競駛、超速40公里以上或噪音車之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-436",
@@ -31728,7 +35061,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 436 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 436 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-437",
@@ -31768,7 +35108,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 438 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 24 頁第 438 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-439",
@@ -31808,7 +35155,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 440 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 440 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-441",
@@ -31848,7 +35202,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 442 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 442 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-443",
@@ -31868,7 +35229,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 443 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 443 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-444",
@@ -31888,7 +35256,14 @@ window.QUESTION_BANK = [
       "topicCode": "05",
       "topicLabel": "注意大型車行駛及轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 444 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 444 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-445",
@@ -31908,7 +35283,19 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 445 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 445 題整理。 法規依據：道路交通安全規則第91條；道路交通安全規則第102條。 補充：起駛、轉彎、變換車道之燈光或手勢；交岔路口左右轉與車道使用。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口左右轉與車道使用"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-446",
@@ -31948,7 +35335,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 447 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 447 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-448",
@@ -32008,7 +35402,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 450 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 450 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-451",
@@ -32028,7 +35429,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 451 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 451 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-452",
@@ -32068,7 +35476,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 453 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 453 題整理。 法規依據：道路交通安全規則第97條。 補充：雙向二車道路段行駛及分向線規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第97條",
+        "note": "雙向二車道路段行駛及分向線規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-454",
@@ -32088,7 +35503,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 454 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 454 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-455",
@@ -32108,7 +35530,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 455 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 455 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-456",
@@ -32148,7 +35577,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 457 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 25 頁第 457 題整理。 法規依據：道路交通安全規則第91條。 補充：起駛、轉彎、變換車道之燈光或手勢。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第91條",
+        "note": "起駛、轉彎、變換車道之燈光或手勢"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-458",
@@ -32208,7 +35644,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 460 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 460 題整理。 法規依據：道路交通安全規則第110條。 補充：倒車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第110條",
+        "note": "倒車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-461",
@@ -32228,7 +35671,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 461 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 461 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-462",
@@ -32268,7 +35718,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 463 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 463 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-464",
@@ -32288,7 +35745,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 464 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 464 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-465",
@@ -32348,7 +35812,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 467 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 467 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-468",
@@ -32628,7 +36099,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 27 頁第 481 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 27 頁第 481 題整理。 法規依據：道路交通安全規則第112條。 補充：停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第112條",
+        "note": "停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-482",
@@ -33648,7 +37126,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 532 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 532 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-533",
@@ -33668,7 +37158,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 533 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 533 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-534",
@@ -33688,7 +37190,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 534 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 534 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-535",
@@ -33708,7 +37222,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 535 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 535 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-536",
@@ -33728,7 +37254,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 536 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 536 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-537",
@@ -33748,7 +37286,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 537 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 537 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-538",
@@ -33768,7 +37318,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 538 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 29 頁第 538 題整理。 法規依據：道路交通安全規則第89條；道路交通管理處罰條例第31條。 補充：安全帶與起駛前安全檢查；未繫安全帶、兒童乘坐安全及留置車內之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "安全帶與起駛前安全檢查"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "note": "未繫安全帶、兒童乘坐安全及留置車內之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-539",
@@ -33908,7 +37470,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 30 頁第 545 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 30 頁第 545 題整理。 法規依據：道路交通安全規則第110條。 補充：倒車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第110條",
+        "note": "倒車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-546",
@@ -34348,7 +37917,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 567 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 567 題整理。 法規依據：道路交通事故處理辦法第3條。 補充：事故現場警示、救護、標繪與移置規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-568",
@@ -34428,7 +38004,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 571 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 571 題整理。 法規依據：高速公路及快速公路交通管制規則第16條。 補充：長隧道行駛、安全距離與事故處置。",
+    "lawBasis": [
+      {
+        "law": "高速公路及快速公路交通管制規則",
+        "article": "第16條",
+        "note": "長隧道行駛、安全距離與事故處置"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-572",
@@ -34468,7 +38051,19 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 573 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 573 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-574",
@@ -34488,7 +38083,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 574 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 574 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-575",
@@ -34508,7 +38110,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 575 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 575 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-576",
@@ -34528,7 +38142,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 576 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 576 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-577",
@@ -34548,7 +38174,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 577 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 577 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-578",
@@ -34568,7 +38201,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 578 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 578 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-579",
@@ -34588,7 +38228,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 579 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 31 頁第 579 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-580",
@@ -34608,7 +38255,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 580 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 580 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-581",
@@ -34628,7 +38282,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 581 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 581 題整理。 法規依據：道路交通安全規則第60條。 補充：考領各級駕照之資格與年齡。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第60條",
+        "note": "考領各級駕照之資格與年齡"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-582",
@@ -34668,7 +38329,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 583 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 583 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-584",
@@ -34688,7 +38356,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 584 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 584 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-585",
@@ -34708,7 +38383,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 585 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 585 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-586",
@@ -34728,7 +38410,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 586 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 586 題整理。 法規依據：道路交通安全規則第111條。 補充：臨時停車地點與方式。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-587",
@@ -34748,7 +38437,19 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 587 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 587 題整理。 法規依據：道路交通安全規則第111條；道路交通管理處罰條例第55條。 補充：臨時停車地點與方式；臨時停車違規之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第111條",
+        "note": "臨時停車地點與方式"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第55條",
+        "note": "臨時停車違規之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-588",
@@ -34768,7 +38469,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 588 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 588 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-589",
@@ -34788,7 +38496,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 589 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 589 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-590",
@@ -34808,7 +38523,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 590 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 590 題整理。 法規依據：道路交通安全規則第97條。 補充：雙向二車道路段行駛及分向線規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第97條",
+        "note": "雙向二車道路段行駛及分向線規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-591",
@@ -34828,7 +38550,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 591 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 591 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-592",
@@ -34848,7 +38577,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 592 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 592 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-593",
@@ -34868,7 +38604,14 @@ window.QUESTION_BANK = [
       "topicCode": "02",
       "topicLabel": "轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 593 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 593 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-594",
@@ -34888,7 +38631,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 594 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 594 題整理。 法規依據：道路交通安全規則第103條。 補充：行近行人穿越道應暫停讓行人。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第103條",
+        "note": "行近行人穿越道應暫停讓行人"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-595",
@@ -34948,7 +38698,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 597 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 597 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-598",
@@ -34968,7 +38725,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 598 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 32 頁第 598 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-599",
@@ -35008,7 +38772,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 600 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 600 題整理。 法規依據：道路交通安全規則第101條。 補充：超車規則與禁止超車路段。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第101條",
+        "note": "超車規則與禁止超車路段"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-601",
@@ -35048,7 +38819,14 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 602 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 602 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-603",
@@ -35068,7 +38846,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 603 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 603 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-604",
@@ -35088,7 +38873,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 604 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 604 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-605",
@@ -35108,7 +38900,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 605 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 605 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-606",
@@ -35148,7 +38947,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 607 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 607 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-608",
@@ -35188,7 +38999,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 609 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 609 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-610",
@@ -35228,7 +39046,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 611 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 611 題整理。 法規依據：道路交通安全規則第110條。 補充：倒車之禁止地點與程序。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第110條",
+        "note": "倒車之禁止地點與程序"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-612",
@@ -35268,7 +39093,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 613 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 33 頁第 613 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-614",
@@ -35288,7 +39120,19 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 614 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 614 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-615",
@@ -35308,7 +39152,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 615 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 615 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-616",
@@ -35348,7 +39199,19 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 617 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 617 題整理。 法規依據：道路交通安全規則第90條；道路交通管理處罰條例第31-1條。 補充：駕駛中不得手持通訊裝置；手持通訊裝置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得手持通訊裝置"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31-1條",
+        "note": "手持通訊裝置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-618",
@@ -35368,7 +39231,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 618 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 618 題整理。 法規依據：道路交通管理處罰條例第35條。 補充：酒駕、拒測與毒駕之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第35條",
+        "note": "酒駕、拒測與毒駕之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-619",
@@ -35408,7 +39278,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 620 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 620 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-621",
@@ -35428,7 +39305,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 621 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 621 題整理。 法規依據：道路交通安全規則第104條。 補充：平交道通過規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第104條",
+        "note": "平交道通過規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-622",
@@ -35448,7 +39332,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 622 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 622 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-623",
@@ -35528,7 +39419,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 626 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 626 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-627",
@@ -35548,7 +39446,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 627 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 34 頁第 627 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-628",
@@ -35628,7 +39533,14 @@ window.QUESTION_BANK = [
       "topicCode": "09",
       "topicLabel": "行車檢查"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 631 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 631 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前應關閉視線範圍內娛樂性顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前應關閉視線範圍內娛樂性顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-632",
@@ -35648,7 +39560,14 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 632 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 632 題整理。 法規依據：道路交通安全規則第90條。 補充：駕駛中不得操作或觀看有礙安全之顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得操作或觀看有礙安全之顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-633",
@@ -35668,7 +39587,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 633 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 633 題整理。 法規依據：道路交通安全規則第94條；道路交通安全規則第102條。 補充：大眾捷運系統車輛共用通行之避讓；共用通行交岔路口之通行規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第94條",
+        "note": "大眾捷運系統車輛共用通行之避讓"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "共用通行交岔路口之通行規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-634",
@@ -35688,7 +39619,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 634 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 634 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-635",
@@ -35708,7 +39646,14 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 635 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 635 題整理。 法規依據：道路交通安全規則第102條。 補充：交岔路口轉彎、號誌、指揮與讓車規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "交岔路口轉彎、號誌、指揮與讓車規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-636",
@@ -35788,7 +39733,14 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 641 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 641 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-642",
@@ -35808,7 +39760,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 642 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 35 頁第 642 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-643",
@@ -35868,7 +39832,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 645 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 645 題整理。 法規依據：道路交通事故處理辦法第3條；道路交通管理處罰條例第62條。 補充：事故現場警示、救護、標繪與移置規則；無人傷亡事故未依規定處置或未標繪移置之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通事故處理辦法",
+        "article": "第3條",
+        "note": "事故現場警示、救護、標繪與移置規則"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第62條",
+        "note": "無人傷亡事故未依規定處置或未標繪移置之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-646",
@@ -35888,7 +39864,14 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 646 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 646 題整理。 法規依據：道路交通管理處罰條例第12條。 補充：牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第12條",
+        "note": "牌照、號牌、報廢車、拼裝車或冒用牌照上路之處罰"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-647",
@@ -35928,7 +39911,19 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 648 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 648 題整理。 法規依據：道路交通安全規則第94條；道路交通安全規則第102條。 補充：大眾捷運系統車輛共用通行之避讓；共用通行交岔路口之通行規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第94條",
+        "note": "大眾捷運系統車輛共用通行之避讓"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第102條",
+        "note": "共用通行交岔路口之通行規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-649",
@@ -36048,7 +40043,19 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 654 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 654 題整理。 法規依據：道路交通安全規則第23條；道路交通安全規則第24條。 補充：車輛異動登記項目；車籍、所有人或地址等變更登記。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第23條",
+        "note": "車輛異動登記項目"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第24條",
+        "note": "車籍、所有人或地址等變更登記"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-655",
@@ -36068,7 +40075,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 655 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 655 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前安全檢查與證件攜帶規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前安全檢查與證件攜帶規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-656",
@@ -36128,7 +40142,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 658 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 658 題整理。 法規依據：道路交通安全規則第90條。 補充：駕駛中不得操作或觀看有礙安全之顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得操作或觀看有礙安全之顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-659",
@@ -36148,7 +40169,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 37 頁第 659 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 37 頁第 659 題整理。 法規依據：道路交通安全規則第90條。 補充：駕駛中不得操作或觀看有礙安全之顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得操作或觀看有礙安全之顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-660",
@@ -36168,7 +40196,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 37 頁第 660 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 37 頁第 660 題整理。 法規依據：道路交通安全規則第90條。 補充：駕駛中不得操作或觀看有礙安全之顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得操作或觀看有礙安全之顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-661",
@@ -36188,7 +40223,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 37 頁第 661 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 37 頁第 661 題整理。 法規依據：道路交通安全規則第90條。 補充：駕駛中不得操作或觀看有礙安全之顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第90條",
+        "note": "駕駛中不得操作或觀看有礙安全之顯示設備"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-662",
@@ -36208,7 +40250,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 37 頁第 662 題整理。"
+    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 37 頁第 662 題整理。 法規依據：道路交通安全規則第89條。 補充：起駛前應關閉視線範圍內娛樂性顯示設備。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第89條",
+        "note": "起駛前應關閉視線範圍內娛樂性顯示設備"
+      }
+    ]
   },
   {
     "id": "tf-002",
@@ -38572,7 +42621,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 052 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 052 題整理。 法規依據：道路交通安全規則第60條。 補充：考領各級駕照之資格與年齡。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第60條",
+        "note": "考領各級駕照之資格與年齡"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-053",
@@ -38593,7 +42649,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 053 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 053 題整理。 法規依據：道路交通安全規則第60條。 補充：考領各級駕照之資格與年齡。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第60條",
+        "note": "考領各級駕照之資格與年齡"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-065",
@@ -38635,7 +42698,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 079 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 7 頁第 079 題整理。 法規依據：道路交通安全規則第56條；道路交通安全規則第57條。 補充：學習駕駛證之使用範圍；申請學習駕駛證之資格。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第56條",
+        "note": "學習駕駛證之使用範圍"
+      },
+      {
+        "law": "道路交通安全規則",
+        "article": "第57條",
+        "note": "申請學習駕駛證之資格"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-092",
@@ -38698,7 +42773,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 097 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 8 頁第 097 題整理。 法規依據：道路交通安全規則第77條。 補充：裝載貨物之長寬高及乘載規定。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第77條",
+        "note": "裝載貨物之長寬高及乘載規定"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-099",
@@ -38740,7 +42822,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 108 題整理。"
+    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 9 頁第 108 題整理。 法規依據：道路交通安全規則第109條。 補充：夜間及隧道燈光使用規則。",
+    "lawBasis": [
+      {
+        "law": "道路交通安全規則",
+        "article": "第109條",
+        "note": "夜間及隧道燈光使用規則"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-362",
