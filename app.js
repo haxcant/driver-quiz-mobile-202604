@@ -3052,6 +3052,25 @@ function buildOfficialFallbackExplanation(question, keywords) {
   return null;
 }
 
+function buildLawBasisHtml(question) {
+  const basis = Array.isArray(question?.lawBasis) ? question.lawBasis.filter(Boolean) : [];
+  if (!basis.length) return "";
+  const items = basis.map((item) => {
+    const law = escapeHtml(item?.law || "");
+    const article = escapeHtml(item?.article || "");
+    const paragraph = escapeHtml(item?.paragraph || "");
+    const note = escapeHtml(item?.note || item?.penaltyStandard || "");
+    const head = [law, article, paragraph].filter(Boolean).join(" ");
+    return `<li><strong>${head}</strong>${note ? `：${note}` : ""}</li>`;
+  }).join("");
+  return `
+      <div class="feedback-explanation-block handbook-block law-basis-block">
+        <div class="feedback-explanation-title">法規條文／裁罰基準</div>
+        <ul style="margin:0; padding-left:1.1rem;">${items}</ul>
+      </div>
+    `;
+}
+
 function buildAnswerExplanationHtml(question) {
   const parts = [];
   const base = getBaseExplanationText(question);
@@ -3067,6 +3086,9 @@ function buildAnswerExplanationHtml(question) {
       </div>
     `);
   }
+
+  const lawBasisHtml = buildLawBasisHtml(question);
+  if (lawBasisHtml) parts.push(lawBasisHtml);
 
   if (handbook) {
     const safeKeyword = handbook.keyword && !isGenericKeyword(handbook.keyword) ? handbook.keyword : "";
@@ -3097,6 +3119,12 @@ function buildAnswerExplanationHtml(question) {
       </div>
     `);
   }
+
+  parts.push(`
+    <div class="answer-explanation-inline-note" style="margin-top:6px; color:var(--muted,#6b7280); font-size:12px; line-height:1.5;">
+      <small>註：題目眾多，目前僅提供簡易解答、手冊摘要與法規提示；內容可能因題意、題庫版本、關鍵詞對應或法規更新而不完全匹配。若有疑義，請以官方題庫、全國法規資料庫及監理機關公告為準。</small>
+    </div>
+  `);
 
   parts.push(`
     <div class="feedback-explanation-block handbook-block search-tool-block">
