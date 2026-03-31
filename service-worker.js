@@ -1,9 +1,9 @@
-const CACHE_NAME = "driver-quiz-pwa-v20-merge-modes";
+const CACHE_NAME = "driver-quiz-pwa-v20-3-consistent";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./app.js?v=20260331v200",
+  "./app.js?v=20260331v203",
   "./questions.js",
   "./handbook_explanations.js",
   "./handbook_pages.js",
@@ -11,8 +11,8 @@ const CORE_ASSETS = [
   "./firebase-init.js",
   "./firebase-auth.js?v=20260330stable",
   "./firebase-sync-smoke.js?v=20260330stable",
-  "./firebase-backup.js?v=20260331v200",
-  "./firebase-ui.js?v=20260331v200",
+  "./firebase-backup.js?v=20260331v203",
+  "./firebase-ui.js?v=20260331v203",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];

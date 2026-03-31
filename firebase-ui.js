@@ -154,7 +154,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     modules = {
       auth: await import("./firebase-auth.js?v=20260330stable"),
       smoke: await import("./firebase-sync-smoke.js?v=20260330stable"),
-      backup: await import("./firebase-backup.js?v=20260330stable"),
+      backup: await import("./firebase-backup.js?v=20260331v203"),
     };
   } catch (err) {
     console.error("firebase modules import failed", err);
@@ -183,12 +183,18 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   if (btnLogin) {
     btnLogin.addEventListener("click", async () => {
+      const oldText = btnLogin.textContent;
       try {
-        setOutput("登入中...若手機沒有彈出 Google 視窗，請允許彈出視窗，或改用桌面瀏覽器登入。");
+        btnLogin.disabled = true;
+        btnLogin.textContent = "登入中...";
+        setOutput("登入中...若手機沒有彈出 Google 視窗，請允許彈出視窗；若仍無反應，請稍後再按一次或先重新整理頁面。");
         await loginWithGoogle();
       } catch (err) {
         console.error(err);
         setOutput("Google 登入失敗：" + (err?.message || String(err)));
+      } finally {
+        btnLogin.disabled = false;
+        btnLogin.textContent = oldText;
       }
     });
   }
