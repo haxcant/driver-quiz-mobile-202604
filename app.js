@@ -575,7 +575,7 @@ const HANDBOOK_RULES = [
     const scopedCount = getScopedQuestions(scope).length;
     const totalCount = ALL_QUESTIONS.length;
     if (els.versionSummary) {
-      els.versionSummary.textContent = `v20.6｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
+      els.versionSummary.textContent = `v20.7｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
     }
     if (els.scopeSummary) {
       els.scopeSummary.textContent = EXAM_SCOPE_DESCRIPTIONS[scope] || "";
@@ -2144,8 +2144,8 @@ function renderWrongBook() {
       scoreFilterOperator: data.scoreFilterOperator || base.scoreFilterOperator || "any",
       scoreFilterValue: sanitizeInteger(data.scoreFilterValue, base.scoreFilterValue ?? 0),
       answerTimeLimitSec: sanitizeNonNegativeNumber(data.answerTimeLimitSec, base.answerTimeLimitSec ?? 15),
-      autoNextCorrectDelaySec: sanitizeNonNegativeNumber(data.autoNextCorrectDelaySec, data.autoNextDelaySec, base.autoNextCorrectDelaySec ?? 1),
-      autoNextWrongDelaySec: sanitizeNonNegativeNumber(data.autoNextWrongDelaySec, data.autoNextDelaySec, base.autoNextWrongDelaySec ?? 4),
+      autoNextCorrectDelaySec: resolveAutoNextDelayValue(data, "autoNextCorrectDelaySec", "autoNextDelaySec", base.autoNextCorrectDelaySec ?? 1),
+      autoNextWrongDelaySec: resolveAutoNextDelayValue(data, "autoNextWrongDelaySec", "autoNextDelaySec", base.autoNextWrongDelaySec ?? 4),
       soundVolumePct: sanitizeNonNegativeNumber(data.soundVolumePct, base.soundVolumePct ?? 180),
       shortcutOption1: normalizeShortcutSetting(data.shortcutOption1, base.shortcutOption1 || "1"),
       shortcutOption2: normalizeShortcutSetting(data.shortcutOption2, base.shortcutOption2 || "2"),
@@ -2404,6 +2404,21 @@ function restoreRecommendedSettings() {
   showToast("已恢復建議預設：每題 15 秒、答對 1 秒、答錯 4 秒。");
 }
 
+  function hasOwn(obj, key) {
+    return !!obj && Object.prototype.hasOwnProperty.call(obj, key);
+  }
+
+  function resolveAutoNextDelayValue(data, splitKey, legacyKey, fallbackValue) {
+    if (hasOwn(data, splitKey)) {
+      return sanitizeNonNegativeNumber(data?.[splitKey], fallbackValue);
+    }
+    const legacy = Number.parseFloat(data?.[legacyKey]);
+    if (Number.isFinite(legacy) && legacy > 0) {
+      return legacy;
+    }
+    return fallbackValue;
+  }
+
   function loadSettings() {
     const data = readStorageObject(SETTINGS_KEY, LEGACY_SETTINGS_KEYS);
     return {
@@ -2416,8 +2431,8 @@ function restoreRecommendedSettings() {
       scoreFilterOperator: data?.scoreFilterOperator || "any",
       scoreFilterValue: sanitizeInteger(data?.scoreFilterValue, 0),
       answerTimeLimitSec: sanitizeNonNegativeNumber(data?.answerTimeLimitSec, 15),
-      autoNextCorrectDelaySec: sanitizeNonNegativeNumber(data?.autoNextCorrectDelaySec, data?.autoNextDelaySec, 1),
-      autoNextWrongDelaySec: sanitizeNonNegativeNumber(data?.autoNextWrongDelaySec, data?.autoNextDelaySec, 4),
+      autoNextCorrectDelaySec: resolveAutoNextDelayValue(data, "autoNextCorrectDelaySec", "autoNextDelaySec", 1),
+      autoNextWrongDelaySec: resolveAutoNextDelayValue(data, "autoNextWrongDelaySec", "autoNextDelaySec", 4),
       soundVolumePct: sanitizeNonNegativeNumber(data?.soundVolumePct, 180),
       shortcutOption1: normalizeShortcutSetting(data?.shortcutOption1, "1"),
       shortcutOption2: normalizeShortcutSetting(data?.shortcutOption2, "2"),
