@@ -2359,6 +2359,15 @@ function renderWrongBook() {
   function saveProgress() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+      try {
+        window.dispatchEvent(new CustomEvent("driverquiz:progress-saved", {
+          detail: {
+            totalAnswered: Number(progress?.meta?.totalAnswered || 0),
+            totalCorrect: Number(progress?.meta?.totalCorrect || 0),
+            bestStreak: Number(progress?.meta?.bestStreak || 0),
+          }
+        }));
+      } catch {}
     } catch (error) {
       console.warn("saveProgress failed", error);
     }

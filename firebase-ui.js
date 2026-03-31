@@ -17,6 +17,13 @@ window.addEventListener("DOMContentLoaded", async () => {
   const btnCloudDownload = el("btn-cloud-download");
   const btnLocalRestore = el("btn-local-restore");
   const output = el("sync-test-output");
+  const autoCloudUploadToggle = el("autoCloudUploadToggle");
+  const autoCloudUploadStatus = el("autoCloudUploadStatus");
+
+  const AUTO_UPLOAD_PREF_KEY = "driver_quiz_auto_cloud_upload_v1";
+  const AUTO_UPLOAD_THRESHOLD = 150;
+  const AUTO_UPLOAD_COOLDOWN_MS = 10 * 60 * 1000;
+  const AUTO_UPLOAD_MIN_STABLE_MS = 4000;
 
   let modules = null;
   let currentUser = null;
@@ -24,6 +31,9 @@ window.addEventListener("DOMContentLoaded", async () => {
   let privateVisible = false;
   let modulesReady = false;
   let loginInFlight = false;
+  let autoUploadInFlight = false;
+  let autoUploadTimer = null;
+  let lastAutoUploadAttemptAt = 0;
 
   const setOutput = (msg) => {
     if (output) output.textContent = msg || "";
@@ -52,6 +62,37 @@ window.addEventListener("DOMContentLoaded", async () => {
     } catch {
       return 0;
     }
+  };
+  const readAutoUploadEnabled = () => {
+    try {
+      return localStorage.getItem(AUTO_UPLOAD_PREF_KEY) === "1";
+    } catch {
+      return false;
+    }
+  };
+  const writeAutoUploadEnabled = (enabled) => {
+    try {
+      localStorage.setItem(AUTO_UPLOAD_PREF_KEY, enabled ? "1" : "0");
+    } catch {}
+  };
+  const cloudAnsweredCount = () => Math.max(0, Number(cloudMeta?.answeredCount || 0));
+  const unansweredDeltaFromCloud = () => Math.max(0, localAnsweredCount() - cloudAnsweredCount());
+  const updateAutoUploadStatus = (extraText = "") => {
+    if (!autoCloudUploadStatus) return;
+    if (!currentUser) {
+      autoCloudUploadStatus.textContent = "登入後可啟用自動上傳。";
+      return;
+    }
+    const enabled = readAutoUploadEnabled();
+    const delta = unansweredDeltaFromCloud();
+    const localMeta = modules?.backup?.readLocalUploadMeta?.() || {};
+    const lastAt = String(localMeta?.uploadedAt || "");
+    const base = enabled
+      ? `已啟用：差異達 ${AUTO_UPLOAD_THRESHOLD} 題才會自動上傳。`
+      : "未啟用自動上傳。";
+    const deltaText = delta > 0 ? ` 目前差異約 ${delta} 題。` : " 目前差異不明顯。";
+    const lastText = lastAt ? ` 上次上傳：${lastAt}` : "";
+    autoCloudUploadStatus.textContent = [base, deltaText, lastText, extraText].filter(Boolean).join("");
   };
   const setRestoreEnabled = () => {
     const snapshotInfo = modules?.backup?.getPreSyncSnapshotInfo?.();
@@ -86,20 +127,19 @@ if (btnLogin) {
   function updateReminder() {
     if (!reminderEl) return;
     if (!currentUser) {
-      reminderEl.textContent = "未登入時仍可用本機功能與 JSON 匯入匯出。";
+      reminderEl.textContent = "未登入時可先用本機與 JSON 備份。";
+      updateAutoUploadStatus();
       return;
     }
-    const localMeta = modules?.backup?.readLocalUploadMeta?.() || {};
-    const answered = localAnsweredCount();
-    const uploadedAnswered = Number(localMeta?.answeredCount || 0);
-    const delta = Math.max(0, answered - uploadedAnswered);
-    if (delta >= 200) {
-      reminderEl.textContent = `你自上次雲端上傳後已新增約 ${delta} 題，建議現在手動上傳雲端備份。`;
+    const delta = unansweredDeltaFromCloud();
+    if (delta >= AUTO_UPLOAD_THRESHOLD) {
+      reminderEl.textContent = `目前約多 ${delta} 題，建議手動上傳備份。`;
     } else if (delta > 0) {
-      reminderEl.textContent = `目前有未同步變更（約 ${delta} 題差異），雲端同步採手動上傳／下載。`;
+      reminderEl.textContent = `目前約多 ${delta} 題，尚未達自動上傳門檻。`;
     } else {
-      reminderEl.textContent = "目前沒有明顯未同步新增作答。";
+      reminderEl.textContent = "目前與雲端差異不明顯。";
     }
+    updateAutoUploadStatus();
   }
 
   async function refreshCloudMeta() {
@@ -115,6 +155,54 @@ if (btnLogin) {
       cloudMeta = { exists: false, error: err?.message || String(err) };
     }
     updateCloudMetaView();
+  }
+
+  async function maybeAutoUpload(reason = "") {
+    if (!currentUser || !modules?.backup?.uploadFullMemoryBackup) return;
+    if (!readAutoUploadEnabled()) return;
+    if (autoUploadInFlight) return;
+    if (!window.DriverQuizMemory?.buildPayload) return;
+    if (document.visibilityState && document.visibilityState !== "visible") return;
+
+    const now = Date.now();
+    if (now - lastAutoUploadAttemptAt < AUTO_UPLOAD_COOLDOWN_MS) return;
+
+    const delta = unansweredDeltaFromCloud();
+    if (delta < AUTO_UPLOAD_THRESHOLD) {
+      updateAutoUploadStatus();
+      return;
+    }
+
+    const localMeta = modules?.backup?.readLocalUploadMeta?.() || {};
+    const lastUploadedAnswered = Number(localMeta?.answeredCount || 0);
+    const localAnswered = localAnsweredCount();
+    if ((localAnswered - lastUploadedAnswered) < AUTO_UPLOAD_THRESHOLD) {
+      updateAutoUploadStatus(" 已接近最近一次上傳，暫不重傳。");
+      return;
+    }
+
+    lastAutoUploadAttemptAt = now;
+    autoUploadInFlight = true;
+    updateAutoUploadStatus(" 自動上傳中...");
+    try {
+      const result = await modules.backup.uploadFullMemoryBackup(() => window.DriverQuizMemory.buildPayload());
+      await refreshCloudMeta();
+      updateReminder();
+      setOutput(result?.message || `已自動上傳雲端備份。${reason ? `
+原因：${reason}` : ""}`);
+    } catch (err) {
+      console.error("auto upload failed", err);
+      updateAutoUploadStatus(` 自動上傳暫停：${err?.message || String(err)}`);
+    } finally {
+      autoUploadInFlight = false;
+    }
+  }
+
+  function scheduleAutoUploadCheck(reason = "") {
+    if (autoUploadTimer) window.clearTimeout(autoUploadTimer);
+    autoUploadTimer = window.setTimeout(() => {
+      maybeAutoUpload(reason).catch((err) => console.error("scheduled auto upload failed", err));
+    }, AUTO_UPLOAD_MIN_STABLE_MS);
   }
 
   function renderUser() {
@@ -178,9 +266,9 @@ if (btnLogin) {
   if (btnLogin) btnLogin.textContent = "載入登入模組...";
   try {
     modules = {
-      auth: await import("./firebase-auth.js?v=20260331v206"),
-      smoke: await import("./firebase-sync-smoke.js?v=20260331v206"),
-      backup: await import("./firebase-backup.js?v=20260331v206"),
+      auth: await import("./firebase-auth.js?v=20260331v213"),
+      smoke: await import("./firebase-sync-smoke.js?v=20260331v213"),
+      backup: await import("./firebase-backup.js?v=20260331v213"),
     };
   } catch (err) {
     console.error("firebase modules import failed", err);
@@ -196,6 +284,15 @@ if (btnLogin) {
   }
   const { smokeWrite, smokeRead } = modules.smoke;
   const { uploadFullMemoryBackup, downloadFullMemoryBackup, restorePreSyncSnapshot, savePreSyncSnapshot } = modules.backup;
+
+  if (autoCloudUploadToggle) {
+    autoCloudUploadToggle.checked = readAutoUploadEnabled();
+    autoCloudUploadToggle.addEventListener("change", () => {
+      writeAutoUploadEnabled(!!autoCloudUploadToggle.checked);
+      updateReminder();
+      if (autoCloudUploadToggle.checked) scheduleAutoUploadCheck("使用者剛啟用自動上傳");
+    });
+  }
 
   if (details) details.open = false;
   if (togglePrivateBtn) {
@@ -354,13 +451,29 @@ ${err?.message || String(err)}`);
     });
   }
 
+  window.addEventListener("driverquiz:progress-saved", () => {
+    updateReminder();
+    scheduleAutoUploadCheck("本地作答進度增加");
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") {
+      refreshCloudMeta().then(() => {
+        updateReminder();
+        scheduleAutoUploadCheck("頁面恢復可見");
+      }).catch((err) => console.error("visibility refresh failed", err));
+    }
+  });
+
   watchAuthState(async (user) => {
     currentUser = user || null;
     privateVisible = false;
     await refreshCloudMeta();
     renderUser();
     setRestoreEnabled();
+    updateReminder();
+    if (currentUser) scheduleAutoUploadCheck("登入後檢查");
   });
 
   renderUser();
+  updateReminder();
 });
