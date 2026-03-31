@@ -231,8 +231,8 @@ if (btnLogin) {
         clearTimeout(warnTimer);
       } catch (err) {
         console.error(err);
-        setOutput("Google 登入失敗：
-" + (err?.message || String(err)));
+        setOutput(`Google 登入失敗：
+${err?.message || String(err)}`);
       } finally {
         loginInFlight = false;
         setButtonBusy(btnLogin, "登入中...", false);
@@ -291,8 +291,8 @@ if (btnLogin) {
         updateReminder();
     } catch (err) {
       console.error(err);
-      setOutput("雲端上傳失敗：
-" + (err?.message || String(err)));
+      setOutput(`雲端上傳失敗：
+${err?.message || String(err)}`);
     } finally {
       setButtonBusy(btnCloudUpload, "上傳中...", false);
     }
@@ -314,8 +314,7 @@ if (btnLogin) {
           `本機累計作答：約 ${localAnsweredCount()} 題`,
           "",
           "按『確定』後，下一步可選擇覆蓋或合併；按『取消』則不載入。"
-        ].filter(Boolean).join("
-");
+        ].filter(Boolean).join("\n");
         if (!window.confirm(msg)) {
           setOutput("已取消載入雲端備份。本機資料保持不變。");
           return;
@@ -323,18 +322,18 @@ if (btnLogin) {
         savePreSyncSnapshot(() => window.DriverQuizMemory.buildPayload());
         setRestoreEnabled();
         const result = await downloadFullMemoryBackup();
-        const replaceAll = window.confirm("第二步：按『確定』= 覆蓋本機；按『取消』= 與本機合併。
+        const replaceAll = window.confirm(`第二步：按『確定』= 覆蓋本機；按『取消』= 與本機合併。
 覆蓋前已自動保存同步前本機備份。
-");
+`);
         const applyResult = window.DriverQuizMemory.applyPayload(result.payload, replaceAll);
-        setOutput((result.message || "下載完成") + "
+        setOutput(`${result.message || "下載完成"}
 
-" + (applyResult?.message || "已套用到本機。"));
+${applyResult?.message || "已套用到本機。"}`);
         updateReminder();
     } catch (err) {
       console.error(err);
-      setOutput("雲端下載失敗：
-" + (err?.message || String(err)));
+      setOutput(`雲端下載失敗：
+${err?.message || String(err)}`);
     } finally {
       setButtonBusy(btnCloudDownload, "下載中...", false);
     }
