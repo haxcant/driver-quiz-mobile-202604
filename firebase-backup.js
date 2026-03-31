@@ -1,9 +1,9 @@
 import { auth, db } from "./firebase-init.js";
 import { doc, getDoc, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const CHUNK_CHARS = 150000;
-const MAX_CHUNKS = 12;
-const MAX_TOTAL_BYTES = 3600000;
+const CHUNK_CHARS = 120000;
+const MAX_CHUNKS = 10;
+const MAX_TOTAL_BYTES = Math.floor(2.4 * 1024 * 1024);
 const SNAPSHOT_KEY = "driver_quiz_pre_sync_snapshot_v1";
 const UPLOAD_META_KEY = "driver_quiz_cloud_upload_meta_v1";
 const MIN_UPLOAD_INTERVAL_MS = 60000;
@@ -40,6 +40,80 @@ function chunkId(index) {
 
 function nowIso() {
   return new Date().toISOString();
+}
+
+function pickPlainObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+}
+
+function keepTouchedQuestions(byQuestionRaw) {
+  const src = pickPlainObject(byQuestionRaw);
+  const out = {};
+  for (const [id, raw] of Object.entries(src)) {
+    const item = pickPlainObject(raw);
+    const totalSeen = Math.max(0, Number(item.totalSeen || 0));
+    const totalCorrect = Math.max(0, Number(item.totalCorrect || 0));
+    const totalWrong = Math.max(0, Number(item.totalWrong || 0));
+    const score = Number.isFinite(Number(item.score)) ? Number(item.score) : (totalCorrect - totalWrong);
+    const masteryStreak = Math.max(0, Number(item.masteryStreak || 0));
+    const inWrongBook = !!item.inWrongBook;
+    const lastWrongAt = typeof item.lastWrongAt === "string" ? item.lastWrongAt : "";
+    const lastSeenAt = typeof item.lastSeenAt === "string" ? item.lastSeenAt : "";
+    const touched = totalSeen > 0 || totalCorrect > 0 || totalWrong > 0 || score !== 0 || masteryStreak > 0 || inWrongBook || !!lastWrongAt || !!lastSeenAt;
+    if (!touched) continue;
+    out[id] = { totalSeen, totalCorrect, totalWrong, score, inWrongBook, masteryStreak, lastWrongAt, lastSeenAt };
+  }
+  return out;
+}
+
+function sanitizeSettingsForCloud(rawSettings) {
+  const src = pickPlainObject(rawSettings);
+  const out = {};
+  const allowedKeys = [
+    "examScope", "practiceMode", "questionMode", "questionCount", "masteryTarget",
+    "scoreFilterOperator", "scoreFilterValue", "answerTimeLimitSec",
+    "autoNextCorrectDelaySec", "autoNextWrongDelaySec", "soundVolumePct",
+    "shortcutOption1", "shortcutOption2", "shortcutOption3", "shortcutOption4", "shortcutNext"
+  ];
+  for (const key of allowedKeys) {
+    if (src[key] !== undefined) out[key] = src[key];
+  }
+  return out;
+}
+
+function sanitizeImageIssuesForCloud(rawIssues) {
+  const src = pickPlainObject(rawIssues);
+  const out = {};
+  for (const [id, raw] of Object.entries(src)) {
+    const item = pickPlainObject(raw);
+    const note = typeof item.note === "string" ? item.note.slice(0, 500) : "";
+    const flag = !!item.flag;
+    if (!flag && !note) continue;
+    out[id] = { flag, note };
+  }
+  return out;
+}
+
+function optimizePayloadForCloud(payload) {
+  const src = pickPlainObject(payload);
+  const progress = pickPlainObject(src.progress);
+  const progressMeta = pickPlainObject(progress.meta);
+  const byQuestion = keepTouchedQuestions(progress.byQuestion);
+  return {
+    app: typeof src.app === "string" ? src.app : "driver-quiz-pwa",
+    type: typeof src.type === "string" ? src.type : "full-memory-export",
+    version: Number(src.version || 1),
+    exportedAt: typeof src.exportedAt === "string" ? src.exportedAt : nowIso(),
+    progress: {
+      byQuestion,
+      meta: {
+        bestStreak: Math.max(0, Number(progressMeta.bestStreak || 0)),
+        totalCompletedSessions: Math.max(0, Number(progressMeta.totalCompletedSessions || 0)),
+      },
+    },
+    settings: sanitizeSettingsForCloud(src.settings),
+    imageIssues: sanitizeImageIssuesForCloud(src.imageIssues),
+  };
 }
 
 export function getAnsweredCountFromPayload(payload) {
@@ -141,13 +215,14 @@ export async function uploadFullMemoryBackup(buildPayloadFn) {
       throw new Error("距離上次成功上傳不到 60 秒，請稍後再試，避免重複寫入。");
     }
 
-    const payload = buildPayloadFn();
+    const rawPayload = buildPayloadFn();
+    const payload = optimizePayloadForCloud(rawPayload);
     const json = JSON.stringify(payload);
     const payloadBytes = new TextEncoder().encode(json).length;
     const checksum = await sha256Hex(json);
     const chunks = splitIntoChunks(json);
     if (payloadBytes > MAX_TOTAL_BYTES || chunks.length > MAX_CHUNKS) {
-      throw new Error(`完整資料備份偏大，為保守控制雲端用量，目前限制最多 ${MAX_CHUNKS} 塊、總量約 ${(MAX_TOTAL_BYTES/1000000).toFixed(1)}MB。請改用本機 JSON 匯出。`);
+      throw new Error(`完整資料備份偏大，為保守控制雲端用量，目前限制最多 ${MAX_CHUNKS} 塊、總量約 ${(MAX_TOTAL_BYTES / (1024 * 1024)).toFixed(2)} MiB。系統已先自動移除未作答題與可重算總表；若仍超限，請改用本機 JSON 匯出。`);
     }
     const answeredCount = getAnsweredCountFromPayload(payload);
     const metaRef = doc(db, "users", user.uid, "sync", "meta");

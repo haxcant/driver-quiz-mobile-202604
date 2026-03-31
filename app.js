@@ -4,6 +4,11 @@
   const SETTINGS_KEY = "driver-quiz-settings-v6";
   const IMAGE_ISSUES_KEY = "driver-quiz-image-issues-v1";
   const IMPORTED_WRONGS_KEY = "driver-quiz-imported-wrongs-v1";
+  const PRE_IMPORT_SNAPSHOT_KEY = "driver-quiz-pre-import-snapshot-v1";
+  const HARD_IMPORT_MAX_BYTES = 16 * 1024 * 1024;
+  const FULL_MEMORY_IMPORT_MAX_BYTES = 8 * 1024 * 1024;
+  const WRONG_HTML_IMPORT_MAX_BYTES = 16 * 1024 * 1024;
+  const DANGEROUS_JSON_KEYS = new Set(["__proto__", "prototype", "constructor"]);
   const MEMORY_EXPORT_VERSION = 1;
   const LEGACY_PROGRESS_KEYS = ["driver-quiz-progress-v5", "driver-quiz-progress-v3", "driver-quiz-progress-v2", "driver-quiz-progress-v5"];
   const LEGACY_SESSION_KEYS = ["driver-quiz-session-v4"];
@@ -1515,6 +1520,109 @@ function renderWrongBook() {
     URL.revokeObjectURL(url);
   }
 
+  function formatBytesMiB(bytes) {
+    const safe = Number(bytes || 0);
+    return `${(safe / (1024 * 1024)).toFixed(2)} MiB`;
+  }
+
+  function containsDangerousJsonKeys(value, depth = 0) {
+    if (depth > 64) return true;
+    if (!value || typeof value !== "object") return false;
+    if (Array.isArray(value)) return value.some((item) => containsDangerousJsonKeys(item, depth + 1));
+    for (const key of Object.keys(value)) {
+      if (DANGEROUS_JSON_KEYS.has(key)) return true;
+      if (containsDangerousJsonKeys(value[key], depth + 1)) return true;
+    }
+    return false;
+  }
+
+  function validateImportFileSize(file) {
+    const size = Number(file?.size || 0);
+    if (!Number.isFinite(size) || size <= 0) throw new Error("empty");
+    if (size > HARD_IMPORT_MAX_BYTES) {
+      throw new Error(`檔案過大：目前匯入上限為 ${formatBytesMiB(HARD_IMPORT_MAX_BYTES)}。請先精簡檔案或改用本機備份整理。`);
+    }
+    const lowerName = String(file?.name || "").toLowerCase();
+    if ((lowerName.endsWith('.html') || lowerName.endsWith('.htm')) && size > WRONG_HTML_IMPORT_MAX_BYTES) {
+      throw new Error(`錯題列印版 HTML 過大：目前建議上限為 ${formatBytesMiB(WRONG_HTML_IMPORT_MAX_BYTES)}。`);
+    }
+    if (!(lowerName.endsWith('.html') || lowerName.endsWith('.htm')) && size > FULL_MEMORY_IMPORT_MAX_BYTES) {
+      throw new Error(`JSON 檔案過大：目前匯入上限為 ${formatBytesMiB(FULL_MEMORY_IMPORT_MAX_BYTES)}。`);
+    }
+  }
+
+  function savePreImportSnapshot() {
+    try {
+      const payload = buildFullMemoryPayload();
+      localStorage.setItem(PRE_IMPORT_SNAPSHOT_KEY, JSON.stringify({ savedAt: new Date().toISOString(), payload }));
+      return true;
+    } catch (error) {
+      console.warn("savePreImportSnapshot failed", error);
+      return false;
+    }
+  }
+
+  function restorePreImportSnapshot() {
+    const raw = localStorage.getItem(PRE_IMPORT_SNAPSHOT_KEY);
+    if (!raw) throw new Error("目前沒有可還原的匯入前備份。");
+    const parsed = JSON.parse(raw);
+    if (!parsed?.payload) throw new Error("匯入前備份內容無效。");
+    return applyFullMemoryPayload(parsed.payload, "replace");
+  }
+
+  function pickPlainObject(value) {
+    return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  }
+
+  function sanitizeImageIssueEntry(raw) {
+    const item = pickPlainObject(raw);
+    const note = typeof item.note === "string" ? item.note.slice(0, 500) : "";
+    const flag = !!item.flag;
+    if (!flag && !note) return null;
+    return { flag, note };
+  }
+
+  function extractFullMemoryEnvelope(rawPayload) {
+    const root = pickPlainObject(rawPayload);
+    const nestedMemory = pickPlainObject(root.memory);
+    const nestedData = pickPlainObject(root.data);
+    const candidate = (nestedMemory.progress || nestedMemory.settings || nestedMemory.session || nestedMemory.imageIssues)
+      ? nestedMemory
+      : ((nestedData.progress || nestedData.settings || nestedData.session || nestedData.imageIssues) ? nestedData : root);
+    return {
+      app: typeof root.app === "string" ? root.app : "",
+      type: typeof root.type === "string" ? root.type : "",
+      version: Number(root.version || candidate.version || MEMORY_EXPORT_VERSION) || MEMORY_EXPORT_VERSION,
+      exportedAt: typeof root.exportedAt === "string" ? root.exportedAt : (typeof candidate.exportedAt === "string" ? candidate.exportedAt : ""),
+      progress: candidate.progress || (candidate.byQuestion || candidate.meta ? candidate : {}),
+      settings: candidate.settings || {},
+      session: candidate.session || {},
+      imageIssues: candidate.imageIssues || {},
+    };
+  }
+
+  function buildFullMemoryImportPreview(envelope, file) {
+    const importedProgress = repairProgressSnapshot(envelope.progress || {});
+    const byQuestion = importedProgress.byQuestion || {};
+    const touchedCount = Object.keys(byQuestion).length;
+    const wrongCount = Object.values(byQuestion).filter((item) => !!item?.inWrongBook).length;
+    const answeredCount = Number(importedProgress.meta?.totalAnswered || 0);
+    return {
+      touchedCount,
+      wrongCount,
+      answeredCount,
+      text: `檔案預覽
+
+檔名：${file?.name || "(未命名)"}
+大小：${formatBytesMiB(file?.size || 0)}
+題目紀錄：${touchedCount} 題
+累計作答：${answeredCount} 次
+錯題本：${wrongCount} 題
+
+確認後才會真正套用。套用前會先自動保存一份匯入前本機備份。`,
+    };
+  }
+
   function buildFullMemoryPayload() {
     return {
       app: "driver-quiz-pwa",
@@ -1559,14 +1667,15 @@ function renderWrongBook() {
   }
 
   function repairQuestionProgressRecord(raw) {
-    const item = { ...defaultQuestionProgress(), ...(raw || {}) };
+    const safeRaw = pickPlainObject(raw);
+    const item = { ...defaultQuestionProgress(), ...safeRaw };
     const totalSeen = Math.max(0, Math.round(Number(item.totalSeen || 0)));
     const totalCorrect = Math.max(0, Math.round(Number(item.totalCorrect || 0)));
     const totalWrong = Math.max(0, Math.round(Number(item.totalWrong || 0)));
     const computedScore = totalCorrect - totalWrong;
     const rawScore = Number(item.score);
-    const score = Number.isFinite(rawScore) ? Math.round(rawScore) : computedScore;
-    const hasExplicitWrongBook = raw && Object.prototype.hasOwnProperty.call(raw, "inWrongBook");
+    const score = Number.isFinite(rawScore) ? Math.max(-999, Math.min(999, Math.round(rawScore))) : computedScore;
+    const hasExplicitWrongBook = Object.prototype.hasOwnProperty.call(safeRaw, "inWrongBook");
     const inferredWrongBook = score < 0 || totalWrong > totalCorrect;
     return {
       totalSeen,
@@ -1704,10 +1813,10 @@ function renderWrongBook() {
   }
 
   function applyFullMemoryPayload(rawPayload, importModeOrReplaceAll = true) {
-    const parsed = rawPayload || {};
-    const importedProgress = repairProgressSnapshot(parsed.progress || parsed.memory?.progress || parsed.data?.progress);
-    const importedSettings = sanitizeImportedSettings(parsed.settings || parsed.memory?.settings || parsed.data?.settings, settings);
-    const importedImageIssues = sanitizeImportedImageIssues(parsed.imageIssues || parsed.memory?.imageIssues || parsed.data?.imageIssues);
+    const envelope = extractFullMemoryEnvelope(rawPayload || {});
+    const importedProgress = repairProgressSnapshot(envelope.progress || {});
+    const importedSettings = sanitizeImportedSettings(envelope.settings || {}, settings);
+    const importedImageIssues = sanitizeImportedImageIssues(envelope.imageIssues || {});
 
     let importMode = importModeOrReplaceAll;
     if (typeof importModeOrReplaceAll === "boolean") importMode = importModeOrReplaceAll ? "replace" : "conservative";
@@ -1859,6 +1968,7 @@ function renderWrongBook() {
     const file = event?.target?.files?.[0];
     if (!file) return;
     try {
+      validateImportFileSize(file);
       const textRaw = await file.text();
       const trimmed = textRaw.replace(/^﻿/, "").trim();
       if (!trimmed) throw new Error("empty");
@@ -1874,8 +1984,10 @@ function renderWrongBook() {
         }
       }
 
-      if (!parsed) {
-        parsed = JSON.parse(trimmed);
+      if (!parsed) parsed = JSON.parse(trimmed);
+      if (containsDangerousJsonKeys(parsed)) throw new Error("dangerous-json-keys");
+
+      if (!kind) {
         if (parsed && parsed.app === "driver-quiz-pwa" && parsed.type === "full-memory-export") kind = "full-memory";
         else if (parsed && parsed.app === "driver-quiz-pwa" && parsed.type === "wrong-book-export") kind = "wrong-book";
         else if (parsed && parsed.app === "driver-quiz-pwa" && parsed.type === "wrong-print-export") kind = "wrong-print";
@@ -1884,19 +1996,33 @@ function renderWrongBook() {
       }
 
       if (kind === "full-memory") {
+        const envelope = extractFullMemoryEnvelope(parsed);
+        const preview = buildFullMemoryImportPreview(envelope, file);
+        if (!window.confirm(preview.text)) return;
         const importMode = askFullMemoryImportMode("匯入完整記憶");
         if (!importMode) return;
-        const result = applyFullMemoryPayload(parsed, importMode);
-        alert(result.message + "\n\n模式說明：\n- 覆蓋：完整取代本機\n- 覆蓋率優先合併：放水取高，適合快速刷題\n- 保守合併：低分優先，適合避免弱點被沖淡");
+        savePreImportSnapshot();
+        const result = applyFullMemoryPayload(envelope, importMode);
+        alert(`${result.message}\n\n模式說明：\n- 覆蓋：完整取代本機\n- 覆蓋率優先合併：放水取高，適合快速刷題\n- 保守合併：低分優先，適合避免弱點被沖淡\n\n本次套用前已自動保存一份匯入前本機備份。`);
       } else if (kind === "wrong-book" || kind === "wrong-array" || kind === "wrong-print") {
-
         const items = Array.isArray(parsed) ? parsed : Array.isArray(parsed.items) ? parsed.items : [];
         const normalizedItems = items
           .map((item) => normalizeImportedWrongItem(item))
           .filter((item) => item.prompt && item.id && getQuestion(item.id));
         if (!normalizedItems.length) throw new Error("empty wrongs");
 
-        const replaceSameQuestion = window.confirm(`按「確定」= 覆蓋同題既有積分/錯題狀態；按「取消」= 與目前記憶安全合併（不再累加、至少保留為錯題且積分 <= -1）。\n\n注意：若匯入檔本身沒有附題目積分，系統會把這些題至少記成錯 1 次、積分 -1。`);
+        const previewText = `檔案預覽
+
+檔名：${file?.name || "(未命名)"}
+大小：${formatBytesMiB(file?.size || 0)}
+可辨識錯題：${normalizedItems.length} 題
+
+確認後才會真正套用。套用前會先自動保存一份匯入前本機備份。`;
+        if (!window.confirm(previewText)) return;
+        const replaceSameQuestion = window.confirm(`按「確定」= 覆蓋同題既有積分/錯題狀態；按「取消」= 與目前記憶安全合併（不再累加、至少保留為錯題且積分 <= -1）。
+
+注意：若匯入檔本身沒有附題目積分，系統會把這些題至少記成錯 1 次、積分 -1。`);
+        savePreImportSnapshot();
         progress = applyImportedWrongsToProgress(normalizedItems, replaceSameQuestion);
         session = null;
         importedWrongs = [];
@@ -1910,13 +2036,26 @@ function renderWrongBook() {
         renderWrongBook();
         renderSessionOrEmpty();
         const negativeCount = normalizedItems.filter((item) => (questionProgress(item.id).score || 0) < 0).length;
-        alert(`已匯入 ${normalizedItems.length} 題錯題檔，並${replaceSameQuestion ? "覆蓋" : "安全合併"}到目前學習記憶。\n\n其中目前積分小於 0 的題數：${negativeCount} 題。\n\n說明：錯題匯入現在不再累加分數；若同題已存在，系統至少會保留為錯題且積分 <= -1。\n\n匯入後不再保留大型預覽清單，現在可直接用積分篩選、開始考試，或從錯題本開單字卡。`);
+        alert(`已匯入 ${normalizedItems.length} 題錯題檔，並${replaceSameQuestion ? "覆蓋" : "安全合併"}到目前學習記憶。
+
+其中目前積分小於 0 的題數：${negativeCount} 題。
+
+說明：錯題匯入現在不再累加分數；若同題已存在，系統至少會保留為錯題且積分 <= -1。
+
+本次套用前已自動保存一份匯入前本機備份。`);
       } else {
         throw new Error("unknown format");
       }
     } catch (error) {
       console.error(error);
-      alert("匯入失敗：請選擇本系統匯出的完整記憶 JSON、錯題 JSON，或錯題列印版 HTML。\n\n若這個檔案就是本系統剛匯出的完整記憶，請保留該檔並回報，我會依實際檔案格式再補相容。這版已支援完整記憶、錯題 JSON、錯題 HTML 及舊版裸陣列錯題 JSON。");
+      const msg = String(error?.message || error || "");
+      if (msg === "dangerous-json-keys") {
+        alert("匯入失敗：檔案包含危險欄位（例如 __proto__ / prototype / constructor），系統已拒絕套用。\n\n請確認這是由本系統匯出的正常 JSON。");
+      } else if (msg.includes("檔案過大") || msg.includes("HTML 過大") || msg.includes("JSON 檔案過大")) {
+        alert(`匯入失敗：${msg}`);
+      } else {
+        alert("匯入失敗：請選擇本系統匯出的完整記憶 JSON、錯題 JSON，或錯題列印版 HTML。\n\n系統目前已啟用白名單欄位過濾、舊檔修整與總統計重算；若這個檔案就是本系統剛匯出的資料仍失敗，請保留該檔並回報。");
+      }
     } finally {
       if (els.importMemoryInput) els.importMemoryInput.value = "";
     }
@@ -2005,6 +2144,7 @@ function renderWrongBook() {
       answerTimeLimitSec: sanitizeNonNegativeNumber(data.answerTimeLimitSec, base.answerTimeLimitSec ?? 15),
       autoNextCorrectDelaySec: sanitizeNonNegativeNumber(data.autoNextCorrectDelaySec, data.autoNextDelaySec, base.autoNextCorrectDelaySec ?? 1),
       autoNextWrongDelaySec: sanitizeNonNegativeNumber(data.autoNextWrongDelaySec, data.autoNextDelaySec, base.autoNextWrongDelaySec ?? 4),
+      soundVolumePct: sanitizeNonNegativeNumber(data.soundVolumePct, base.soundVolumePct ?? 180),
       shortcutOption1: normalizeShortcutSetting(data.shortcutOption1, base.shortcutOption1 || "1"),
       shortcutOption2: normalizeShortcutSetting(data.shortcutOption2, base.shortcutOption2 || "2"),
       shortcutOption3: normalizeShortcutSetting(data.shortcutOption3, base.shortcutOption3 || "3"),
@@ -2029,7 +2169,15 @@ function renderWrongBook() {
   }
 
   function sanitizeImportedImageIssues(data) {
-    return data && typeof data === "object" ? data : {};
+    const src = pickPlainObject(data);
+    const out = {};
+    for (const [id, raw] of Object.entries(src)) {
+      if (DANGEROUS_JSON_KEYS.has(id)) continue;
+      if (!QUESTION_MAP.has(String(id))) continue;
+      const normalized = sanitizeImageIssueEntry(raw);
+      if (normalized) out[id] = normalized;
+    }
+    return out;
   }
 
   function mergeProgress(localProgress, importedProgress, mode = "conservative") {
@@ -3290,5 +3438,6 @@ function truncateText(text, maxLen = 80) {
     applyPayload: applyFullMemoryPayload,
     askImportMode: askFullMemoryImportMode,
     flattenScores: flattenScoreDistribution,
+    restorePreImportSnapshot,
   };
 })();
