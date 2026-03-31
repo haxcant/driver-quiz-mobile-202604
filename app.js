@@ -182,6 +182,7 @@ const HANDBOOK_RULES = [
     quickFilterUnseenBtn: document.getElementById("quickFilterUnseenBtn"),
     quickFilterWrongBtn: document.getElementById("quickFilterWrongBtn"),
     quickFilterClearBtn: document.getElementById("quickFilterClearBtn"),
+    resetRecommendedDefaultsBtn: document.getElementById("resetRecommendedDefaultsBtn"),
     answerTimeLimitInput: document.getElementById("answerTimeLimitInput"),
     autoNextCorrectDelayInput: document.getElementById("autoNextCorrectDelayInput"),
     autoNextWrongDelayInput: document.getElementById("autoNextWrongDelayInput"),
@@ -573,7 +574,7 @@ const HANDBOOK_RULES = [
     const scopedCount = getScopedQuestions(scope).length;
     const totalCount = ALL_QUESTIONS.length;
     if (els.versionSummary) {
-      els.versionSummary.textContent = `v20.4｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
+      els.versionSummary.textContent = `v20.5｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
     }
     if (els.scopeSummary) {
       els.scopeSummary.textContent = EXAM_SCOPE_DESCRIPTIONS[scope] || "";

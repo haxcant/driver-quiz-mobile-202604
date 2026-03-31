@@ -8,10 +8,14 @@ const SNAPSHOT_KEY = "driver_quiz_pre_sync_snapshot_v1";
 const UPLOAD_META_KEY = "driver_quiz_cloud_upload_meta_v1";
 const MIN_UPLOAD_INTERVAL_MS = 60000;
 
-function requireUser() {
-  const user = auth.currentUser;
-  if (!user) throw new Error("尚未登入 Google。");
-  return user;
+async function getCurrentUser(waitMs = 4000) {
+  const started = Date.now();
+  while (Date.now() - started < waitMs) {
+    const user = auth.currentUser;
+    if (user) return user;
+    await new Promise((resolve) => setTimeout(resolve, 120));
+  }
+  throw new Error("尚未登入 Google，或登入狀態尚未完成同步。請稍候再試一次。");
 }
 
 function explainError(error) {
@@ -183,7 +187,7 @@ export function restorePreSyncSnapshot(applyPayloadFn) {
 
 export async function getCloudBackupMetaSummary() {
   try {
-    const user = requireUser();
+    const user = await getCurrentUser();
     const metaRef = doc(db, "users", user.uid, "sync", "meta");
     const metaSnap = await getDoc(metaRef);
     if (!metaSnap.exists()) return { exists: false };
@@ -206,7 +210,7 @@ export async function getCloudBackupMetaSummary() {
 
 export async function uploadFullMemoryBackup(buildPayloadFn) {
   try {
-    const user = requireUser();
+    const user = await getCurrentUser();
     if (typeof buildPayloadFn !== "function") throw new Error("找不到完整資料匯出函式。");
 
     const localMeta = readLocalUploadMeta();
@@ -283,7 +287,7 @@ export async function uploadFullMemoryBackup(buildPayloadFn) {
 
 export async function downloadFullMemoryBackup() {
   try {
-    const user = requireUser();
+    const user = await getCurrentUser();
     const metaRef = doc(db, "users", user.uid, "sync", "meta");
     const metaSnap = await getDoc(metaRef);
     if (!metaSnap.exists()) throw new Error("雲端尚無完整資料備份。");
