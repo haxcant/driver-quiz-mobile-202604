@@ -22,10 +22,18 @@ window.addEventListener("DOMContentLoaded", async () => {
   let currentUser = null;
   let cloudMeta = null;
   let privateVisible = false;
+  let modulesReady = false;
+  let loginInFlight = false;
 
   const setOutput = (msg) => {
     if (output) output.textContent = msg || "";
     if (details && msg) details.open = true;
+  };
+  const setButtonBusy = (btn, busyText, busy) => {
+    if (!btn) return;
+    if (!btn.dataset.originalText) btn.dataset.originalText = btn.textContent || "";
+    btn.disabled = !!busy;
+    btn.textContent = busy ? busyText : (btn.dataset.originalText || btn.textContent || "");
   };
   const masked = (value, keep = 2) => {
     const s = String(value || "").trim();
@@ -38,12 +46,6 @@ window.addEventListener("DOMContentLoaded", async () => {
       if (btn) btn.disabled = !enabled;
     });
   };
-  const setBusy = (btn, busyText, busy) => {
-    if (!btn) return;
-    if (!btn.dataset.defaultText) btn.dataset.defaultText = btn.textContent || "";
-    btn.disabled = !!busy;
-    btn.textContent = busy ? busyText : btn.dataset.defaultText;
-  };
   const localAnsweredCount = () => {
     try {
       return modules?.backup?.getAnsweredCountFromPayload(window.DriverQuizMemory?.buildPayload?.()) || 0;
@@ -55,6 +57,16 @@ window.addEventListener("DOMContentLoaded", async () => {
     const snapshotInfo = modules?.backup?.getPreSyncSnapshotInfo?.();
     if (btnLocalRestore) btnLocalRestore.disabled = !snapshotInfo;
   };
+
+
+if (btnLogin) {
+  btnLogin.dataset.originalText = btnLogin.textContent || "Google 登入";
+  btnLogin.addEventListener("click", (event) => {
+    if (modulesReady || loginInFlight) return;
+    event.preventDefault();
+    setOutput("同步模組仍在載入中，請稍候 1～2 秒後再試。若長時間沒有變化，代表網頁腳本可能尚未成功載入。");
+  });
+}
 
   function updateCloudMetaView() {
     if (!cloudMetaEl) return;
@@ -106,6 +118,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
   function renderUser() {
+    if (details) details.open = false;
+
     if (currentUser) {
       const name = currentUser.displayName || (currentUser.email ? currentUser.email.split("@")[0] : "已登入使用者");
       if (summaryText) summaryText.textContent = `雲端同步：${name}`;
@@ -155,11 +169,18 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  setSyncButtonsEnabled(false);
+  if (btnCloudUpload) btnCloudUpload.disabled = true;
+  if (btnCloudDownload) btnCloudDownload.disabled = true;
+  if (btnSmokeWrite) btnSmokeWrite.disabled = true;
+  if (btnSmokeRead) btnSmokeRead.disabled = true;
+  if (btnLocalRestore) btnLocalRestore.disabled = true;
+  if (btnLogin) btnLogin.textContent = "載入登入模組...";
   try {
     modules = {
-      auth: await import("./firebase-auth.js?v=20260331v205"),
-      smoke: await import("./firebase-sync-smoke.js?v=20260331v205"),
-      backup: await import("./firebase-backup.js?v=20260331v205"),
+      auth: await import("./firebase-auth.js?v=20260331v206"),
+      smoke: await import("./firebase-sync-smoke.js?v=20260331v206"),
+      backup: await import("./firebase-backup.js?v=20260331v206"),
     };
   } catch (err) {
     console.error("firebase modules import failed", err);
@@ -168,6 +189,11 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
   const { loginWithGoogle, logoutFirebase, watchAuthState, finishRedirectLogin } = modules.auth;
+  modulesReady = true;
+  if (btnLogin) {
+    btnLogin.disabled = false;
+    btnLogin.textContent = btnLogin.dataset.originalText || "Google 登入";
+  }
   const { smokeWrite, smokeRead } = modules.smoke;
   const { uploadFullMemoryBackup, downloadFullMemoryBackup, restorePreSyncSnapshot, savePreSyncSnapshot } = modules.backup;
 
@@ -186,23 +212,30 @@ window.addEventListener("DOMContentLoaded", async () => {
     setOutput("Firebase 登入初始化失敗：" + (err?.message || String(err)));
   }
 
-  if (btnLogin) {
+  
+if (btnLogin) {
     btnLogin.addEventListener("click", async () => {
+      if (!modulesReady) {
+        setOutput("同步模組仍在載入中，請稍候再試。");
+        return;
+      }
+      if (loginInFlight) return;
+      loginInFlight = true;
       try {
-        setBusy(btnLogin, "登入中...", true);
-setOutput(["登入中...若手機沒有彈出 Google 視窗，請允許彈出視窗，或改用桌面瀏覽器登入。若已完成 Google 帳戶選擇，請再等候數秒。","","若長時間無反應，可重新點一次登入。"].join("\n"));
-        const result = await loginWithGoogle();
-        if (result?.user) {
-          currentUser = result.user;
-          await refreshCloudMeta();
-          renderUser();
-          setOutput("登入成功，已更新雲端狀態摘要。");
-        }
+        setButtonBusy(btnLogin, "登入中...", true);
+        setOutput("登入中... 若 8 秒內仍沒有出現 Google 視窗，通常是瀏覽器擋下彈窗、網路太慢，或網頁腳本尚未完整載入。");
+        const warnTimer = setTimeout(() => {
+          setOutput("登入流程仍在等待中。若完全沒有跳出 Google 視窗，較可能是瀏覽器彈窗限制或網頁腳本異常；若有跳出視窗但又回到未登入，才比較像 Google/Firebase 流程問題。");
+        }, 8000);
+        await loginWithGoogle();
+        clearTimeout(warnTimer);
       } catch (err) {
         console.error(err);
-        setOutput("Google 登入失敗：" + (err?.message || String(err)));
+        setOutput("Google 登入失敗：
+" + (err?.message || String(err)));
       } finally {
-        setBusy(btnLogin, "登入中...", false);
+        loginInFlight = false;
+        setButtonBusy(btnLogin, "登入中...", false);
       }
     });
   }
@@ -210,15 +243,12 @@ setOutput(["登入中...若手機沒有彈出 Google 視窗，請允許彈出視
   if (btnLogout) {
     btnLogout.addEventListener("click", async () => {
       try {
-        setBusy(btnLogout, "登出中...", true);
         await logoutFirebase();
         cloudMeta = null;
         setOutput("已登出");
       } catch (err) {
         console.error(err);
         setOutput("登出失敗：" + (err?.message || String(err)));
-      } finally {
-        setBusy(btnLogout, "登出中...", false);
       }
     });
   }
@@ -259,12 +289,15 @@ setOutput(["登入中...若手機沒有彈出 Google 視窗，請允許彈出視
         await refreshCloudMeta();
         setOutput(result.message || "上傳完成");
         updateReminder();
-      } catch (err) {
-        console.error(err);
-        setOutput("雲端上傳失敗：\n" + (err?.message || String(err)));
-      }
-    });
-  }
+    } catch (err) {
+      console.error(err);
+      setOutput("雲端上傳失敗：
+" + (err?.message || String(err)));
+    } finally {
+      setButtonBusy(btnCloudUpload, "上傳中...", false);
+    }
+  });
+}
 
   if (btnCloudDownload) {
     btnCloudDownload.addEventListener("click", async () => {
@@ -272,8 +305,6 @@ setOutput(["登入中...若手機沒有彈出 Google 視窗，請允許彈出視
         if (!window.DriverQuizMemory?.applyPayload || !window.DriverQuizMemory?.buildPayload) {
           throw new Error("找不到完整資料匯入／匯出函式。");
         }
-        setBusy(btnCloudDownload, "下載中...", true);
-        setOutput("讀取雲端備份摘要中...");
         await refreshCloudMeta();
         if (!cloudMeta?.exists) throw new Error("雲端目前沒有備份可下載。");
         const msg = [
@@ -283,7 +314,8 @@ setOutput(["登入中...若手機沒有彈出 Google 視窗，請允許彈出視
           `本機累計作答：約 ${localAnsweredCount()} 題`,
           "",
           "按『確定』後，下一步可選擇覆蓋或合併；按『取消』則不載入。"
-        ].filter(Boolean).join("\n");
+        ].filter(Boolean).join("
+");
         if (!window.confirm(msg)) {
           setOutput("已取消載入雲端備份。本機資料保持不變。");
           return;
@@ -291,16 +323,23 @@ setOutput(["登入中...若手機沒有彈出 Google 視窗，請允許彈出視
         savePreSyncSnapshot(() => window.DriverQuizMemory.buildPayload());
         setRestoreEnabled();
         const result = await downloadFullMemoryBackup();
-        const replaceAll = window.confirm("第二步：按『確定』= 覆蓋本機；按『取消』= 與本機合併。\n覆蓋前已自動保存同步前本機備份。\n");
+        const replaceAll = window.confirm("第二步：按『確定』= 覆蓋本機；按『取消』= 與本機合併。
+覆蓋前已自動保存同步前本機備份。
+");
         const applyResult = window.DriverQuizMemory.applyPayload(result.payload, replaceAll);
-        setOutput((result.message || "下載完成") + "\n\n" + (applyResult?.message || "已套用到本機。"));
+        setOutput((result.message || "下載完成") + "
+
+" + (applyResult?.message || "已套用到本機。"));
         updateReminder();
-      } catch (err) {
-        console.error(err);
-        setOutput("雲端下載失敗：\n" + (err?.message || String(err)));
-      }
-    });
-  }
+    } catch (err) {
+      console.error(err);
+      setOutput("雲端下載失敗：
+" + (err?.message || String(err)));
+    } finally {
+      setButtonBusy(btnCloudDownload, "下載中...", false);
+    }
+  });
+}
 
   if (btnLocalRestore) {
     btnLocalRestore.addEventListener("click", async () => {

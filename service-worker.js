@@ -1,18 +1,18 @@
-const CACHE_NAME = "driver-quiz-pwa-v205-consistency";
+const CACHE_NAME = "driver-quiz-pwa-v20-6-clean";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./app.js?v=20260331v205",
+  "./app.js?v=20260331v206",
   "./questions.js",
   "./handbook_explanations.js",
   "./handbook_pages.js",
   "./manifest.webmanifest",
   "./firebase-init.js",
-  "./firebase-auth.js?v=20260331v205",
-  "./firebase-sync-smoke.js?v=20260331v205",
-  "./firebase-backup.js?v=20260331v205",
-  "./firebase-ui.js?v=20260331v205",
+  "./firebase-auth.js?v=20260331v206",
+  "./firebase-sync-smoke.js?v=20260331v206",
+  "./firebase-backup.js?v=20260331v206",
+  "./firebase-ui.js?v=20260331v206",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];

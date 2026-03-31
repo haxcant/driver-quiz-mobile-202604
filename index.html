@@ -30,7 +30,7 @@
         <div class="info-grid">
           <div>
             <strong>目前版本</strong>
-            <p id="versionSummary">v20.5：版本一致性修正、Firebase 同步回應改善、雲端下載穩定性修正與預設說明整理。</p>
+            <p id="versionSummary">v20.6：版本一致性修正、登入診斷提示、建議預設一鍵恢復、圖片載入修補、三種完整記憶匯入模式（覆蓋／覆蓋率優先／保守）與匯入安全強化。</p>
           </div>
           <div>
             <strong>建議使用方式</strong>
@@ -107,6 +107,7 @@
         <label><span>答錯後自動跳題（秒，0=不自動）</span><input id="autoNextWrongDelayInput" type="number" min="0" step="0.5" value="4"></label>
         <label><span>提示音量</span><input id="soundVolumeInput" type="range" min="0" max="500" step="10" value="180"><small id="soundVolumeValue">180%</small></label>
         <label><span>音量測試</span><button id="soundTestBtn" class="ghost-btn" type="button">播放提示音</button></label>
+        <label><span>建議預設</span><button id="restoreRecommendedBtn" class="ghost-btn" type="button">恢復 15 / 1 / 4</button></label>
       </div>
       <div class="grid advanced-grid shortcut-grid three-col-desktop">
         <label><span>選項 1 快捷鍵</span><input id="shortcutOption1Input" type="text" maxlength="12" value="1" placeholder="1"></label>
@@ -119,7 +120,6 @@
         <button id="quickFilterUnseenBtn" type="button" class="ghost-btn">考沒考過題（=0）</button>
         <button id="quickFilterWrongBtn" type="button" class="ghost-btn">考錯過題目（&lt;0）</button>
         <button id="quickFilterClearBtn" type="button" class="ghost-btn">清除快捷篩選</button>
-        <button id="resetRecommendedDefaultsBtn" type="button" class="ghost-btn">恢復建議預設（15秒 / 1秒 / 4秒）</button>
       </div>
       <p class="scope-summary subtle" style="margin-top:8px;">快捷按鈕會直接套用進階設定中的積分篩選，不會與原本的進階功能衝突。</p>
       <p id="scopeSummary" class="scope-summary">正式筆試模式只出普通小型車官方筆試題庫。</p>
@@ -161,7 +161,7 @@
       <details id="firebaseSyncDetails" class="fold-panel">
         <summary><span id="firebaseSummaryText">雲端同步：未登入（展開登入選項）</span></summary>
         <div class="firebase-mini-wrap" style="padding-top:12px;">
-          <p class="scope-summary subtle" id="firebase-help-text">最簡說明：本機資料平常不會自動改動。登入後只會顯示雲端備份摘要；只有按「下載雲端備份」時，才會詢問是否載入。載入前會先保存同步前本機備份。</p>
+          <p class="scope-summary subtle" id="firebase-help-text">最簡說明：本機資料平常不會自動改動。登入後只會顯示雲端備份摘要；只有按「下載雲端備份」時，才會詢問是否載入。載入前會先保存同步前本機備份。若按登入後完全沒有任何文字變化，通常是網頁腳本未完成載入；若有跳 Google 視窗但最後仍未登入，才比較像 Google/Firebase 流程問題。</p>
           <div id="firebase-name-line" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
             <strong id="firebase-display-name">尚未登入</strong>
             <button id="btn-firebase-toggle-private" type="button" class="ghost-btn" style="display:none; padding:6px 10px;">👁</button>
@@ -206,7 +206,7 @@
   <script src="questions.js"></script>
   <script src="handbook_explanations.js"></script>
   <script src="handbook_pages.js"></script>
-  <script src="app.js?v=20260331v205"></script>
-  <script type="module" src="firebase-ui.js?v=20260331v205"></script>
+  <script src="app.js?v=20260331v206"></script>
+  <script type="module" src="firebase-ui.js?v=20260331v206"></script>
 </body>
 </html>

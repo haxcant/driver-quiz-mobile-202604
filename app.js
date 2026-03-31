@@ -182,13 +182,13 @@ const HANDBOOK_RULES = [
     quickFilterUnseenBtn: document.getElementById("quickFilterUnseenBtn"),
     quickFilterWrongBtn: document.getElementById("quickFilterWrongBtn"),
     quickFilterClearBtn: document.getElementById("quickFilterClearBtn"),
-    resetRecommendedDefaultsBtn: document.getElementById("resetRecommendedDefaultsBtn"),
     answerTimeLimitInput: document.getElementById("answerTimeLimitInput"),
     autoNextCorrectDelayInput: document.getElementById("autoNextCorrectDelayInput"),
     autoNextWrongDelayInput: document.getElementById("autoNextWrongDelayInput"),
     soundVolumeInput: document.getElementById("soundVolumeInput"),
     soundVolumeValue: document.getElementById("soundVolumeValue"),
     soundTestBtn: document.getElementById("soundTestBtn"),
+    restoreRecommendedBtn: document.getElementById("restoreRecommendedBtn"),
     maskTextToggle: document.getElementById("maskTextToggle"),
     shortcutOption1Input: document.getElementById("shortcutOption1Input"),
     shortcutOption2Input: document.getElementById("shortcutOption2Input"),
@@ -383,6 +383,7 @@ const HANDBOOK_RULES = [
     els.quickFilterWrongBtn?.addEventListener("click", () => applyQuickScoreFilter("lt", 0));
     els.quickFilterClearBtn?.addEventListener("click", () => applyQuickScoreFilter("any", 0));
     els.soundTestBtn?.addEventListener("click", () => playCorrectChime());
+    els.restoreRecommendedBtn?.addEventListener("click", restoreRecommendedSettings);
     els.imageReviewBtn?.addEventListener("click", renderImageReview);
     els.resetSessionBtn?.addEventListener("click", () => {
       if (!confirm("確定要清除目前題組嗎？")) return;
@@ -574,7 +575,7 @@ const HANDBOOK_RULES = [
     const scopedCount = getScopedQuestions(scope).length;
     const totalCount = ALL_QUESTIONS.length;
     if (els.versionSummary) {
-      els.versionSummary.textContent = `v20.5｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
+      els.versionSummary.textContent = `v20.6｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
     }
     if (els.scopeSummary) {
       els.scopeSummary.textContent = EXAM_SCOPE_DESCRIPTIONS[scope] || "";
@@ -2388,6 +2389,20 @@ function renderWrongBook() {
   function saveSession() {
     localStorage.setItem(SESSION_KEY, JSON.stringify(session));
   }
+
+
+function restoreRecommendedSettings() {
+  settings.answerTimeLimitSec = 15;
+  settings.autoNextCorrectDelaySec = 1;
+  settings.autoNextWrongDelaySec = 4;
+  if (els.answerTimeLimitInput) els.answerTimeLimitInput.value = "15";
+  if (els.autoNextCorrectDelayInput) els.autoNextCorrectDelayInput.value = "1";
+  if (els.autoNextWrongDelayInput) els.autoNextWrongDelayInput.value = "4";
+  saveSettings();
+  refreshFilterSummaryText();
+  if (typeof renderSessionOrEmpty === "function") renderSessionOrEmpty();
+  showToast("已恢復建議預設：每題 15 秒、答對 1 秒、答錯 4 秒。");
+}
 
   function loadSettings() {
     const data = readStorageObject(SETTINGS_KEY, LEGACY_SETTINGS_KEYS);
