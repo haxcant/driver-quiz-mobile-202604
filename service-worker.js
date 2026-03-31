@@ -1,9 +1,9 @@
-const CACHE_NAME = "driver-quiz-pwa-v20-7-hotfix";
+const CACHE_NAME = "driver-quiz-pwa-v20-8-hotfix";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./app.js?v=20260331v207",
+  "./app.js?v=20260331v208",
   "./questions.js",
   "./handbook_explanations.js",
   "./handbook_pages.js",

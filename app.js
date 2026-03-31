@@ -575,7 +575,7 @@ const HANDBOOK_RULES = [
     const scopedCount = getScopedQuestions(scope).length;
     const totalCount = ALL_QUESTIONS.length;
     if (els.versionSummary) {
-      els.versionSummary.textContent = `v20.7｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
+      els.versionSummary.textContent = `v20.8｜${EXAM_SCOPE_LABELS[scope] || scope}：目前可用 ${scopedCount} 題；全部題庫共 ${totalCount} 題。`;
     }
     if (els.scopeSummary) {
       els.scopeSummary.textContent = EXAM_SCOPE_DESCRIPTIONS[scope] || "";
@@ -618,15 +618,15 @@ const HANDBOOK_RULES = [
     const autoNextWrongDelaySec = sanitizeNonNegativeNumber(els.autoNextWrongDelayInput?.value, 4);
 
     let pool = getScopedQuestions(scope).filter((q) => category === "all" ? true : q.category === category);
-    pool = applyScoreFilter(pool, scoreFilterOperator, scoreFilterValue);
-
     if (practiceMode === "wrongOnly") {
       pool = pool.filter((q) => questionProgress(q.id).inWrongBook);
+    } else {
+      pool = applyScoreFilter(pool, scoreFilterOperator, scoreFilterValue);
     }
 
     if (!pool.length) {
       const msg = practiceMode === "wrongOnly"
-        ? "目前這個範圍／分類在目前積分篩選下沒有錯題可練習。"
+        ? "目前這個範圍／分類沒有錯題可練習。"
         : "這個範圍／分類在目前積分篩選下沒有可用題目。";
       alert(msg);
       return;
@@ -1240,11 +1240,9 @@ function goToNextFlashcardWithoutGrading() {
 
 function renderWrongBook() {
   const scope = getSelectedScope();
-  const wrongQuestions = applyScoreFilter(
-    getScopedQuestions(scope).filter((q) => questionProgress(q.id).inWrongBook),
-    els.scoreFilterOperatorSelect?.value || settings.scoreFilterOperator || "any",
-    sanitizeInteger(els.scoreFilterValueInput?.value ?? settings.scoreFilterValue, 0)
-  ).sort((a, b) => {
+  const wrongQuestions = getScopedQuestions(scope)
+    .filter((q) => questionProgress(q.id).inWrongBook)
+    .sort((a, b) => {
     const ap = questionProgress(a.id);
     const bp = questionProgress(b.id);
     return (bp.lastWrongAt || "").localeCompare(ap.lastWrongAt || "");
@@ -1252,7 +1250,7 @@ function renderWrongBook() {
 
   if (!wrongQuestions.length) {
     els.wrongBookList.className = "wrong-list empty-state";
-    els.wrongBookList.textContent = "目前這個範圍在目前篩選條件下沒有錯題。";
+    els.wrongBookList.textContent = "目前這個範圍沒有錯題。";
     return;
   }
 
@@ -1702,6 +1700,22 @@ function renderWrongBook() {
     return base;
   }
 
+  function normalizeImportedWrongBookScores(targetProgress) {
+    const snapshot = repairProgressSnapshot(targetProgress || {});
+    for (const item of Object.values(snapshot.byQuestion || {})) {
+      if (!item?.inWrongBook) continue;
+      item.totalWrong = Math.max(1, Number(item.totalWrong || 0));
+      item.totalSeen = Math.max(item.totalSeen || 0, item.totalWrong || 0, 1);
+      item.masteryStreak = 0;
+      if (!Number.isFinite(Number(item.score)) || Number(item.score) >= 0) {
+        item.score = -1;
+      }
+      if (!item.lastWrongAt) item.lastWrongAt = item.lastSeenAt || new Date().toISOString();
+    }
+    snapshot.meta = computeProgressMetaFromByQuestion(snapshot.byQuestion, snapshot.meta);
+    return snapshot;
+  }
+
   function compareCoveragePriority(a, b) {
     const aSeen = Number(a?.totalSeen || 0);
     const bSeen = Number(b?.totalSeen || 0);
@@ -1816,7 +1830,7 @@ function renderWrongBook() {
 
   function applyFullMemoryPayload(rawPayload, importModeOrReplaceAll = true) {
     const envelope = extractFullMemoryEnvelope(rawPayload || {});
-    const importedProgress = repairProgressSnapshot(envelope.progress || {});
+    const importedProgress = normalizeImportedWrongBookScores(envelope.progress || {});
     const importedSettings = sanitizeImportedSettings(envelope.settings || {}, settings);
     const importedImageIssues = sanitizeImportedImageIssues(envelope.imageIssues || {});
 
@@ -2729,6 +2743,10 @@ function restoreRecommendedSettings() {
   function openQuestionSearch(question) {
     const query = buildQuestionSearchQuery(question);
     const prompt = buildQuestionPreview(question);
+    if (activeTimerState && !activeTimerState.paused) {
+      pauseActiveTimer();
+    }
+
     if (!query) {
       window.alert(`目前沒有可用的搜尋關鍵詞。
 
