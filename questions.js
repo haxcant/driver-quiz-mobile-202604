@@ -14984,7 +14984,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 5 頁第 050 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第17條：汽車不依限期參加定期檢驗或臨時檢驗者，處罰鍰；逾期1個月以上者並吊扣牌照至檢驗合格為止。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第17條",
+        "note": "汽車定期檢驗逾期1個月以上者，除罰鍰外，並吊扣牌照至檢驗合格為止。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-051",
@@ -17510,7 +17517,21 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 156 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第61條第1項第1款及第67條第1項：利用汽車犯罪，經判決有期徒刑以上之刑確定者，吊銷駕駛執照，並依規定期間限制考領。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第61條",
+        "paragraph": "第1項第1款",
+        "note": "利用汽車犯罪，經判決有期徒刑以上之刑確定者，吊銷駕駛執照。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第67條",
+        "paragraph": "第1項",
+        "note": "吊銷駕駛執照者，於法定限制期間內不得考領。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-157",
@@ -17552,7 +17573,15 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 12 頁第 158 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第36條第1項：計程車駕駛人未辦理執業登記並領取執業登記證即執業者，處罰鍰並禁止其執業。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第36條",
+        "paragraph": "第1項",
+        "note": "計程車駕駛人未依規定辦理執業登記並領取執業登記證即執業者，處罰鍰並禁止其執業。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-159",
@@ -17956,7 +17985,21 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 173 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第63條第3項：汽車駕駛人在1年內違規記點每達12點，吊扣駕駛執照2個月，並施以道路交通安全講習。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63條",
+        "paragraph": "第3項",
+        "note": "1年內違規記點每達12點者，吊扣駕駛執照2個月。"
+      },
+      {
+        "law": "道路交通安全講習辦法",
+        "article": "第4條",
+        "paragraph": "第1項第14款",
+        "note": "依處罰條例記點達標準者，應接受道路交通安全講習。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-174",
@@ -17977,7 +18020,14 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 13 頁第 174 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第63-1條：汽車駕駛人於3個月內違規記錄達3次以上者，應接受道路交通安全講習。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63-1條",
+        "note": "3個月內違規記錄達3次以上者，應接受道路交通安全講習。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-175",
@@ -18356,7 +18406,21 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 188 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第45條第1項第14款及第63條第1項：行近幼童專用車、校車不依規定禮讓或減速慢行者，處罰鍰並記違規點數。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第45條",
+        "paragraph": "第1項第14款",
+        "note": "行近幼童專用車、校車，不依規定禮讓或減速慢行者，處罰鍰。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63條",
+        "paragraph": "第1項",
+        "note": "前開違規並記違規點數。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-189",
@@ -18377,7 +18441,21 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 14 頁第 189 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第56條第1項第10款及第5項：在身心障礙專用停車位違規停車者，處罰鍰，並得予以移置保管。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第56條",
+        "paragraph": "第1項第10款",
+        "note": "於身心障礙專用停車位違規停車者，處罰鍰。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第56條",
+        "paragraph": "第5項",
+        "note": "得責令駛離；不聽從者，得移置保管。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-190",
@@ -18713,7 +18791,21 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 15 頁第 200 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第63條：違規記點會記錄於駕駛人駕照資料；達法定點數標準時，將受講習或吊扣駕照處分，不能置之不理。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63條",
+        "paragraph": "第1項",
+        "note": "各類應記點違規，依法記違規點數。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63條",
+        "paragraph": "第3項",
+        "note": "1年內記點每達12點，吊扣駕駛執照2個月。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-201",
@@ -18858,7 +18950,15 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 16 頁第 206 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第30條第1項第5款：小客車前座或貨車駕駛室乘人超過規定人數者，處駕駛人罰鍰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第30條",
+        "paragraph": "第1項第5款",
+        "note": "小客車前座或貨車駕駛室乘人超過規定人數者，處駕駛人罰鍰。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-207",
@@ -19306,7 +19406,15 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 17 頁第 222 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第56條第2項：汽車駕駛人違規併排停車者，處新臺幣1,800元以上3,000元以下罰鍰。若題庫仍寫固定金額，應以現行法條為準。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第56條",
+        "paragraph": "第2項",
+        "note": "違規併排停車者，處新臺幣1,800元以上3,000元以下罰鍰。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-223",
@@ -20907,7 +21015,21 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 21 頁第 289 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第31條第4項：對6歲以下或需特別看護之兒童，單獨留置車內者，處駕駛人罰鍰，並應接受道路交通安全講習。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第31條",
+        "paragraph": "第4項",
+        "note": "對6歲以下或需要特別看護之兒童，單獨留置車內者，處罰鍰並應接受道路交通安全講習。"
+      },
+      {
+        "law": "道路交通安全講習辦法",
+        "article": "第4條",
+        "paragraph": "第1項第6款",
+        "note": "依處罰條例第31條相關規定者，應接受道路交通安全講習。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-290",
@@ -23613,7 +23735,21 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 29 頁第 407 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第33條第1項第9款及第63條第1項：在高速公路違規行駛路肩者，處罰鍰並記違規點數。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第33條",
+        "paragraph": "第1項第9款",
+        "note": "在高速公路或快速公路違規行駛路肩者，處罰鍰。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63條",
+        "paragraph": "第1項",
+        "note": "前開違規並記違規點數。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-408",
@@ -23854,7 +23990,21 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規選擇題-中文1131114.pdf 第 30 頁第 417 題整理。"
+    "explanation": "正確法源為道路交通管理處罰條例第92條第7項第4款及第8項：550立方公分以上大型重型機車行駛高速公路有同車道併駛、超車行為者，處駕駛人罰鍰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第92條",
+        "paragraph": "第7項第4款",
+        "note": "大型重型機車行駛高速公路有違規同車道併駛、超車等行為者，處駕駛人罰鍰。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第92條",
+        "paragraph": "第8項",
+        "note": "大型重型機車行駛高速公路及快速公路之管理與處罰，依本條相關規定辦理。"
+      }
+    ]
   },
   {
     "id": "traffic_law_choice-418",
@@ -25624,7 +25774,24 @@ window.QUESTION_BANK = [
       "topicCode": "07",
       "topicLabel": "事故預防及處理"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 4 頁第 046 題整理。"
+    "explanation": "本題為是。駕車過失致人死傷，可能同時涉及刑事責任（如過失致死、過失傷害）、民事賠償責任，以及依道路交通管理處罰條例受吊銷駕照等行政責任。",
+    "lawBasis": [
+      {
+        "law": "刑法",
+        "article": "第276條、284條",
+        "note": "過失致死、過失傷害屬刑事責任。"
+      },
+      {
+        "law": "民法",
+        "article": "第184條",
+        "note": "侵權行為致他人損害者，負民事賠償責任。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第61條、第67條",
+        "note": "肇事致人死傷等情形，得受吊銷駕照及限制考領之行政處分。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-047",
@@ -27549,7 +27716,15 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 124 題整理。"
+    "explanation": "本題為是。汽車行駛應繳費之公路橋樑逃避繳費，並有傷害收費人員之情事者，依道路交通管理處罰條例可吊銷駕照。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第27條",
+        "paragraph": "第2項、第3項",
+        "note": "逃避繳費並有傷害收費人員情事者，得吊銷駕駛執照。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-125",
@@ -27730,7 +27905,19 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 8 頁第 132 題整理。"
+    "explanation": "本題為非。受吊扣或吊銷駕照處分者，並非只受違規再教育1個月即可參加駕照考驗；是否得再考領，仍須依道路交通管理處罰條例所定限制期間及條件辦理。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第67條",
+        "note": "吊扣、吊銷駕照者，於法定限制期間內不得考領。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第67-1條",
+        "note": "部分吊銷案件須於法定年限屆滿後，始得申請考領駕照。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-133",
@@ -30572,7 +30759,15 @@ window.QUESTION_BANK = [
       "topicCode": "05",
       "topicLabel": "注意大型車行駛及轉彎"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 244 題整理。"
+    "explanation": "本題為是。大型車未依規定裝設行車紀錄器及行車視野輔助系統，或設備無法正常運作、不當使用致無法正確記錄資料者，除罰鍰外，並得責令參加臨時檢驗。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第18-1條",
+        "paragraph": "第1項至第4項",
+        "note": "大型車未依規定裝設、使用行車紀錄器或視野輔助系統者，得處罰鍰並責令臨時檢驗。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-245",
@@ -30693,7 +30888,21 @@ window.QUESTION_BANK = [
       "topicCode": "03",
       "topicLabel": "行駛中應注意事項"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 248 題整理。"
+    "explanation": "本題為是。駕駛人未按遵行方向行駛者，依道路交通管理處罰條例處罰鍰，並記違規點數。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第45條",
+        "paragraph": "第1項第1款",
+        "note": "不按遵行方向行駛者，處罰鍰。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63條",
+        "paragraph": "第1項",
+        "note": "前開違規並記違規點數。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-249",
@@ -30713,7 +30922,21 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 14 頁第 249 題整理。"
+    "explanation": "本題為是。駕車行駛於人行道者，依道路交通管理處罰條例處罰鍰，並記違規點數。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第45條",
+        "paragraph": "第1項第6款",
+        "note": "汽車駕駛人駕車行駛人行道者，處罰鍰。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63條",
+        "paragraph": "第1項",
+        "note": "前開違規並記違規點數。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-250",
@@ -30841,7 +31064,15 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 254 題整理。"
+    "explanation": "本題為非。汽車駕駛人在1年內違規記點每達12點，才會吊扣駕照2個月；不是達6點就吊扣1個月。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63條",
+        "paragraph": "第3項、第4項",
+        "note": "1年內違規記點每達12點，吊扣駕照2個月；其後再達12點者，加重處分。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-255",
@@ -30888,7 +31119,15 @@ window.QUESTION_BANK = [
       "topicCode": "08",
       "topicLabel": "禁止不當行為"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 15 頁第 256 題整理。"
+    "explanation": "本題為非。違規記點會依法登錄，累積到一定標準時，將受講習或吊扣駕照處分，不能任意忽視。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第63條",
+        "paragraph": "第1項、第3項",
+        "note": "違規應記點，達法定標準者並施以講習或吊扣駕照。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-257",
@@ -33624,7 +33863,14 @@ window.QUESTION_BANK = [
       "topicCode": "04",
       "topicLabel": "正確使用燈光"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 370 題整理。"
+    "explanation": "本題為是。汽車駕駛人不依規定使用燈光者，依道路交通管理處罰條例處罰鍰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第42條",
+        "note": "汽車駕駛人不依規定使用燈光者，處罰鍰。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-371",
@@ -33644,7 +33890,15 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 371 題整理。"
+    "explanation": "本題為是。利用道路為工作場所者，除責令即時停止並消除障礙外，並得處行為人或雇主罰鍰。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第82條",
+        "paragraph": "第1項第3款",
+        "note": "利用道路為工作場所者，除責令停止並消除障礙外，並得處罰鍰。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-372",
@@ -33684,7 +33938,15 @@ window.QUESTION_BANK = [
       "topicCode": "06",
       "topicLabel": "貨物裝載"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 21 頁第 373 題整理。"
+    "explanation": "本題為非。汽車裝載貨物行經地磅處所5公里內路段，未依標誌、標線、號誌指示過磅者，依現行法並非一律處新臺幣90,000元，而是依道路交通管理處罰條例第29-2條第4項之法定級距處罰，並得強制過磅。",
+    "lawBasis": [
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第29-2條",
+        "paragraph": "第4項",
+        "note": "未依指示過磅者，依本項法定罰鍰級距處罰，並得強制其過磅。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-374",
@@ -35795,7 +36057,24 @@ window.QUESTION_BANK = [
       "topicCode": "10",
       "topicLabel": "其他"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 26 頁第 466 題整理。"
+    "explanation": "本題為是。停車怠速時間原則不得超過3分鐘；違反者，依空氣污染防制法及汽車停車怠速管理辦法處罰。",
+    "lawBasis": [
+      {
+        "law": "汽車停車怠速管理辦法",
+        "article": "第3條",
+        "note": "汽車停車怠速時間不得逾3分鐘。但有例外情形者，不在此限。"
+      },
+      {
+        "law": "空氣污染防制法",
+        "article": "第38條",
+        "note": "授權訂定汽車停車怠速管理相關規範。"
+      },
+      {
+        "law": "空氣污染防制法",
+        "article": "第76條",
+        "note": "違反汽車停車怠速管理規定者，處罰鍰。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-467",
@@ -40137,7 +40416,25 @@ window.QUESTION_BANK = [
       "topicCode": "01",
       "topicLabel": "路口安全"
     },
-    "explanation": "依 汽車法規是非題-中文1131114.pdf 第 36 頁第 657 題整理。"
+    "explanation": "本題為是。汽車行駛於行人優先區內，速限不得超過20公里，並禁止按鳴喇叭；違反者可依道路交通管理處罰條例處罰。",
+    "lawBasis": [
+      {
+        "law": "行人交通安全設施條例施行細則",
+        "article": "第9條",
+        "note": "行人優先區之限制事項包括速限20公里及禁止按鳴喇叭。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第40條",
+        "note": "違反速限規定者，處罰鍰。"
+      },
+      {
+        "law": "道路交通管理處罰條例",
+        "article": "第60條",
+        "paragraph": "第2項第2款、第3款",
+        "note": "不遵守道路交通標誌、標線、號誌指示或未依規定行駛者，得依本條處罰。"
+      }
+    ]
   },
   {
     "id": "traffic_law_truefalse-658",

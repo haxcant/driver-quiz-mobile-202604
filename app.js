@@ -3122,7 +3122,7 @@ function buildAnswerExplanationHtml(question) {
 
   parts.push(`
     <div class="answer-explanation-inline-note" style="margin-top:6px; color:var(--muted,#6b7280); font-size:12px; line-height:1.5;">
-      <small>註：題目眾多，目前僅提供簡易解答、手冊摘要與法規提示；內容可能因題意、題庫版本、關鍵詞對應或法規更新而不完全匹配。若有疑義，請以官方題庫、全國法規資料庫及監理機關公告為準。</small>
+      <small>註：詳解僅供參考，請查官方。</small>
     </div>
   `);
 
