@@ -1076,6 +1076,7 @@ function goToNextFlashcardWithoutGrading() {
     }
 
     document.getElementById("nextBtn")?.addEventListener("click", advanceToNextQuestion);
+    bindVerifyToolButton();
     scheduleNext(autoNextDelaySec, "nextCountdown");
   }
 
@@ -1193,6 +1194,7 @@ function goToNextFlashcardWithoutGrading() {
     });
     document.getElementById("retryWrongBtn")?.addEventListener("click", () => retrySummaryWrong("wrongOnly"));
     document.getElementById("flashcardWrongBtn")?.addEventListener("click", () => retrySummaryWrong("flashcard"));
+    bindVerifyToolButton();
     try {
       window.dispatchEvent(new CustomEvent("driverquiz:session-completed", {
         detail: {
