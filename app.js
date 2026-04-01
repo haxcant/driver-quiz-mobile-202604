@@ -785,6 +785,7 @@ function renderQuestion() {
   document.getElementById("drawerExitBtn")?.addEventListener("click", confirmExitCurrentMode);
   document.getElementById("exitModeBtn")?.addEventListener("click", confirmExitCurrentMode);
   bindQuestionSearchButton(question);
+  bindVerifyToolButton();
   attachResilientImageHandlers(els.mainContent);
   startQuestionTimer(question);
 }
@@ -876,6 +877,7 @@ function renderFlashcard() {
   document.getElementById("prevCardBtn")?.addEventListener("click", goToPreviousFlashcard);
   document.getElementById("nextCardBtn")?.addEventListener("click", goToNextFlashcardWithoutGrading);
   bindQuestionSearchButton(question);
+  bindVerifyToolButton();
   attachResilientImageHandlers(els.mainContent);
 }
 
@@ -2760,6 +2762,215 @@ function restoreRecommendedSettings() {
     return parts.join(" ").replace(/\s+/g, " ").trim();
   }
 
+  const OFFICIAL_LAW_RESOURCES = {
+    "道路交通管理處罰條例": {
+      law: "道路交通管理處罰條例",
+      title: "道路交通管理處罰條例 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=K0040012"
+    },
+    "道路交通安全規則": {
+      law: "道路交通安全規則",
+      title: "道路交通安全規則 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=K0040013"
+    },
+    "道路交通標誌標線號誌設置規則": {
+      law: "道路交通標誌標線號誌設置規則",
+      title: "道路交通標誌標線號誌設置規則 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=K0040014"
+    },
+    "道路交通安全講習辦法": {
+      law: "道路交通安全講習辦法",
+      title: "道路交通安全講習辦法 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=K0040017"
+    },
+    "高速公路及快速公路交通管制規則": {
+      law: "高速公路及快速公路交通管制規則",
+      title: "高速公路及快速公路交通管制規則 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=K0040019"
+    },
+    "違反道路交通管理事件統一裁罰基準及處理細則": {
+      law: "違反道路交通管理事件統一裁罰基準及處理細則",
+      title: "違反道路交通管理事件統一裁罰基準及處理細則 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0080029"
+    },
+    "道路交通事故處理辦法": {
+      law: "道路交通事故處理辦法",
+      title: "道路交通事故處理辦法 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0080090"
+    },
+    "行人交通安全設施條例施行細則": {
+      law: "行人交通安全設施條例施行細則",
+      title: "行人交通安全設施條例施行細則 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070307"
+    },
+    "空氣污染防制法": {
+      law: "空氣污染防制法",
+      title: "空氣污染防制法 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=O0020001"
+    },
+    "汽車停車怠速管理辦法": {
+      law: "汽車停車怠速管理辦法",
+      title: "汽車停車怠速管理辦法 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?kw=%E6%B1%BD%E8%BB%8A%E5%81%9C%E8%BB%8A%E6%80%A0%E9%80%9F%E7%AE%A1%E7%90%86%E8%BE%A6%E6%B3%95&pcode=O0020086"
+    },
+    "中華民國刑法": {
+      law: "中華民國刑法",
+      title: "中華民國刑法 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=C0000001"
+    },
+    "民法": {
+      law: "民法",
+      title: "民法 - 全國法規資料庫",
+      url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?kw=%E6%B0%91%E6%B3%95&pcode=B0000001"
+    }
+  };
+
+  function normalizeLawName(name) {
+    return String(name || "")
+      .replace(/（[^）]*）/g, "")
+      .replace(/\([^)]*\)/g, "")
+      .replace(/\s+/g, "")
+      .trim();
+  }
+
+  function lookupOfficialLawResource(name) {
+    const normalized = normalizeLawName(name);
+    if (!normalized) return null;
+    const direct = OFFICIAL_LAW_RESOURCES[normalized];
+    if (direct) return direct;
+    if (normalized.includes("道路交通管理處罰條例")) return OFFICIAL_LAW_RESOURCES["道路交通管理處罰條例"];
+    if (normalized.includes("道路交通安全規則")) return OFFICIAL_LAW_RESOURCES["道路交通安全規則"];
+    if (normalized.includes("道路交通標誌標線號誌設置規則")) return OFFICIAL_LAW_RESOURCES["道路交通標誌標線號誌設置規則"];
+    if (normalized.includes("道路交通安全講習辦法")) return OFFICIAL_LAW_RESOURCES["道路交通安全講習辦法"];
+    if (normalized.includes("高速公路及快速公路交通管制規則")) return OFFICIAL_LAW_RESOURCES["高速公路及快速公路交通管制規則"];
+    if (normalized.includes("違反道路交通管理事件統一裁罰基準及處理細則")) return OFFICIAL_LAW_RESOURCES["違反道路交通管理事件統一裁罰基準及處理細則"];
+    if (normalized.includes("道路交通事故處理辦法")) return OFFICIAL_LAW_RESOURCES["道路交通事故處理辦法"];
+    if (normalized.includes("行人交通安全設施條例施行細則")) return OFFICIAL_LAW_RESOURCES["行人交通安全設施條例施行細則"];
+    if (normalized.includes("空氣污染防制法")) return OFFICIAL_LAW_RESOURCES["空氣污染防制法"];
+    if (normalized.includes("汽車停車怠速管理辦法")) return OFFICIAL_LAW_RESOURCES["汽車停車怠速管理辦法"];
+    if (normalized.includes("刑法")) return OFFICIAL_LAW_RESOURCES["中華民國刑法"];
+    if (normalized.includes("民法")) return OFFICIAL_LAW_RESOURCES["民法"];
+    return null;
+  }
+
+  function collectOfficialLawResources(question) {
+    const resources = [];
+    const seen = new Set();
+    const pushResource = (resource) => {
+      if (!resource || !resource.url) return;
+      if (seen.has(resource.url)) return;
+      seen.add(resource.url);
+      resources.push(resource);
+    };
+    const pushByName = (name) => pushResource(lookupOfficialLawResource(name));
+
+    const basis = Array.isArray(question?.lawBasis) ? question.lawBasis.filter(Boolean) : [];
+    basis.forEach((item) => pushByName(item?.law));
+
+    const text = [
+      question?.prompt,
+      question?.answer,
+      ...(Array.isArray(question?.options) ? question.options : []),
+      question?.source?.topicLabel,
+      question?.explanation
+    ].filter(Boolean).join(" ");
+
+    if (/高速公路|快速公路|交流道|匝道|路肩|加速車道|減速車道|服務區|休息站|高乘載|爬坡道/.test(text)) {
+      pushByName("高速公路及快速公路交通管制規則");
+    }
+    if (/罰鍰|罰金|記點|違規點數|吊扣|吊銷|酒駕|拒測|無照|越級駕駛|肇事逃逸|裁罰|處罰|沒入/.test(text)) {
+      pushByName("道路交通管理處罰條例");
+      pushByName("違反道路交通管理事件統一裁罰基準及處理細則");
+    }
+    if (/事故|肇事|現場痕跡|標繪|警告設施|移置車輛|初步分析研判表|攝影或錄影/.test(text)) {
+      pushByName("道路交通事故處理辦法");
+    }
+    if (/標誌|標線|號誌/.test(text)) {
+      pushByName("道路交通標誌標線號誌設置規則");
+    }
+    if (/講習/.test(text)) {
+      pushByName("道路交通安全講習辦法");
+    }
+    if (/怠速/.test(text)) {
+      pushByName("汽車停車怠速管理辦法");
+      pushByName("空氣污染防制法");
+    }
+
+    if (!resources.length && /^traffic_law_/.test(String(question?.category || ""))) {
+      pushByName("道路交通安全規則");
+      if (/處罰|罰鍰|吊扣|吊銷|記點/.test(text)) pushByName("道路交通管理處罰條例");
+    }
+    return resources;
+  }
+
+  function buildVerifyFocusItems(question, keywords) {
+    const items = [];
+    const basis = Array.isArray(question?.lawBasis) ? question.lawBasis.filter(Boolean) : [];
+    basis.slice(0, 4).forEach((item) => {
+      const head = [item?.law, item?.article, item?.paragraph].filter(Boolean).join("");
+      const note = String(item?.note || item?.penaltyStandard || "").trim();
+      if (head || note) items.push(`${head}${note ? `：${note}` : ""}`);
+    });
+    if (question?.source?.topicLabel) items.push(`先核對題型主題：${question.source.topicLabel}`);
+    if (Array.isArray(keywords) && keywords.length) items.push(`關鍵詞：${keywords.join("、")}`);
+    if (!items.length && question?.answer) items.push(`先比對官方正解：${question.answer}`);
+    return items.slice(0, 5);
+  }
+
+  function buildVerifyToolDetailHtml(question) {
+    const keywords = extractQuestionKeywordCandidates(question);
+    const handbook = getHandbookExplanation(question);
+    const officialFallback = buildOfficialFallbackExplanation(question, keywords);
+    const lawResources = collectOfficialLawResources(question);
+    const focusItems = buildVerifyFocusItems(question, keywords);
+
+    const handbookHtml = handbook
+      ? `
+        <div class="verify-tool-card">
+          <div class="verify-tool-card-title">手冊對照</div>
+          ${handbook.keyword && !isGenericKeyword(handbook.keyword) ? `<div class="verify-tool-keywords">檢索詞：${escapeHtml(handbook.keyword)}</div>` : ""}
+          <div>${escapeHtml(handbook.text || "")}</div>
+          <small>來源：駕駛人手冊 第 ${escapeHtml(String(handbook.page || "?"))} 頁 ・ ${escapeHtml(handbook.title || "相關章節")}</small>
+        </div>`
+      : officialFallback
+        ? `
+        <div class="verify-tool-card">
+          <div class="verify-tool-card-title">題目重點</div>
+          <div>${escapeHtml(officialFallback.text || "")}</div>
+        </div>`
+        : `
+        <div class="verify-tool-card">
+          <div class="verify-tool-card-title">題目重點</div>
+          <div>目前沒有自動對上的手冊段落，可優先比對關鍵詞與官方法規連結。</div>
+        </div>`;
+
+    const focusHtml = focusItems.length
+      ? `
+        <div class="verify-tool-card">
+          <div class="verify-tool-card-title">查證重點</div>
+          <ul class="verify-tool-list">${focusItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </div>`
+      : "";
+
+    const lawHtml = lawResources.length
+      ? `
+        <div class="verify-tool-card official-law-links-card">
+          <div class="verify-tool-card-title">官方法規網址</div>
+          <div class="verify-law-links">${lawResources.map((item) => `
+            <a class="verify-law-link" href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a>
+          `).join("")}</div>
+        </div>`
+      : "";
+
+    return `
+      <div class="verify-tool-inline hidden">
+        ${handbookHtml}
+        ${focusHtml}
+        ${lawHtml}
+      </div>
+    `;
+  }
+
   function openQuestionSearch(question) {
     const query = buildQuestionSearchQuery(question);
     const prompt = buildQuestionPreview(question);
@@ -2797,9 +3008,23 @@ function restoreRecommendedSettings() {
   }
 
   function bindQuestionSearchButton(question) {
-    const buttons = Array.from(document.querySelectorAll("#searchQuestionQuickBtn, .search-question-btn"));
+    const buttons = Array.from(document.querySelectorAll("#searchQuestionQuickBtn"));
     buttons.forEach((button) => {
       button.addEventListener("click", () => openQuestionSearch(question));
+    });
+  }
+
+  function bindVerifyToolButton() {
+    const buttons = Array.from(document.querySelectorAll(".verify-tool-btn"));
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const block = button.closest(".search-tool-block");
+        const panel = block?.querySelector(".verify-tool-inline");
+        if (!panel) return;
+        const shouldOpen = panel.classList.contains("hidden");
+        panel.classList.toggle("hidden", !shouldOpen);
+        button.setAttribute("aria-expanded", String(shouldOpen));
+      });
     });
   }
 
@@ -3150,9 +3375,10 @@ function buildAnswerExplanationHtml(question) {
     <div class="feedback-explanation-block handbook-block search-tool-block">
       <div class="feedback-explanation-title">查證工具</div>
       <div class="search-tool-row">
-        <button class="ghost-btn aux-btn search-question-btn">搜尋此題</button>
+        <button type="button" class="ghost-btn aux-btn verify-tool-btn" aria-expanded="false">搜尋此題</button>
         <span class="secondary-meta">直接顯示本題的手冊對照、關鍵詞與查證重點，不再跳出外部搜尋頁。</span>
       </div>
+      ${buildVerifyToolDetailHtml(question)}
     </div>
   `);
 

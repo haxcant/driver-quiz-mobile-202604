@@ -300,6 +300,51 @@ input[type="number"]{
   margin: 0;
 }
 
+.verify-tool-inline{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+.verify-tool-card{
+  display:grid;
+  gap:6px;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(148,163,184,.22);
+  background:rgba(15,23,42,.42);
+}
+.verify-tool-card-title{
+  font-weight:800;
+  color:#e2e8f0;
+}
+.verify-tool-keywords{
+  font-size:.92rem;
+  color:#bfdbfe;
+  font-weight:700;
+}
+.verify-tool-list{
+  margin:0;
+  padding-left:1.1rem;
+}
+.verify-law-links{
+  display:grid;
+  gap:8px;
+}
+.verify-law-link{
+  display:block;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(125,211,252,.28);
+  background:rgba(255,255,255,.04);
+  color:#dbeafe;
+  text-decoration:none;
+  line-height:1.5;
+}
+.verify-law-link:hover{
+  background:rgba(14,116,144,.22);
+  border-color:rgba(125,211,252,.45);
+}
+
 
 .quiz-header.compact{margin-bottom:8px}
 .timer-wrap.compact{margin-bottom:6px}
