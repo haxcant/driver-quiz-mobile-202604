@@ -18,6 +18,7 @@
   const QUESTION_MAP = new Map(ALL_QUESTIONS.map((q) => [q.id, q]));
   const HANDBOOK_EXPLANATIONS = window.HANDBOOK_EXPLANATIONS || {};
   const HANDBOOK_PAGES = window.HANDBOOK_PAGES || [];
+  const NETWORK_REFERENCE_ANSWERS = window.NETWORK_REFERENCE_ANSWERS || {};
   const CATEGORY_LABELS = {
     all: "全部分類",
     warning_sign: "警告標誌",
@@ -3039,6 +3040,11 @@ function restoreRecommendedSettings() {
     return text;
   }
 
+function getNetworkReferenceAnswer(question) {
+  const text = String(NETWORK_REFERENCE_ANSWERS[question?.id] || "").trim();
+  return text || "";
+}
+
 
 function getHandbookExplanation(question) {
   const profile = buildQuestionSearchProfile(question);
@@ -3324,12 +3330,23 @@ function buildAnswerExplanationHtml(question) {
   const keywords = extractQuestionKeywordCandidates(question);
   const handbook = getHandbookExplanation(question);
   const officialFallback = buildOfficialFallbackExplanation(question, keywords);
+  const networkReference = getNetworkReferenceAnswer(question);
 
   if (base) {
     parts.push(`
       <div class="feedback-explanation-block">
         <div class="feedback-explanation-title">題庫補充說明</div>
         <div>${escapeHtml(base)}</div>
+      </div>
+    `);
+  }
+
+  if (networkReference) {
+    parts.push(`
+      <div class="feedback-explanation-block network-reference-block">
+        <div class="feedback-explanation-title">網路搜到的參考答案</div>
+        <div>${escapeHtml(networkReference)}</div>
+        <small>註：此欄為整理後的網路參考說法，非官方標準答案，仍請以官方題庫、法規與手冊為準。</small>
       </div>
     `);
   }

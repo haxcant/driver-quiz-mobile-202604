@@ -1,11 +1,12 @@
-const CACHE_NAME = "driver-quiz-pwa-v21-4-hotfix";
+const CACHE_NAME = "driver-quiz-pwa-v21-5-netref";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./app.js?v=20260401v214",
+  "./app.js?v=20260401v215",
   "./questions.js",
   "./handbook_explanations.js",
+  "./network_reference_answers.js",
   "./handbook_pages.js",
   "./manifest.webmanifest",
   "./firebase-init.js",
