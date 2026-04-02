@@ -340,7 +340,21 @@ const HANDBOOK_RULES = [
     renderWrongBook();
     renderSessionOrEmpty();
     wireEvents();
+    ensureCriticalBindings();
     registerPWA();
+  }
+
+  function ensureCriticalBindings() {
+    const startBtn = document.getElementById("startBtn");
+    if (startBtn && startBtn.dataset.boundStartSession !== "1") {
+      startBtn.dataset.boundStartSession = "1";
+      startBtn.addEventListener("click", startSessionFromControls);
+    }
+    const continueBtn = document.getElementById("continueBtn");
+    if (continueBtn && continueBtn.dataset.boundContinueSession !== "1") {
+      continueBtn.dataset.boundContinueSession = "1";
+      continueBtn.addEventListener("click", () => renderSessionOrEmpty());
+    }
   }
 
   function wireEvents() {
@@ -3817,6 +3831,30 @@ function truncateText(text, maxLen = 80) {
   function isSessionInProgress() {
     return !!(session && Array.isArray(session.queue) && session.queue.length && Number(session.index || 0) < session.queue.length && document.body.classList.contains("quiz-mode-active"));
   }
+
+  window.addEventListener("pageshow", () => {
+    try {
+      ensureCriticalBindings();
+      renderSessionOrEmpty();
+    } catch (err) {
+      console.error("pageshow rebind failed", err);
+    }
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState !== "visible") return;
+    try {
+      ensureCriticalBindings();
+    } catch (err) {
+      console.error("visibilitychange rebind failed", err);
+    }
+  });
+
+  window.DriverQuizApp = {
+    startSessionFromControls,
+    renderSessionOrEmpty,
+    ensureCriticalBindings,
+  };
 
   window.DriverQuizMemory = {
     buildPayload: buildFullMemoryPayload,
