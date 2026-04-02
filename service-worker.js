@@ -1,10 +1,10 @@
-const CACHE_NAME = "driver-quiz-pwa-v21-8-fixstart";
+const CACHE_NAME = "driver-quiz-pwa-v21-9-fixdownload";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "././memory-bridge.js?v=20260402fixstart1",
-  "././app.js?v=20260402fixstart1",
+  "././memory-bridge.js?v=20260402fixdownload1",
+  "././app.js?v=20260402fixdownload1",
   "./questions.js",
   "./handbook_explanations.js",
   "./network_reference_answers.js",
@@ -14,7 +14,7 @@ const CORE_ASSETS = [
   "./firebase-auth.js?v=20260401v214",
   "./firebase-sync-smoke.js?v=20260401v214",
   "./firebase-backup.js?v=20260401v214",
-  "././firebase-ui.js?v=20260402fixstart1",
+  "././firebase-ui.js?v=20260402fixdownload1",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];
