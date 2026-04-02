@@ -3040,9 +3040,48 @@ function restoreRecommendedSettings() {
     return text;
   }
 
+function normalizeNetworkReferenceAnswer(question, rawText) {
+  const text = String(rawText || "").trim();
+  if (!text) return "";
+
+  const qid = String(question?.id || "").trim();
+  if (!/^tf-\d+/i.test(qid)) return text;
+
+  let normalized = text.replace(/^資料顯示：\s*/, "").trim();
+
+  const candidatePatterns = [
+    /^(?:此圖示代表|此號誌為|圖中[^，。]*為|此標線為|這是警告標誌，表示|應為)「([^」]+)」/,
+    /^(?:此圖示代表|此號誌為|圖中[^，。]*為|此標線為|這是警告標誌，表示|應為)([^，。]+)/,
+  ];
+
+  let candidate = "";
+  for (const pattern of candidatePatterns) {
+    const match = normalized.match(pattern);
+    if (match && match[1]) {
+      candidate = String(match[1]).trim();
+      break;
+    }
+  }
+
+  if (!candidate) {
+    return /^可能是：/.test(normalized) ? normalized : `可能是：${normalized}`;
+  }
+
+  normalized = normalized
+    .replace(/^(?:此圖示代表|此號誌為|圖中[^，。]*為|此標線為|這是警告標誌，表示|應為)/, "")
+    .replace(/^「[^」]+」[,，]?/, "")
+    .trim();
+
+  if (normalized.startsWith('，') || normalized.startsWith(',')) {
+    normalized = normalized.slice(1).trim();
+  }
+
+  return normalized ? `可能是：${candidate}。${normalized}` : `可能是：${candidate}`;
+}
+
 function getNetworkReferenceAnswer(question) {
   const text = String(NETWORK_REFERENCE_ANSWERS[question?.id] || "").trim();
-  return text || "";
+  return normalizeNetworkReferenceAnswer(question, text);
 }
 
 

@@ -56,11 +56,20 @@ window.addEventListener("DOMContentLoaded", async () => {
       if (btn) btn.disabled = !enabled;
     });
   };
+  const getMemoryApi = () => {
+    try {
+      if (window.DriverQuizMemory?.buildPayload) return window.DriverQuizMemory;
+      if (window.DriverQuizMemoryBridge?.ensureMemoryApi) return window.DriverQuizMemoryBridge.ensureMemoryApi();
+    } catch (err) {
+      console.error("getMemoryApi failed", err);
+    }
+    return window.DriverQuizMemory || null;
+  };
   const localAnsweredCount = () => {
     try {
-      const fast = window.DriverQuizMemory?.getAnsweredCount?.();
+      const fast = getMemoryApi()?.getAnsweredCount?.();
       if (Number.isFinite(Number(fast))) return Math.max(0, Number(fast));
-      return modules?.backup?.getAnsweredCountFromPayload(window.DriverQuizMemory?.buildPayload?.()) || 0;
+      return modules?.backup?.getAnsweredCountFromPayload(getMemoryApi()?.buildPayload?.()) || 0;
     } catch {
       return 0;
     }
@@ -163,8 +172,8 @@ if (btnLogin) {
     if (!currentUser || !modules?.backup?.uploadFullMemoryBackup) return;
     if (!readAutoUploadEnabled()) return;
     if (autoUploadInFlight) return;
-    if (!window.DriverQuizMemory?.buildPayload) return;
-    if (window.DriverQuizMemory?.isSessionInProgress?.()) return;
+    if (!getMemoryApi()?.buildPayload) return;
+    if (getMemoryApi()?.isSessionInProgress?.()) return;
     if (document.visibilityState && document.visibilityState !== "visible") return;
 
     const now = Date.now();
@@ -188,7 +197,7 @@ if (btnLogin) {
     autoUploadInFlight = true;
     updateAutoUploadStatus(" 自動上傳中...");
     try {
-      const result = await modules.backup.uploadFullMemoryBackup(() => window.DriverQuizMemory.buildPayload());
+      const result = await modules.backup.uploadFullMemoryBackup(() => getMemoryApi().buildPayload());
       await refreshCloudMeta();
       updateReminder();
       updateAutoUploadStatus(result?.skipped ? " 已檢查，雲端內容相同。" : " 已於本次完成後自動上傳。");
@@ -382,9 +391,10 @@ ${err?.message || String(err)}`);
   if (btnCloudUpload) {
     btnCloudUpload.addEventListener("click", async () => {
       try {
-        if (!window.DriverQuizMemory?.buildPayload) throw new Error("找不到完整資料匯出函式（DriverQuizMemory.buildPayload）。");
+        const memoryApi = getMemoryApi();
+        if (!memoryApi?.buildPayload) throw new Error("找不到完整資料匯出函式（DriverQuizMemory.buildPayload）。");
         setOutput("上傳完整資料中...");
-        const result = await uploadFullMemoryBackup(() => window.DriverQuizMemory.buildPayload());
+        const result = await uploadFullMemoryBackup(() => getMemoryApi().buildPayload());
         await refreshCloudMeta();
         setOutput(result.message || "上傳完成");
         updateReminder();
@@ -401,7 +411,8 @@ ${err?.message || String(err)}`);
   if (btnCloudDownload) {
     btnCloudDownload.addEventListener("click", async () => {
       try {
-        if (!window.DriverQuizMemory?.applyPayload || !window.DriverQuizMemory?.buildPayload) {
+        const memoryApi = getMemoryApi();
+        if (!memoryApi?.applyPayload || !memoryApi?.buildPayload) {
           throw new Error("找不到完整資料匯入／匯出函式。");
         }
         await refreshCloudMeta();
@@ -418,13 +429,13 @@ ${err?.message || String(err)}`);
           setOutput("已取消載入雲端備份。本機資料保持不變。");
           return;
         }
-        savePreSyncSnapshot(() => window.DriverQuizMemory.buildPayload());
+        savePreSyncSnapshot(() => getMemoryApi().buildPayload());
         setRestoreEnabled();
         const result = await downloadFullMemoryBackup();
         const replaceAll = window.confirm(`第二步：按『確定』= 覆蓋本機；按『取消』= 與本機合併。
 覆蓋前已自動保存同步前本機備份。
 `);
-        const applyResult = window.DriverQuizMemory.applyPayload(result.payload, replaceAll);
+        const applyResult = getMemoryApi().applyPayload(result.payload, replaceAll);
         setOutput(`${result.message || "下載完成"}
 
 ${applyResult?.message || "已套用到本機。"}`);
@@ -442,8 +453,9 @@ ${err?.message || String(err)}`);
   if (btnLocalRestore) {
     btnLocalRestore.addEventListener("click", async () => {
       try {
-        if (!window.DriverQuizMemory?.applyPayload) throw new Error("找不到完整資料匯入函式。")
-        const result = restorePreSyncSnapshot((payload, replaceAll) => window.DriverQuizMemory.applyPayload(payload, replaceAll ? "replace" : "conservative"));
+        const memoryApi = getMemoryApi();
+        if (!memoryApi?.applyPayload) throw new Error("找不到完整資料匯入函式。")
+        const result = restorePreSyncSnapshot((payload, replaceAll) => getMemoryApi().applyPayload(payload, replaceAll ? "replace" : "conservative"));
         setOutput(result?.message || "已還原同步前本機備份。");
         updateReminder();
       } catch (err) {
@@ -468,7 +480,7 @@ ${err?.message || String(err)}`);
     if (document.visibilityState === "visible") {
       refreshCloudMeta().then(() => {
         updateReminder();
-        if (!window.DriverQuizMemory?.isSessionInProgress?.()) {
+        if (!getMemoryApi()?.isSessionInProgress?.()) {
           scheduleAutoUploadCheck("頁面恢復可見");
         }
       }).catch((err) => console.error("visibility refresh failed", err));
