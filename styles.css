@@ -555,3 +555,134 @@ select,input,button,textarea{font-size:16px;}
   .feedback{padding:12px;}
   .wrong-thumb{width:84px;height:84px;}
 }
+
+.roadtest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.roadtest-player-wrap {
+  margin-top: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.roadtest-video-frame {
+  display: block;
+  width: 100%;
+  min-height: 240px;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #0f172a;
+}
+
+.roadtest-question-wrap {
+  margin-top: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 16px;
+  padding: 14px;
+  background: #f8fafc;
+}
+
+.roadtest-question-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.roadtest-module-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.roadtest-progress {
+  font-size: 0.92rem;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.roadtest-options {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.roadtest-option-btn {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: #fff;
+  color: #0f172a;
+  padding: 12px 14px;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.roadtest-option-btn:disabled {
+  opacity: 1;
+}
+
+.roadtest-option-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #0f172a;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.roadtest-option-btn.correct {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.roadtest-option-btn.incorrect {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.roadtest-feedback {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.roadtest-feedback.is-correct {
+  color: #166534;
+}
+
+.roadtest-feedback.is-wrong {
+  color: #991b1b;
+}
+
+.roadtest-answer-box {
+  margin-top: 10px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 12px 14px;
+}
+
+@media (max-width: 640px) {
+  .roadtest-question-head {
+    flex-direction: column;
+  }
+}

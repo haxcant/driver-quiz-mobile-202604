@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>駕訓班筆試練習</title>
+  <title>駕訓班筆試練習｜含路考模擬</title>
   <meta name="theme-color" content="#0f172a">
   <meta name="description" content="手機可用的駕訓班筆試練習 PWA，可看圖選答案、文字題四選一／是非題、模擬考、錯題本、單字卡與積分追蹤。">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,7 +19,7 @@
     <header class="topbar">
       <div>
         <h1>駕訓班筆試練習</h1>
-        <p class="subtitle">正式筆試練習、錯題本、積分追蹤、手冊對照說明、快捷鍵答題、單字卡與限時作答</p>
+        <p class="subtitle">正式筆試練習、錯題本、積分追蹤、手冊對照說明、快捷鍵答題、單字卡、限時作答與路考模擬</p>
       </div>
       <button id="installBtn" class="ghost-btn hidden">安裝到主畫面</button>
     </header>
@@ -30,7 +30,7 @@
         <div class="info-grid">
           <div>
             <strong>目前版本</strong>
-            <p id="versionSummary">v20.8：修正錯題本不再被積分篩選隱藏、搜尋此題會先暫停計時，並在完整記憶匯入時把仍在錯題本的題目最低校正為 -1 分。</p>
+            <p id="versionSummary">v20.9：新增 YouTube 路考模擬面板，可依字幕前後秒數播放片段並做選擇題。</p>
           </div>
           <div>
             <strong>建議使用方式</strong>
@@ -193,6 +193,59 @@
       </details>
     </section>
 
+
+    <section class="panel roadtest-panel collapsed-panel">
+      <details class="fold-panel" open>
+        <summary>路考模擬（YouTube 片段＋字幕出題）</summary>
+        <div class="roadtest-grid">
+          <label>
+            <span>YouTube 影片網址</span>
+            <input id="roadTestYoutubeUrlInput" type="url" placeholder="貼上 YouTube 網址，例如 https://www.youtube.com/watch?v=...">
+          </label>
+          <label>
+            <span>模組篩選</span>
+            <select id="roadTestModuleSelect"></select>
+          </label>
+        </div>
+        <div class="actions compact" style="margin-top:10px;">
+          <button id="roadTestSaveUrlBtn" type="button" class="ghost-btn">套用影片網址</button>
+          <button id="roadTestUseDefaultBtn" type="button" class="ghost-btn">恢復預設影片</button>
+          <button id="roadTestPlayClipBtn" type="button" class="primary-btn">播放本題片段</button>
+          <button id="roadTestPrevBtn" type="button" class="ghost-btn">上一題</button>
+          <button id="roadTestNextBtn" type="button" class="ghost-btn">下一題</button>
+          <button id="roadTestRandomBtn" type="button" class="ghost-btn">隨機一題</button>
+          <a id="roadTestOpenYoutubeBtn" class="ghost-btn" href="https://www.youtube.com/watch?v=ldsprS-5Y9E" target="_blank" rel="noopener noreferrer">在 YouTube 開啟</a>
+        </div>
+        <p id="roadTestSourceLabel" class="scope-summary subtle" style="margin-top:10px;">影片來源：YouTube｜字幕來源：captions.sbv</p>
+        <p class="scope-summary subtle">目前先採 YouTube 模式：依字幕時間點前後數秒播放片段，並以字幕內容作為答案依據。之後若補 MP4，可再擴充成更穩定的逐幀版本。</p>
+        <div class="roadtest-player-wrap">
+          <iframe id="roadTestVideoFrame" class="roadtest-video-frame" src="" title="路考模擬影片播放器" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div id="roadTestVideoStatus" class="scope-summary subtle">尚未播放片段。</div>
+        <div id="roadTestQuestionWrap" class="roadtest-question-wrap hidden">
+          <div class="roadtest-question-head">
+            <div>
+              <div id="roadTestProgress" class="roadtest-progress">第 1 / 1 題</div>
+              <h3 id="roadTestPrompt">依影片畫面與字幕，這一步最正確的作法是？</h3>
+              <p id="roadTestSegmentMeta" class="scope-summary subtle"></p>
+            </div>
+            <span id="roadTestModuleLabel" class="roadtest-module-badge">模組</span>
+          </div>
+          <div id="roadTestOptions" class="roadtest-options"></div>
+          <div id="roadTestFeedback" class="roadtest-feedback"></div>
+          <div class="actions compact" style="margin-top:10px;">
+            <button id="roadTestShowAnswerBtn" type="button" class="ghost-btn">顯示字幕答案</button>
+          </div>
+          <div id="roadTestAnswerBox" class="roadtest-answer-box hidden">
+            <strong>字幕答案</strong>
+            <p id="roadTestAnswerText"></p>
+          </div>
+          <p id="roadTestReferenceNote" class="scope-summary subtle"></p>
+        </div>
+        <div id="roadTestEmpty" class="empty-state">正在準備路考模擬題目。</div>
+      </details>
+    </section>
+
     <main id="mainContent" class="panel quiz-panel empty-state"><p>第一次使用者只須點擊「開始練習」即可，題目會顯示在這裡。</p></main>
 
     <section class="panel reward-panel">
@@ -212,9 +265,11 @@
   <script src="questions.js"></script>
   <script src="handbook_explanations.js"></script>
   <script src="network_reference_answers.js"></script>
+  <script src="road_test_reference_data.js"></script>
   <script src="handbook_pages.js"></script>
   <script src="memory-bridge.js?v=20260402fixdownload1"></script>
   <script src="app.js?v=20260402fixdownload1"></script>
+  <script src="road-test-sim.js?v=20260410road1"></script>
   <script type="module" src="firebase-ui.js?v=20260402fixdownload1"></script>
 </body>
 </html>
