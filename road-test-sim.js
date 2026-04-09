@@ -2,10 +2,20 @@
   const STORAGE_KEYS = {
     youtubeUrl: 'roadTest.youtubeUrl',
     lastSegmentId: 'roadTest.lastSegmentId',
-    moduleFilter: 'roadTest.moduleFilter'
+    moduleFilter: 'roadTest.moduleFilter',
+    muted: 'roadTest.muted',
+    autoplayNav: 'roadTest.autoplayNav',
+    autoAdvance: 'roadTest.autoAdvance',
+    advanceDelaySec: 'roadTest.advanceDelaySec'
   };
 
   const DEFAULT_URL = 'https://www.youtube.com/watch?v=ldsprS-5Y9E';
+  const DEFAULT_SETTINGS = {
+    muted: true,
+    autoplayNav: true,
+    autoAdvance: true,
+    advanceDelaySec: 1.2
+  };
 
   function qs(id) {
     return document.getElementById(id);
@@ -20,11 +30,6 @@
       .replace(/\s+/g, ' ')
       .replace(/[【】「」『』（）()，,。；;：:]/g, '')
       .trim();
-  }
-
-  function pickRandom(arr) {
-    if (!Array.isArray(arr) || arr.length === 0) return null;
-    return arr[Math.floor(Math.random() * arr.length)];
   }
 
   function shuffle(array) {
@@ -66,12 +71,13 @@
     return '';
   }
 
-  function buildEmbedUrl(videoId, startSec, endSec, autoplay) {
+  function buildEmbedUrl(videoId, startSec, endSec, autoplay, muted) {
     if (!videoId) return '';
     const start = Math.max(0, Math.floor(Number(startSec) || 0));
     const end = Math.max(start + 1, Math.floor(Number(endSec) || 0));
     const auto = autoplay ? 1 : 0;
-    return `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?start=${start}&end=${end}&autoplay=${auto}&rel=0&playsinline=1&modestbranding=1`;
+    const mute = muted ? 1 : 0;
+    return `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?start=${start}&end=${end}&autoplay=${auto}&mute=${mute}&rel=0&playsinline=1&modestbranding=1&controls=1`;
   }
 
   function buildWatchUrl(videoId, startSec) {
@@ -80,36 +86,80 @@
     return `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}&t=${start}s`;
   }
 
+  function readBool(key, fallback) {
+    const raw = localStorage.getItem(key);
+    if (raw == null) return fallback;
+    return raw === 'true';
+  }
+
+  function readNumber(key, fallback, min, max) {
+    const n = Number(localStorage.getItem(key));
+    if (!Number.isFinite(n)) return fallback;
+    return Math.min(max, Math.max(min, n));
+  }
+
+  function buildQuestionBank(ref) {
+    const modules = new Map((ref.modules || []).map((m) => [m.id, m]));
+    return (ref.segments || []).map((seg, idx) => {
+      const mod = modules.get(seg.moduleId) || {};
+      return {
+        bankId: `RT-${String(idx + 1).padStart(3, '0')}`,
+        segmentId: seg.id,
+        moduleId: seg.moduleId,
+        moduleTitle: mod.title || '未分類模組',
+        prompt: '依影片畫面與字幕，這一步最正確的作法是？',
+        answerText: safeText(seg.answerText || seg.captionText || ''),
+        captionText: safeText(seg.captionText || ''),
+        startSec: Number(seg.startSec) || 0,
+        endSec: Number(seg.endSec) || Number(seg.startSec) || 0,
+        clipLeadSeconds: Number(seg.clipLeadSeconds ?? ref.defaults?.clipLeadSeconds ?? 1) || 1,
+        clipLagSeconds: Number(seg.clipLagSeconds ?? ref.defaults?.clipLagSeconds ?? 1) || 1,
+        clipStartSec: Number(seg.clipStartSec) || 0,
+        clipEndSec: Number(seg.clipEndSec) || 0,
+        tags: Array.isArray(seg.tags) ? seg.tags.slice() : [],
+        moduleSummary: safeText(mod.summary || ''),
+        sourceBasis: 'captions.sbv'
+      };
+    });
+  }
+
   function createState(ref) {
-    const segments = Array.isArray(ref?.segments) ? ref.segments.slice() : [];
+    const questionBank = buildQuestionBank(ref);
     const modules = Array.isArray(ref?.modules) ? ref.modules.slice() : [];
     const moduleMap = new Map(modules.map((m) => [m.id, m]));
-    const normalizedPool = new Map();
-    segments.forEach((seg) => {
-      const norm = normalizeAnswerText(seg.answerText || seg.captionText || '');
+    const answerPoolMap = new Map();
+    questionBank.forEach((q) => {
+      const norm = normalizeAnswerText(q.answerText || q.captionText || '');
       if (!norm) return;
-      if (!normalizedPool.has(norm)) normalizedPool.set(norm, seg.answerText || seg.captionText || '');
+      if (!answerPoolMap.has(norm)) answerPoolMap.set(norm, q.answerText || q.captionText || '');
     });
     return {
       ref,
-      segments,
+      questionBank,
       modules,
       moduleMap,
-      answerPool: Array.from(normalizedPool.values()),
-      filteredSegments: segments.slice(),
+      answerPool: Array.from(answerPoolMap.values()),
+      filteredQuestions: questionBank.slice(),
       currentIndex: -1,
       currentQuestion: null,
       answered: false,
       currentVideoId: '',
-      currentUrl: ''
+      currentUrl: '',
+      pendingAdvanceTimer: null,
+      settings: {
+        muted: readBool(STORAGE_KEYS.muted, DEFAULT_SETTINGS.muted),
+        autoplayNav: readBool(STORAGE_KEYS.autoplayNav, DEFAULT_SETTINGS.autoplayNav),
+        autoAdvance: readBool(STORAGE_KEYS.autoAdvance, DEFAULT_SETTINGS.autoAdvance),
+        advanceDelaySec: readNumber(STORAGE_KEYS.advanceDelaySec, DEFAULT_SETTINGS.advanceDelaySec, 0.5, 5)
+      }
     };
   }
 
-  function buildOptionsForSegment(segment, state) {
-    const correct = safeText(segment.answerText || segment.captionText || '');
+  function buildOptionsForQuestion(question, state) {
+    const correct = safeText(question.answerText || question.captionText || '');
     const correctNorm = normalizeAnswerText(correct);
-    const moduleSegments = state.filteredSegments.filter((s) => s.id !== segment.id && s.moduleId === segment.moduleId);
-    const globalSegments = state.segments.filter((s) => s.id !== segment.id);
+    const sameModule = state.filteredQuestions.filter((q) => q.segmentId !== question.segmentId && q.moduleId === question.moduleId);
+    const allOthers = state.questionBank.filter((q) => q.segmentId !== question.segmentId);
     const options = [];
     const used = new Set([correctNorm]);
 
@@ -122,20 +172,12 @@
       return true;
     }
 
-    shuffle(moduleSegments).forEach((s) => {
-      if (options.length < 3) tryPush(s.answerText || s.captionText || '');
-    });
-
+    shuffle(sameModule).forEach((q) => { if (options.length < 3) tryPush(q.answerText || q.captionText || ''); });
     if (options.length < 3) {
-      shuffle(globalSegments).forEach((s) => {
-        if (options.length < 3) tryPush(s.answerText || s.captionText || '');
-      });
+      shuffle(allOthers).forEach((q) => { if (options.length < 3) tryPush(q.answerText || q.captionText || ''); });
     }
-
     if (options.length < 3) {
-      shuffle(state.answerPool).forEach((text) => {
-        if (options.length < 3) tryPush(text);
-      });
+      shuffle(state.answerPool).forEach((text) => { if (options.length < 3) tryPush(text); });
     }
 
     const finalOptions = shuffle([correct, ...options.slice(0, 3)]);
@@ -147,12 +189,52 @@
     };
   }
 
+  function clearPendingAdvance(state) {
+    if (state.pendingAdvanceTimer) {
+      clearTimeout(state.pendingAdvanceTimer);
+      state.pendingAdvanceTimer = null;
+    }
+    const examStatus = qs('roadTestExamStatus');
+    if (examStatus) examStatus.textContent = '';
+  }
+
+  function syncSettingControls(state) {
+    const muted = qs('roadTestMutedToggle');
+    const autoplay = qs('roadTestAutoplayNextToggle');
+    const autoAdvance = qs('roadTestAutoAdvanceToggle');
+    const delayInput = qs('roadTestAdvanceDelayInput');
+    if (muted) muted.checked = !!state.settings.muted;
+    if (autoplay) autoplay.checked = !!state.settings.autoplayNav;
+    if (autoAdvance) autoAdvance.checked = !!state.settings.autoAdvance;
+    if (delayInput) delayInput.value = String(state.settings.advanceDelaySec);
+  }
+
+  function updateHeaderMeta(state) {
+    const sourceLabel = qs('roadTestSourceLabel');
+    const bankMeta = qs('roadTestBankMeta');
+    const flowHint = qs('roadTestFlowHint');
+    if (sourceLabel) {
+      sourceLabel.textContent = `影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒｜考試時預設靜音`;
+    }
+    if (bankMeta) {
+      bankMeta.textContent = `已編成題庫 ${state.questionBank.length} 題，共 ${state.modules.length} 類模組；目前篩選後 ${state.filteredQuestions.length} 題。`;
+    }
+    if (flowHint) {
+      flowHint.textContent = `目前設定：${state.settings.muted ? '靜音' : '開聲'}｜${state.settings.autoplayNav ? '切題自動播放' : '切題不自動播放'}｜${state.settings.autoAdvance ? `答題後 ${state.settings.advanceDelaySec.toFixed(1)} 秒自動跳題` : '答題後停留本題'}`;
+    }
+  }
+
   function updateVideo(state, autoplay) {
     const iframe = qs('roadTestVideoFrame');
     const openBtn = qs('roadTestOpenYoutubeBtn');
     const status = qs('roadTestVideoStatus');
-    if (!iframe || !state.currentQuestion) return;
-    const q = state.currentQuestion.segment;
+    if (!iframe) return;
+    if (!state.currentQuestion) {
+      iframe.removeAttribute('src');
+      if (status) status.textContent = '尚未播放片段。';
+      return;
+    }
+    const q = state.currentQuestion.question;
     const videoId = state.currentVideoId;
     if (!videoId) {
       iframe.removeAttribute('src');
@@ -163,13 +245,13 @@
       }
       return;
     }
-    iframe.src = buildEmbedUrl(videoId, q.clipStartSec, q.clipEndSec, autoplay);
+    iframe.src = buildEmbedUrl(videoId, q.clipStartSec, q.clipEndSec, autoplay, state.settings.muted);
     if (openBtn) {
       openBtn.href = buildWatchUrl(videoId, q.clipStartSec);
       openBtn.removeAttribute('aria-disabled');
     }
     if (status) {
-      status.textContent = `片段範圍：${formatTime(q.clipStartSec)} - ${formatTime(q.clipEndSec)}（題點 ${formatTime(q.startSec)}）`;
+      status.textContent = `題庫編碼 ${q.bankId}｜片段 ${formatTime(q.clipStartSec)} - ${formatTime(q.clipEndSec)}｜題點 ${formatTime(q.startSec)}｜${state.settings.muted ? '預設靜音' : '目前開聲'}`;
     }
   }
 
@@ -186,30 +268,35 @@
     const answerBox = qs('roadTestAnswerBox');
     const answerText = qs('roadTestAnswerText');
     const progress = qs('roadTestProgress');
+    const bankMeta = qs('roadTestBankMeta');
     if (!questionWrap || !empty || !optionsEl || !feedback || !prompt || !moduleLabel || !note || !segMeta || !answerBox || !answerText || !progress) return;
+
+    updateHeaderMeta(state);
 
     const current = state.currentQuestion;
     if (!current) {
       questionWrap.classList.add('hidden');
       empty.classList.remove('hidden');
-      progress.textContent = `目前共有 ${state.filteredSegments.length} 題可練習。`;
+      progress.textContent = `目前共有 ${state.filteredQuestions.length} 題可練習。`;
+      if (bankMeta) bankMeta.textContent = `已編成題庫 ${state.questionBank.length} 題；目前篩選後 0 題。`;
       return;
     }
 
-    const moduleInfo = state.moduleMap.get(current.segment.moduleId);
+    const moduleInfo = state.moduleMap.get(current.question.moduleId);
     empty.classList.add('hidden');
     questionWrap.classList.remove('hidden');
-    progress.textContent = `第 ${state.currentIndex + 1} / ${state.filteredSegments.length} 題`;
-    moduleLabel.textContent = moduleInfo ? moduleInfo.title : (current.segment.moduleId || '未分類模組');
-    prompt.textContent = '依影片畫面與字幕，這一步最正確的作法是？';
-    segMeta.textContent = `字幕題點 ${formatTime(current.segment.startSec)} - ${formatTime(current.segment.endSec)}｜模組：${moduleInfo ? moduleInfo.summary : '依字幕判定'}`;
-    note.textContent = '答案以字幕內容為主；若文字檔與字幕有差異，請以字幕為準。';
+    progress.textContent = `第 ${state.currentIndex + 1} / ${state.filteredQuestions.length} 題`;
+    moduleLabel.textContent = moduleInfo ? moduleInfo.title : (current.question.moduleId || '未分類模組');
+    prompt.textContent = current.question.prompt;
+    segMeta.textContent = `題庫編碼 ${current.question.bankId}｜字幕 ${formatTime(current.question.startSec)} - ${formatTime(current.question.endSec)}｜模組重點：${moduleInfo ? moduleInfo.summary : '依字幕判定'}`;
+    note.textContent = '答案以字幕內容為主；若整理文字與字幕有差異，請以字幕為準。若要靜音或自動跳題，可直接在上方考試設定切換。';
     feedback.textContent = '';
     feedback.className = 'roadtest-feedback';
     answerBox.classList.add('hidden');
     answerText.textContent = current.correct;
     if (answerToggle) answerToggle.textContent = '顯示字幕答案';
     state.answered = false;
+    clearPendingAdvance(state);
 
     optionsEl.innerHTML = '';
     current.options.forEach((opt, idx) => {
@@ -217,52 +304,73 @@
       btn.type = 'button';
       btn.className = 'roadtest-option-btn';
       btn.dataset.optionIndex = String(idx);
-      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span>${opt}</span>`;
-      btn.addEventListener('click', () => {
-        if (state.answered) return;
-        state.answered = true;
-        const isCorrect = idx === current.correctIndex;
-        btn.classList.add(isCorrect ? 'correct' : 'incorrect');
-        Array.from(optionsEl.querySelectorAll('button')).forEach((node, btnIdx) => {
-          node.disabled = true;
-          if (btnIdx === current.correctIndex) node.classList.add('correct');
-        });
-        feedback.textContent = isCorrect ? '答對：這一題以字幕內容為準。' : '答錯：請對照字幕答案與模組重點。';
-        feedback.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
-      });
+      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${opt}</span>`;
+      btn.addEventListener('click', () => submitAnswer(state, idx));
       optionsEl.appendChild(btn);
     });
 
     updateVideo(state, false);
   }
 
-  function moveToIndex(state, nextIndex) {
-    if (!state.filteredSegments.length) {
+  function submitAnswer(state, chosenIndex) {
+    if (state.answered || !state.currentQuestion) return;
+    state.answered = true;
+    const current = state.currentQuestion;
+    const optionsEl = qs('roadTestOptions');
+    const feedback = qs('roadTestFeedback');
+    const examStatus = qs('roadTestExamStatus');
+    if (!optionsEl || !feedback) return;
+    const buttons = Array.from(optionsEl.querySelectorAll('button'));
+    buttons.forEach((node, btnIdx) => {
+      node.disabled = true;
+      if (btnIdx === current.correctIndex) node.classList.add('correct');
+      if (btnIdx === chosenIndex && chosenIndex !== current.correctIndex) node.classList.add('incorrect');
+    });
+    const isCorrect = chosenIndex === current.correctIndex;
+    feedback.textContent = isCorrect ? '答對：這一題以字幕內容為準。' : '答錯：請對照字幕答案與模組重點。';
+    feedback.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+
+    if (state.settings.autoAdvance && state.currentIndex < state.filteredQuestions.length - 1) {
+      const delayMs = Math.round(state.settings.advanceDelaySec * 1000);
+      if (examStatus) examStatus.textContent = `${state.settings.advanceDelaySec.toFixed(1)} 秒後自動前往下一題${state.settings.autoplayNav ? '並播放片段' : ''}。`;
+      state.pendingAdvanceTimer = setTimeout(() => {
+        moveToIndex(state, state.currentIndex + 1, { autoplay: state.settings.autoplayNav });
+      }, delayMs);
+    } else if (examStatus) {
+      examStatus.textContent = state.currentIndex >= state.filteredQuestions.length - 1 ? '已到最後一題。可按上一題、隨機一題或切換模組。' : '已停留本題。可手動重播、看答案或前往下一題。';
+    }
+  }
+
+  function moveToIndex(state, nextIndex, options) {
+    clearPendingAdvance(state);
+    const opts = options || {};
+    if (!state.filteredQuestions.length) {
       state.currentIndex = -1;
       state.currentQuestion = null;
       renderQuestion(state);
       return;
     }
-    const bounded = Math.max(0, Math.min(nextIndex, state.filteredSegments.length - 1));
+    const bounded = Math.max(0, Math.min(nextIndex, state.filteredQuestions.length - 1));
     state.currentIndex = bounded;
-    const segment = state.filteredSegments[bounded];
-    const q = buildOptionsForSegment(segment, state);
-    state.currentQuestion = { ...q, segment };
-    localStorage.setItem(STORAGE_KEYS.lastSegmentId, segment.id);
+    const question = state.filteredQuestions[bounded];
+    const q = buildOptionsForQuestion(question, state);
+    state.currentQuestion = { ...q, question };
+    localStorage.setItem(STORAGE_KEYS.lastSegmentId, question.segmentId);
     renderQuestion(state);
+    if (opts.autoplay) updateVideo(state, true);
   }
 
   function loadFromSavedPosition(state) {
     const savedId = localStorage.getItem(STORAGE_KEYS.lastSegmentId);
-    const idx = state.filteredSegments.findIndex((s) => s.id === savedId);
-    moveToIndex(state, idx >= 0 ? idx : 0);
+    const idx = state.filteredQuestions.findIndex((q) => q.segmentId === savedId);
+    moveToIndex(state, idx >= 0 ? idx : 0, { autoplay: false });
   }
 
   function applyFilter(state, moduleId) {
     const value = moduleId || 'all';
-    state.filteredSegments = value === 'all'
-      ? state.segments.slice()
-      : state.segments.filter((s) => s.moduleId === value);
+    state.filteredQuestions = value === 'all'
+      ? state.questionBank.slice()
+      : state.questionBank.filter((q) => q.moduleId === value);
     localStorage.setItem(STORAGE_KEYS.moduleFilter, value);
     loadFromSavedPosition(state);
   }
@@ -295,6 +403,10 @@
     const randomBtn = qs('roadTestRandomBtn');
     const moduleSelect = qs('roadTestModuleSelect');
     const answerToggle = qs('roadTestShowAnswerBtn');
+    const mutedToggle = qs('roadTestMutedToggle');
+    const autoplayToggle = qs('roadTestAutoplayNextToggle');
+    const autoAdvanceToggle = qs('roadTestAutoAdvanceToggle');
+    const delayInput = qs('roadTestAdvanceDelayInput');
 
     if (saveUrlBtn && urlInput) {
       saveUrlBtn.addEventListener('click', () => {
@@ -316,13 +428,10 @@
       });
     }
 
-    if (playBtn) {
-      playBtn.addEventListener('click', () => updateVideo(state, true));
-    }
-
-    if (prevBtn) prevBtn.addEventListener('click', () => moveToIndex(state, state.currentIndex - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => moveToIndex(state, state.currentIndex + 1));
-    if (randomBtn) randomBtn.addEventListener('click', () => moveToIndex(state, Math.floor(Math.random() * Math.max(1, state.filteredSegments.length))));
+    if (playBtn) playBtn.addEventListener('click', () => updateVideo(state, true));
+    if (prevBtn) prevBtn.addEventListener('click', () => moveToIndex(state, state.currentIndex - 1, { autoplay: state.settings.autoplayNav }));
+    if (nextBtn) nextBtn.addEventListener('click', () => moveToIndex(state, state.currentIndex + 1, { autoplay: state.settings.autoplayNav }));
+    if (randomBtn) randomBtn.addEventListener('click', () => moveToIndex(state, Math.floor(Math.random() * Math.max(1, state.filteredQuestions.length)), { autoplay: state.settings.autoplayNav }));
 
     if (moduleSelect) {
       moduleSelect.addEventListener('change', () => applyFilter(state, moduleSelect.value));
@@ -337,26 +446,63 @@
         answerToggle.textContent = isHidden ? '隱藏字幕答案' : '顯示字幕答案';
       });
     }
+
+    if (mutedToggle) {
+      mutedToggle.addEventListener('change', () => {
+        state.settings.muted = !!mutedToggle.checked;
+        localStorage.setItem(STORAGE_KEYS.muted, String(state.settings.muted));
+        updateHeaderMeta(state);
+        updateVideo(state, false);
+      });
+    }
+
+    if (autoplayToggle) {
+      autoplayToggle.addEventListener('change', () => {
+        state.settings.autoplayNav = !!autoplayToggle.checked;
+        localStorage.setItem(STORAGE_KEYS.autoplayNav, String(state.settings.autoplayNav));
+        updateHeaderMeta(state);
+      });
+    }
+
+    if (autoAdvanceToggle) {
+      autoAdvanceToggle.addEventListener('change', () => {
+        state.settings.autoAdvance = !!autoAdvanceToggle.checked;
+        localStorage.setItem(STORAGE_KEYS.autoAdvance, String(state.settings.autoAdvance));
+        clearPendingAdvance(state);
+        updateHeaderMeta(state);
+      });
+    }
+
+    if (delayInput) {
+      delayInput.addEventListener('change', () => {
+        const next = readNumber(STORAGE_KEYS.advanceDelaySec, Number(delayInput.value) || DEFAULT_SETTINGS.advanceDelaySec, 0.5, 5);
+        state.settings.advanceDelaySec = Math.min(5, Math.max(0.5, Number(delayInput.value) || DEFAULT_SETTINGS.advanceDelaySec));
+        delayInput.value = String(state.settings.advanceDelaySec);
+        localStorage.setItem(STORAGE_KEYS.advanceDelaySec, String(state.settings.advanceDelaySec));
+        updateHeaderMeta(state);
+      });
+    }
   }
 
   function init() {
     const ref = window.ROAD_TEST_REFERENCE;
     if (!ref || !Array.isArray(ref.segments) || !ref.segments.length) return;
     const state = createState(ref);
+    window.ROAD_TEST_QUESTION_BANK = state.questionBank.slice();
+
     const urlInput = qs('roadTestYoutubeUrlInput');
     const savedUrl = localStorage.getItem(STORAGE_KEYS.youtubeUrl) || DEFAULT_URL;
     state.currentUrl = savedUrl;
     state.currentVideoId = extractYouTubeVideoId(savedUrl);
     if (urlInput) urlInput.value = savedUrl;
+
+    syncSettingControls(state);
     populateModuleSelect(state);
     bindEvents(state);
+
     const moduleSelect = qs('roadTestModuleSelect');
     applyFilter(state, moduleSelect ? moduleSelect.value : 'all');
-
-    const sourceLabel = qs('roadTestSourceLabel');
-    if (sourceLabel) {
-      sourceLabel.textContent = `影片來源：YouTube｜字幕來源：captions.sbv｜預設前後 ${ref.defaults?.clipLeadSeconds ?? 2} 秒`;
-    }
+    updateHeaderMeta(state);
   }
 
   document.addEventListener('DOMContentLoaded', init);
