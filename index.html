@@ -213,13 +213,7 @@
           </div>
         </div>
 
-        <div class="roadtest-toolbar">
-          <div class="roadtest-toolbar-group roadtest-toolbar-primary">
-            <button id="roadTestPrevBtn" type="button" class="ghost-btn">上一題</button>
-            <button id="roadTestPlayClipBtn" type="button" class="primary-btn">重播片段</button>
-            <button id="roadTestNextBtn" type="button" class="primary-btn">下一題</button>
-            <button id="roadTestRandomBtn" type="button" class="ghost-btn">隨機一題</button>
-          </div>
+        <div class="roadtest-toolbar roadtest-toolbar-secondary-only">
           <div class="roadtest-toolbar-group roadtest-toolbar-secondary">
             <button id="roadTestSaveUrlBtn" type="button" class="ghost-btn">套用影片網址</button>
             <button id="roadTestUseDefaultBtn" type="button" class="ghost-btn">恢復預設影片</button>
@@ -264,6 +258,14 @@
           <div id="roadTestVideoStatus" class="scope-summary subtle">尚未播放片段。</div>
           <div id="roadTestExamStatus" class="scope-summary subtle roadtest-exam-status"></div>
         </div>
+        <div class="roadtest-toolbar roadtest-toolbar-under-video">
+          <div class="roadtest-toolbar-group roadtest-toolbar-primary">
+            <button id="roadTestPrevBtn" type="button" class="ghost-btn">上一題</button>
+            <button id="roadTestPlayClipBtn" type="button" class="primary-btn">重播片段</button>
+            <button id="roadTestNextBtn" type="button" class="primary-btn">下一題</button>
+            <button id="roadTestRandomBtn" type="button" class="ghost-btn">隨機一題</button>
+          </div>
+        </div>
         <div id="roadTestQuestionWrap" class="roadtest-question-wrap hidden">
           <div class="roadtest-question-head">
             <div>
@@ -273,14 +275,18 @@
             </div>
             <span id="roadTestModuleLabel" class="roadtest-module-badge">模組</span>
           </div>
+          <div id="roadTestReminderTags" class="roadtest-reminder-tags"></div>
           <div id="roadTestOptions" class="roadtest-options"></div>
+          <ul id="roadTestReminderNotes" class="roadtest-reminder-notes"></ul>
           <div id="roadTestFeedback" class="roadtest-feedback"></div>
           <div class="actions compact roadtest-answer-actions" style="margin-top:10px;">
             <button id="roadTestShowAnswerBtn" type="button" class="ghost-btn">顯示字幕答案</button>
           </div>
           <div id="roadTestAnswerBox" class="roadtest-answer-box hidden">
-            <strong>字幕答案</strong>
+            <strong>標準化操作答案</strong>
             <p id="roadTestAnswerText"></p>
+            <strong style="display:block; margin-top:10px;">字幕依據</strong>
+            <p id="roadTestAnswerCaptionText"></p>
           </div>
           <p id="roadTestReferenceNote" class="scope-summary subtle"></p>
         </div>

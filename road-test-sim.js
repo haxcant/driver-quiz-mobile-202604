@@ -107,9 +107,12 @@
         segmentId: seg.id,
         moduleId: seg.moduleId,
         moduleTitle: mod.title || '未分類模組',
-        prompt: '依影片畫面與字幕，這一步最正確的作法是？',
-        answerText: safeText(seg.answerText || seg.captionText || ''),
+        prompt: '依片段判斷，這一題主要操作是？',
+        answerText: safeText(seg.operationText || seg.answerText || seg.captionText || ''),
         captionText: safeText(seg.captionText || ''),
+        referenceCaption: safeText(seg.referenceCaption || seg.captionText || ''),
+        operationTags: Array.isArray(seg.operationTags) ? seg.operationTags.slice() : [],
+        reminderNotes: Array.isArray(seg.reminderNotes) ? seg.reminderNotes.slice() : [],
         startSec: Number(seg.startSec) || 0,
         endSec: Number(seg.endSec) || Number(seg.startSec) || 0,
         clipLeadSeconds: Number(seg.clipLeadSeconds ?? ref.defaults?.clipLeadSeconds ?? 1) || 1,
@@ -118,7 +121,7 @@
         clipEndSec: Number(seg.clipEndSec) || 0,
         tags: Array.isArray(seg.tags) ? seg.tags.slice() : [],
         moduleSummary: safeText(mod.summary || ''),
-        sourceBasis: 'captions.sbv'
+        sourceBasis: safeText(seg.sourceBasis || 'captions.sbv')
       };
     });
   }
@@ -156,7 +159,7 @@
   }
 
   function buildOptionsForQuestion(question, state) {
-    const correct = safeText(question.answerText || question.captionText || '');
+    const correct = safeText(question.answerText || question.operationText || question.captionText || '');
     const correctNorm = normalizeAnswerText(correct);
     const sameModule = state.filteredQuestions.filter((q) => q.segmentId !== question.segmentId && q.moduleId === question.moduleId);
     const allOthers = state.questionBank.filter((q) => q.segmentId !== question.segmentId);
@@ -220,7 +223,7 @@
       bankMeta.textContent = `已編成題庫 ${state.questionBank.length} 題，共 ${state.modules.length} 類模組；目前篩選後 ${state.filteredQuestions.length} 題。`;
     }
     if (flowHint) {
-      flowHint.textContent = `目前設定：${state.settings.muted ? '靜音' : '開聲'}｜${state.settings.autoplayNav ? '切題自動播放' : '切題不自動播放'}｜${state.settings.autoAdvance ? `答題後 ${state.settings.advanceDelaySec.toFixed(1)} 秒自動跳題` : '答題後停留本題'}`;
+      flowHint.textContent = `目前設定：${state.settings.muted ? '靜音' : '開聲'}｜${state.settings.autoplayNav ? '切題自動播放' : '切題不自動播放'}｜${state.settings.autoAdvance ? `答題後 ${state.settings.advanceDelaySec.toFixed(1)} 秒自動跳題` : '答題後停留本題'}｜片段預設前後 1 秒`;
     }
   }
 
@@ -267,6 +270,9 @@
     const answerToggle = qs('roadTestShowAnswerBtn');
     const answerBox = qs('roadTestAnswerBox');
     const answerText = qs('roadTestAnswerText');
+    const answerCaptionText = qs('roadTestAnswerCaptionText');
+    const reminderTags = qs('roadTestReminderTags');
+    const reminderNotes = qs('roadTestReminderNotes');
     const progress = qs('roadTestProgress');
     const bankMeta = qs('roadTestBankMeta');
     if (!questionWrap || !empty || !optionsEl || !feedback || !prompt || !moduleLabel || !note || !segMeta || !answerBox || !answerText || !progress) return;
@@ -288,12 +294,15 @@
     progress.textContent = `第 ${state.currentIndex + 1} / ${state.filteredQuestions.length} 題`;
     moduleLabel.textContent = moduleInfo ? moduleInfo.title : (current.question.moduleId || '未分類模組');
     prompt.textContent = current.question.prompt;
-    segMeta.textContent = `題庫編碼 ${current.question.bankId}｜字幕 ${formatTime(current.question.startSec)} - ${formatTime(current.question.endSec)}｜模組重點：${moduleInfo ? moduleInfo.summary : '依字幕判定'}`;
-    note.textContent = '答案以字幕內容為主；若整理文字與字幕有差異，請以字幕為準。若要靜音或自動跳題，可直接在上方考試設定切換。';
+    segMeta.textContent = `題庫編碼 ${current.question.bankId}｜字幕 ${formatTime(current.question.startSec)} - ${formatTime(current.question.endSec)}｜片段 ${formatTime(current.question.clipStartSec)} - ${formatTime(current.question.clipEndSec)}`;
+    note.textContent = `模組重點：${moduleInfo ? moduleInfo.summary : '依字幕判定'}。本區將「操作」與「提醒」分開顯示，避免把作答變成考語文記憶。`;
     feedback.textContent = '';
     feedback.className = 'roadtest-feedback';
     answerBox.classList.add('hidden');
     answerText.textContent = current.correct;
+    if (answerCaptionText) answerCaptionText.textContent = current.question.referenceCaption || current.question.captionText || '';
+    if (reminderTags) reminderTags.innerHTML = (current.question.operationTags || []).map((tag) => `<span class="roadtest-reminder-chip">${tag}</span>`).join('');
+    if (reminderNotes) reminderNotes.innerHTML = (current.question.reminderNotes || []).map((item) => `<li>${item}</li>`).join('');
     if (answerToggle) answerToggle.textContent = '顯示字幕答案';
     state.answered = false;
     clearPendingAdvance(state);
@@ -327,7 +336,7 @@
       if (btnIdx === chosenIndex && chosenIndex !== current.correctIndex) node.classList.add('incorrect');
     });
     const isCorrect = chosenIndex === current.correctIndex;
-    feedback.textContent = isCorrect ? '答對：這一題以字幕內容為準。' : '答錯：請對照字幕答案與模組重點。';
+    feedback.textContent = isCorrect ? '答對：這題以標準化操作為答案，字幕作為對照依據。' : '答錯：請對照標準化操作、提醒標籤與字幕依據。';
     feedback.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
 
     if (state.settings.autoAdvance && state.currentIndex < state.filteredQuestions.length - 1) {

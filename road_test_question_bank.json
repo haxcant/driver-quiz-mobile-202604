@@ -1,1381 +1,961 @@
 [
   {
     "bankId": "RT-001",
-    "segmentId": "road-seg-001",
+    "segmentId": "road-op-001",
     "moduleId": "vehicle_exterior_check",
     "moduleTitle": "車外安全檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "(車輛檢查)從左前輪開始， 雙手壓輪胎，口誦【胎紋、胎壓正常】",
-    "captionText": "(車輛檢查)從左前輪開始， 雙手壓輪胎，口誦【胎紋、胎壓正常】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "檢查左前輪胎紋與胎壓",
+    "referenceCaption": "(車輛檢查)從左前輪開始， 雙手壓輪胎，口誦【胎紋、胎壓正常】",
     "startSec": 0.66,
     "endSec": 5.66,
     "clipStartSec": 0.0,
     "clipEndSec": 6.66,
-    "tags": [
-      "tire_check"
+    "operationTags": [
+      "輪胎檢查"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "依逆時針方向完成四輪、燈具與車底檢查，建立固定巡檢順序。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-002",
-    "segmentId": "road-seg-002",
+    "segmentId": "road-op-002",
     "moduleId": "vehicle_exterior_check",
     "moduleTitle": "車外安全檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "查看左右車燈，【車燈無破損】 蹲下看車底，【車底無異物】",
-    "captionText": "查看左右車燈，【車燈無破損】 蹲下看車底，【車底無異物】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "檢查車燈與車底是否異常",
+    "referenceCaption": "查看左右車燈，【車燈無破損】 蹲下看車底，【車底無異物】",
     "startSec": 5.66,
     "endSec": 10.766,
     "clipStartSec": 4.66,
-    "clipEndSec": 11.77,
-    "tags": [
-      "light_check",
-      "underbody_check"
+    "clipEndSec": 11.766,
+    "operationTags": [
+      "燈具檢查",
+      "車底檢查"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "依逆時針方向完成四輪、燈具與車底檢查，建立固定巡檢順序。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-003",
-    "segmentId": "road-seg-003",
+    "segmentId": "road-op-003",
     "moduleId": "vehicle_exterior_check",
     "moduleTitle": "車外安全檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "檢查右前輪，雙手壓輪胎， 【胎紋、胎壓正常】 蹲下【車底無異物】",
-    "captionText": "檢查右前輪，雙手壓輪胎， 【胎紋、胎壓正常】 蹲下【車底無異物】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "檢查右前輪胎紋、胎壓與車底",
+    "referenceCaption": "檢查右前輪，雙手壓輪胎， 【胎紋、胎壓正常】 蹲下【車底無異物】",
     "startSec": 10.766,
     "endSec": 20.0,
-    "clipStartSec": 9.77,
+    "clipStartSec": 9.766,
     "clipEndSec": 21.0,
-    "tags": [
-      "tire_check",
-      "underbody_check"
+    "operationTags": [
+      "輪胎檢查",
+      "車底檢查"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "依逆時針方向完成四輪、燈具與車底檢查，建立固定巡檢順序。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-004",
-    "segmentId": "road-seg-004",
+    "segmentId": "road-op-004",
     "moduleId": "vehicle_exterior_check",
     "moduleTitle": "車外安全檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "檢查右後輪，【胎紋、胎壓正常】",
-    "captionText": "檢查右後輪，【胎紋、胎壓正常】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "檢查右後輪胎紋與胎壓",
+    "referenceCaption": "檢查右後輪，【胎紋、胎壓正常】",
     "startSec": 20.0,
     "endSec": 25.836,
     "clipStartSec": 19.0,
-    "clipEndSec": 26.84,
-    "tags": [
-      "tire_check"
+    "clipEndSec": 26.836,
+    "operationTags": [
+      "輪胎檢查"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "依逆時針方向完成四輪、燈具與車底檢查，建立固定巡檢順序。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-005",
-    "segmentId": "road-seg-005",
+    "segmentId": "road-op-005",
     "moduleId": "vehicle_exterior_check",
     "moduleTitle": "車外安全檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "檢查左右車燈，【車燈無破損】； 蹲下看車底，【車底無異物】",
-    "captionText": "檢查左右車燈，【車燈無破損】； 蹲下看車底，【車底無異物】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "檢查車尾燈與車底是否異常",
+    "referenceCaption": "檢查左右車燈，【車燈無破損】； 蹲下看車底，【車底無異物】",
     "startSec": 25.836,
     "endSec": 31.955,
-    "clipStartSec": 24.84,
-    "clipEndSec": 32.95,
-    "tags": [
-      "light_check",
-      "underbody_check"
+    "clipStartSec": 24.836,
+    "clipEndSec": 32.955,
+    "operationTags": [
+      "燈具檢查",
+      "車底檢查"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "依逆時針方向完成四輪、燈具與車底檢查，建立固定巡檢順序。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-006",
-    "segmentId": "road-seg-006",
+    "segmentId": "road-op-006",
     "moduleId": "vehicle_exterior_check",
     "moduleTitle": "車外安全檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "檢查左後輪，【胎紋、胎壓正常】； 蹲下看車底，【車底無異物】",
-    "captionText": "檢查左後輪，【胎紋、胎壓正常】； 蹲下看車底，【車底無異物】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "檢查左後輪胎紋、胎壓與車底",
+    "referenceCaption": "檢查左後輪，【胎紋、胎壓正常】； 蹲下看車底，【車底無異物】",
     "startSec": 31.955,
     "endSec": 36.696,
-    "clipStartSec": 30.95,
-    "clipEndSec": 37.7,
-    "tags": [
-      "tire_check",
-      "underbody_check"
+    "clipStartSec": 30.955,
+    "clipEndSec": 37.696,
+    "operationTags": [
+      "輪胎檢查",
+      "車底檢查"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "依逆時針方向完成四輪、燈具與車底檢查，建立固定巡檢順序。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-007",
-    "segmentId": "road-seg-007",
+    "segmentId": "road-op-007",
     "moduleId": "two_stage_door_entry",
     "moduleTitle": "兩段式開車門上車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "口誦【兩段式開車門】先看左、看右，確認【左右無來車】",
-    "captionText": "口誦【兩段式開車門】先看左、看右，確認【左右無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "上車前做兩段式開車門並確認左右安全",
+    "referenceCaption": "口誦【兩段式開車門】先看左、看右，確認【左右無來車】 車門先開約15公分，身體不轉動， 再看左、看右確認【左右無來車】後， 再開至約45度上車",
     "startSec": 36.696,
-    "endSec": 44.169,
-    "clipStartSec": 35.7,
-    "clipEndSec": 45.17,
-    "tags": [
-      "safe_left_right"
+    "endSec": 54.177,
+    "clipStartSec": 35.696,
+    "clipEndSec": 55.177,
+    "operationTags": [
+      "兩段式開車門",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "先短開門再複查，確認左右無來車後再開至上車角度。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-008",
-    "segmentId": "road-seg-008",
-    "moduleId": "two_stage_door_entry",
-    "moduleTitle": "兩段式開車門上車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "車門先開約15公分，身體不轉動， 再看左、看右確認【左右無來車】後， 再開至約45度上車",
-    "captionText": "車門先開約15公分，身體不轉動， 再看左、看右確認【左右無來車】後， 再開至約45度上車",
-    "startSec": 44.169,
-    "endSec": 54.177,
-    "clipStartSec": 43.17,
-    "clipEndSec": 55.18,
-    "tags": [
-      "safe_left_right"
+    "segmentId": "road-op-008",
+    "moduleId": "cockpit_setup_and_engine_start",
+    "moduleTitle": "車內調整與發動前檢查",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "調整座椅、椅背與頭枕",
+    "referenceCaption": "車內：口誦【調整座椅】【調整椅背】【調整頭枕】",
+    "startSec": 54.177,
+    "endSec": 65.19,
+    "clipStartSec": 53.177,
+    "clipEndSec": 66.19,
+    "operationTags": [
+      "車內準備"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "先短開門再複查，確認左右無來車後再開至上車角度。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-009",
-    "segmentId": "road-seg-009",
+    "segmentId": "road-op-009",
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "車內：口誦【調整座椅】【調整椅背】【調整頭枕】",
-    "captionText": "車內：口誦【調整座椅】【調整椅背】【調整頭枕】",
-    "startSec": 54.177,
-    "endSec": 65.19,
-    "clipStartSec": 53.18,
-    "clipEndSec": 66.19,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "完成座椅鏡面與安全帶設定，再做紅火、儀表板、煞車與方向燈確認。"
-  },
-  {
-    "bankId": "RT-010",
-    "segmentId": "road-seg-010",
-    "moduleId": "cockpit_setup_and_engine_start",
-    "moduleTitle": "車內調整與發動前檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【繫上安全帶】【調整中央後照鏡、左右後照鏡】【確定檔位在P檔、手煞車已拉起】",
-    "captionText": "【繫上安全帶】【調整中央後照鏡、左右後照鏡】【確定檔位在P檔、手煞車已拉起】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "繫安全帶、調整後照鏡並確認P檔與手煞車",
+    "referenceCaption": "【繫上安全帶】【調整中央後照鏡、左右後照鏡】【確定檔位在P檔、手煞車已拉起】",
     "startSec": 65.19,
     "endSec": 83.033,
     "clipStartSec": 64.19,
-    "clipEndSec": 84.03,
-    "tags": [
-      "gear_p",
-      "hand_brake"
+    "clipEndSec": 84.033,
+    "operationTags": [
+      "安全帶",
+      "後照鏡調整",
+      "P檔",
+      "手煞車"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "完成座椅鏡面與安全帶設定，再做紅火、儀表板、煞車與方向燈確認。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
+  },
+  {
+    "bankId": "RT-010",
+    "segmentId": "road-op-010",
+    "moduleId": "cockpit_setup_and_engine_start",
+    "moduleTitle": "車內調整與發動前檢查",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "將鑰匙轉至紅火位置",
+    "referenceCaption": "鑰匙往外轉【開啟紅火】",
+    "startSec": 83.033,
+    "endSec": 89.773,
+    "clipStartSec": 82.033,
+    "clipEndSec": 90.773,
+    "operationTags": [
+      "紅火"
+    ],
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-011",
-    "segmentId": "road-seg-011",
+    "segmentId": "road-op-011",
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "鑰匙往外轉【開啟紅火】",
-    "captionText": "鑰匙往外轉【開啟紅火】",
-    "startSec": 83.033,
-    "endSec": 89.773,
-    "clipStartSec": 82.03,
-    "clipEndSec": 90.77,
-    "tags": [
-      "ignition_on"
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "檢查儀表（溫度、油量、煞車、充電、機油）作用",
+    "referenceCaption": "【油量、溫度、引擎、電瓶、手煞車燈、機油 正常】",
+    "startSec": 89.773,
+    "endSec": 101.697,
+    "clipStartSec": 88.773,
+    "clipEndSec": 102.697,
+    "operationTags": [
+      "儀表檢查"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "完成座椅鏡面與安全帶設定，再做紅火、儀表板、煞車與方向燈確認。"
+    "reminderNotes": [
+      "字幕原文另含手煞車燈；這裡將檢查重點統一整理為溫度、油量、煞車、充電、機油。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-012",
-    "segmentId": "road-seg-012",
+    "segmentId": "road-op-012",
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【油量、溫度、引擎、電瓶、手煞車燈、機油 正常】",
-    "captionText": "【油量、溫度、引擎、電瓶、手煞車燈、機油 正常】",
-    "startSec": 89.773,
-    "endSec": 101.697,
-    "clipStartSec": 88.77,
-    "clipEndSec": 102.7,
-    "tags": [
-      "hand_brake"
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "踩煞車發動引擎並確認儀表板正常",
+    "referenceCaption": "踩煞車、發動引擎，口誦 【引擎發動：儀表板正常】 開風扇 開AC； (發動後只會剩手煞車燈亮著)",
+    "startSec": 101.697,
+    "endSec": 112.89,
+    "clipStartSec": 100.697,
+    "clipEndSec": 113.89,
+    "operationTags": [
+      "發動引擎",
+      "儀表檢查"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "完成座椅鏡面與安全帶設定，再做紅火、儀表板、煞車與方向燈確認。"
+    "reminderNotes": [
+      "發動後正常情況下僅手煞車燈可能持續亮起。",
+      "發動後可開風扇與AC。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-013",
-    "segmentId": "road-seg-013",
+    "segmentId": "road-op-013",
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "踩煞車、發動引擎，口誦 【引擎發動：儀表板正常】",
-    "captionText": "踩煞車、發動引擎，口誦 【引擎發動：儀表板正常】",
-    "startSec": 101.697,
-    "endSec": 107.723,
-    "clipStartSec": 100.7,
-    "clipEndSec": 108.72,
-    "tags": [
-      "engine_start"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "完成座椅鏡面與安全帶設定，再做紅火、儀表板、煞車與方向燈確認。"
-  },
-  {
-    "bankId": "RT-014",
-    "segmentId": "road-seg-014",
-    "moduleId": "cockpit_setup_and_engine_start",
-    "moduleTitle": "車內調整與發動前檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "開風扇 開AC； (發動後只會剩手煞車燈亮著)",
-    "captionText": "開風扇 開AC； (發動後只會剩手煞車燈亮著)",
-    "startSec": 107.723,
-    "endSec": 112.89,
-    "clipStartSec": 106.72,
-    "clipEndSec": 113.89,
-    "tags": [
-      "hand_brake"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "完成座椅鏡面與安全帶設定，再做紅火、儀表板、煞車與方向燈確認。"
-  },
-  {
-    "bankId": "RT-015",
-    "segmentId": "road-seg-015",
-    "moduleId": "cockpit_setup_and_engine_start",
-    "moduleTitle": "車內調整與發動前檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "口誦【試踩煞車：煞車正常】",
-    "captionText": "口誦【試踩煞車：煞車正常】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "試踩煞車確認正常",
+    "referenceCaption": "口誦【試踩煞車：煞車正常】",
     "startSec": 112.89,
     "endSec": 117.89,
     "clipStartSec": 111.89,
     "clipEndSec": 118.89,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "完成座椅鏡面與安全帶設定，再做紅火、儀表板、煞車與方向燈確認。"
+    "operationTags": [
+      "煞車測試"
+    ],
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-016",
-    "segmentId": "road-seg-016",
+    "bankId": "RT-014",
+    "segmentId": "road-op-014",
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "口誦【試打左右方向燈：方向燈正常】",
-    "captionText": "口誦【試打左右方向燈：方向燈正常】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "試打左右方向燈確認正常",
+    "referenceCaption": "口誦【試打左右方向燈：方向燈正常】",
     "startSec": 117.89,
     "endSec": 123.89,
     "clipStartSec": 116.89,
     "clipEndSec": 124.89,
-    "tags": [
-      "right_signal"
+    "operationTags": [
+      "方向燈測試"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "完成座椅鏡面與安全帶設定，再做紅火、儀表板、煞車與方向燈確認。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
+  },
+  {
+    "bankId": "RT-015",
+    "segmentId": "road-op-015",
+    "moduleId": "start_and_initial_turns",
+    "moduleTitle": "起步與前段轉彎",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "起步前打左方向燈、入D檔、放手煞車並完成安全確認",
+    "referenceCaption": "打左方向燈，口誦【準備起步，打D檔，放手煞車】 起駛前轉頭查看前後左右， 口誦【左右無來車，後方無來車】",
+    "startSec": 123.89,
+    "endSec": 144.424,
+    "clipStartSec": 122.89,
+    "clipEndSec": 145.424,
+    "operationTags": [
+      "左方向燈",
+      "D檔",
+      "放手煞車",
+      "起步安全確認"
+    ],
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
+  },
+  {
+    "bankId": "RT-016",
+    "segmentId": "road-op-016",
+    "moduleId": "start_and_initial_turns",
+    "moduleTitle": "起步與前段轉彎",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "右轉前打右方向燈並在路口減速查看",
+    "referenceCaption": "方向燈回正，打右邊方向燈 前方路口減速查看； (行駛時出入都靠大門左側)",
+    "startSec": 149.46,
+    "endSec": 176.8,
+    "clipStartSec": 148.46,
+    "clipEndSec": 177.8,
+    "operationTags": [
+      "右方向燈",
+      "前方路口減速查看"
+    ],
+    "reminderNotes": [
+      "進出大門時車身盡量靠大門左側。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-017",
-    "segmentId": "road-seg-017",
+    "segmentId": "road-op-017",
     "moduleId": "start_and_initial_turns",
     "moduleTitle": "起步與前段轉彎",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "打左方向燈，口誦【準備起步，打D檔，放手煞車】",
-    "captionText": "打左方向燈，口誦【準備起步，打D檔，放手煞車】",
-    "startSec": 123.89,
-    "endSec": 131.835,
-    "clipStartSec": 122.89,
-    "clipEndSec": 132.84,
-    "tags": [
-      "left_signal",
-      "gear_d",
-      "hand_brake"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步、完成起駛觀察後右轉，再於下一路口左轉切入快車道。"
-  },
-  {
-    "bankId": "RT-018",
-    "segmentId": "road-seg-018",
-    "moduleId": "start_and_initial_turns",
-    "moduleTitle": "起步與前段轉彎",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "起駛前轉頭查看前後左右， 口誦【左右無來車，後方無來車】",
-    "captionText": "起駛前轉頭查看前後左右， 口誦【左右無來車，後方無來車】",
-    "startSec": 131.835,
-    "endSec": 144.424,
-    "clipStartSec": 130.84,
-    "clipEndSec": 145.42,
-    "tags": [
-      "safe_left_right",
-      "rear_clear"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步、完成起駛觀察後右轉，再於下一路口左轉切入快車道。"
-  },
-  {
-    "bankId": "RT-019",
-    "segmentId": "road-seg-019",
-    "moduleId": "start_and_initial_turns",
-    "moduleTitle": "起步與前段轉彎",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "方向燈回正，打右邊方向燈",
-    "captionText": "方向燈回正，打右邊方向燈",
-    "startSec": 149.46,
-    "endSec": 154.632,
-    "clipStartSec": 148.46,
-    "clipEndSec": 155.63,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步、完成起駛觀察後右轉，再於下一路口左轉切入快車道。"
-  },
-  {
-    "bankId": "RT-020",
-    "segmentId": "road-seg-020",
-    "moduleId": "start_and_initial_turns",
-    "moduleTitle": "起步與前段轉彎",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "前方路口減速查看；",
-    "captionText": "前方路口減速查看；",
-    "startSec": 154.632,
-    "endSec": 158.551,
-    "clipStartSec": 153.63,
-    "clipEndSec": 159.55,
-    "tags": [
-      "intersection_scan"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步、完成起駛觀察後右轉，再於下一路口左轉切入快車道。"
-  },
-  {
-    "bankId": "RT-021",
-    "segmentId": "road-seg-021",
-    "moduleId": "start_and_initial_turns",
-    "moduleTitle": "起步與前段轉彎",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "(行駛時出入都靠大門左側)",
-    "captionText": "(行駛時出入都靠大門左側)",
-    "startSec": 158.551,
-    "endSec": 176.8,
-    "clipStartSec": 157.55,
-    "clipEndSec": 177.8,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步、完成起駛觀察後右轉，再於下一路口左轉切入快車道。"
-  },
-  {
-    "bankId": "RT-022",
-    "segmentId": "road-seg-022",
-    "moduleId": "start_and_initial_turns",
-    "moduleTitle": "起步與前段轉彎",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【左右無來車、後方無來車】 右轉後打左方向燈",
-    "captionText": "【左右無來車、後方無來車】 右轉後打左方向燈",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "確認安全後右轉，右轉後補打左方向燈",
+    "referenceCaption": "【左右無來車、後方無來車】 右轉後打左方向燈",
     "startSec": 176.8,
     "endSec": 184.328,
     "clipStartSec": 175.8,
-    "clipEndSec": 185.33,
-    "tags": [
-      "left_signal",
-      "safe_left_right",
-      "rear_clear"
+    "clipEndSec": 185.328,
+    "operationTags": [
+      "右轉",
+      "左方向燈",
+      "安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步、完成起駛觀察後右轉，再於下一路口左轉切入快車道。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
+  },
+  {
+    "bankId": "RT-018",
+    "segmentId": "road-op-018",
+    "moduleId": "start_and_initial_turns",
+    "moduleTitle": "起步與前段轉彎",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看後左轉進入快車道",
+    "referenceCaption": "【前方路口減速查看,左右無來車】； 左轉走快車道 此路口需特別注意雙黃線",
+    "startSec": 184.328,
+    "endSec": 198.949,
+    "clipStartSec": 183.328,
+    "clipEndSec": 199.949,
+    "operationTags": [
+      "前方路口減速查看",
+      "左轉",
+      "快車道"
+    ],
+    "reminderNotes": [
+      "此路口需特別注意雙黃線。"
+    ],
+    "sourceBasis": "captions.sbv"
+  },
+  {
+    "bankId": "RT-019",
+    "segmentId": "road-op-019",
+    "moduleId": "lane_change_fast_to_slow",
+    "moduleTitle": "快車道切慢車道",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "打右方向燈後由快車道切入慢車道",
+    "referenceCaption": "打右方向燈 【前方路口減速查看，進行變換車道】 【左右無來車，後方無來車】 由快車道切換至慢車道，轉頭時需看到B柱 完成變換車道後，持續穩定行駛於慢車道",
+    "startSec": 198.949,
+    "endSec": 227.835,
+    "clipStartSec": 197.949,
+    "clipEndSec": 228.835,
+    "operationTags": [
+      "右方向燈",
+      "變換車道",
+      "快車道轉慢車道"
+    ],
+    "reminderNotes": [
+      "轉頭確認時需看到B柱。",
+      "完成變換後穩定行駛於慢車道。"
+    ],
+    "sourceBasis": "captions.sbv"
+  },
+  {
+    "bankId": "RT-020",
+    "segmentId": "road-op-020",
+    "moduleId": "roadside_temporary_stop",
+    "moduleTitle": "路邊臨時停車",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "打右方向燈並查看路口與左後方後，靠邊準備臨時停車",
+    "referenceCaption": "打右方向燈，口誦【前方路口減速查看，左右無來車，後方無來車】；再看左後方【後方無來車】， 頭需看到B柱，車身盡量靠近道路邊線 注意道路邊線不可壓到，",
+    "startSec": 227.835,
+    "endSec": 259.031,
+    "clipStartSec": 226.835,
+    "clipEndSec": 260.031,
+    "operationTags": [
+      "右方向燈",
+      "前方路口減速查看",
+      "左後方確認",
+      "靠邊停車準備"
+    ],
+    "reminderNotes": [
+      "轉頭確認時需看到B柱。",
+      "車身盡量靠近道路邊線，但不可壓線。"
+    ],
+    "sourceBasis": "captions.sbv"
+  },
+  {
+    "bankId": "RT-021",
+    "segmentId": "road-op-021",
+    "moduleId": "roadside_temporary_stop",
+    "moduleTitle": "路邊臨時停車",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "打右方向燈並在路口減速查看後執行路邊臨時停車",
+    "referenceCaption": "打右方向燈； 【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】， 頭需看到B柱",
+    "startSec": 259.031,
+    "endSec": 275.962,
+    "clipStartSec": 258.031,
+    "clipEndSec": 276.962,
+    "operationTags": [
+      "右方向燈",
+      "路邊臨時停車",
+      "前方路口減速查看"
+    ],
+    "reminderNotes": [
+      "轉頭確認時需看到B柱。"
+    ],
+    "sourceBasis": "captions.sbv"
+  },
+  {
+    "bankId": "RT-022",
+    "segmentId": "road-op-022",
+    "moduleId": "roadside_temporary_stop",
+    "moduleTitle": "路邊臨時停車",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "停妥後打P檔並拉手煞車",
+    "referenceCaption": "【打P檔、拉手煞車】；",
+    "startSec": 276.487,
+    "endSec": 282.489,
+    "clipStartSec": 275.487,
+    "clipEndSec": 283.489,
+    "operationTags": [
+      "P檔",
+      "手煞車"
+    ],
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-023",
-    "segmentId": "road-seg-023",
-    "moduleId": "start_and_initial_turns",
-    "moduleTitle": "起步與前段轉彎",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看,左右無來車】； 左轉走快車道 此路口需特別注意雙黃線",
-    "captionText": "【前方路口減速查看,左右無來車】； 左轉走快車道 此路口需特別注意雙黃線",
-    "startSec": 184.328,
-    "endSec": 198.949,
-    "clipStartSec": 183.33,
-    "clipEndSec": 199.95,
-    "tags": [
-      "safe_left_right",
-      "intersection_scan",
-      "fast_lane"
+    "segmentId": "road-op-023",
+    "moduleId": "roadside_temporary_stop",
+    "moduleTitle": "路邊臨時停車",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "鬆開腳煞車確認車輛不滑動後再回煞車",
+    "referenceCaption": "放鬆腳煞車，確認不滑動後， 腳再回煞車",
+    "startSec": 282.489,
+    "endSec": 285.312,
+    "clipStartSec": 281.489,
+    "clipEndSec": 286.312,
+    "operationTags": [
+      "停車確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步、完成起駛觀察後右轉，再於下一路口左轉切入快車道。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-024",
-    "segmentId": "road-seg-024",
-    "moduleId": "lane_change_fast_to_slow",
-    "moduleTitle": "快車道切慢車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "打右方向燈 【前方路口減速查看，進行變換車道】 【左右無來車，後方無來車】",
-    "captionText": "打右方向燈 【前方路口減速查看，進行變換車道】 【左右無來車，後方無來車】",
-    "startSec": 198.949,
-    "endSec": 214.26,
-    "clipStartSec": 197.95,
-    "clipEndSec": 215.26,
-    "tags": [
-      "right_signal",
-      "safe_left_right",
-      "rear_clear",
-      "intersection_scan",
-      "lane_change"
+    "segmentId": "road-op-024",
+    "moduleId": "resume_and_left_lane_change",
+    "moduleTitle": "由路邊切回主線並左切車道",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "打左方向燈，切回主線道前入D檔、放手煞車並做B柱確認",
+    "referenceCaption": "踩剎車，打左方向燈 【切入主線道，打D檔，放手煞車，後方無來車】； 頭需看到B柱後再起步",
+    "startSec": 288.22,
+    "endSec": 305.709,
+    "clipStartSec": 287.22,
+    "clipEndSec": 306.709,
+    "operationTags": [
+      "左方向燈",
+      "切入主線道",
+      "D檔",
+      "放手煞車"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈加口誦後確認後方，轉頭看到B柱再由快車道切入慢車道。"
+    "reminderNotes": [
+      "起步前需轉頭確認並看到B柱。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-025",
-    "segmentId": "road-seg-025",
-    "moduleId": "lane_change_fast_to_slow",
-    "moduleTitle": "快車道切慢車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "由快車道切換至慢車道，轉頭時需看到B柱",
-    "captionText": "由快車道切換至慢車道，轉頭時需看到B柱",
-    "startSec": 214.26,
-    "endSec": 221.487,
-    "clipStartSec": 213.26,
-    "clipEndSec": 222.49,
-    "tags": [
-      "b_pillar",
-      "fast_lane",
-      "slow_lane"
+    "segmentId": "road-op-025",
+    "moduleId": "resume_and_left_lane_change",
+    "moduleTitle": "由路邊切回主線並左切車道",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "打左方向燈後往左變換車道，確認後方無來車再切線",
+    "referenceCaption": "打左方向燈，口誦 【進行變換車道，後方無來車】； 頭需看到B柱，沒車再變換車道",
+    "startSec": 312.292,
+    "endSec": 324.866,
+    "clipStartSec": 311.292,
+    "clipEndSec": 325.866,
+    "operationTags": [
+      "左方向燈",
+      "變換車道",
+      "後方確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈加口誦後確認後方，轉頭看到B柱再由快車道切入慢車道。"
+    "reminderNotes": [
+      "轉頭確認時需看到B柱。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-026",
-    "segmentId": "road-seg-026",
-    "moduleId": "lane_change_fast_to_slow",
-    "moduleTitle": "快車道切慢車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "完成變換車道後，持續穩定行駛於慢車道",
-    "captionText": "完成變換車道後，持續穩定行駛於慢車道",
-    "startSec": 221.487,
-    "endSec": 227.835,
-    "clipStartSec": 220.49,
-    "clipEndSec": 228.84,
-    "tags": [
-      "lane_change",
-      "slow_lane"
+    "segmentId": "road-op-026",
+    "moduleId": "straight_intersection_checks",
+    "moduleTitle": "直線行駛與路口減速查看",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看並確認左右無來車",
+    "referenceCaption": "前方路口減速查看，口誦【左右無來車】； 直線路段留意兩側照後鏡與車身、車道線間距",
+    "startSec": 325.374,
+    "endSec": 345.9,
+    "clipStartSec": 324.374,
+    "clipEndSec": 346.9,
+    "operationTags": [
+      "前方路口減速查看",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈加口誦後確認後方，轉頭看到B柱再由快車道切入慢車道。"
+    "reminderNotes": [
+      "直線路段要持續留意照後鏡、車身與車道線間距。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-027",
-    "segmentId": "road-seg-027",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "打右方向燈，口誦【前方路口減速查看，左右無來車，後方無來車】；再看左後方【後方無來車】，",
-    "captionText": "打右方向燈，口誦【前方路口減速查看，左右無來車，後方無來車】；再看左後方【後方無來車】，",
-    "startSec": 227.835,
-    "endSec": 240.418,
-    "clipStartSec": 226.84,
-    "clipEndSec": 241.42,
-    "tags": [
-      "right_signal",
-      "safe_left_right",
-      "rear_clear",
-      "intersection_scan"
+    "segmentId": "road-op-027",
+    "moduleId": "straight_intersection_checks",
+    "moduleTitle": "直線行駛與路口減速查看",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看並確認左右無來車",
+    "referenceCaption": "前方路口減速查看，口誦【左右無來車】； 行駛中隨時注意不要壓到左右車道線",
+    "startSec": 346.9,
+    "endSec": 367.28,
+    "clipStartSec": 345.9,
+    "clipEndSec": 368.28,
+    "operationTags": [
+      "前方路口減速查看",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈靠邊，確認後方與邊線距離，停妥後P檔與手煞車完成臨停。"
+    "reminderNotes": [
+      "行駛中隨時注意不要壓到左右車道線。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
     "bankId": "RT-028",
-    "segmentId": "road-seg-028",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "頭需看到B柱，車身盡量靠近道路邊線",
-    "captionText": "頭需看到B柱，車身盡量靠近道路邊線",
-    "startSec": 240.418,
-    "endSec": 250.585,
-    "clipStartSec": 239.42,
-    "clipEndSec": 251.59,
-    "tags": [
-      "b_pillar"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈靠邊，確認後方與邊線距離，停妥後P檔與手煞車完成臨停。"
-  },
-  {
-    "bankId": "RT-029",
-    "segmentId": "road-seg-029",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "注意道路邊線不可壓到，",
-    "captionText": "注意道路邊線不可壓到，",
-    "startSec": 254.086,
-    "endSec": 259.031,
-    "clipStartSec": 253.09,
-    "clipEndSec": 260.03,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈靠邊，確認後方與邊線距離，停妥後P檔與手煞車完成臨停。"
-  },
-  {
-    "bankId": "RT-030",
-    "segmentId": "road-seg-030",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "打右方向燈；",
-    "captionText": "打右方向燈；",
-    "startSec": 259.031,
-    "endSec": 263.92,
-    "clipStartSec": 258.03,
-    "clipEndSec": 264.92,
-    "tags": [
-      "right_signal"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈靠邊，確認後方與邊線距離，停妥後P檔與手煞車完成臨停。"
-  },
-  {
-    "bankId": "RT-031",
-    "segmentId": "road-seg-031",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】，",
-    "captionText": "【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】，",
-    "startSec": 263.92,
-    "endSec": 274.24,
-    "clipStartSec": 262.92,
-    "clipEndSec": 275.24,
-    "tags": [
-      "safe_left_right",
-      "rear_clear",
-      "intersection_scan",
-      "temporary_stop"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈靠邊，確認後方與邊線距離，停妥後P檔與手煞車完成臨停。"
-  },
-  {
-    "bankId": "RT-032",
-    "segmentId": "road-seg-032",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "頭需看到B柱",
-    "captionText": "頭需看到B柱",
-    "startSec": 274.24,
-    "endSec": 275.962,
-    "clipStartSec": 273.24,
-    "clipEndSec": 276.96,
-    "tags": [
-      "b_pillar"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈靠邊，確認後方與邊線距離，停妥後P檔與手煞車完成臨停。"
-  },
-  {
-    "bankId": "RT-033",
-    "segmentId": "road-seg-033",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【打P檔、拉手煞車】；",
-    "captionText": "【打P檔、拉手煞車】；",
-    "startSec": 276.487,
-    "endSec": 282.489,
-    "clipStartSec": 275.49,
-    "clipEndSec": 283.49,
-    "tags": [
-      "gear_p",
-      "hand_brake"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈靠邊，確認後方與邊線距離，停妥後P檔與手煞車完成臨停。"
-  },
-  {
-    "bankId": "RT-034",
-    "segmentId": "road-seg-034",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "放鬆腳煞車，確認不滑動後， 腳再回煞車",
-    "captionText": "放鬆腳煞車，確認不滑動後， 腳再回煞車",
-    "startSec": 282.489,
-    "endSec": 285.312,
-    "clipStartSec": 281.49,
-    "clipEndSec": 286.31,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈靠邊，確認後方與邊線距離，停妥後P檔與手煞車完成臨停。"
-  },
-  {
-    "bankId": "RT-035",
-    "segmentId": "road-seg-035",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【路邊臨時停車完畢】",
-    "captionText": "【路邊臨時停車完畢】",
-    "startSec": 285.312,
-    "endSec": 288.22,
-    "clipStartSec": 284.31,
-    "clipEndSec": 289.22,
-    "tags": [
-      "temporary_stop"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "右方向燈靠邊，確認後方與邊線距離，停妥後P檔與手煞車完成臨停。"
-  },
-  {
-    "bankId": "RT-036",
-    "segmentId": "road-seg-036",
-    "moduleId": "resume_and_left_lane_change",
-    "moduleTitle": "由路邊切回主線並左切車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "踩剎車，打左方向燈 【切入主線道，打D檔，放手煞車，後方無來車】；",
-    "captionText": "踩剎車，打左方向燈 【切入主線道，打D檔，放手煞車，後方無來車】；",
-    "startSec": 288.22,
-    "endSec": 302.061,
-    "clipStartSec": 287.22,
-    "clipEndSec": 303.06,
-    "tags": [
-      "left_signal",
-      "rear_clear",
-      "gear_d",
-      "hand_brake"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步回主線，看到B柱後再左切變換車道。"
-  },
-  {
-    "bankId": "RT-037",
-    "segmentId": "road-seg-037",
-    "moduleId": "resume_and_left_lane_change",
-    "moduleTitle": "由路邊切回主線並左切車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "頭需看到B柱後再起步",
-    "captionText": "頭需看到B柱後再起步",
-    "startSec": 302.061,
-    "endSec": 305.709,
-    "clipStartSec": 301.06,
-    "clipEndSec": 306.71,
-    "tags": [
-      "b_pillar"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步回主線，看到B柱後再左切變換車道。"
-  },
-  {
-    "bankId": "RT-038",
-    "segmentId": "road-seg-038",
-    "moduleId": "resume_and_left_lane_change",
-    "moduleTitle": "由路邊切回主線並左切車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "打左方向燈，口誦 【進行變換車道，後方無來車】；",
-    "captionText": "打左方向燈，口誦 【進行變換車道，後方無來車】；",
-    "startSec": 312.292,
-    "endSec": 320.801,
-    "clipStartSec": 311.29,
-    "clipEndSec": 321.8,
-    "tags": [
-      "left_signal",
-      "rear_clear",
-      "lane_change"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步回主線，看到B柱後再左切變換車道。"
-  },
-  {
-    "bankId": "RT-039",
-    "segmentId": "road-seg-039",
-    "moduleId": "resume_and_left_lane_change",
-    "moduleTitle": "由路邊切回主線並左切車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "頭需看到B柱，沒車再變換車道",
-    "captionText": "頭需看到B柱，沒車再變換車道",
-    "startSec": 320.801,
-    "endSec": 324.866,
-    "clipStartSec": 319.8,
-    "clipEndSec": 325.87,
-    "tags": [
-      "b_pillar",
-      "lane_change"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈起步回主線，看到B柱後再左切變換車道。"
-  },
-  {
-    "bankId": "RT-040",
-    "segmentId": "road-seg-040",
+    "segmentId": "road-op-028",
     "moduleId": "straight_intersection_checks",
     "moduleTitle": "直線行駛與路口減速查看",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "前方路口減速查看，口誦【左右無來車】；",
-    "captionText": "前方路口減速查看，口誦【左右無來車】；",
-    "startSec": 325.374,
-    "endSec": 335.325,
-    "clipStartSec": 324.37,
-    "clipEndSec": 336.32,
-    "tags": [
-      "safe_left_right",
-      "intersection_scan"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "連續通過路口前都要減速查看，直線段保持車身與車道線間距。"
-  },
-  {
-    "bankId": "RT-041",
-    "segmentId": "road-seg-041",
-    "moduleId": "straight_intersection_checks",
-    "moduleTitle": "直線行駛與路口減速查看",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "直線路段留意兩側照後鏡與車身、車道線間距",
-    "captionText": "直線路段留意兩側照後鏡與車身、車道線間距",
-    "startSec": 335.325,
-    "endSec": 345.9,
-    "clipStartSec": 334.32,
-    "clipEndSec": 346.9,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "連續通過路口前都要減速查看，直線段保持車身與車道線間距。"
-  },
-  {
-    "bankId": "RT-042",
-    "segmentId": "road-seg-042",
-    "moduleId": "straight_intersection_checks",
-    "moduleTitle": "直線行駛與路口減速查看",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "前方路口減速查看，口誦【左右無來車】；",
-    "captionText": "前方路口減速查看，口誦【左右無來車】；",
-    "startSec": 346.9,
-    "endSec": 356.779,
-    "clipStartSec": 345.9,
-    "clipEndSec": 357.78,
-    "tags": [
-      "safe_left_right",
-      "intersection_scan"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "連續通過路口前都要減速查看，直線段保持車身與車道線間距。"
-  },
-  {
-    "bankId": "RT-043",
-    "segmentId": "road-seg-043",
-    "moduleId": "straight_intersection_checks",
-    "moduleTitle": "直線行駛與路口減速查看",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "行駛中隨時注意不要壓到左右車道線",
-    "captionText": "行駛中隨時注意不要壓到左右車道線",
-    "startSec": 359.782,
-    "endSec": 367.28,
-    "clipStartSec": 358.78,
-    "clipEndSec": 368.28,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "連續通過路口前都要減速查看，直線段保持車身與車道線間距。"
-  },
-  {
-    "bankId": "RT-044",
-    "segmentId": "road-seg-044",
-    "moduleId": "straight_intersection_checks",
-    "moduleTitle": "直線行駛與路口減速查看",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "再次通過路口前減速查看，口誦【左右無來車】",
-    "captionText": "再次通過路口前減速查看，口誦【左右無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看並確認左右無來車",
+    "referenceCaption": "再次通過路口前減速查看，口誦【左右無來車】",
     "startSec": 368.28,
     "endSec": 376.28,
     "clipStartSec": 367.28,
     "clipEndSec": 377.28,
-    "tags": [
-      "safe_left_right"
+    "operationTags": [
+      "前方路口減速查看",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "連續通過路口前都要減速查看，直線段保持車身與車道線間距。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-045",
-    "segmentId": "road-seg-045",
+    "bankId": "RT-029",
+    "segmentId": "road-op-029",
     "moduleId": "u_turn_sequence",
     "moduleTitle": "迴轉流程",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "打左方向燈",
-    "captionText": "打左方向燈",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "打左方向燈，前方路口減速查看並確認安全後迴轉",
+    "referenceCaption": "打左方向燈 【前方路口減速查看】，配合準備迴轉 確認【左右無來車】； 到達定點後迅速完成方向盤操作",
     "startSec": 390.736,
-    "endSec": 394.142,
-    "clipStartSec": 389.74,
-    "clipEndSec": 395.14,
-    "tags": [
-      "left_signal"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈配合路口減速查看，定點後迅速操作方向盤，迴轉後走外側車道。"
-  },
-  {
-    "bankId": "RT-046",
-    "segmentId": "road-seg-046",
-    "moduleId": "u_turn_sequence",
-    "moduleTitle": "迴轉流程",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】，配合準備迴轉",
-    "captionText": "【前方路口減速查看】，配合準備迴轉",
-    "startSec": 394.142,
-    "endSec": 404.993,
-    "clipStartSec": 393.14,
-    "clipEndSec": 405.99,
-    "tags": [
-      "intersection_scan",
-      "u_turn"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈配合路口減速查看，定點後迅速操作方向盤，迴轉後走外側車道。"
-  },
-  {
-    "bankId": "RT-047",
-    "segmentId": "road-seg-047",
-    "moduleId": "u_turn_sequence",
-    "moduleTitle": "迴轉流程",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "確認【左右無來車】； 到達定點後迅速完成方向盤操作",
-    "captionText": "確認【左右無來車】； 到達定點後迅速完成方向盤操作",
-    "startSec": 405.0,
     "endSec": 413.136,
-    "clipStartSec": 404.0,
-    "clipEndSec": 414.14,
-    "tags": [
-      "safe_left_right"
+    "clipStartSec": 389.736,
+    "clipEndSec": 414.136,
+    "operationTags": [
+      "左方向燈",
+      "前方路口減速查看",
+      "迴轉"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈配合路口減速查看，定點後迅速操作方向盤，迴轉後走外側車道。"
+    "reminderNotes": [
+      "到達定點後迅速完成方向盤操作。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-048",
-    "segmentId": "road-seg-048",
+    "bankId": "RT-030",
+    "segmentId": "road-op-030",
     "moduleId": "u_turn_sequence",
     "moduleTitle": "迴轉流程",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "迴轉後走外側車道，",
-    "captionText": "迴轉後走外側車道，",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "迴轉後靠外側車道行駛",
+    "referenceCaption": "迴轉後走外側車道，",
     "startSec": 413.622,
     "endSec": 428.299,
-    "clipStartSec": 412.62,
-    "clipEndSec": 429.3,
-    "tags": [
-      "u_turn"
+    "clipStartSec": 412.622,
+    "clipEndSec": 429.299,
+    "operationTags": [
+      "迴轉後車道選擇",
+      "外側車道"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "左方向燈配合路口減速查看，定點後迅速操作方向盤，迴轉後走外側車道。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-049",
-    "segmentId": "road-seg-049",
+    "bankId": "RT-031",
+    "segmentId": "road-op-031",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "持續注意兩側車道線，盡量讓車輛保持在車道中央",
-    "captionText": "持續注意兩側車道線，盡量讓車輛保持在車道中央",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "保持車輛置中於車道中央",
+    "referenceCaption": "持續注意兩側車道線，盡量讓車輛保持在車道中央 壓到任何一側邊線都會扣分，",
     "startSec": 428.299,
-    "endSec": 435.58,
-    "clipStartSec": 427.3,
-    "clipEndSec": 436.58,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "迴轉後保持在車道中央，避免壓線，並將車速維持在約40公里。"
-  },
-  {
-    "bankId": "RT-050",
-    "segmentId": "road-seg-050",
-    "moduleId": "post_uturn_speed_and_centering",
-    "moduleTitle": "迴轉後控速與置中",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "壓到任何一側邊線都會扣分，",
-    "captionText": "壓到任何一側邊線都會扣分，",
-    "startSec": 437.073,
     "endSec": 440.698,
-    "clipStartSec": 436.07,
-    "clipEndSec": 441.7,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "迴轉後保持在車道中央，避免壓線，並將車速維持在約40公里。"
+    "clipStartSec": 427.299,
+    "clipEndSec": 441.698,
+    "operationTags": [
+      "車道置中"
+    ],
+    "reminderNotes": [
+      "壓到任一側邊線都會扣分。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-051",
-    "segmentId": "road-seg-051",
+    "bankId": "RT-032",
+    "segmentId": "road-op-032",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
-    "captionText": "【前方路口減速查看】【左右無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看並確認左右無來車",
+    "referenceCaption": "【前方路口減速查看】【左右無來車】",
     "startSec": 440.698,
     "endSec": 446.58,
-    "clipStartSec": 439.7,
+    "clipStartSec": 439.698,
     "clipEndSec": 447.58,
-    "tags": [
-      "safe_left_right",
-      "intersection_scan"
+    "operationTags": [
+      "前方路口減速查看",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "迴轉後保持在車道中央，避免壓線，並將車速維持在約40公里。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-052",
-    "segmentId": "road-seg-052",
+    "bankId": "RT-033",
+    "segmentId": "road-op-033",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "行車速度盡量維持在約40公里左右",
-    "captionText": "行車速度盡量維持在約40公里左右",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "行車速度維持約40公里且最高不要超過44公里",
+    "referenceCaption": "行車速度盡量維持在約40公里左右 此路段須特別注意車速， 標示約40公里，最高速度不要超過44公里",
     "startSec": 452.31,
-    "endSec": 457.31,
+    "endSec": 499.74,
     "clipStartSec": 451.31,
-    "clipEndSec": 458.31,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "迴轉後保持在車道中央，避免壓線，並將車速維持在約40公里。"
+    "clipEndSec": 500.74,
+    "operationTags": [
+      "速度控制"
+    ],
+    "reminderNotes": [
+      "此路段標示約40公里，最高不要超過44公里。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-053",
-    "segmentId": "road-seg-053",
+    "bankId": "RT-034",
+    "segmentId": "road-op-034",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
-    "captionText": "【前方路口減速查看】【左右無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看並確認左右無來車",
+    "referenceCaption": "【前方路口減速查看】【左右無來車】",
     "startSec": 459.31,
     "endSec": 465.31,
     "clipStartSec": 458.31,
     "clipEndSec": 466.31,
-    "tags": [
-      "safe_left_right",
-      "intersection_scan"
+    "operationTags": [
+      "前方路口減速查看",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "迴轉後保持在車道中央，避免壓線，並將車速維持在約40公里。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-054",
-    "segmentId": "road-seg-054",
+    "bankId": "RT-035",
+    "segmentId": "road-op-035",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
-    "captionText": "【前方路口減速查看】【左右無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看並確認左右無來車",
+    "referenceCaption": "【前方路口減速查看】【左右無來車】",
     "startSec": 476.26,
     "endSec": 483.26,
     "clipStartSec": 475.26,
     "clipEndSec": 484.26,
-    "tags": [
-      "safe_left_right",
-      "intersection_scan"
+    "operationTags": [
+      "前方路口減速查看",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "迴轉後保持在車道中央，避免壓線，並將車速維持在約40公里。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-055",
-    "segmentId": "road-seg-055",
+    "bankId": "RT-036",
+    "segmentId": "road-op-036",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "此路段須特別注意車速， 標示約40公里，最高速度不要超過44公里",
-    "captionText": "此路段須特別注意車速， 標示約40公里，最高速度不要超過44公里",
-    "startSec": 489.74,
-    "endSec": 499.74,
-    "clipStartSec": 488.74,
-    "clipEndSec": 500.74,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "迴轉後保持在車道中央，避免壓線，並將車速維持在約40公里。"
-  },
-  {
-    "bankId": "RT-056",
-    "segmentId": "road-seg-056",
-    "moduleId": "post_uturn_speed_and_centering",
-    "moduleTitle": "迴轉後控速與置中",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
-    "captionText": "【前方路口減速查看】【左右無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看並確認左右無來車",
+    "referenceCaption": "【前方路口減速查看】【左右無來車】",
     "startSec": 499.74,
     "endSec": 505.374,
     "clipStartSec": 498.74,
-    "clipEndSec": 506.37,
-    "tags": [
-      "safe_left_right",
-      "intersection_scan"
+    "clipEndSec": 506.374,
+    "operationTags": [
+      "前方路口減速查看",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "迴轉後保持在車道中央，避免壓線，並將車速維持在約40公里。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-057",
-    "segmentId": "road-seg-057",
+    "bankId": "RT-037",
+    "segmentId": "road-op-037",
     "moduleId": "signalized_left_turn_to_slow_lane",
     "moduleTitle": "號誌路口左轉回慢車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "到路口前打左方向燈 【前方路口減速查看】【左右無來車】",
-    "captionText": "到路口前打左方向燈 【前方路口減速查看】【左右無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "到號誌路口前打左方向燈，減速查看並在起步前完成擺頭確認",
+    "referenceCaption": "到路口前打左方向燈 【前方路口減速查看】【左右無來車】 等紅綠燈後，起步前記得做左右擺頭； 尤其是第一台 口誦【左右無來車，後方無來車】；頭需看到B柱",
     "startSec": 508.948,
-    "endSec": 519.132,
-    "clipStartSec": 507.95,
-    "clipEndSec": 520.13,
-    "tags": [
-      "left_signal",
-      "safe_left_right",
-      "intersection_scan"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "路口前打左方向燈，等待號誌後起步要左右擺頭，左轉後直接走慢車道並留意左後方插入車。"
-  },
-  {
-    "bankId": "RT-058",
-    "segmentId": "road-seg-058",
-    "moduleId": "signalized_left_turn_to_slow_lane",
-    "moduleTitle": "號誌路口左轉回慢車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "等紅綠燈後，起步前記得做左右擺頭； 尤其是第一台",
-    "captionText": "等紅綠燈後，起步前記得做左右擺頭； 尤其是第一台",
-    "startSec": 519.132,
-    "endSec": 555.352,
-    "clipStartSec": 518.13,
-    "clipEndSec": 556.35,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "路口前打左方向燈，等待號誌後起步要左右擺頭，左轉後直接走慢車道並留意左後方插入車。"
-  },
-  {
-    "bankId": "RT-059",
-    "segmentId": "road-seg-059",
-    "moduleId": "signalized_left_turn_to_slow_lane",
-    "moduleTitle": "號誌路口左轉回慢車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "口誦【左右無來車，後方無來車】；頭需看到B柱",
-    "captionText": "口誦【左右無來車，後方無來車】；頭需看到B柱",
-    "startSec": 555.584,
     "endSec": 565.729,
-    "clipStartSec": 554.58,
-    "clipEndSec": 566.73,
-    "tags": [
-      "b_pillar",
-      "safe_left_right",
-      "rear_clear"
+    "clipStartSec": 507.948,
+    "clipEndSec": 566.729,
+    "operationTags": [
+      "左方向燈",
+      "前方路口減速查看",
+      "號誌路口起步"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "路口前打左方向燈，等待號誌後起步要左右擺頭，左轉後直接走慢車道並留意左後方插入車。"
+    "reminderNotes": [
+      "等紅綠燈後起步前要做左右擺頭；尤其是第一台。",
+      "確認時需看到B柱。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-060",
-    "segmentId": "road-seg-060",
+    "bankId": "RT-038",
+    "segmentId": "road-op-038",
     "moduleId": "signalized_left_turn_to_slow_lane",
     "moduleTitle": "號誌路口左轉回慢車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "左轉後直接走慢車道，",
-    "captionText": "左轉後直接走慢車道，",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "左轉後直接進入慢車道",
+    "referenceCaption": "左轉後直接走慢車道， 注意左側可能有違規插入的車輛，確認左後方來車",
     "startSec": 565.729,
-    "endSec": 569.313,
-    "clipStartSec": 564.73,
-    "clipEndSec": 570.31,
-    "tags": [
-      "slow_lane"
-    ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "路口前打左方向燈，等待號誌後起步要左右擺頭，左轉後直接走慢車道並留意左後方插入車。"
-  },
-  {
-    "bankId": "RT-061",
-    "segmentId": "road-seg-061",
-    "moduleId": "signalized_left_turn_to_slow_lane",
-    "moduleTitle": "號誌路口左轉回慢車道",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "注意左側可能有違規插入的車輛，確認左後方來車",
-    "captionText": "注意左側可能有違規插入的車輛，確認左後方來車",
-    "startSec": 569.313,
     "endSec": 574.9,
-    "clipStartSec": 568.31,
+    "clipStartSec": 564.729,
     "clipEndSec": 575.9,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "路口前打左方向燈，等待號誌後起步要左右擺頭，左轉後直接走慢車道並留意左後方插入車。"
+    "operationTags": [
+      "左轉",
+      "慢車道"
+    ],
+    "reminderNotes": [
+      "注意左側可能有違規插入的車輛，需留意左後方。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-062",
-    "segmentId": "road-seg-062",
+    "bankId": "RT-039",
+    "segmentId": "road-op-039",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
-    "captionText": "【前方路口減速查看】【左右無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看並確認左右無來車",
+    "referenceCaption": "【前方路口減速查看】【左右無來車】",
     "startSec": 574.9,
     "endSec": 589.74,
     "clipStartSec": 573.9,
     "clipEndSec": 590.74,
-    "tags": [
-      "safe_left_right",
-      "intersection_scan"
+    "operationTags": [
+      "前方路口減速查看",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-063",
-    "segmentId": "road-seg-063",
+    "bankId": "RT-040",
+    "segmentId": "road-op-040",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】 注意道路邊線，白線不可壓到",
-    "captionText": "【前方路口減速查看】【左右無來車】 注意道路邊線，白線不可壓到",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看並確認左右無來車",
+    "referenceCaption": "【前方路口減速查看】【左右無來車】 注意道路邊線，白線不可壓到",
     "startSec": 589.74,
     "endSec": 603.08,
     "clipStartSec": 588.74,
     "clipEndSec": 604.08,
-    "tags": [
-      "safe_left_right",
-      "intersection_scan"
+    "operationTags": [
+      "前方路口減速查看",
+      "左右安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
+    "reminderNotes": [
+      "注意道路邊線，白線不可壓到。"
+    ],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-064",
-    "segmentId": "road-seg-064",
+    "bankId": "RT-041",
+    "segmentId": "road-op-041",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看(打右方向燈)左右無來車,後方無來車】",
-    "captionText": "【前方路口減速查看(打右方向燈)左右無來車,後方無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看後打右方向燈並確認安全",
+    "referenceCaption": "【前方路口減速查看(打右方向燈)左右無來車,後方無來車】",
     "startSec": 603.08,
     "endSec": 617.93,
     "clipStartSec": 602.08,
     "clipEndSec": 618.93,
-    "tags": [
-      "right_signal",
-      "safe_left_right",
-      "rear_clear",
-      "intersection_scan"
+    "operationTags": [
+      "前方路口減速查看",
+      "右方向燈",
+      "安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-065",
-    "segmentId": "road-seg-065",
+    "bankId": "RT-042",
+    "segmentId": "road-op-042",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看(打左方向燈)左右無來車,後方無來車】",
-    "captionText": "【前方路口減速查看(打左方向燈)左右無來車,後方無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "前方路口減速查看後打左方向燈並確認安全",
+    "referenceCaption": "【前方路口減速查看(打左方向燈)左右無來車,後方無來車】",
     "startSec": 617.93,
     "endSec": 629.67,
     "clipStartSec": 616.93,
     "clipEndSec": 630.67,
-    "tags": [
-      "left_signal",
-      "safe_left_right",
-      "rear_clear",
-      "intersection_scan"
+    "operationTags": [
+      "前方路口減速查看",
+      "左方向燈",
+      "安全確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-066",
-    "segmentId": "road-seg-066",
+    "bankId": "RT-043",
+    "segmentId": "road-op-043",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "【打右方向燈,左右無來車,後方無來車】",
-    "captionText": "【打右方向燈,左右無來車,後方無來車】",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "打右方向燈並確認左右與後方無來車",
+    "referenceCaption": "【打右方向燈,左右無來車,後方無來車】",
     "startSec": 629.67,
     "endSec": 640.652,
     "clipStartSec": 628.67,
-    "clipEndSec": 641.65,
-    "tags": [
-      "right_signal",
-      "safe_left_right",
-      "rear_clear"
+    "clipEndSec": 641.652,
+    "operationTags": [
+      "右方向燈",
+      "左右安全確認",
+      "後方確認"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-067",
-    "segmentId": "road-seg-067",
+    "bankId": "RT-044",
+    "segmentId": "road-op-044",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "回到起終點區域，找空位將車輛停正",
-    "captionText": "回到起終點區域，找空位將車輛停正",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "回到起終點區域找空位將車輛停正",
+    "referenceCaption": "回到起終點區域，找空位將車輛停正",
     "startSec": 640.652,
     "endSec": 648.048,
-    "clipStartSec": 639.65,
-    "clipEndSec": 649.05,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
+    "clipStartSec": 639.652,
+    "clipEndSec": 649.048,
+    "operationTags": [
+      "停車定位"
+    ],
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-068",
-    "segmentId": "road-seg-068",
+    "bankId": "RT-045",
+    "segmentId": "road-op-045",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "停妥後依序  打P檔、拉手煞車、 關風扇、關AC、熄火",
-    "captionText": "停妥後依序  打P檔、拉手煞車、 關風扇、關AC、熄火",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "停妥後打P檔、拉手煞車、關風扇與AC並熄火",
+    "referenceCaption": "停妥後依序  打P檔、拉手煞車、 關風扇、關AC、熄火",
     "startSec": 650.67,
     "endSec": 671.105,
     "clipStartSec": 649.67,
-    "clipEndSec": 672.11,
-    "tags": [
-      "gear_p",
-      "hand_brake"
+    "clipEndSec": 672.105,
+    "operationTags": [
+      "P檔",
+      "手煞車",
+      "熄火"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-069",
-    "segmentId": "road-seg-069",
+    "bankId": "RT-046",
+    "segmentId": "road-op-046",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "解開安全帶、椅子退後，進行【兩段式開車門】；",
-    "captionText": "解開安全帶、椅子退後，進行【兩段式開車門】；",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "解開安全帶、椅子退後並準備兩段式開車門下車",
+    "referenceCaption": "解開安全帶、椅子退後，進行【兩段式開車門】；",
     "startSec": 671.105,
     "endSec": 680.427,
-    "clipStartSec": 670.11,
-    "clipEndSec": 681.43,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
+    "clipStartSec": 670.105,
+    "clipEndSec": 681.427,
+    "operationTags": [
+      "安全帶解除",
+      "椅子退後",
+      "兩段式開車門"
+    ],
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-070",
-    "segmentId": "road-seg-070",
+    "bankId": "RT-047",
+    "segmentId": "road-op-047",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "先看後照鏡，再把頭伸出車外看後方，確認【後方無來車】打開車門15公分【左右無來車】下車",
-    "captionText": "先看後照鏡，再把頭伸出車外看後方，確認【後方無來車】打開車門15公分【左右無來車】下車",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "先看後照鏡與後方，兩段式開車門確認安全後下車",
+    "referenceCaption": "先看後照鏡，再把頭伸出車外看後方，確認【後方無來車】打開車門15公分【左右無來車】下車",
     "startSec": 680.427,
     "endSec": 686.354,
-    "clipStartSec": 679.43,
-    "clipEndSec": 687.35,
-    "tags": [
-      "safe_left_right",
-      "rear_clear"
+    "clipStartSec": 679.427,
+    "clipEndSec": 687.354,
+    "operationTags": [
+      "後照鏡確認",
+      "後方確認",
+      "兩段式開車門"
     ],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   },
   {
-    "bankId": "RT-071",
-    "segmentId": "road-seg-071",
+    "bankId": "RT-048",
+    "segmentId": "road-op-048",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "最後關上車門，道路考照動作全部完成",
-    "captionText": "最後關上車門，道路考照動作全部完成",
+    "prompt": "依片段判斷，這一題主要操作是？",
+    "answerText": "關上車門完成道路考試",
+    "referenceCaption": "最後關上車門，道路考照動作全部完成",
     "startSec": 686.354,
     "endSec": 702.442,
-    "clipStartSec": 685.35,
-    "clipEndSec": 703.44,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": "回到起終點區域後依序停正、收車、兩段式開門下車並關門。"
-  },
-  {
-    "bankId": "RT-072",
-    "segmentId": "road-seg-072",
-    "moduleId": "supplementary_promo",
-    "moduleTitle": "未分類模組",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "歡迎各位到忠正駕訓班學習開車，本班提供新型TOYOTA車輛供教學使用 今天示範的也是新車，未來學員到班上學車時，使用的車輛與教學環境皆相同",
-    "captionText": "歡迎各位到忠正駕訓班學習開車，本班提供新型TOYOTA車輛供教學使用 今天示範的也是新車，未來學員到班上學車時，使用的車輛與教學環境皆相同",
-    "startSec": 702.442,
-    "endSec": 726.12,
-    "clipStartSec": 701.44,
-    "clipEndSec": 727.12,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": ""
-  },
-  {
-    "bankId": "RT-073",
-    "segmentId": "road-seg-073",
-    "moduleId": "supplementary_promo",
-    "moduleTitle": "未分類模組",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "平時車輛整齊停放於車庫，駕訓班提供良好學習環境，也歡迎大家介紹親友前來學習",
-    "captionText": "平時車輛整齊停放於車庫，駕訓班提供良好學習環境，也歡迎大家介紹親友前來學習",
-    "startSec": 726.12,
-    "endSec": 745.12,
-    "clipStartSec": 725.12,
-    "clipEndSec": 746.12,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": ""
-  },
-  {
-    "bankId": "RT-074",
-    "segmentId": "road-seg-074",
-    "moduleId": "supplementary_promo",
-    "moduleTitle": "未分類模組",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "依照新制度，行車前都要做安全檢查；駕訓班也設置車棚，遇颱風或大雨考試時仍可進行檢查",
-    "captionText": "依照新制度，行車前都要做安全檢查；駕訓班也設置車棚，遇颱風或大雨考試時仍可進行檢查",
-    "startSec": 745.12,
-    "endSec": 762.12,
-    "clipStartSec": 744.12,
-    "clipEndSec": 763.12,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": ""
-  },
-  {
-    "bankId": "RT-075",
-    "segmentId": "road-seg-075",
-    "moduleId": "supplementary_promo",
-    "moduleTitle": "未分類模組",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "車輛可在停車棚內完成行車前安全檢查，這也是忠正駕訓班對學員安全與環境的用心",
-    "captionText": "車輛可在停車棚內完成行車前安全檢查，這也是忠正駕訓班對學員安全與環境的用心",
-    "startSec": 762.12,
-    "endSec": 775.12,
-    "clipStartSec": 761.12,
-    "clipEndSec": 776.12,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": ""
-  },
-  {
-    "bankId": "RT-076",
-    "segmentId": "road-seg-076",
-    "moduleId": "supplementary_promo",
-    "moduleTitle": "未分類模組",
-    "prompt": "依影片畫面與字幕，這一步最正確的作法是？",
-    "answerText": "影片介紹到這裡，希望對各位有所幫助，謝謝大家，再見",
-    "captionText": "影片介紹到這裡，希望對各位有所幫助，謝謝大家，再見",
-    "startSec": 775.12,
-    "endSec": 785.12,
-    "clipStartSec": 774.12,
-    "clipEndSec": 786.12,
-    "tags": [],
-    "sourceBasis": "captions.sbv",
-    "moduleSummary": ""
+    "clipStartSec": 685.354,
+    "clipEndSec": 703.442,
+    "operationTags": [
+      "收車完成"
+    ],
+    "reminderNotes": [],
+    "sourceBasis": "captions.sbv"
   }
 ]
