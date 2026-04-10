@@ -860,3 +860,21 @@ select,input,button,textarea{font-size:16px;}
 .roadtest-answer-box p { color:#e2e8f0; line-height:1.65; }
 .roadtest-option-text { line-height:1.5; }
 .roadtest-video-frame { margin-bottom: 0; }
+
+
+.roadtest-official-badge-text {
+  margin: 6px 0 0;
+  font-weight: 700;
+}
+.roadtest-official-badge-text.official_core { color: #9ef0b8; }
+.roadtest-official-badge-text.official_related { color: #f7d774; }
+.roadtest-official-badge-text.coach_only { color: #f2a4a4; }
+.roadtest-official-criteria {
+  margin: 8px 0 0 18px;
+  padding: 0;
+  line-height: 1.55;
+}
+.roadtest-official-criteria li {
+  margin: 4px 0;
+  color: var(--text-color, #e8ecf3);
+}

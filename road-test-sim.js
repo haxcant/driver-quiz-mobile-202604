@@ -100,15 +100,17 @@
 
   function buildQuestionBank(ref) {
     const modules = new Map((ref.modules || []).map((m) => [m.id, m]));
-    return (ref.segments || []).map((seg, idx) => {
+    return (ref.segments || []).filter((seg) => seg.examRelevant !== false).map((seg, idx) => {
       const mod = modules.get(seg.moduleId) || {};
       return {
         bankId: `RT-${String(idx + 1).padStart(3, '0')}`,
         segmentId: seg.id,
         moduleId: seg.moduleId,
         moduleTitle: mod.title || '未分類模組',
-        prompt: '依片段判斷，這一題主要操作是？',
+        prompt: '依片段判斷，這一步最正確的作法是？',
         answerText: safeText(seg.operationText || seg.answerText || seg.captionText || ''),
+        spokenText: safeText(seg.spokenText || ''),
+        spokenItems: Array.isArray(seg.spokenItems) ? seg.spokenItems.slice() : [],
         captionText: safeText(seg.captionText || ''),
         referenceCaption: safeText(seg.referenceCaption || seg.captionText || ''),
         operationTags: Array.isArray(seg.operationTags) ? seg.operationTags.slice() : [],
@@ -121,7 +123,12 @@
         clipEndSec: Number(seg.clipEndSec) || 0,
         tags: Array.isArray(seg.tags) ? seg.tags.slice() : [],
         moduleSummary: safeText(mod.summary || ''),
-        sourceBasis: safeText(seg.sourceBasis || 'captions.sbv')
+        sourceBasis: safeText(seg.sourceBasis || 'captions.sbv'),
+        alignmentLevel: safeText(seg.alignmentLevel || 'official_related'),
+        officialStandardCodes: Array.isArray(seg.officialStandardCodes) ? seg.officialStandardCodes.slice() : [],
+        officialStandards: Array.isArray(seg.officialStandards) ? seg.officialStandards.slice() : [],
+        officialSourceLabel: safeText(seg.officialSourceLabel || ''),
+        examRelevant: seg.examRelevant !== false
       };
     });
   }
@@ -270,7 +277,11 @@
     const answerToggle = qs('roadTestShowAnswerBtn');
     const answerBox = qs('roadTestAnswerBox');
     const answerText = qs('roadTestAnswerText');
+    const answerSpokenText = qs('roadTestAnswerSpokenText');
     const answerCaptionText = qs('roadTestAnswerCaptionText');
+    const officialBadge = qs('roadTestOfficialBadge');
+    const officialCriteria = qs('roadTestOfficialCriteria');
+    const officialSource = qs('roadTestOfficialSource');
     const reminderTags = qs('roadTestReminderTags');
     const reminderNotes = qs('roadTestReminderNotes');
     const progress = qs('roadTestProgress');
@@ -295,15 +306,27 @@
     moduleLabel.textContent = moduleInfo ? moduleInfo.title : (current.question.moduleId || '未分類模組');
     prompt.textContent = current.question.prompt;
     segMeta.textContent = `題庫編碼 ${current.question.bankId}｜字幕 ${formatTime(current.question.startSec)} - ${formatTime(current.question.endSec)}｜片段 ${formatTime(current.question.clipStartSec)} - ${formatTime(current.question.clipEndSec)}`;
-    note.textContent = `模組重點：${moduleInfo ? moduleInfo.summary : '依字幕判定'}。本區將「操作」與「提醒」分開顯示，避免把作答變成考語文記憶。`;
+    const alignText = current.question.alignmentLevel === 'official_core' ? '這題已對齊你上傳的官方場考評分基準。' : (current.question.alignmentLevel === 'coach_only' ? '這題屬教練補充，非官方評分表明列核心。' : '這題與官方評分基準有關，但目前仍保留部分教練化提示。');
+    note.textContent = `模組重點：${moduleInfo ? moduleInfo.summary : '依字幕判定'}。${alignText}`; 
     feedback.textContent = '';
     feedback.className = 'roadtest-feedback';
     answerBox.classList.add('hidden');
     answerText.textContent = current.correct;
+    if (answerSpokenText) answerSpokenText.textContent = current.question.spokenText || '本段以動作提醒為主，沒有固定口誦字句。';
     if (answerCaptionText) answerCaptionText.textContent = current.question.referenceCaption || current.question.captionText || '';
+    if (officialBadge) {
+      const levelMap = { official_core: '官方核心項目', official_related: '官方相關項目', coach_only: '教練補充項目' };
+      officialBadge.textContent = levelMap[current.question.alignmentLevel] || '官方相關項目';
+      officialBadge.className = `roadtest-official-badge-text ${current.question.alignmentLevel}`;
+    }
+    if (officialCriteria) {
+      const items = current.question.officialStandards || [];
+      officialCriteria.innerHTML = items.length ? items.map((item) => `<li><strong>${item.code}</strong>｜${item.label}（扣 ${item.deduction} 分）</li>`).join('') : '<li>本段沒有直接對應到你上傳官方評分表的明列扣分項，但保留作為教練補充。</li>';
+    }
+    if (officialSource) officialSource.textContent = current.question.officialSourceLabel || '';
     if (reminderTags) reminderTags.innerHTML = (current.question.operationTags || []).map((tag) => `<span class="roadtest-reminder-chip">${tag}</span>`).join('');
     if (reminderNotes) reminderNotes.innerHTML = (current.question.reminderNotes || []).map((item) => `<li>${item}</li>`).join('');
-    if (answerToggle) answerToggle.textContent = '顯示字幕答案';
+    if (answerToggle) answerToggle.textContent = '顯示答案／口誦';
     state.answered = false;
     clearPendingAdvance(state);
 
@@ -336,7 +359,7 @@
       if (btnIdx === chosenIndex && chosenIndex !== current.correctIndex) node.classList.add('incorrect');
     });
     const isCorrect = chosenIndex === current.correctIndex;
-    feedback.textContent = isCorrect ? '答對：這題以標準化操作為答案，字幕作為對照依據。' : '答錯：請對照標準化操作、提醒標籤與字幕依據。';
+    feedback.textContent = isCorrect ? '答對：可再對照口誦字句與字幕，確認考場上要說的內容。' : '答錯：請對照主要操作、口誦字句、提醒標籤與字幕依據。';
     feedback.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
 
     if (state.settings.autoAdvance && state.currentIndex < state.filteredQuestions.length - 1) {
@@ -452,7 +475,7 @@
         if (!box) return;
         const isHidden = box.classList.contains('hidden');
         box.classList.toggle('hidden', !isHidden);
-        answerToggle.textContent = isHidden ? '隱藏字幕答案' : '顯示字幕答案';
+        answerToggle.textContent = isHidden ? '隱藏答案／口誦' : '顯示答案／口誦';
       });
     }
 

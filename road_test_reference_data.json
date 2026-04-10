@@ -1,5 +1,5 @@
 {
-  "version": "2026-04-11-roadtest-v3-structured-ops",
+  "version": "2026-04-11-roadtest-v5-official-aligned",
   "sourcePriority": [
     "captions.sbv",
     "道路考試參考圖片轉文字檔案.txt"
@@ -9,10 +9,11 @@
     "clipLagSeconds": 1.0
   },
   "notes": [
-    "答案優先以 captions.sbv 為主，但題目顯示改成「標準化操作」以避免考語文敘述。",
-    "操作與提醒分開：重複出現的提醒（例如B柱確認、雙黃線、不可壓線、速度上限）不再當主要答案，而是顯示為提醒標籤或補充說明。",
-    "部分單獨成句但操作意義不足的片段，已整合進前後片段，例如 B柱確認、靠大門左側、雙黃線、最高44公里等。",
-    "檢查儀表已統一整理為「檢查儀表（溫度、油量、煞車、充電、機油）作用」。"
+    "題目答案改回較貼近影片字幕的閱讀方式，方便逐段對照影片練習。",
+    "本來考試要口誦的字句，已另外整理成「口誦字句」，不再混在主操作答案裡。",
+    "提醒類資訊（例如 B柱確認、雙黃線、白線不可壓、速度控制）改放在提醒標籤與補充說明。",
+    "檢查儀表統一整理為「檢查儀表（溫度、油量、煞車、充電、機油）作用」。",
+    "已依你上傳之「小型車駕駛人場考評分基準及成績紀錄表(115/3/31起)」補上官方對齊欄位。"
   ],
   "microSkills": [
     {
@@ -583,21 +584,22 @@
   ],
   "segments": [
     {
-      "id": "road-op-001",
+      "id": "road-seg-001",
       "bankId": "RT-001",
       "moduleId": "vehicle_exterior_check",
       "moduleTitle": "車外安全檢查",
       "captionText": "(車輛檢查)從左前輪開始， 雙手壓輪胎，口誦【胎紋、胎壓正常】",
       "referenceCaption": "(車輛檢查)從左前輪開始， 雙手壓輪胎，口誦【胎紋、胎壓正常】",
-      "answerText": "檢查左前輪胎紋與胎壓",
-      "operationText": "檢查左前輪胎紋與胎壓",
+      "answerText": "從左前輪開始，雙手壓輪胎",
+      "operationText": "從左前輪開始，雙手壓輪胎",
+      "spokenText": "胎紋、胎壓正常",
+      "spokenItems": [
+        "胎紋、胎壓正常"
+      ],
       "operationTags": [
-        "輪胎檢查"
+        "tire_check"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-001"
-      ],
       "startSec": 0.66,
       "endSec": 5.66,
       "clipLeadSeconds": 1.0,
@@ -605,404 +607,657 @@
       "clipStartSec": 0.0,
       "clipEndSec": 6.66,
       "tags": [
-        "tire_check",
-        "輪胎檢查"
+        "tire_check"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A1"
+      ],
+      "officialStandards": [
+        {
+          "code": "A1",
+          "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-002",
+      "id": "road-seg-002",
       "bankId": "RT-002",
       "moduleId": "vehicle_exterior_check",
       "moduleTitle": "車外安全檢查",
       "captionText": "查看左右車燈，【車燈無破損】 蹲下看車底，【車底無異物】",
       "referenceCaption": "查看左右車燈，【車燈無破損】 蹲下看車底，【車底無異物】",
-      "answerText": "檢查車燈與車底是否異常",
-      "operationText": "檢查車燈與車底是否異常",
+      "answerText": "查看左右車燈並蹲下看車底",
+      "operationText": "查看左右車燈並蹲下看車底",
+      "spokenText": "車燈無破損／車底無異物",
+      "spokenItems": [
+        "車燈無破損",
+        "車底無異物"
+      ],
       "operationTags": [
-        "燈具檢查",
-        "車底檢查"
+        "light_check",
+        "underbody_check"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-002"
-      ],
       "startSec": 5.66,
       "endSec": 10.766,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 4.66,
-      "clipEndSec": 11.766,
+      "clipEndSec": 11.77,
       "tags": [
         "light_check",
-        "underbody_check",
-        "燈具檢查",
-        "車底檢查"
+        "underbody_check"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A1"
+      ],
+      "officialStandards": [
+        {
+          "code": "A1",
+          "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-003",
+      "id": "road-seg-003",
       "bankId": "RT-003",
       "moduleId": "vehicle_exterior_check",
       "moduleTitle": "車外安全檢查",
       "captionText": "檢查右前輪，雙手壓輪胎， 【胎紋、胎壓正常】 蹲下【車底無異物】",
       "referenceCaption": "檢查右前輪，雙手壓輪胎， 【胎紋、胎壓正常】 蹲下【車底無異物】",
-      "answerText": "檢查右前輪胎紋、胎壓與車底",
-      "operationText": "檢查右前輪胎紋、胎壓與車底",
+      "answerText": "檢查右前輪，雙手壓輪胎並蹲下查看車底",
+      "operationText": "檢查右前輪，雙手壓輪胎並蹲下查看車底",
+      "spokenText": "胎紋、胎壓正常／車底無異物",
+      "spokenItems": [
+        "胎紋、胎壓正常",
+        "車底無異物"
+      ],
       "operationTags": [
-        "輪胎檢查",
-        "車底檢查"
+        "tire_check",
+        "underbody_check"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-003"
-      ],
       "startSec": 10.766,
       "endSec": 20.0,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 9.766,
+      "clipStartSec": 9.77,
       "clipEndSec": 21.0,
       "tags": [
         "tire_check",
-        "underbody_check",
-        "輪胎檢查",
-        "車底檢查"
+        "underbody_check"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A1"
+      ],
+      "officialStandards": [
+        {
+          "code": "A1",
+          "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-004",
+      "id": "road-seg-004",
       "bankId": "RT-004",
       "moduleId": "vehicle_exterior_check",
       "moduleTitle": "車外安全檢查",
       "captionText": "檢查右後輪，【胎紋、胎壓正常】",
       "referenceCaption": "檢查右後輪，【胎紋、胎壓正常】",
-      "answerText": "檢查右後輪胎紋與胎壓",
-      "operationText": "檢查右後輪胎紋與胎壓",
+      "answerText": "檢查右後輪",
+      "operationText": "檢查右後輪",
+      "spokenText": "胎紋、胎壓正常",
+      "spokenItems": [
+        "胎紋、胎壓正常"
+      ],
       "operationTags": [
-        "輪胎檢查"
+        "tire_check"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-004"
-      ],
       "startSec": 20.0,
       "endSec": 25.836,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 19.0,
-      "clipEndSec": 26.836,
+      "clipEndSec": 26.84,
       "tags": [
-        "tire_check",
-        "輪胎檢查"
+        "tire_check"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A1"
+      ],
+      "officialStandards": [
+        {
+          "code": "A1",
+          "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-005",
+      "id": "road-seg-005",
       "bankId": "RT-005",
       "moduleId": "vehicle_exterior_check",
       "moduleTitle": "車外安全檢查",
       "captionText": "檢查左右車燈，【車燈無破損】； 蹲下看車底，【車底無異物】",
       "referenceCaption": "檢查左右車燈，【車燈無破損】； 蹲下看車底，【車底無異物】",
-      "answerText": "檢查車尾燈與車底是否異常",
-      "operationText": "檢查車尾燈與車底是否異常",
+      "answerText": "檢查左右車燈，蹲下看車底",
+      "operationText": "檢查左右車燈，蹲下看車底",
+      "spokenText": "車燈無破損／車底無異物",
+      "spokenItems": [
+        "車燈無破損",
+        "車底無異物"
+      ],
       "operationTags": [
-        "燈具檢查",
-        "車底檢查"
+        "light_check",
+        "underbody_check"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-005"
-      ],
       "startSec": 25.836,
       "endSec": 31.955,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 24.836,
-      "clipEndSec": 32.955,
+      "clipStartSec": 24.84,
+      "clipEndSec": 32.95,
       "tags": [
         "light_check",
-        "underbody_check",
-        "燈具檢查",
-        "車底檢查"
+        "underbody_check"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A1"
+      ],
+      "officialStandards": [
+        {
+          "code": "A1",
+          "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-006",
+      "id": "road-seg-006",
       "bankId": "RT-006",
       "moduleId": "vehicle_exterior_check",
       "moduleTitle": "車外安全檢查",
       "captionText": "檢查左後輪，【胎紋、胎壓正常】； 蹲下看車底，【車底無異物】",
       "referenceCaption": "檢查左後輪，【胎紋、胎壓正常】； 蹲下看車底，【車底無異物】",
-      "answerText": "檢查左後輪胎紋、胎壓與車底",
-      "operationText": "檢查左後輪胎紋、胎壓與車底",
+      "answerText": "檢查左後輪，蹲下看車底",
+      "operationText": "檢查左後輪，蹲下看車底",
+      "spokenText": "胎紋、胎壓正常／車底無異物",
+      "spokenItems": [
+        "胎紋、胎壓正常",
+        "車底無異物"
+      ],
       "operationTags": [
-        "輪胎檢查",
-        "車底檢查"
+        "tire_check",
+        "underbody_check"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-006"
-      ],
       "startSec": 31.955,
       "endSec": 36.696,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 30.955,
-      "clipEndSec": 37.696,
+      "clipStartSec": 30.95,
+      "clipEndSec": 37.7,
       "tags": [
         "tire_check",
-        "underbody_check",
-        "輪胎檢查",
-        "車底檢查"
+        "underbody_check"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A1"
+      ],
+      "officialStandards": [
+        {
+          "code": "A1",
+          "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-007",
+      "id": "road-seg-007",
       "bankId": "RT-007",
       "moduleId": "two_stage_door_entry",
       "moduleTitle": "兩段式開車門上車",
-      "captionText": "口誦【兩段式開車門】先看左、看右，確認【左右無來車】 車門先開約15公分，身體不轉動， 再看左、看右確認【左右無來車】後， 再開至約45度上車",
-      "referenceCaption": "口誦【兩段式開車門】先看左、看右，確認【左右無來車】 車門先開約15公分，身體不轉動， 再看左、看右確認【左右無來車】後， 再開至約45度上車",
-      "answerText": "上車前做兩段式開車門並確認左右安全",
-      "operationText": "上車前做兩段式開車門並確認左右安全",
-      "operationTags": [
+      "captionText": "口誦【兩段式開車門】先看左、看右，確認【左右無來車】",
+      "referenceCaption": "口誦【兩段式開車門】先看左、看右，確認【左右無來車】",
+      "answerText": "先看左、看右，確認",
+      "operationText": "先看左、看右，確認",
+      "spokenText": "兩段式開車門／左右無來車",
+      "spokenItems": [
         "兩段式開車門",
-        "左右安全確認"
+        "左右無來車"
+      ],
+      "operationTags": [
+        "safe_left_right",
+        "兩段式開車門",
+        "安全確認"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-007",
-        "road-seg-008"
-      ],
       "startSec": 36.696,
-      "endSec": 54.177,
+      "endSec": 44.169,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 35.696,
-      "clipEndSec": 55.177,
+      "clipStartSec": 35.7,
+      "clipEndSec": 45.17,
       "tags": [
         "safe_left_right",
         "兩段式開車門",
-        "左右安全確認"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R1"
+      ],
+      "officialStandards": [
+        {
+          "code": "R1",
+          "label": "上、下車開車門前未留意有無人車通過（下車應以2段式開門）",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-008",
+      "id": "road-seg-008",
       "bankId": "RT-008",
+      "moduleId": "two_stage_door_entry",
+      "moduleTitle": "兩段式開車門上車",
+      "captionText": "車門先開約15公分，身體不轉動， 再看左、看右確認【左右無來車】後， 再開至約45度上車",
+      "referenceCaption": "車門先開約15公分，身體不轉動， 再看左、看右確認【左右無來車】後， 再開至約45度上車",
+      "answerText": "車門先開約15公分，身體不轉動，再看左、看右確認後，再開至約45度上車",
+      "operationText": "車門先開約15公分，身體不轉動，再看左、看右確認後，再開至約45度上車",
+      "spokenText": "左右無來車",
+      "spokenItems": [
+        "左右無來車"
+      ],
+      "operationTags": [
+        "safe_left_right",
+        "安全確認"
+      ],
+      "reminderNotes": [],
+      "startSec": 44.169,
+      "endSec": 54.177,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 43.17,
+      "clipEndSec": 55.18,
+      "tags": [
+        "safe_left_right",
+        "安全確認"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-009",
+      "bankId": "RT-009",
       "moduleId": "cockpit_setup_and_engine_start",
       "moduleTitle": "車內調整與發動前檢查",
       "captionText": "車內：口誦【調整座椅】【調整椅背】【調整頭枕】",
       "referenceCaption": "車內：口誦【調整座椅】【調整椅背】【調整頭枕】",
-      "answerText": "調整座椅、椅背與頭枕",
-      "operationText": "調整座椅、椅背與頭枕",
-      "operationTags": [
-        "車內準備"
+      "answerText": "車內：",
+      "operationText": "車內：",
+      "spokenText": "調整座椅／調整椅背／調整頭枕",
+      "spokenItems": [
+        "調整座椅",
+        "調整椅背",
+        "調整頭枕"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-009"
+      "operationTags": [],
+      "reminderNotes": [
+        "官方表述為「調整座椅、頭枕或照後鏡」；椅背可視為座椅調整的一部分。"
       ],
       "startSec": 54.177,
       "endSec": 65.19,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 53.177,
+      "clipStartSec": 53.18,
       "clipEndSec": 66.19,
-      "tags": [
-        "車內準備"
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A2"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "officialStandards": [
+        {
+          "code": "A2",
+          "label": "起駛前調整座椅、頭枕或照後鏡（應口誦及動作檢查項目）",
+          "deduction": 4,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-009",
-      "bankId": "RT-009",
+      "id": "road-seg-010",
+      "bankId": "RT-010",
       "moduleId": "cockpit_setup_and_engine_start",
       "moduleTitle": "車內調整與發動前檢查",
       "captionText": "【繫上安全帶】【調整中央後照鏡、左右後照鏡】【確定檔位在P檔、手煞車已拉起】",
       "referenceCaption": "【繫上安全帶】【調整中央後照鏡、左右後照鏡】【確定檔位在P檔、手煞車已拉起】",
-      "answerText": "繫安全帶、調整後照鏡並確認P檔與手煞車",
-      "operationText": "繫安全帶、調整後照鏡並確認P檔與手煞車",
-      "operationTags": [
-        "安全帶",
-        "後照鏡調整",
-        "P檔",
-        "手煞車"
+      "answerText": "【繫上安全帶】【調整中央後照鏡、左右後照鏡】【確定檔位在P檔、手煞車已拉起】",
+      "operationText": "【繫上安全帶】【調整中央後照鏡、左右後照鏡】【確定檔位在P檔、手煞車已拉起】",
+      "spokenText": "繫上安全帶／調整中央後照鏡、左右後照鏡／確定檔位在P檔、手煞車已拉起",
+      "spokenItems": [
+        "繫上安全帶",
+        "調整中央後照鏡、左右後照鏡",
+        "確定檔位在P檔、手煞車已拉起"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-010"
+      "operationTags": [
+        "gear_p",
+        "hand_brake",
+        "後照鏡確認"
+      ],
+      "reminderNotes": [
+        "官方表述為「調整座椅、頭枕或照後鏡」；椅背可視為座椅調整的一部分。"
       ],
       "startSec": 65.19,
       "endSec": 83.033,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 64.19,
-      "clipEndSec": 84.033,
+      "clipEndSec": 84.03,
       "tags": [
         "gear_p",
         "hand_brake",
-        "安全帶",
-        "後照鏡調整",
-        "P檔",
-        "手煞車"
+        "後照鏡確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A2"
+      ],
+      "officialStandards": [
+        {
+          "code": "A2",
+          "label": "起駛前調整座椅、頭枕或照後鏡（應口誦及動作檢查項目）",
+          "deduction": 4,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-010",
-      "bankId": "RT-010",
+      "id": "road-seg-011",
+      "bankId": "RT-011",
       "moduleId": "cockpit_setup_and_engine_start",
       "moduleTitle": "車內調整與發動前檢查",
       "captionText": "鑰匙往外轉【開啟紅火】",
       "referenceCaption": "鑰匙往外轉【開啟紅火】",
-      "answerText": "將鑰匙轉至紅火位置",
-      "operationText": "將鑰匙轉至紅火位置",
-      "operationTags": [
-        "紅火"
+      "answerText": "鑰匙往外轉",
+      "operationText": "鑰匙往外轉",
+      "spokenText": "開啟紅火",
+      "spokenItems": [
+        "開啟紅火"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-011"
+      "operationTags": [
+        "ignition_on"
+      ],
+      "reminderNotes": [
+        "此段屬發動前流程的一部分；官方核心是自排車須入P檔且踩煞車。"
       ],
       "startSec": 83.033,
       "endSec": 89.773,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 82.033,
-      "clipEndSec": 90.773,
+      "clipStartSec": 82.03,
+      "clipEndSec": 90.77,
       "tags": [
-        "ignition_on",
-        "紅火"
+        "ignition_on"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A5"
+      ],
+      "officialStandards": [
+        {
+          "code": "A5",
+          "label": "自排車發動引擎未入P檔或未踩煞車",
+          "deduction": 16,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-011",
-      "bankId": "RT-011",
+      "id": "road-seg-012",
+      "bankId": "RT-012",
       "moduleId": "cockpit_setup_and_engine_start",
       "moduleTitle": "車內調整與發動前檢查",
       "captionText": "【油量、溫度、引擎、電瓶、手煞車燈、機油 正常】",
       "referenceCaption": "【油量、溫度、引擎、電瓶、手煞車燈、機油 正常】",
       "answerText": "檢查儀表（溫度、油量、煞車、充電、機油）作用",
       "operationText": "檢查儀表（溫度、油量、煞車、充電、機油）作用",
+      "spokenText": "油量、溫度、引擎、電瓶、手煞車燈、機油 正常",
+      "spokenItems": [
+        "油量、溫度、引擎、電瓶、手煞車燈、機油 正常"
+      ],
       "operationTags": [
-        "儀表檢查"
+        "hand_brake"
       ],
       "reminderNotes": [
-        "字幕原文另含手煞車燈；這裡將檢查重點統一整理為溫度、油量、煞車、充電、機油。"
-      ],
-      "rawSegmentIds": [
-        "road-seg-012"
+        "此段已改用官方評分表的儀表檢查名稱。"
       ],
       "startSec": 89.773,
       "endSec": 101.697,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 88.773,
-      "clipEndSec": 102.697,
+      "clipStartSec": 88.77,
+      "clipEndSec": 102.7,
       "tags": [
-        "hand_brake",
-        "儀表檢查"
+        "hand_brake"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A4"
+      ],
+      "officialStandards": [
+        {
+          "code": "A4",
+          "label": "起駛前檢查儀表（溫度、油量、煞車、充電、機油）作用（應口誦及指出儀表檢查項目）",
+          "deduction": 4,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-012",
-      "bankId": "RT-012",
+      "id": "road-seg-013",
+      "bankId": "RT-013",
       "moduleId": "cockpit_setup_and_engine_start",
       "moduleTitle": "車內調整與發動前檢查",
-      "captionText": "踩煞車、發動引擎，口誦 【引擎發動：儀表板正常】 開風扇 開AC； (發動後只會剩手煞車燈亮著)",
-      "referenceCaption": "踩煞車、發動引擎，口誦 【引擎發動：儀表板正常】 開風扇 開AC； (發動後只會剩手煞車燈亮著)",
-      "answerText": "踩煞車發動引擎並確認儀表板正常",
-      "operationText": "踩煞車發動引擎並確認儀表板正常",
+      "captionText": "踩煞車、發動引擎，口誦 【引擎發動：儀表板正常】",
+      "referenceCaption": "踩煞車、發動引擎，口誦 【引擎發動：儀表板正常】",
+      "answerText": "踩煞車、發動引擎",
+      "operationText": "踩煞車、發動引擎",
+      "spokenText": "引擎發動：儀表板正常",
+      "spokenItems": [
+        "引擎發動：儀表板正常"
+      ],
       "operationTags": [
-        "發動引擎",
-        "儀表檢查"
+        "engine_start"
+      ],
+      "reminderNotes": [],
+      "startSec": 101.697,
+      "endSec": 107.723,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 100.7,
+      "clipEndSec": 108.72,
+      "tags": [
+        "engine_start"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A5"
+      ],
+      "officialStandards": [
+        {
+          "code": "A5",
+          "label": "自排車發動引擎未入P檔或未踩煞車",
+          "deduction": 16,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
+    },
+    {
+      "id": "road-seg-014",
+      "bankId": "RT-014",
+      "moduleId": "cockpit_setup_and_engine_start",
+      "moduleTitle": "車內調整與發動前檢查",
+      "captionText": "開風扇 開AC； (發動後只會剩手煞車燈亮著)",
+      "referenceCaption": "開風扇 開AC； (發動後只會剩手煞車燈亮著)",
+      "answerText": "開風扇並開AC",
+      "operationText": "開風扇並開AC",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "hand_brake",
+        "發動後燈號檢查"
       ],
       "reminderNotes": [
-        "發動後正常情況下僅手煞車燈可能持續亮起。",
-        "發動後可開風扇與AC。"
+        "發動後只會剩手煞車燈亮著",
+        "此段屬教練補充，不是你上傳官方評分表明列的扣分核心。"
       ],
-      "rawSegmentIds": [
-        "road-seg-013",
-        "road-seg-014"
-      ],
-      "startSec": 101.697,
+      "startSec": 107.723,
       "endSec": 112.89,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 100.697,
+      "clipStartSec": 106.72,
       "clipEndSec": 113.89,
       "tags": [
-        "engine_start",
         "hand_brake",
-        "發動引擎",
-        "儀表檢查"
+        "發動後燈號檢查"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "coach_only",
+      "examRelevant": false,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-013",
-      "bankId": "RT-013",
+      "id": "road-seg-015",
+      "bankId": "RT-014",
       "moduleId": "cockpit_setup_and_engine_start",
       "moduleTitle": "車內調整與發動前檢查",
       "captionText": "口誦【試踩煞車：煞車正常】",
       "referenceCaption": "口誦【試踩煞車：煞車正常】",
-      "answerText": "試踩煞車確認正常",
-      "operationText": "試踩煞車確認正常",
-      "operationTags": [
-        "煞車測試"
+      "answerText": "口誦【試踩煞車：煞車正常】",
+      "operationText": "口誦【試踩煞車：煞車正常】",
+      "spokenText": "試踩煞車：煞車正常",
+      "spokenItems": [
+        "試踩煞車：煞車正常"
       ],
+      "operationTags": [],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-015"
-      ],
       "startSec": 112.89,
       "endSec": 117.89,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 111.89,
       "clipEndSec": 118.89,
-      "tags": [
-        "煞車測試"
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A6"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "officialStandards": [
+        {
+          "code": "A6",
+          "label": "起駛前未鬆開手煞車及檢查煞車作用",
+          "deduction": 16,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-014",
-      "bankId": "RT-014",
+      "id": "road-seg-016",
+      "bankId": "RT-015",
       "moduleId": "cockpit_setup_and_engine_start",
       "moduleTitle": "車內調整與發動前檢查",
       "captionText": "口誦【試打左右方向燈：方向燈正常】",
       "referenceCaption": "口誦【試打左右方向燈：方向燈正常】",
-      "answerText": "試打左右方向燈確認正常",
-      "operationText": "試打左右方向燈確認正常",
-      "operationTags": [
-        "方向燈測試"
+      "answerText": "口誦【試打左右方向燈：方向燈正常】",
+      "operationText": "口誦【試打左右方向燈：方向燈正常】",
+      "spokenText": "試打左右方向燈：方向燈正常",
+      "spokenItems": [
+        "試打左右方向燈：方向燈正常"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-016"
+      "operationTags": [
+        "right_signal"
+      ],
+      "reminderNotes": [
+        "官方明列的是起駛、變換車道、轉彎前須依規定顯示方向燈；本段為起駛前自我確認。"
       ],
       "startSec": 117.89,
       "endSec": 123.89,
@@ -1011,518 +1266,1353 @@
       "clipStartSec": 116.89,
       "clipEndSec": 124.89,
       "tags": [
-        "right_signal",
-        "方向燈測試"
+        "right_signal"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A7"
+      ],
+      "officialStandards": [
+        {
+          "code": "A7",
+          "label": "起駛前未依規定顯示方向燈",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-015",
-      "bankId": "RT-015",
-      "moduleId": "start_and_initial_turns",
-      "moduleTitle": "起步與前段轉彎",
-      "captionText": "打左方向燈，口誦【準備起步，打D檔，放手煞車】 起駛前轉頭查看前後左右， 口誦【左右無來車，後方無來車】",
-      "referenceCaption": "打左方向燈，口誦【準備起步，打D檔，放手煞車】 起駛前轉頭查看前後左右， 口誦【左右無來車，後方無來車】",
-      "answerText": "起步前打左方向燈、入D檔、放手煞車並完成安全確認",
-      "operationText": "起步前打左方向燈、入D檔、放手煞車並完成安全確認",
-      "operationTags": [
-        "左方向燈",
-        "D檔",
-        "放手煞車",
-        "起步安全確認"
-      ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-017",
-        "road-seg-018"
-      ],
-      "startSec": 123.89,
-      "endSec": 144.424,
-      "clipLeadSeconds": 1.0,
-      "clipLagSeconds": 1.0,
-      "clipStartSec": 122.89,
-      "clipEndSec": 145.424,
-      "tags": [
-        "left_signal",
-        "gear_d",
-        "hand_brake",
-        "safe_left_right",
-        "rear_clear",
-        "左方向燈",
-        "D檔",
-        "放手煞車",
-        "起步安全確認"
-      ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
-    },
-    {
-      "id": "road-op-016",
+      "id": "road-seg-017",
       "bankId": "RT-016",
       "moduleId": "start_and_initial_turns",
       "moduleTitle": "起步與前段轉彎",
-      "captionText": "方向燈回正，打右邊方向燈 前方路口減速查看； (行駛時出入都靠大門左側)",
-      "referenceCaption": "方向燈回正，打右邊方向燈 前方路口減速查看； (行駛時出入都靠大門左側)",
-      "answerText": "右轉前打右方向燈並在路口減速查看",
-      "operationText": "右轉前打右方向燈並在路口減速查看",
+      "captionText": "打左方向燈，口誦【準備起步，打D檔，放手煞車】",
+      "referenceCaption": "打左方向燈，口誦【準備起步，打D檔，放手煞車】",
+      "answerText": "打左方向燈",
+      "operationText": "打左方向燈",
+      "spokenText": "準備起步，打D檔，放手煞車",
+      "spokenItems": [
+        "準備起步，打D檔，放手煞車"
+      ],
       "operationTags": [
-        "右方向燈",
-        "前方路口減速查看"
+        "left_signal",
+        "gear_d",
+        "hand_brake"
       ],
-      "reminderNotes": [
-        "進出大門時車身盡量靠大門左側。"
+      "reminderNotes": [],
+      "startSec": 123.89,
+      "endSec": 131.835,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 122.89,
+      "clipEndSec": 132.84,
+      "tags": [
+        "left_signal",
+        "gear_d",
+        "hand_brake"
       ],
-      "rawSegmentIds": [
-        "road-seg-019",
-        "road-seg-020",
-        "road-seg-021"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A6",
+        "A7"
       ],
+      "officialStandards": [
+        {
+          "code": "A6",
+          "label": "起駛前未鬆開手煞車及檢查煞車作用",
+          "deduction": 16,
+          "page": 1
+        },
+        {
+          "code": "A7",
+          "label": "起駛前未依規定顯示方向燈",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
+    },
+    {
+      "id": "road-seg-018",
+      "bankId": "RT-017",
+      "moduleId": "start_and_initial_turns",
+      "moduleTitle": "起步與前段轉彎",
+      "captionText": "起駛前轉頭查看前後左右， 口誦【左右無來車，後方無來車】",
+      "referenceCaption": "起駛前轉頭查看前後左右， 口誦【左右無來車，後方無來車】",
+      "answerText": "起駛前轉頭查看前後左右",
+      "operationText": "起駛前轉頭查看前後左右",
+      "spokenText": "左右無來車，後方無來車",
+      "spokenItems": [
+        "左右無來車，後方無來車"
+      ],
+      "operationTags": [
+        "safe_left_right",
+        "rear_clear",
+        "安全確認",
+        "後方確認"
+      ],
+      "reminderNotes": [],
+      "startSec": 131.835,
+      "endSec": 144.424,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 130.84,
+      "clipEndSec": 145.42,
+      "tags": [
+        "safe_left_right",
+        "rear_clear",
+        "安全確認",
+        "後方確認"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A8"
+      ],
+      "officialStandards": [
+        {
+          "code": "A8",
+          "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
+    },
+    {
+      "id": "road-seg-019",
+      "bankId": "RT-018",
+      "moduleId": "start_and_initial_turns",
+      "moduleTitle": "起步與前段轉彎",
+      "captionText": "方向燈回正，打右邊方向燈",
+      "referenceCaption": "方向燈回正，打右邊方向燈",
+      "answerText": "方向燈回正，打右邊方向燈",
+      "operationText": "方向燈回正，打右邊方向燈",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [],
+      "reminderNotes": [],
       "startSec": 149.46,
-      "endSec": 176.8,
+      "endSec": 154.632,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 148.46,
-      "clipEndSec": 177.8,
-      "tags": [
-        "intersection_scan",
-        "右方向燈",
-        "前方路口減速查看"
-      ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "clipEndSec": 155.63,
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-017",
-      "bankId": "RT-017",
+      "id": "road-seg-020",
+      "bankId": "RT-019",
+      "moduleId": "start_and_initial_turns",
+      "moduleTitle": "起步與前段轉彎",
+      "captionText": "前方路口減速查看；",
+      "referenceCaption": "前方路口減速查看；",
+      "answerText": "前方路口減速查看",
+      "operationText": "前方路口減速查看",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "intersection_scan"
+      ],
+      "reminderNotes": [
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
+      ],
+      "startSec": 154.632,
+      "endSec": 158.551,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 153.63,
+      "clipEndSec": 159.55,
+      "tags": [
+        "intersection_scan"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
+    },
+    {
+      "id": "road-seg-021",
+      "bankId": "RT-020",
+      "moduleId": "start_and_initial_turns",
+      "moduleTitle": "起步與前段轉彎",
+      "captionText": "(行駛時出入都靠大門左側)",
+      "referenceCaption": "(行駛時出入都靠大門左側)",
+      "answerText": "(行駛時出入都靠大門左側)",
+      "operationText": "(行駛時出入都靠大門左側)",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "大門左側"
+      ],
+      "reminderNotes": [
+        "行駛時出入都靠大門左側"
+      ],
+      "startSec": 158.551,
+      "endSec": 176.8,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 157.55,
+      "clipEndSec": 177.8,
+      "tags": [
+        "大門左側"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-022",
+      "bankId": "RT-021",
       "moduleId": "start_and_initial_turns",
       "moduleTitle": "起步與前段轉彎",
       "captionText": "【左右無來車、後方無來車】 右轉後打左方向燈",
       "referenceCaption": "【左右無來車、後方無來車】 右轉後打左方向燈",
-      "answerText": "確認安全後右轉，右轉後補打左方向燈",
-      "operationText": "確認安全後右轉，右轉後補打左方向燈",
-      "operationTags": [
-        "右轉",
-        "左方向燈",
-        "安全確認"
+      "answerText": "右轉後打左方向燈",
+      "operationText": "右轉後打左方向燈",
+      "spokenText": "左右無來車、後方無來車",
+      "spokenItems": [
+        "左右無來車、後方無來車"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-022"
+      "operationTags": [
+        "left_signal",
+        "safe_left_right",
+        "rear_clear",
+        "安全確認",
+        "後方確認"
+      ],
+      "reminderNotes": [
+        "轉彎前核心是方向燈、照後鏡、死角確認；B柱轉頭屬教練用來落實死角確認的操作提醒。"
       ],
       "startSec": 176.8,
       "endSec": 184.328,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 175.8,
-      "clipEndSec": 185.328,
+      "clipEndSec": 185.33,
       "tags": [
         "left_signal",
         "safe_left_right",
         "rear_clear",
-        "右轉",
-        "左方向燈",
-        "安全確認"
+        "安全確認",
+        "後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R3",
+        "R4",
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        },
+        {
+          "code": "R4",
+          "label": "變換車道、轉彎後仍持續顯示方向燈",
+          "deduction": 16,
+          "page": 2
+        },
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-018",
-      "bankId": "RT-018",
+      "id": "road-seg-023",
+      "bankId": "RT-022",
       "moduleId": "start_and_initial_turns",
       "moduleTitle": "起步與前段轉彎",
       "captionText": "【前方路口減速查看,左右無來車】； 左轉走快車道 此路口需特別注意雙黃線",
       "referenceCaption": "【前方路口減速查看,左右無來車】； 左轉走快車道 此路口需特別注意雙黃線",
-      "answerText": "前方路口減速查看後左轉進入快車道",
-      "operationText": "前方路口減速查看後左轉進入快車道",
+      "answerText": "左轉走快車道 此路口需特別注意雙黃線",
+      "operationText": "左轉走快車道 此路口需特別注意雙黃線",
+      "spokenText": "前方路口減速查看,左右無來車",
+      "spokenItems": [
+        "前方路口減速查看,左右無來車"
+      ],
       "operationTags": [
-        "前方路口減速查看",
-        "左轉",
-        "快車道"
+        "safe_left_right",
+        "intersection_scan",
+        "fast_lane",
+        "雙黃線",
+        "快車道",
+        "安全確認"
       ],
       "reminderNotes": [
-        "此路口需特別注意雙黃線。"
-      ],
-      "rawSegmentIds": [
-        "road-seg-023"
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
       "startSec": 184.328,
       "endSec": 198.949,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 183.328,
-      "clipEndSec": 199.949,
+      "clipStartSec": 183.33,
+      "clipEndSec": 199.95,
       "tags": [
         "safe_left_right",
         "intersection_scan",
         "fast_lane",
-        "前方路口減速查看",
-        "左轉",
-        "快車道"
+        "雙黃線",
+        "快車道",
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-019",
-      "bankId": "RT-019",
+      "id": "road-seg-024",
+      "bankId": "RT-023",
       "moduleId": "lane_change_fast_to_slow",
       "moduleTitle": "快車道切慢車道",
-      "captionText": "打右方向燈 【前方路口減速查看，進行變換車道】 【左右無來車，後方無來車】 由快車道切換至慢車道，轉頭時需看到B柱 完成變換車道後，持續穩定行駛於慢車道",
-      "referenceCaption": "打右方向燈 【前方路口減速查看，進行變換車道】 【左右無來車，後方無來車】 由快車道切換至慢車道，轉頭時需看到B柱 完成變換車道後，持續穩定行駛於慢車道",
-      "answerText": "打右方向燈後由快車道切入慢車道",
-      "operationText": "打右方向燈後由快車道切入慢車道",
+      "captionText": "打右方向燈 【前方路口減速查看，進行變換車道】 【左右無來車，後方無來車】",
+      "referenceCaption": "打右方向燈 【前方路口減速查看，進行變換車道】 【左右無來車，後方無來車】",
+      "answerText": "打右方向燈",
+      "operationText": "打右方向燈",
+      "spokenText": "前方路口減速查看，進行變換車道／左右無來車，後方無來車",
+      "spokenItems": [
+        "前方路口減速查看，進行變換車道",
+        "左右無來車，後方無來車"
+      ],
       "operationTags": [
-        "右方向燈",
-        "變換車道",
-        "快車道轉慢車道"
+        "right_signal",
+        "safe_left_right",
+        "rear_clear",
+        "intersection_scan",
+        "lane_change",
+        "安全確認",
+        "後方確認"
       ],
       "reminderNotes": [
-        "轉頭確認時需看到B柱。",
-        "完成變換後穩定行駛於慢車道。"
-      ],
-      "rawSegmentIds": [
-        "road-seg-024",
-        "road-seg-025",
-        "road-seg-026"
+        "切換完成後須記得取消方向燈，否則仍可能連續扣分。"
       ],
       "startSec": 198.949,
-      "endSec": 227.835,
+      "endSec": 214.26,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 197.949,
-      "clipEndSec": 228.835,
+      "clipStartSec": 197.95,
+      "clipEndSec": 215.26,
       "tags": [
         "right_signal",
         "safe_left_right",
         "rear_clear",
         "intersection_scan",
         "lane_change",
+        "安全確認",
+        "後方確認"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R3",
+        "R4",
+        "R7"
+      ],
+      "officialStandards": [
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        },
+        {
+          "code": "R4",
+          "label": "變換車道、轉彎後仍持續顯示方向燈",
+          "deduction": 16,
+          "page": 2
+        },
+        {
+          "code": "R7",
+          "label": "未按規定路線行駛或未按規定變換車道",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
+    },
+    {
+      "id": "road-seg-025",
+      "bankId": "RT-024",
+      "moduleId": "lane_change_fast_to_slow",
+      "moduleTitle": "快車道切慢車道",
+      "captionText": "由快車道切換至慢車道，轉頭時需看到B柱",
+      "referenceCaption": "由快車道切換至慢車道，轉頭時需看到B柱",
+      "answerText": "由快車道切換至慢車道，轉頭時需看到B柱",
+      "operationText": "由快車道切換至慢車道，轉頭時需看到B柱",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
         "b_pillar",
         "fast_lane",
         "slow_lane",
-        "右方向燈",
-        "變換車道",
-        "快車道轉慢車道"
-      ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
-    },
-    {
-      "id": "road-op-020",
-      "bankId": "RT-020",
-      "moduleId": "roadside_temporary_stop",
-      "moduleTitle": "路邊臨時停車",
-      "captionText": "打右方向燈，口誦【前方路口減速查看，左右無來車，後方無來車】；再看左後方【後方無來車】， 頭需看到B柱，車身盡量靠近道路邊線 注意道路邊線不可壓到，",
-      "referenceCaption": "打右方向燈，口誦【前方路口減速查看，左右無來車，後方無來車】；再看左後方【後方無來車】， 頭需看到B柱，車身盡量靠近道路邊線 注意道路邊線不可壓到，",
-      "answerText": "打右方向燈並查看路口與左後方後，靠邊準備臨時停車",
-      "operationText": "打右方向燈並查看路口與左後方後，靠邊準備臨時停車",
-      "operationTags": [
-        "右方向燈",
-        "前方路口減速查看",
-        "左後方確認",
-        "靠邊停車準備"
+        "B柱確認",
+        "慢車道",
+        "快車道"
       ],
       "reminderNotes": [
-        "轉頭確認時需看到B柱。",
-        "車身盡量靠近道路邊線，但不可壓線。"
+        "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
       ],
-      "rawSegmentIds": [
-        "road-seg-027",
-        "road-seg-028",
-        "road-seg-029"
-      ],
-      "startSec": 227.835,
-      "endSec": 259.031,
+      "startSec": 214.26,
+      "endSec": 221.487,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 226.835,
-      "clipEndSec": 260.031,
+      "clipStartSec": 213.26,
+      "clipEndSec": 222.49,
+      "tags": [
+        "b_pillar",
+        "fast_lane",
+        "slow_lane",
+        "B柱確認",
+        "慢車道",
+        "快車道"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A8",
+        "R3"
+      ],
+      "officialStandards": [
+        {
+          "code": "A8",
+          "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+          "deduction": 32,
+          "page": 1
+        },
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁"
+    },
+    {
+      "id": "road-seg-026",
+      "bankId": "RT-025",
+      "moduleId": "lane_change_fast_to_slow",
+      "moduleTitle": "快車道切慢車道",
+      "captionText": "完成變換車道後，持續穩定行駛於慢車道",
+      "referenceCaption": "完成變換車道後，持續穩定行駛於慢車道",
+      "answerText": "完成變換車道後，持續穩定行駛於慢車道",
+      "operationText": "完成變換車道後，持續穩定行駛於慢車道",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "lane_change",
+        "slow_lane",
+        "慢車道"
+      ],
+      "reminderNotes": [],
+      "startSec": 221.487,
+      "endSec": 227.835,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 220.49,
+      "clipEndSec": 228.84,
+      "tags": [
+        "lane_change",
+        "slow_lane",
+        "慢車道"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-027",
+      "bankId": "RT-026",
+      "moduleId": "roadside_temporary_stop",
+      "moduleTitle": "路邊臨時停車",
+      "captionText": "打右方向燈，口誦【前方路口減速查看，左右無來車，後方無來車】；再看左後方【後方無來車】，",
+      "referenceCaption": "打右方向燈，口誦【前方路口減速查看，左右無來車，後方無來車】；再看左後方【後方無來車】，",
+      "answerText": "打右方向燈，再看左後方",
+      "operationText": "打右方向燈，再看左後方",
+      "spokenText": "前方路口減速查看，左右無來車，後方無來車／後方無來車",
+      "spokenItems": [
+        "前方路口減速查看，左右無來車，後方無來車",
+        "後方無來車"
+      ],
+      "operationTags": [
+        "right_signal",
+        "safe_left_right",
+        "rear_clear",
+        "intersection_scan",
+        "左後方確認",
+        "安全確認",
+        "後方確認"
+      ],
+      "reminderNotes": [
+        "轉彎前核心是方向燈、照後鏡、死角確認；B柱轉頭屬教練用來落實死角確認的操作提醒。"
+      ],
+      "startSec": 227.835,
+      "endSec": 240.418,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 226.84,
+      "clipEndSec": 241.42,
       "tags": [
         "right_signal",
         "safe_left_right",
         "rear_clear",
         "intersection_scan",
-        "b_pillar",
-        "右方向燈",
-        "前方路口減速查看",
         "左後方確認",
-        "靠邊停車準備"
+        "安全確認",
+        "後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R3",
+        "R4",
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        },
+        {
+          "code": "R4",
+          "label": "變換車道、轉彎後仍持續顯示方向燈",
+          "deduction": 16,
+          "page": 2
+        },
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-021",
-      "bankId": "RT-021",
+      "id": "road-seg-028",
+      "bankId": "RT-027",
       "moduleId": "roadside_temporary_stop",
       "moduleTitle": "路邊臨時停車",
-      "captionText": "打右方向燈； 【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】， 頭需看到B柱",
-      "referenceCaption": "打右方向燈； 【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】， 頭需看到B柱",
-      "answerText": "打右方向燈並在路口減速查看後執行路邊臨時停車",
-      "operationText": "打右方向燈並在路口減速查看後執行路邊臨時停車",
+      "captionText": "頭需看到B柱，車身盡量靠近道路邊線",
+      "referenceCaption": "頭需看到B柱，車身盡量靠近道路邊線",
+      "answerText": "頭需看到B柱，車身盡量靠近道路邊線",
+      "operationText": "頭需看到B柱，車身盡量靠近道路邊線",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
-        "右方向燈",
-        "路邊臨時停車",
-        "前方路口減速查看"
+        "b_pillar",
+        "B柱確認",
+        "邊線控制"
       ],
       "reminderNotes": [
-        "轉頭確認時需看到B柱。"
+        "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
       ],
-      "rawSegmentIds": [
-        "road-seg-030",
-        "road-seg-031",
-        "road-seg-032"
-      ],
-      "startSec": 259.031,
-      "endSec": 275.962,
+      "startSec": 240.418,
+      "endSec": 250.585,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 258.031,
-      "clipEndSec": 276.962,
+      "clipStartSec": 239.42,
+      "clipEndSec": 251.59,
       "tags": [
-        "right_signal",
+        "b_pillar",
+        "B柱確認",
+        "邊線控制"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A8",
+        "R3"
+      ],
+      "officialStandards": [
+        {
+          "code": "A8",
+          "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+          "deduction": 32,
+          "page": 1
+        },
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁"
+    },
+    {
+      "id": "road-seg-029",
+      "bankId": "RT-028",
+      "moduleId": "roadside_temporary_stop",
+      "moduleTitle": "路邊臨時停車",
+      "captionText": "注意道路邊線不可壓到，",
+      "referenceCaption": "注意道路邊線不可壓到，",
+      "answerText": "注意道路邊線不可壓到",
+      "operationText": "注意道路邊線不可壓到",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "邊線控制"
+      ],
+      "reminderNotes": [],
+      "startSec": 254.086,
+      "endSec": 259.031,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 253.09,
+      "clipEndSec": 260.03,
+      "tags": [
+        "邊線控制"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-030",
+      "bankId": "RT-029",
+      "moduleId": "roadside_temporary_stop",
+      "moduleTitle": "路邊臨時停車",
+      "captionText": "打右方向燈；",
+      "referenceCaption": "打右方向燈；",
+      "answerText": "打右方向燈",
+      "operationText": "打右方向燈",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "right_signal"
+      ],
+      "reminderNotes": [],
+      "startSec": 259.031,
+      "endSec": 263.92,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 258.03,
+      "clipEndSec": 264.92,
+      "tags": [
+        "right_signal"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-031",
+      "bankId": "RT-030",
+      "moduleId": "roadside_temporary_stop",
+      "moduleTitle": "路邊臨時停車",
+      "captionText": "【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】，",
+      "referenceCaption": "【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】，",
+      "answerText": "【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】，",
+      "operationText": "【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】，",
+      "spokenText": "前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車",
+      "spokenItems": [
+        "前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車"
+      ],
+      "operationTags": [
         "safe_left_right",
         "rear_clear",
         "intersection_scan",
         "temporary_stop",
-        "b_pillar",
-        "右方向燈",
-        "路邊臨時停車",
-        "前方路口減速查看"
+        "臨停",
+        "安全確認",
+        "後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "reminderNotes": [
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
+      ],
+      "startSec": 263.92,
+      "endSec": 274.24,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 262.92,
+      "clipEndSec": 275.24,
+      "tags": [
+        "safe_left_right",
+        "rear_clear",
+        "intersection_scan",
+        "temporary_stop",
+        "臨停",
+        "安全確認",
+        "後方確認"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-022",
-      "bankId": "RT-022",
+      "id": "road-seg-032",
+      "bankId": "RT-031",
+      "moduleId": "roadside_temporary_stop",
+      "moduleTitle": "路邊臨時停車",
+      "captionText": "頭需看到B柱",
+      "referenceCaption": "頭需看到B柱",
+      "answerText": "頭需看到B柱",
+      "operationText": "頭需看到B柱",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "b_pillar",
+        "B柱確認"
+      ],
+      "reminderNotes": [
+        "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
+      ],
+      "startSec": 274.24,
+      "endSec": 275.962,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 273.24,
+      "clipEndSec": 276.96,
+      "tags": [
+        "b_pillar",
+        "B柱確認"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A8",
+        "R3"
+      ],
+      "officialStandards": [
+        {
+          "code": "A8",
+          "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+          "deduction": 32,
+          "page": 1
+        },
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁"
+    },
+    {
+      "id": "road-seg-033",
+      "bankId": "RT-032",
       "moduleId": "roadside_temporary_stop",
       "moduleTitle": "路邊臨時停車",
       "captionText": "【打P檔、拉手煞車】；",
       "referenceCaption": "【打P檔、拉手煞車】；",
-      "answerText": "停妥後打P檔並拉手煞車",
-      "operationText": "停妥後打P檔並拉手煞車",
-      "operationTags": [
-        "P檔",
-        "手煞車"
+      "answerText": "【打P檔、拉手煞車】；",
+      "operationText": "【打P檔、拉手煞車】；",
+      "spokenText": "打P檔、拉手煞車",
+      "spokenItems": [
+        "打P檔、拉手煞車"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-033"
+      "operationTags": [
+        "gear_p",
+        "hand_brake"
+      ],
+      "reminderNotes": [
+        "影片把臨停後的手腳順序講得很細；官方評分重點則落在是否依規定路線與安全方式完成。"
       ],
       "startSec": 276.487,
       "endSec": 282.489,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 275.487,
-      "clipEndSec": 283.489,
+      "clipStartSec": 275.49,
+      "clipEndSec": 283.49,
       "tags": [
         "gear_p",
-        "hand_brake",
-        "P檔",
-        "手煞車"
+        "hand_brake"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R7"
+      ],
+      "officialStandards": [
+        {
+          "code": "R7",
+          "label": "未按規定路線行駛或未按規定變換車道",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-023",
-      "bankId": "RT-023",
+      "id": "road-seg-034",
+      "bankId": "RT-033",
       "moduleId": "roadside_temporary_stop",
       "moduleTitle": "路邊臨時停車",
       "captionText": "放鬆腳煞車，確認不滑動後， 腳再回煞車",
       "referenceCaption": "放鬆腳煞車，確認不滑動後， 腳再回煞車",
-      "answerText": "鬆開腳煞車確認車輛不滑動後再回煞車",
-      "operationText": "鬆開腳煞車確認車輛不滑動後再回煞車",
-      "operationTags": [
-        "停車確認"
-      ],
+      "answerText": "放鬆腳煞車，確認不滑動後，腳再回煞車",
+      "operationText": "放鬆腳煞車，確認不滑動後，腳再回煞車",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-034"
-      ],
       "startSec": 282.489,
       "endSec": 285.312,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 281.489,
-      "clipEndSec": 286.312,
-      "tags": [
-        "停車確認"
-      ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "clipStartSec": 281.49,
+      "clipEndSec": 286.31,
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-024",
-      "bankId": "RT-024",
-      "moduleId": "resume_and_left_lane_change",
-      "moduleTitle": "由路邊切回主線並左切車道",
-      "captionText": "踩剎車，打左方向燈 【切入主線道，打D檔，放手煞車，後方無來車】； 頭需看到B柱後再起步",
-      "referenceCaption": "踩剎車，打左方向燈 【切入主線道，打D檔，放手煞車，後方無來車】； 頭需看到B柱後再起步",
-      "answerText": "打左方向燈，切回主線道前入D檔、放手煞車並做B柱確認",
-      "operationText": "打左方向燈，切回主線道前入D檔、放手煞車並做B柱確認",
+      "id": "road-seg-035",
+      "bankId": "RT-034",
+      "moduleId": "roadside_temporary_stop",
+      "moduleTitle": "路邊臨時停車",
+      "captionText": "【路邊臨時停車完畢】",
+      "referenceCaption": "【路邊臨時停車完畢】",
+      "answerText": "【路邊臨時停車完畢】",
+      "operationText": "【路邊臨時停車完畢】",
+      "spokenText": "路邊臨時停車完畢",
+      "spokenItems": [
+        "路邊臨時停車完畢"
+      ],
       "operationTags": [
-        "左方向燈",
-        "切入主線道",
-        "D檔",
-        "放手煞車"
+        "temporary_stop",
+        "臨停"
       ],
       "reminderNotes": [
-        "起步前需轉頭確認並看到B柱。"
+        "影片把臨停後的手腳順序講得很細；官方評分重點則落在是否依規定路線與安全方式完成。"
       ],
-      "rawSegmentIds": [
-        "road-seg-036",
-        "road-seg-037"
+      "startSec": 285.312,
+      "endSec": 288.22,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 284.31,
+      "clipEndSec": 289.22,
+      "tags": [
+        "temporary_stop",
+        "臨停"
       ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R7"
+      ],
+      "officialStandards": [
+        {
+          "code": "R7",
+          "label": "未按規定路線行駛或未按規定變換車道",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
+    },
+    {
+      "id": "road-seg-036",
+      "bankId": "RT-035",
+      "moduleId": "resume_and_left_lane_change",
+      "moduleTitle": "由路邊切回主線並左切車道",
+      "captionText": "踩剎車，打左方向燈 【切入主線道，打D檔，放手煞車，後方無來車】；",
+      "referenceCaption": "踩剎車，打左方向燈 【切入主線道，打D檔，放手煞車，後方無來車】；",
+      "answerText": "踩剎車，打左方向燈",
+      "operationText": "踩剎車，打左方向燈",
+      "spokenText": "切入主線道，打D檔，放手煞車，後方無來車",
+      "spokenItems": [
+        "切入主線道，打D檔，放手煞車，後方無來車"
+      ],
+      "operationTags": [
+        "left_signal",
+        "rear_clear",
+        "gear_d",
+        "hand_brake",
+        "後方確認"
+      ],
+      "reminderNotes": [],
       "startSec": 288.22,
-      "endSec": 305.709,
+      "endSec": 302.061,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 287.22,
-      "clipEndSec": 306.709,
+      "clipEndSec": 303.06,
       "tags": [
         "left_signal",
         "rear_clear",
         "gear_d",
         "hand_brake",
-        "b_pillar",
-        "左方向燈",
-        "切入主線道",
-        "D檔",
-        "放手煞車"
+        "後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A6",
+        "A7"
+      ],
+      "officialStandards": [
+        {
+          "code": "A6",
+          "label": "起駛前未鬆開手煞車及檢查煞車作用",
+          "deduction": 16,
+          "page": 1
+        },
+        {
+          "code": "A7",
+          "label": "起駛前未依規定顯示方向燈",
+          "deduction": 32,
+          "page": 1
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁"
     },
     {
-      "id": "road-op-025",
-      "bankId": "RT-025",
+      "id": "road-seg-037",
+      "bankId": "RT-036",
       "moduleId": "resume_and_left_lane_change",
       "moduleTitle": "由路邊切回主線並左切車道",
-      "captionText": "打左方向燈，口誦 【進行變換車道，後方無來車】； 頭需看到B柱，沒車再變換車道",
-      "referenceCaption": "打左方向燈，口誦 【進行變換車道，後方無來車】； 頭需看到B柱，沒車再變換車道",
-      "answerText": "打左方向燈後往左變換車道，確認後方無來車再切線",
-      "operationText": "打左方向燈後往左變換車道，確認後方無來車再切線",
+      "captionText": "頭需看到B柱後再起步",
+      "referenceCaption": "頭需看到B柱後再起步",
+      "answerText": "頭需看到B柱後再起步",
+      "operationText": "頭需看到B柱後再起步",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
-        "左方向燈",
-        "變換車道",
+        "b_pillar",
+        "B柱確認"
+      ],
+      "reminderNotes": [
+        "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
+      ],
+      "startSec": 302.061,
+      "endSec": 305.709,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 301.06,
+      "clipEndSec": 306.71,
+      "tags": [
+        "b_pillar",
+        "B柱確認"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A8",
+        "R3"
+      ],
+      "officialStandards": [
+        {
+          "code": "A8",
+          "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+          "deduction": 32,
+          "page": 1
+        },
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁"
+    },
+    {
+      "id": "road-seg-038",
+      "bankId": "RT-037",
+      "moduleId": "resume_and_left_lane_change",
+      "moduleTitle": "由路邊切回主線並左切車道",
+      "captionText": "打左方向燈，口誦 【進行變換車道，後方無來車】；",
+      "referenceCaption": "打左方向燈，口誦 【進行變換車道，後方無來車】；",
+      "answerText": "打左方向燈",
+      "operationText": "打左方向燈",
+      "spokenText": "進行變換車道，後方無來車",
+      "spokenItems": [
+        "進行變換車道，後方無來車"
+      ],
+      "operationTags": [
+        "left_signal",
+        "rear_clear",
+        "lane_change",
         "後方確認"
       ],
       "reminderNotes": [
-        "轉頭確認時需看到B柱。"
-      ],
-      "rawSegmentIds": [
-        "road-seg-038",
-        "road-seg-039"
+        "切換完成後須記得取消方向燈，否則仍可能連續扣分。"
       ],
       "startSec": 312.292,
-      "endSec": 324.866,
+      "endSec": 320.801,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 311.292,
-      "clipEndSec": 325.866,
+      "clipStartSec": 311.29,
+      "clipEndSec": 321.8,
       "tags": [
         "left_signal",
         "rear_clear",
         "lane_change",
-        "b_pillar",
-        "左方向燈",
-        "變換車道",
         "後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R3",
+        "R4",
+        "R7"
+      ],
+      "officialStandards": [
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        },
+        {
+          "code": "R4",
+          "label": "變換車道、轉彎後仍持續顯示方向燈",
+          "deduction": 16,
+          "page": 2
+        },
+        {
+          "code": "R7",
+          "label": "未按規定路線行駛或未按規定變換車道",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-026",
-      "bankId": "RT-026",
-      "moduleId": "straight_intersection_checks",
-      "moduleTitle": "直線行駛與路口減速查看",
-      "captionText": "前方路口減速查看，口誦【左右無來車】； 直線路段留意兩側照後鏡與車身、車道線間距",
-      "referenceCaption": "前方路口減速查看，口誦【左右無來車】； 直線路段留意兩側照後鏡與車身、車道線間距",
-      "answerText": "前方路口減速查看並確認左右無來車",
-      "operationText": "前方路口減速查看並確認左右無來車",
+      "id": "road-seg-039",
+      "bankId": "RT-038",
+      "moduleId": "resume_and_left_lane_change",
+      "moduleTitle": "由路邊切回主線並左切車道",
+      "captionText": "頭需看到B柱，沒車再變換車道",
+      "referenceCaption": "頭需看到B柱，沒車再變換車道",
+      "answerText": "頭需看到B柱，沒車再變換車道",
+      "operationText": "頭需看到B柱，沒車再變換車道",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
-        "前方路口減速查看",
-        "左右安全確認"
+        "b_pillar",
+        "lane_change",
+        "B柱確認"
       ],
       "reminderNotes": [
-        "直線路段要持續留意照後鏡、車身與車道線間距。"
+        "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
       ],
-      "rawSegmentIds": [
-        "road-seg-040",
-        "road-seg-041"
+      "startSec": 320.801,
+      "endSec": 324.866,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 319.8,
+      "clipEndSec": 325.87,
+      "tags": [
+        "b_pillar",
+        "lane_change",
+        "B柱確認"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A8",
+        "R3"
+      ],
+      "officialStandards": [
+        {
+          "code": "A8",
+          "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+          "deduction": 32,
+          "page": 1
+        },
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁"
+    },
+    {
+      "id": "road-seg-040",
+      "bankId": "RT-039",
+      "moduleId": "straight_intersection_checks",
+      "moduleTitle": "直線行駛與路口減速查看",
+      "captionText": "前方路口減速查看，口誦【左右無來車】；",
+      "referenceCaption": "前方路口減速查看，口誦【左右無來車】；",
+      "answerText": "前方路口減速查看",
+      "operationText": "前方路口減速查看",
+      "spokenText": "左右無來車",
+      "spokenItems": [
+        "左右無來車"
+      ],
+      "operationTags": [
+        "safe_left_right",
+        "intersection_scan",
+        "安全確認"
+      ],
+      "reminderNotes": [
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
       "startSec": 325.374,
+      "endSec": 335.325,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 324.37,
+      "clipEndSec": 336.32,
+      "tags": [
+        "safe_left_right",
+        "intersection_scan",
+        "安全確認"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
+    },
+    {
+      "id": "road-seg-041",
+      "bankId": "RT-040",
+      "moduleId": "straight_intersection_checks",
+      "moduleTitle": "直線行駛與路口減速查看",
+      "captionText": "直線路段留意兩側照後鏡與車身、車道線間距",
+      "referenceCaption": "直線路段留意兩側照後鏡與車身、車道線間距",
+      "answerText": "直線路段留意兩側照後鏡與車身、車道線間距",
+      "operationText": "直線路段留意兩側照後鏡與車身、車道線間距",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "車道線控制"
+      ],
+      "reminderNotes": [],
+      "startSec": 335.325,
       "endSec": 345.9,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 324.374,
+      "clipStartSec": 334.32,
       "clipEndSec": 346.9,
       "tags": [
-        "safe_left_right",
-        "intersection_scan",
-        "前方路口減速查看",
-        "左右安全確認"
+        "車道線控制"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-027",
-      "bankId": "RT-027",
+      "id": "road-seg-042",
+      "bankId": "RT-041",
       "moduleId": "straight_intersection_checks",
       "moduleTitle": "直線行駛與路口減速查看",
-      "captionText": "前方路口減速查看，口誦【左右無來車】； 行駛中隨時注意不要壓到左右車道線",
-      "referenceCaption": "前方路口減速查看，口誦【左右無來車】； 行駛中隨時注意不要壓到左右車道線",
-      "answerText": "前方路口減速查看並確認左右無來車",
-      "operationText": "前方路口減速查看並確認左右無來車",
+      "captionText": "前方路口減速查看，口誦【左右無來車】；",
+      "referenceCaption": "前方路口減速查看，口誦【左右無來車】；",
+      "answerText": "前方路口減速查看",
+      "operationText": "前方路口減速查看",
+      "spokenText": "左右無來車",
+      "spokenItems": [
+        "左右無來車"
+      ],
       "operationTags": [
-        "前方路口減速查看",
-        "左右安全確認"
+        "safe_left_right",
+        "intersection_scan",
+        "安全確認"
       ],
       "reminderNotes": [
-        "行駛中隨時注意不要壓到左右車道線。"
-      ],
-      "rawSegmentIds": [
-        "road-seg-042",
-        "road-seg-043"
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
       "startSec": 346.9,
-      "endSec": 367.28,
+      "endSec": 356.779,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 345.9,
-      "clipEndSec": 368.28,
+      "clipEndSec": 357.78,
       "tags": [
         "safe_left_right",
         "intersection_scan",
-        "前方路口減速查看",
-        "左右安全確認"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-028",
-      "bankId": "RT-028",
+      "id": "road-seg-043",
+      "bankId": "RT-042",
+      "moduleId": "straight_intersection_checks",
+      "moduleTitle": "直線行駛與路口減速查看",
+      "captionText": "行駛中隨時注意不要壓到左右車道線",
+      "referenceCaption": "行駛中隨時注意不要壓到左右車道線",
+      "answerText": "行駛中隨時注意不要壓到左右車道線",
+      "operationText": "行駛中隨時注意不要壓到左右車道線",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "車道線控制"
+      ],
+      "reminderNotes": [],
+      "startSec": 359.782,
+      "endSec": 367.28,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 358.78,
+      "clipEndSec": 368.28,
+      "tags": [
+        "車道線控制"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-044",
+      "bankId": "RT-043",
       "moduleId": "straight_intersection_checks",
       "moduleTitle": "直線行駛與路口減速查看",
       "captionText": "再次通過路口前減速查看，口誦【左右無來車】",
       "referenceCaption": "再次通過路口前減速查看，口誦【左右無來車】",
-      "answerText": "前方路口減速查看並確認左右無來車",
-      "operationText": "前方路口減速查看並確認左右無來車",
+      "answerText": "再次通過路口前減速查看",
+      "operationText": "再次通過路口前減速查看",
+      "spokenText": "左右無來車",
+      "spokenItems": [
+        "左右無來車"
+      ],
       "operationTags": [
-        "前方路口減速查看",
-        "左右安全確認"
+        "safe_left_right",
+        "安全確認"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-044"
-      ],
       "startSec": 368.28,
       "endSec": 376.28,
       "clipLeadSeconds": 1.0,
@@ -1531,193 +2621,334 @@
       "clipEndSec": 377.28,
       "tags": [
         "safe_left_right",
-        "前方路口減速查看",
-        "左右安全確認"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-029",
-      "bankId": "RT-029",
+      "id": "road-seg-045",
+      "bankId": "RT-044",
       "moduleId": "u_turn_sequence",
       "moduleTitle": "迴轉流程",
-      "captionText": "打左方向燈 【前方路口減速查看】，配合準備迴轉 確認【左右無來車】； 到達定點後迅速完成方向盤操作",
-      "referenceCaption": "打左方向燈 【前方路口減速查看】，配合準備迴轉 確認【左右無來車】； 到達定點後迅速完成方向盤操作",
-      "answerText": "打左方向燈，前方路口減速查看並確認安全後迴轉",
-      "operationText": "打左方向燈，前方路口減速查看並確認安全後迴轉",
+      "captionText": "打左方向燈",
+      "referenceCaption": "打左方向燈",
+      "answerText": "打左方向燈",
+      "operationText": "打左方向燈",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
-        "左方向燈",
-        "前方路口減速查看",
-        "迴轉"
+        "left_signal"
+      ],
+      "reminderNotes": [],
+      "startSec": 390.736,
+      "endSec": 394.142,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 389.74,
+      "clipEndSec": 395.14,
+      "tags": [
+        "left_signal"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-046",
+      "bankId": "RT-045",
+      "moduleId": "u_turn_sequence",
+      "moduleTitle": "迴轉流程",
+      "captionText": "【前方路口減速查看】，配合準備迴轉",
+      "referenceCaption": "【前方路口減速查看】，配合準備迴轉",
+      "answerText": "配合準備迴轉",
+      "operationText": "配合準備迴轉",
+      "spokenText": "前方路口減速查看",
+      "spokenItems": [
+        "前方路口減速查看"
+      ],
+      "operationTags": [
+        "intersection_scan",
+        "u_turn"
       ],
       "reminderNotes": [
-        "到達定點後迅速完成方向盤操作。"
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
-      "rawSegmentIds": [
-        "road-seg-045",
-        "road-seg-046",
-        "road-seg-047"
+      "startSec": 394.142,
+      "endSec": 404.993,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 393.14,
+      "clipEndSec": 405.99,
+      "tags": [
+        "intersection_scan",
+        "u_turn"
       ],
-      "startSec": 390.736,
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
+    },
+    {
+      "id": "road-seg-047",
+      "bankId": "RT-046",
+      "moduleId": "u_turn_sequence",
+      "moduleTitle": "迴轉流程",
+      "captionText": "確認【左右無來車】； 到達定點後迅速完成方向盤操作",
+      "referenceCaption": "確認【左右無來車】； 到達定點後迅速完成方向盤操作",
+      "answerText": "確認，到達定點後迅速完成方向盤操作",
+      "operationText": "確認，到達定點後迅速完成方向盤操作",
+      "spokenText": "左右無來車",
+      "spokenItems": [
+        "左右無來車"
+      ],
+      "operationTags": [
+        "safe_left_right",
+        "安全確認"
+      ],
+      "reminderNotes": [],
+      "startSec": 405.0,
       "endSec": 413.136,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 389.736,
-      "clipEndSec": 414.136,
+      "clipStartSec": 404.0,
+      "clipEndSec": 414.14,
       "tags": [
-        "left_signal",
-        "intersection_scan",
-        "u_turn",
         "safe_left_right",
-        "左方向燈",
-        "前方路口減速查看",
-        "迴轉"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-030",
-      "bankId": "RT-030",
+      "id": "road-seg-048",
+      "bankId": "RT-047",
       "moduleId": "u_turn_sequence",
       "moduleTitle": "迴轉流程",
       "captionText": "迴轉後走外側車道，",
       "referenceCaption": "迴轉後走外側車道，",
-      "answerText": "迴轉後靠外側車道行駛",
-      "operationText": "迴轉後靠外側車道行駛",
+      "answerText": "迴轉後走外側車道",
+      "operationText": "迴轉後走外側車道",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
-        "迴轉後車道選擇",
+        "u_turn",
         "外側車道"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-048"
-      ],
       "startSec": 413.622,
       "endSec": 428.299,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 412.622,
-      "clipEndSec": 429.299,
+      "clipStartSec": 412.62,
+      "clipEndSec": 429.3,
       "tags": [
         "u_turn",
-        "迴轉後車道選擇",
         "外側車道"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-031",
-      "bankId": "RT-031",
+      "id": "road-seg-049",
+      "bankId": "RT-048",
       "moduleId": "post_uturn_speed_and_centering",
       "moduleTitle": "迴轉後控速與置中",
-      "captionText": "持續注意兩側車道線，盡量讓車輛保持在車道中央 壓到任何一側邊線都會扣分，",
-      "referenceCaption": "持續注意兩側車道線，盡量讓車輛保持在車道中央 壓到任何一側邊線都會扣分，",
-      "answerText": "保持車輛置中於車道中央",
-      "operationText": "保持車輛置中於車道中央",
+      "captionText": "持續注意兩側車道線，盡量讓車輛保持在車道中央",
+      "referenceCaption": "持續注意兩側車道線，盡量讓車輛保持在車道中央",
+      "answerText": "持續注意兩側車道線，盡量讓車輛保持在車道中央",
+      "operationText": "持續注意兩側車道線，盡量讓車輛保持在車道中央",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
-        "車道置中"
+        "車道線控制"
       ],
-      "reminderNotes": [
-        "壓到任一側邊線都會扣分。"
-      ],
-      "rawSegmentIds": [
-        "road-seg-049",
-        "road-seg-050"
-      ],
+      "reminderNotes": [],
       "startSec": 428.299,
+      "endSec": 435.58,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 427.3,
+      "clipEndSec": 436.58,
+      "tags": [
+        "車道線控制"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-050",
+      "bankId": "RT-049",
+      "moduleId": "post_uturn_speed_and_centering",
+      "moduleTitle": "迴轉後控速與置中",
+      "captionText": "壓到任何一側邊線都會扣分，",
+      "referenceCaption": "壓到任何一側邊線都會扣分，",
+      "answerText": "壓到任何一側邊線都會扣分",
+      "operationText": "壓到任何一側邊線都會扣分",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "邊線控制",
+        "扣分提醒"
+      ],
+      "reminderNotes": [],
+      "startSec": 437.073,
       "endSec": 440.698,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 427.299,
-      "clipEndSec": 441.698,
+      "clipStartSec": 436.07,
+      "clipEndSec": 441.7,
       "tags": [
-        "車道置中"
+        "邊線控制",
+        "扣分提醒"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-032",
-      "bankId": "RT-032",
+      "id": "road-seg-051",
+      "bankId": "RT-050",
       "moduleId": "post_uturn_speed_and_centering",
       "moduleTitle": "迴轉後控速與置中",
       "captionText": "【前方路口減速查看】【左右無來車】",
       "referenceCaption": "【前方路口減速查看】【左右無來車】",
-      "answerText": "前方路口減速查看並確認左右無來車",
-      "operationText": "前方路口減速查看並確認左右無來車",
-      "operationTags": [
+      "answerText": "【前方路口減速查看】【左右無來車】",
+      "operationText": "【前方路口減速查看】【左右無來車】",
+      "spokenText": "前方路口減速查看／左右無來車",
+      "spokenItems": [
         "前方路口減速查看",
-        "左右安全確認"
+        "左右無來車"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-051"
+      "operationTags": [
+        "safe_left_right",
+        "intersection_scan",
+        "安全確認"
+      ],
+      "reminderNotes": [
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
       "startSec": 440.698,
       "endSec": 446.58,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 439.698,
+      "clipStartSec": 439.7,
       "clipEndSec": 447.58,
       "tags": [
         "safe_left_right",
         "intersection_scan",
-        "前方路口減速查看",
-        "左右安全確認"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-033",
-      "bankId": "RT-033",
+      "id": "road-seg-052",
+      "bankId": "RT-051",
       "moduleId": "post_uturn_speed_and_centering",
       "moduleTitle": "迴轉後控速與置中",
-      "captionText": "行車速度盡量維持在約40公里左右 此路段須特別注意車速， 標示約40公里，最高速度不要超過44公里",
-      "referenceCaption": "行車速度盡量維持在約40公里左右 此路段須特別注意車速， 標示約40公里，最高速度不要超過44公里",
-      "answerText": "行車速度維持約40公里且最高不要超過44公里",
-      "operationText": "行車速度維持約40公里且最高不要超過44公里",
+      "captionText": "行車速度盡量維持在約40公里左右",
+      "referenceCaption": "行車速度盡量維持在約40公里左右",
+      "answerText": "行車速度盡量維持在約40公里左右",
+      "operationText": "行車速度盡量維持在約40公里左右",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
         "速度控制"
       ],
-      "reminderNotes": [
-        "此路段標示約40公里，最高不要超過44公里。"
-      ],
-      "rawSegmentIds": [
-        "road-seg-052",
-        "road-seg-055"
-      ],
+      "reminderNotes": [],
       "startSec": 452.31,
-      "endSec": 499.74,
+      "endSec": 457.31,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 451.31,
-      "clipEndSec": 500.74,
+      "clipEndSec": 458.31,
       "tags": [
         "速度控制"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-034",
-      "bankId": "RT-034",
+      "id": "road-seg-053",
+      "bankId": "RT-052",
       "moduleId": "post_uturn_speed_and_centering",
       "moduleTitle": "迴轉後控速與置中",
       "captionText": "【前方路口減速查看】【左右無來車】",
       "referenceCaption": "【前方路口減速查看】【左右無來車】",
-      "answerText": "前方路口減速查看並確認左右無來車",
-      "operationText": "前方路口減速查看並確認左右無來車",
-      "operationTags": [
+      "answerText": "【前方路口減速查看】【左右無來車】",
+      "operationText": "【前方路口減速查看】【左右無來車】",
+      "spokenText": "前方路口減速查看／左右無來車",
+      "spokenItems": [
         "前方路口減速查看",
-        "左右安全確認"
+        "左右無來車"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-053"
+      "operationTags": [
+        "safe_left_right",
+        "intersection_scan",
+        "安全確認"
+      ],
+      "reminderNotes": [
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
       "startSec": 459.31,
       "endSec": 465.31,
@@ -1728,28 +2959,46 @@
       "tags": [
         "safe_left_right",
         "intersection_scan",
-        "前方路口減速查看",
-        "左右安全確認"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-035",
-      "bankId": "RT-035",
+      "id": "road-seg-054",
+      "bankId": "RT-053",
       "moduleId": "post_uturn_speed_and_centering",
       "moduleTitle": "迴轉後控速與置中",
       "captionText": "【前方路口減速查看】【左右無來車】",
       "referenceCaption": "【前方路口減速查看】【左右無來車】",
-      "answerText": "前方路口減速查看並確認左右無來車",
-      "operationText": "前方路口減速查看並確認左右無來車",
-      "operationTags": [
+      "answerText": "【前方路口減速查看】【左右無來車】",
+      "operationText": "【前方路口減速查看】【左右無來車】",
+      "spokenText": "前方路口減速查看／左右無來車",
+      "spokenItems": [
         "前方路口減速查看",
-        "左右安全確認"
+        "左右無來車"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-054"
+      "operationTags": [
+        "safe_left_right",
+        "intersection_scan",
+        "安全確認"
+      ],
+      "reminderNotes": [
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
       "startSec": 476.26,
       "endSec": 483.26,
@@ -1760,136 +3009,354 @@
       "tags": [
         "safe_left_right",
         "intersection_scan",
-        "前方路口減速查看",
-        "左右安全確認"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-036",
-      "bankId": "RT-036",
+      "id": "road-seg-055",
+      "bankId": "RT-054",
+      "moduleId": "post_uturn_speed_and_centering",
+      "moduleTitle": "迴轉後控速與置中",
+      "captionText": "此路段須特別注意車速， 標示約40公里，最高速度不要超過44公里",
+      "referenceCaption": "此路段須特別注意車速， 標示約40公里，最高速度不要超過44公里",
+      "answerText": "此路段須特別注意車速，標示約40公里，最高速度不要超過44公里",
+      "operationText": "此路段須特別注意車速，標示約40公里，最高速度不要超過44公里",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "速度控制"
+      ],
+      "reminderNotes": [],
+      "startSec": 489.74,
+      "endSec": 499.74,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 488.74,
+      "clipEndSec": 500.74,
+      "tags": [
+        "速度控制"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-056",
+      "bankId": "RT-055",
       "moduleId": "post_uturn_speed_and_centering",
       "moduleTitle": "迴轉後控速與置中",
       "captionText": "【前方路口減速查看】【左右無來車】",
       "referenceCaption": "【前方路口減速查看】【左右無來車】",
-      "answerText": "前方路口減速查看並確認左右無來車",
-      "operationText": "前方路口減速查看並確認左右無來車",
-      "operationTags": [
+      "answerText": "【前方路口減速查看】【左右無來車】",
+      "operationText": "【前方路口減速查看】【左右無來車】",
+      "spokenText": "前方路口減速查看／左右無來車",
+      "spokenItems": [
         "前方路口減速查看",
-        "左右安全確認"
+        "左右無來車"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-056"
+      "operationTags": [
+        "safe_left_right",
+        "intersection_scan",
+        "安全確認"
+      ],
+      "reminderNotes": [
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
       "startSec": 499.74,
       "endSec": 505.374,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 498.74,
-      "clipEndSec": 506.374,
+      "clipEndSec": 506.37,
       "tags": [
         "safe_left_right",
         "intersection_scan",
-        "前方路口減速查看",
-        "左右安全確認"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-037",
-      "bankId": "RT-037",
+      "id": "road-seg-057",
+      "bankId": "RT-056",
       "moduleId": "signalized_left_turn_to_slow_lane",
       "moduleTitle": "號誌路口左轉回慢車道",
-      "captionText": "到路口前打左方向燈 【前方路口減速查看】【左右無來車】 等紅綠燈後，起步前記得做左右擺頭； 尤其是第一台 口誦【左右無來車，後方無來車】；頭需看到B柱",
-      "referenceCaption": "到路口前打左方向燈 【前方路口減速查看】【左右無來車】 等紅綠燈後，起步前記得做左右擺頭； 尤其是第一台 口誦【左右無來車，後方無來車】；頭需看到B柱",
-      "answerText": "到號誌路口前打左方向燈，減速查看並在起步前完成擺頭確認",
-      "operationText": "到號誌路口前打左方向燈，減速查看並在起步前完成擺頭確認",
-      "operationTags": [
-        "左方向燈",
+      "captionText": "到路口前打左方向燈 【前方路口減速查看】【左右無來車】",
+      "referenceCaption": "到路口前打左方向燈 【前方路口減速查看】【左右無來車】",
+      "answerText": "到路口前打左方向燈",
+      "operationText": "到路口前打左方向燈",
+      "spokenText": "前方路口減速查看／左右無來車",
+      "spokenItems": [
         "前方路口減速查看",
-        "號誌路口起步"
+        "左右無來車"
+      ],
+      "operationTags": [
+        "left_signal",
+        "safe_left_right",
+        "intersection_scan",
+        "安全確認"
       ],
       "reminderNotes": [
-        "等紅綠燈後起步前要做左右擺頭；尤其是第一台。",
-        "確認時需看到B柱。"
-      ],
-      "rawSegmentIds": [
-        "road-seg-057",
-        "road-seg-058",
-        "road-seg-059"
+        "轉彎前核心是方向燈、照後鏡、死角確認；B柱轉頭屬教練用來落實死角確認的操作提醒。"
       ],
       "startSec": 508.948,
-      "endSec": 565.729,
+      "endSec": 519.132,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 507.948,
-      "clipEndSec": 566.729,
+      "clipStartSec": 507.95,
+      "clipEndSec": 520.13,
       "tags": [
         "left_signal",
         "safe_left_right",
         "intersection_scan",
-        "b_pillar",
-        "rear_clear",
-        "左方向燈",
-        "前方路口減速查看",
-        "號誌路口起步"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R3",
+        "R4",
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        },
+        {
+          "code": "R4",
+          "label": "變換車道、轉彎後仍持續顯示方向燈",
+          "deduction": 16,
+          "page": 2
+        },
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-038",
-      "bankId": "RT-038",
+      "id": "road-seg-058",
+      "bankId": "RT-057",
       "moduleId": "signalized_left_turn_to_slow_lane",
       "moduleTitle": "號誌路口左轉回慢車道",
-      "captionText": "左轉後直接走慢車道， 注意左側可能有違規插入的車輛，確認左後方來車",
-      "referenceCaption": "左轉後直接走慢車道， 注意左側可能有違規插入的車輛，確認左後方來車",
-      "answerText": "左轉後直接進入慢車道",
-      "operationText": "左轉後直接進入慢車道",
+      "captionText": "等紅綠燈後，起步前記得做左右擺頭； 尤其是第一台",
+      "referenceCaption": "等紅綠燈後，起步前記得做左右擺頭； 尤其是第一台",
+      "answerText": "等紅綠燈後，起步前記得做左右擺頭，尤其是第一台",
+      "operationText": "等紅綠燈後，起步前記得做左右擺頭，尤其是第一台",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
-        "左轉",
-        "慢車道"
+        "號誌路口"
+      ],
+      "reminderNotes": [],
+      "startSec": 519.132,
+      "endSec": 555.352,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 518.13,
+      "clipEndSec": 556.35,
+      "tags": [
+        "號誌路口"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-059",
+      "bankId": "RT-058",
+      "moduleId": "signalized_left_turn_to_slow_lane",
+      "moduleTitle": "號誌路口左轉回慢車道",
+      "captionText": "口誦【左右無來車，後方無來車】；頭需看到B柱",
+      "referenceCaption": "口誦【左右無來車，後方無來車】；頭需看到B柱",
+      "answerText": "頭需看到B柱",
+      "operationText": "頭需看到B柱",
+      "spokenText": "左右無來車，後方無來車",
+      "spokenItems": [
+        "左右無來車，後方無來車"
+      ],
+      "operationTags": [
+        "b_pillar",
+        "safe_left_right",
+        "rear_clear",
+        "B柱確認",
+        "安全確認",
+        "後方確認"
       ],
       "reminderNotes": [
-        "注意左側可能有違規插入的車輛，需留意左後方。"
+        "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
       ],
-      "rawSegmentIds": [
-        "road-seg-060",
-        "road-seg-061"
+      "startSec": 555.584,
+      "endSec": 565.729,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 554.58,
+      "clipEndSec": 566.73,
+      "tags": [
+        "b_pillar",
+        "safe_left_right",
+        "rear_clear",
+        "B柱確認",
+        "安全確認",
+        "後方確認"
       ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "A8",
+        "R3"
+      ],
+      "officialStandards": [
+        {
+          "code": "A8",
+          "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+          "deduction": 32,
+          "page": 1
+        },
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁"
+    },
+    {
+      "id": "road-seg-060",
+      "bankId": "RT-059",
+      "moduleId": "signalized_left_turn_to_slow_lane",
+      "moduleTitle": "號誌路口左轉回慢車道",
+      "captionText": "左轉後直接走慢車道，",
+      "referenceCaption": "左轉後直接走慢車道，",
+      "answerText": "左轉後直接走慢車道",
+      "operationText": "左轉後直接走慢車道",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "slow_lane",
+        "慢車道"
+      ],
+      "reminderNotes": [],
       "startSec": 565.729,
+      "endSec": 569.313,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 564.73,
+      "clipEndSec": 570.31,
+      "tags": [
+        "slow_lane",
+        "慢車道"
+      ],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-061",
+      "bankId": "RT-060",
+      "moduleId": "signalized_left_turn_to_slow_lane",
+      "moduleTitle": "號誌路口左轉回慢車道",
+      "captionText": "注意左側可能有違規插入的車輛，確認左後方來車",
+      "referenceCaption": "注意左側可能有違規插入的車輛，確認左後方來車",
+      "answerText": "注意左側可能有違規插入的車輛，確認左後方來車",
+      "operationText": "注意左側可能有違規插入的車輛，確認左後方來車",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [
+        "左後方確認"
+      ],
+      "reminderNotes": [],
+      "startSec": 569.313,
       "endSec": 574.9,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 564.729,
+      "clipStartSec": 568.31,
       "clipEndSec": 575.9,
       "tags": [
-        "slow_lane",
-        "左轉",
-        "慢車道"
+        "左後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-039",
-      "bankId": "RT-039",
+      "id": "road-seg-062",
+      "bankId": "RT-061",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
       "captionText": "【前方路口減速查看】【左右無來車】",
       "referenceCaption": "【前方路口減速查看】【左右無來車】",
-      "answerText": "前方路口減速查看並確認左右無來車",
-      "operationText": "前方路口減速查看並確認左右無來車",
-      "operationTags": [
+      "answerText": "【前方路口減速查看】【左右無來車】",
+      "operationText": "【前方路口減速查看】【左右無來車】",
+      "spokenText": "前方路口減速查看／左右無來車",
+      "spokenItems": [
         "前方路口減速查看",
-        "左右安全確認"
+        "左右無來車"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-062"
+      "operationTags": [
+        "safe_left_right",
+        "intersection_scan",
+        "安全確認"
+      ],
+      "reminderNotes": [
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
       "startSec": 574.9,
       "endSec": 589.74,
@@ -1900,30 +3367,48 @@
       "tags": [
         "safe_left_right",
         "intersection_scan",
-        "前方路口減速查看",
-        "左右安全確認"
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-040",
-      "bankId": "RT-040",
+      "id": "road-seg-063",
+      "bankId": "RT-062",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
       "captionText": "【前方路口減速查看】【左右無來車】 注意道路邊線，白線不可壓到",
       "referenceCaption": "【前方路口減速查看】【左右無來車】 注意道路邊線，白線不可壓到",
-      "answerText": "前方路口減速查看並確認左右無來車",
-      "operationText": "前方路口減速查看並確認左右無來車",
-      "operationTags": [
+      "answerText": "注意道路邊線，白線不可壓到",
+      "operationText": "注意道路邊線，白線不可壓到",
+      "spokenText": "前方路口減速查看／左右無來車",
+      "spokenItems": [
         "前方路口減速查看",
-        "左右安全確認"
+        "左右無來車"
+      ],
+      "operationTags": [
+        "safe_left_right",
+        "intersection_scan",
+        "白線不可壓",
+        "邊線控制",
+        "安全確認"
       ],
       "reminderNotes": [
-        "注意道路邊線，白線不可壓到。"
-      ],
-      "rawSegmentIds": [
-        "road-seg-063"
+        "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
       ],
       "startSec": 589.74,
       "endSec": 603.08,
@@ -1934,29 +3419,51 @@
       "tags": [
         "safe_left_right",
         "intersection_scan",
-        "前方路口減速查看",
-        "左右安全確認"
+        "白線不可壓",
+        "邊線控制",
+        "安全確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-041",
-      "bankId": "RT-041",
+      "id": "road-seg-064",
+      "bankId": "RT-063",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
       "captionText": "【前方路口減速查看(打右方向燈)左右無來車,後方無來車】",
       "referenceCaption": "【前方路口減速查看(打右方向燈)左右無來車,後方無來車】",
-      "answerText": "前方路口減速查看後打右方向燈並確認安全",
-      "operationText": "前方路口減速查看後打右方向燈並確認安全",
-      "operationTags": [
-        "前方路口減速查看",
-        "右方向燈",
-        "安全確認"
+      "answerText": "【前方路口減速查看(打右方向燈)左右無來車,後方無來車】",
+      "operationText": "【前方路口減速查看(打右方向燈)左右無來車,後方無來車】",
+      "spokenText": "前方路口減速查看(打右方向燈)左右無來車,後方無來車",
+      "spokenItems": [
+        "前方路口減速查看(打右方向燈)左右無來車,後方無來車"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-064"
+      "operationTags": [
+        "right_signal",
+        "safe_left_right",
+        "rear_clear",
+        "intersection_scan",
+        "安全確認",
+        "後方確認"
+      ],
+      "reminderNotes": [
+        "打右方向燈",
+        "轉彎前核心是方向燈、照後鏡、死角確認；B柱轉頭屬教練用來落實死角確認的操作提醒。"
       ],
       "startSec": 603.08,
       "endSec": 617.93,
@@ -1969,30 +3476,64 @@
         "safe_left_right",
         "rear_clear",
         "intersection_scan",
-        "前方路口減速查看",
-        "右方向燈",
-        "安全確認"
+        "安全確認",
+        "後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R3",
+        "R4",
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        },
+        {
+          "code": "R4",
+          "label": "變換車道、轉彎後仍持續顯示方向燈",
+          "deduction": 16,
+          "page": 2
+        },
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-042",
-      "bankId": "RT-042",
+      "id": "road-seg-065",
+      "bankId": "RT-064",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
       "captionText": "【前方路口減速查看(打左方向燈)左右無來車,後方無來車】",
       "referenceCaption": "【前方路口減速查看(打左方向燈)左右無來車,後方無來車】",
-      "answerText": "前方路口減速查看後打左方向燈並確認安全",
-      "operationText": "前方路口減速查看後打左方向燈並確認安全",
-      "operationTags": [
-        "前方路口減速查看",
-        "左方向燈",
-        "安全確認"
+      "answerText": "【前方路口減速查看(打左方向燈)左右無來車,後方無來車】",
+      "operationText": "【前方路口減速查看(打左方向燈)左右無來車,後方無來車】",
+      "spokenText": "前方路口減速查看(打左方向燈)左右無來車,後方無來車",
+      "spokenItems": [
+        "前方路口減速查看(打左方向燈)左右無來車,後方無來車"
       ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-065"
+      "operationTags": [
+        "left_signal",
+        "safe_left_right",
+        "rear_clear",
+        "intersection_scan",
+        "安全確認",
+        "後方確認"
+      ],
+      "reminderNotes": [
+        "打左方向燈",
+        "轉彎前核心是方向燈、照後鏡、死角確認；B柱轉頭屬教練用來落實死角確認的操作提醒。"
       ],
       "startSec": 617.93,
       "endSec": 629.67,
@@ -2005,203 +3546,422 @@
         "safe_left_right",
         "rear_clear",
         "intersection_scan",
-        "前方路口減速查看",
-        "左方向燈",
-        "安全確認"
+        "安全確認",
+        "後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R3",
+        "R4",
+        "R8"
+      ],
+      "officialStandards": [
+        {
+          "code": "R3",
+          "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+          "deduction": 32,
+          "page": 2
+        },
+        {
+          "code": "R4",
+          "label": "變換車道、轉彎後仍持續顯示方向燈",
+          "deduction": 16,
+          "page": 2
+        },
+        {
+          "code": "R8",
+          "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-043",
-      "bankId": "RT-043",
+      "id": "road-seg-066",
+      "bankId": "RT-065",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
       "captionText": "【打右方向燈,左右無來車,後方無來車】",
       "referenceCaption": "【打右方向燈,左右無來車,後方無來車】",
-      "answerText": "打右方向燈並確認左右與後方無來車",
-      "operationText": "打右方向燈並確認左右與後方無來車",
+      "answerText": "【打右方向燈,左右無來車,後方無來車】",
+      "operationText": "【打右方向燈,左右無來車,後方無來車】",
+      "spokenText": "打右方向燈,左右無來車,後方無來車",
+      "spokenItems": [
+        "打右方向燈,左右無來車,後方無來車"
+      ],
       "operationTags": [
-        "右方向燈",
-        "左右安全確認",
+        "right_signal",
+        "safe_left_right",
+        "rear_clear",
+        "安全確認",
         "後方確認"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-066"
-      ],
       "startSec": 629.67,
       "endSec": 640.652,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 628.67,
-      "clipEndSec": 641.652,
+      "clipEndSec": 641.65,
       "tags": [
         "right_signal",
         "safe_left_right",
         "rear_clear",
-        "右方向燈",
-        "左右安全確認",
+        "安全確認",
         "後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-044",
-      "bankId": "RT-044",
+      "id": "road-seg-067",
+      "bankId": "RT-066",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
       "captionText": "回到起終點區域，找空位將車輛停正",
       "referenceCaption": "回到起終點區域，找空位將車輛停正",
-      "answerText": "回到起終點區域找空位將車輛停正",
-      "operationText": "回到起終點區域找空位將車輛停正",
+      "answerText": "回到起終點區域，找空位將車輛停正",
+      "operationText": "回到起終點區域，找空位將車輛停正",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
-        "停車定位"
+        "起終點停車"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-067"
-      ],
       "startSec": 640.652,
       "endSec": 648.048,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 639.652,
-      "clipEndSec": 649.048,
+      "clipStartSec": 639.65,
+      "clipEndSec": 649.05,
       "tags": [
-        "停車定位"
+        "起終點停車"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-045",
-      "bankId": "RT-045",
+      "id": "road-seg-068",
+      "bankId": "RT-067",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
-      "captionText": "停妥後依序  打P檔、拉手煞車、 關風扇、關AC、熄火",
-      "referenceCaption": "停妥後依序  打P檔、拉手煞車、 關風扇、關AC、熄火",
-      "answerText": "停妥後打P檔、拉手煞車、關風扇與AC並熄火",
-      "operationText": "停妥後打P檔、拉手煞車、關風扇與AC並熄火",
+      "captionText": "停妥後依序 打P檔、拉手煞車、 關風扇、關AC、熄火",
+      "referenceCaption": "停妥後依序 打P檔、拉手煞車、 關風扇、關AC、熄火",
+      "answerText": "停妥後依序 打P檔、拉手煞車、關風扇、關AC、熄火",
+      "operationText": "停妥後依序 打P檔、拉手煞車、關風扇、關AC、熄火",
+      "spokenText": "",
+      "spokenItems": [],
       "operationTags": [
-        "P檔",
-        "手煞車",
-        "熄火"
+        "gear_p",
+        "hand_brake"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-068"
-      ],
       "startSec": 650.67,
       "endSec": 671.105,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
       "clipStartSec": 649.67,
-      "clipEndSec": 672.105,
+      "clipEndSec": 672.11,
       "tags": [
         "gear_p",
-        "hand_brake",
-        "P檔",
-        "手煞車",
-        "熄火"
+        "hand_brake"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R16"
+      ],
+      "officialStandards": [
+        {
+          "code": "R16",
+          "label": "考驗終點，停車後下車前未將引擎熄火或未拉緊手煞車（自排車未排入P檔）",
+          "deduction": 16,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-046",
-      "bankId": "RT-046",
+      "id": "road-seg-069",
+      "bankId": "RT-068",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
       "captionText": "解開安全帶、椅子退後，進行【兩段式開車門】；",
       "referenceCaption": "解開安全帶、椅子退後，進行【兩段式開車門】；",
-      "answerText": "解開安全帶、椅子退後並準備兩段式開車門下車",
-      "operationText": "解開安全帶、椅子退後並準備兩段式開車門下車",
+      "answerText": "解開安全帶、椅子退後，進行",
+      "operationText": "解開安全帶、椅子退後，進行",
+      "spokenText": "兩段式開車門",
+      "spokenItems": [
+        "兩段式開車門"
+      ],
       "operationTags": [
-        "安全帶解除",
-        "椅子退後",
         "兩段式開車門"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-069"
-      ],
       "startSec": 671.105,
       "endSec": 680.427,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 670.105,
-      "clipEndSec": 681.427,
+      "clipStartSec": 670.11,
+      "clipEndSec": 681.43,
       "tags": [
-        "安全帶解除",
-        "椅子退後",
         "兩段式開車門"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [
+        "R1"
+      ],
+      "officialStandards": [
+        {
+          "code": "R1",
+          "label": "上、下車開車門前未留意有無人車通過（下車應以2段式開門）",
+          "deduction": 32,
+          "page": 2
+        }
+      ],
+      "alignmentLevel": "official_core",
+      "examRelevant": true,
+      "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁"
     },
     {
-      "id": "road-op-047",
-      "bankId": "RT-047",
+      "id": "road-seg-070",
+      "bankId": "RT-069",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
       "captionText": "先看後照鏡，再把頭伸出車外看後方，確認【後方無來車】打開車門15公分【左右無來車】下車",
       "referenceCaption": "先看後照鏡，再把頭伸出車外看後方，確認【後方無來車】打開車門15公分【左右無來車】下車",
-      "answerText": "先看後照鏡與後方，兩段式開車門確認安全後下車",
-      "operationText": "先看後照鏡與後方，兩段式開車門確認安全後下車",
+      "answerText": "先看後照鏡，再把頭伸出車外看後方，確認打開車門15公分下車",
+      "operationText": "先看後照鏡，再把頭伸出車外看後方，確認打開車門15公分下車",
+      "spokenText": "後方無來車／左右無來車",
+      "spokenItems": [
+        "後方無來車",
+        "左右無來車"
+      ],
       "operationTags": [
+        "safe_left_right",
+        "rear_clear",
         "後照鏡確認",
-        "後方確認",
-        "兩段式開車門"
+        "安全確認",
+        "後方確認"
       ],
       "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-070"
-      ],
       "startSec": 680.427,
       "endSec": 686.354,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 679.427,
-      "clipEndSec": 687.354,
+      "clipStartSec": 679.43,
+      "clipEndSec": 687.35,
       "tags": [
         "safe_left_right",
         "rear_clear",
         "後照鏡確認",
-        "後方確認",
-        "兩段式開車門"
+        "安全確認",
+        "後方確認"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "official_related",
+      "examRelevant": true,
+      "officialSourceLabel": ""
     },
     {
-      "id": "road-op-048",
-      "bankId": "RT-048",
+      "id": "road-seg-071",
+      "bankId": "RT-071",
       "moduleId": "return_and_finish_stop",
       "moduleTitle": "回起終點與收車",
       "captionText": "最後關上車門，道路考照動作全部完成",
       "referenceCaption": "最後關上車門，道路考照動作全部完成",
-      "answerText": "關上車門完成道路考試",
-      "operationText": "關上車門完成道路考試",
-      "operationTags": [
-        "收車完成"
-      ],
-      "reminderNotes": [],
-      "rawSegmentIds": [
-        "road-seg-071"
+      "answerText": "最後關上車門，道路考照動作全部完成",
+      "operationText": "最後關上車門，道路考照動作全部完成",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [],
+      "reminderNotes": [
+        "此段屬收尾動作，不是你上傳官方評分表明列的主要扣分題。"
       ],
       "startSec": 686.354,
       "endSec": 702.442,
       "clipLeadSeconds": 1.0,
       "clipLagSeconds": 1.0,
-      "clipStartSec": 685.354,
-      "clipEndSec": 703.442,
-      "tags": [
-        "收車完成"
+      "clipStartSec": 685.35,
+      "clipEndSec": 703.44,
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "coach_only",
+      "examRelevant": false,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-072",
+      "bankId": "RT-072",
+      "moduleId": "supplementary_promo",
+      "moduleTitle": "未分類模組",
+      "captionText": "歡迎各位到忠正駕訓班學習開車，本班提供新型TOYOTA車輛供教學使用 今天示範的也是新車，未來學員到班上學車時，使用的車輛與教學環境皆相同",
+      "referenceCaption": "歡迎各位到忠正駕訓班學習開車，本班提供新型TOYOTA車輛供教學使用 今天示範的也是新車，未來學員到班上學車時，使用的車輛與教學環境皆相同",
+      "answerText": "歡迎各位到忠正駕訓班學習開車，本班提供新型TOYOTA車輛供教學使用 今天示範的也是新車，未來學員到班上學車時，使用的車輛與教學環境皆相同",
+      "operationText": "歡迎各位到忠正駕訓班學習開車，本班提供新型TOYOTA車輛供教學使用 今天示範的也是新車，未來學員到班上學車時，使用的車輛與教學環境皆相同",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [],
+      "reminderNotes": [
+        "本段屬影片說明或招生內容，已不列入正式刷題題庫。"
       ],
-      "quizType": "operation",
-      "sourceBasis": "captions.sbv"
+      "startSec": 702.442,
+      "endSec": 726.12,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 701.44,
+      "clipEndSec": 727.12,
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "coach_only",
+      "examRelevant": false,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-073",
+      "bankId": "RT-073",
+      "moduleId": "supplementary_promo",
+      "moduleTitle": "未分類模組",
+      "captionText": "平時車輛整齊停放於車庫，駕訓班提供良好學習環境，也歡迎大家介紹親友前來學習",
+      "referenceCaption": "平時車輛整齊停放於車庫，駕訓班提供良好學習環境，也歡迎大家介紹親友前來學習",
+      "answerText": "平時車輛整齊停放於車庫，駕訓班提供良好學習環境，也歡迎大家介紹親友前來學習",
+      "operationText": "平時車輛整齊停放於車庫，駕訓班提供良好學習環境，也歡迎大家介紹親友前來學習",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [],
+      "reminderNotes": [
+        "本段屬影片說明或招生內容，已不列入正式刷題題庫。"
+      ],
+      "startSec": 726.12,
+      "endSec": 745.12,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 725.12,
+      "clipEndSec": 746.12,
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "coach_only",
+      "examRelevant": false,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-074",
+      "bankId": "RT-074",
+      "moduleId": "supplementary_promo",
+      "moduleTitle": "未分類模組",
+      "captionText": "依照新制度，行車前都要做安全檢查；駕訓班也設置車棚，遇颱風或大雨考試時仍可進行檢查",
+      "referenceCaption": "依照新制度，行車前都要做安全檢查；駕訓班也設置車棚，遇颱風或大雨考試時仍可進行檢查",
+      "answerText": "依照新制度，行車前都要做安全檢查，駕訓班也設置車棚，遇颱風或大雨考試時仍可進行檢查",
+      "operationText": "依照新制度，行車前都要做安全檢查，駕訓班也設置車棚，遇颱風或大雨考試時仍可進行檢查",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [],
+      "reminderNotes": [
+        "本段屬影片說明或招生內容，已不列入正式刷題題庫。"
+      ],
+      "startSec": 745.12,
+      "endSec": 762.12,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 744.12,
+      "clipEndSec": 763.12,
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "coach_only",
+      "examRelevant": false,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-075",
+      "bankId": "RT-075",
+      "moduleId": "supplementary_promo",
+      "moduleTitle": "未分類模組",
+      "captionText": "車輛可在停車棚內完成行車前安全檢查，這也是忠正駕訓班對學員安全與環境的用心",
+      "referenceCaption": "車輛可在停車棚內完成行車前安全檢查，這也是忠正駕訓班對學員安全與環境的用心",
+      "answerText": "車輛可在停車棚內完成行車前安全檢查，這也是忠正駕訓班對學員安全與環境的用心",
+      "operationText": "車輛可在停車棚內完成行車前安全檢查，這也是忠正駕訓班對學員安全與環境的用心",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [],
+      "reminderNotes": [
+        "本段屬影片說明或招生內容，已不列入正式刷題題庫。"
+      ],
+      "startSec": 762.12,
+      "endSec": 775.12,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 761.12,
+      "clipEndSec": 776.12,
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "coach_only",
+      "examRelevant": false,
+      "officialSourceLabel": ""
+    },
+    {
+      "id": "road-seg-076",
+      "bankId": "RT-076",
+      "moduleId": "supplementary_promo",
+      "moduleTitle": "未分類模組",
+      "captionText": "影片介紹到這裡，希望對各位有所幫助，謝謝大家，再見",
+      "referenceCaption": "影片介紹到這裡，希望對各位有所幫助，謝謝大家，再見",
+      "answerText": "影片介紹到這裡，希望對各位有所幫助，謝謝大家，再見",
+      "operationText": "影片介紹到這裡，希望對各位有所幫助，謝謝大家，再見",
+      "spokenText": "",
+      "spokenItems": [],
+      "operationTags": [],
+      "reminderNotes": [
+        "本段屬影片說明或招生內容，已不列入正式刷題題庫。"
+      ],
+      "startSec": 775.12,
+      "endSec": 785.12,
+      "clipLeadSeconds": 1.0,
+      "clipLagSeconds": 1.0,
+      "clipStartSec": 774.12,
+      "clipEndSec": 786.12,
+      "tags": [],
+      "quizType": "caption_aligned_operation",
+      "sourceBasis": "captions.sbv",
+      "officialStandardCodes": [],
+      "officialStandards": [],
+      "alignmentLevel": "coach_only",
+      "examRelevant": false,
+      "officialSourceLabel": ""
     }
   ]
 }
