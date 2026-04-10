@@ -306,8 +306,11 @@
     moduleLabel.textContent = moduleInfo ? moduleInfo.title : (current.question.moduleId || '未分類模組');
     prompt.textContent = current.question.prompt;
     segMeta.textContent = `題庫編碼 ${current.question.bankId}｜字幕 ${formatTime(current.question.startSec)} - ${formatTime(current.question.endSec)}｜片段 ${formatTime(current.question.clipStartSec)} - ${formatTime(current.question.clipEndSec)}`;
-    const alignText = current.question.alignmentLevel === 'official_core' ? '這題已對齊你上傳的官方場考評分基準。' : (current.question.alignmentLevel === 'coach_only' ? '這題屬教練補充，非官方評分表明列核心。' : '這題與官方評分基準有關，但目前仍保留部分教練化提示。');
-    note.textContent = `模組重點：${moduleInfo ? moduleInfo.summary : '依字幕判定'}。${alignText}`; 
+    const officialItems = current.question.officialStandards || [];
+    const officialSections = Array.from(new Set(officialItems.map((item) => String(item.label || '').split('｜')[0]).filter(Boolean)));
+    const sectionText = officialSections.length ? `對齊類別：${officialSections.join('／')}。` : '';
+    const alignText = current.question.alignmentLevel === 'official_core' ? '這題已對齊你上傳的官方道路駕駛考驗評分基準。' : (current.question.alignmentLevel === 'coach_only' ? '這題屬教練補充，非官方道路駕駛評分表明列核心。' : '這題與官方道路駕駛考驗評分基準有關，但目前仍保留少量教練提醒。');
+    note.textContent = `模組重點：${moduleInfo ? moduleInfo.summary : '依字幕判定'}。${sectionText}${alignText}`; 
     feedback.textContent = '';
     feedback.className = 'roadtest-feedback';
     answerBox.classList.add('hidden');
@@ -315,12 +318,12 @@
     if (answerSpokenText) answerSpokenText.textContent = current.question.spokenText || '本段以動作提醒為主，沒有固定口誦字句。';
     if (answerCaptionText) answerCaptionText.textContent = current.question.referenceCaption || current.question.captionText || '';
     if (officialBadge) {
-      const levelMap = { official_core: '官方核心項目', official_related: '官方相關項目', coach_only: '教練補充項目' };
-      officialBadge.textContent = levelMap[current.question.alignmentLevel] || '官方相關項目';
+      const levelMap = { official_core: '道路考驗核心項目', official_related: '道路考驗相關項目', coach_only: '教練補充項目' };
+      officialBadge.textContent = levelMap[current.question.alignmentLevel] || '道路考驗相關項目';
       officialBadge.className = `roadtest-official-badge-text ${current.question.alignmentLevel}`;
     }
     if (officialCriteria) {
-      const items = current.question.officialStandards || [];
+      const items = officialItems;
       officialCriteria.innerHTML = items.length ? items.map((item) => `<li><strong>${item.code}</strong>｜${item.label}（扣 ${item.deduction} 分）</li>`).join('') : '<li>本段沒有直接對應到你上傳官方評分表的明列扣分項，但保留作為教練補充。</li>';
     }
     if (officialSource) officialSource.textContent = current.question.officialSourceLabel || '';

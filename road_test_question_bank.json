@@ -23,17 +23,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A1"
+      "D1-1"
     ],
     "officialStandards": [
       {
-        "code": "A1",
-        "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+        "code": "D1-1",
+        "label": "行車前檢查及起駛前動作｜上車前察看車輛四周、車底及輪胎有無異物（狀）",
         "deduction": 32,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -62,17 +62,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A1"
+      "D1-1"
     ],
     "officialStandards": [
       {
-        "code": "A1",
-        "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+        "code": "D1-1",
+        "label": "行車前檢查及起駛前動作｜上車前察看車輛四周、車底及輪胎有無異物（狀）",
         "deduction": 32,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -101,17 +101,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A1"
+      "D1-1"
     ],
     "officialStandards": [
       {
-        "code": "A1",
-        "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+        "code": "D1-1",
+        "label": "行車前檢查及起駛前動作｜上車前察看車輛四周、車底及輪胎有無異物（狀）",
         "deduction": 32,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -138,17 +138,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A1"
+      "D1-1"
     ],
     "officialStandards": [
       {
-        "code": "A1",
-        "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+        "code": "D1-1",
+        "label": "行車前檢查及起駛前動作｜上車前察看車輛四周、車底及輪胎有無異物（狀）",
         "deduction": 32,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -177,17 +177,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A1"
+      "D1-1"
     ],
     "officialStandards": [
       {
-        "code": "A1",
-        "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+        "code": "D1-1",
+        "label": "行車前檢查及起駛前動作｜上車前察看車輛四周、車底及輪胎有無異物（狀）",
         "deduction": 32,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -216,17 +216,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A1"
+      "D1-1"
     ],
     "officialStandards": [
       {
-        "code": "A1",
-        "label": "上車前察看車輛四周、車底及輪胎有無異物（狀）",
+        "code": "D1-1",
+        "label": "行車前檢查及起駛前動作｜上車前察看車輛四周、車底及輪胎有無異物（狀）",
         "deduction": 32,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -235,7 +235,7 @@
     "moduleId": "two_stage_door_entry",
     "moduleTitle": "兩段式開車門上車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "先看左、看右，確認",
+    "answerText": "上車前先觀察左右來車，再依二段式開門流程短開車門",
     "spokenText": "兩段式開車門／左右無來車",
     "spokenItems": [
       "兩段式開車門",
@@ -252,21 +252,30 @@
       "兩段式開車門",
       "安全確認"
     ],
-    "reminderNotes": [],
+    "reminderNotes": [
+      "正式評分主準是上車前注意人車通過；二段式開門在道路考驗終點下車時也會直接列為扣分項。"
+    ],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R1"
+      "D7-1",
+      "D1-1"
     ],
     "officialStandards": [
       {
-        "code": "R1",
-        "label": "上、下車開車門前未留意有無人車通過（下車應以2段式開門）",
+        "code": "D7-1",
+        "label": "全程道路行駛｜上、下車開車門前未留意有無人車通過（下車應以2段式開門）",
         "deduction": 32,
         "page": 2
+      },
+      {
+        "code": "D1-1",
+        "label": "行車前檢查及起駛前動作｜上車前察看車輛四周、車底及輪胎有無異物（狀）",
+        "deduction": 32,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -275,7 +284,7 @@
     "moduleId": "two_stage_door_entry",
     "moduleTitle": "兩段式開車門上車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "車門先開約15公分，身體不轉動，再看左、看右確認後，再開至約45度上車",
+    "answerText": "車門先短開再複查左右安全，確認後再完成上車",
     "spokenText": "左右無來車",
     "spokenItems": [
       "左右無來車"
@@ -290,12 +299,23 @@
       "safe_left_right",
       "安全確認"
     ],
-    "reminderNotes": [],
+    "reminderNotes": [
+      "二段式開門是教練幫你落實道路考驗的安全開門要求。"
+    ],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D7-1"
+    ],
+    "officialStandards": [
+      {
+        "code": "D7-1",
+        "label": "全程道路行駛｜上、下車開車門前未留意有無人車通過（下車應以2段式開門）",
+        "deduction": 32,
+        "page": 2
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -304,7 +324,7 @@
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "車內：",
+    "answerText": "起駛前調整座椅、椅背與頭枕",
     "spokenText": "調整座椅／調整椅背／調整頭枕",
     "spokenItems": [
       "調整座椅",
@@ -324,17 +344,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A2"
+      "D1-2"
     ],
     "officialStandards": [
       {
-        "code": "A2",
-        "label": "起駛前調整座椅、頭枕或照後鏡（應口誦及動作檢查項目）",
+        "code": "D1-2",
+        "label": "行車前檢查及起駛前動作｜起駛前調整座椅、頭枕或照後鏡（受測人應口誦及動作檢查項目）",
         "deduction": 4,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -343,7 +363,7 @@
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【繫上安全帶】【調整中央後照鏡、左右後照鏡】【確定檔位在P檔、手煞車已拉起】",
+    "answerText": "調整中央後照鏡、左右後照鏡並繫妥安全帶，確認P檔與手煞車",
     "spokenText": "繫上安全帶／調整中央後照鏡、左右後照鏡／確定檔位在P檔、手煞車已拉起",
     "spokenItems": [
       "繫上安全帶",
@@ -367,17 +387,31 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A2"
+      "D1-2",
+      "D1-3",
+      "D1-5"
     ],
     "officialStandards": [
       {
-        "code": "A2",
-        "label": "起駛前調整座椅、頭枕或照後鏡（應口誦及動作檢查項目）",
+        "code": "D1-2",
+        "label": "行車前檢查及起駛前動作｜起駛前調整座椅、頭枕或照後鏡（受測人應口誦及動作檢查項目）",
         "deduction": 4,
+        "page": 1
+      },
+      {
+        "code": "D1-3",
+        "label": "行車前檢查及起駛前動作｜未依規定繫安全帶",
+        "deduction": 32,
+        "page": 1
+      },
+      {
+        "code": "D1-5",
+        "label": "行車前檢查及起駛前動作｜自排車發動引擎未入P檔或未踩煞車",
+        "deduction": 16,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -386,7 +420,7 @@
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "鑰匙往外轉",
+    "answerText": "發動前確認自排車在P檔並踩住煞車，再轉動鑰匙至紅火",
     "spokenText": "開啟紅火",
     "spokenItems": [
       "開啟紅火"
@@ -404,19 +438,19 @@
       "此段屬發動前流程的一部分；官方核心是自排車須入P檔且踩煞車。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A5"
+      "D1-5"
     ],
     "officialStandards": [
       {
-        "code": "A5",
-        "label": "自排車發動引擎未入P檔或未踩煞車",
+        "code": "D1-5",
+        "label": "行車前檢查及起駛前動作｜自排車發動引擎未入P檔或未踩煞車",
         "deduction": 16,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -445,17 +479,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A4"
+      "D1-4"
     ],
     "officialStandards": [
       {
-        "code": "A4",
-        "label": "起駛前檢查儀表（溫度、油量、煞車、充電、機油）作用（應口誦及指出儀表檢查項目）",
+        "code": "D1-4",
+        "label": "行車前檢查及起駛前動作｜起駛前未檢查儀表（溫度、油量、煞車、充電、機油）作用",
         "deduction": 4,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -464,7 +498,7 @@
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "踩煞車、發動引擎",
+    "answerText": "踩住煞車發動引擎，確認儀表板顯示正常",
     "spokenText": "引擎發動：儀表板正常",
     "spokenItems": [
       "引擎發動：儀表板正常"
@@ -480,19 +514,19 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_core",
+    "alignmentLevel": "official_related",
     "officialStandardCodes": [
-      "A5"
+      "D1-5"
     ],
     "officialStandards": [
       {
-        "code": "A5",
-        "label": "自排車發動引擎未入P檔或未踩煞車",
+        "code": "D1-5",
+        "label": "行車前檢查及起駛前動作｜自排車發動引擎未入P檔或未踩煞車",
         "deduction": 16,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -501,7 +535,7 @@
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "口誦【試踩煞車：煞車正常】",
+    "answerText": "起駛前鬆開手煞車並檢查煞車作用",
     "spokenText": "試踩煞車：煞車正常",
     "spokenItems": [
       "試踩煞車：煞車正常"
@@ -517,17 +551,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A6"
+      "D1-6"
     ],
     "officialStandards": [
       {
-        "code": "A6",
-        "label": "起駛前未鬆開手煞車及檢查煞車作用",
+        "code": "D1-6",
+        "label": "行車前檢查及起駛前動作｜起駛前未鬆開手煞車及檢查煞車作用",
         "deduction": 16,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -536,7 +570,7 @@
     "moduleId": "cockpit_setup_and_engine_start",
     "moduleTitle": "車內調整與發動前檢查",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "口誦【試打左右方向燈：方向燈正常】",
+    "answerText": "確認左右方向燈作動正常",
     "spokenText": "試打左右方向燈：方向燈正常",
     "spokenItems": [
       "試打左右方向燈：方向燈正常"
@@ -551,22 +585,29 @@
       "right_signal"
     ],
     "reminderNotes": [
-      "官方明列的是起駛、變換車道、轉彎前須依規定顯示方向燈；本段為起駛前自我確認。"
+      "試打方向燈是教練補充，正式扣分主準仍是起駛前與轉彎／變換車道前要正確顯示方向燈。"
     ],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
     "officialStandardCodes": [
-      "A7"
+      "D1-7",
+      "D5-4"
     ],
     "officialStandards": [
       {
-        "code": "A7",
-        "label": "起駛前未依規定顯示方向燈",
+        "code": "D1-7",
+        "label": "行車前檢查及起駛前動作｜起駛前未依規定顯示方向燈",
+        "deduction": 32,
+        "page": 1
+      },
+      {
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -575,7 +616,7 @@
     "moduleId": "start_and_initial_turns",
     "moduleTitle": "起步與前段轉彎",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "打左方向燈",
+    "answerText": "起駛前顯示左方向燈，入D檔、放手煞車準備起步",
     "spokenText": "準備起步，打D檔，放手煞車",
     "spokenItems": [
       "準備起步，打D檔，放手煞車"
@@ -595,24 +636,24 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A6",
-      "A7"
+      "D1-7",
+      "D1-6"
     ],
     "officialStandards": [
       {
-        "code": "A6",
-        "label": "起駛前未鬆開手煞車及檢查煞車作用",
-        "deduction": 16,
+        "code": "D1-7",
+        "label": "行車前檢查及起駛前動作｜起駛前未依規定顯示方向燈",
+        "deduction": 32,
         "page": 1
       },
       {
-        "code": "A7",
-        "label": "起駛前未依規定顯示方向燈",
-        "deduction": 32,
+        "code": "D1-6",
+        "label": "行車前檢查及起駛前動作｜起駛前未鬆開手煞車及檢查煞車作用",
+        "deduction": 16,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -621,7 +662,7 @@
     "moduleId": "start_and_initial_turns",
     "moduleTitle": "起步與前段轉彎",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "起駛前轉頭查看前後左右",
+    "answerText": "起駛前轉頭察看照後鏡並確認前後左右安全，再禮讓人車起步",
     "spokenText": "左右無來車，後方無來車",
     "spokenItems": [
       "左右無來車，後方無來車"
@@ -642,17 +683,17 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A8"
+      "D1-8"
     ],
     "officialStandards": [
       {
-        "code": "A8",
-        "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+        "code": "D1-8",
+        "label": "行車前檢查及起駛前動作｜起駛前未轉頭察看照後鏡並注意前後左右有無障礙或車輛行人",
         "deduction": 32,
         "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -661,7 +702,7 @@
     "moduleId": "start_and_initial_turns",
     "moduleTitle": "起步與前段轉彎",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "方向燈回正，打右邊方向燈",
+    "answerText": "轉彎前依規定切換方向燈",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "方向燈回正，打右邊方向燈",
@@ -674,9 +715,18 @@
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D5-4"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
@@ -685,7 +735,7 @@
     "moduleId": "start_and_initial_turns",
     "moduleTitle": "起步與前段轉彎",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "前方路口減速查看",
+    "answerText": "接近路口先減速查看，預作隨時停車準備",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "前方路口減速查看；",
@@ -701,56 +751,28 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
     "bankId": "RT-020",
-    "segmentId": "road-seg-021",
-    "moduleId": "start_and_initial_turns",
-    "moduleTitle": "起步與前段轉彎",
-    "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "(行駛時出入都靠大門左側)",
-    "spokenText": "",
-    "spokenItems": [],
-    "captionText": "(行駛時出入都靠大門左側)",
-    "referenceCaption": "(行駛時出入都靠大門左側)",
-    "startSec": 158.551,
-    "endSec": 176.8,
-    "clipStartSec": 157.55,
-    "clipEndSec": 177.8,
-    "operationTags": [
-      "大門左側"
-    ],
-    "reminderNotes": [
-      "行駛時出入都靠大門左側"
-    ],
-    "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
-    "examRelevant": true
-  },
-  {
-    "bankId": "RT-021",
     "segmentId": "road-seg-022",
     "moduleId": "start_and_initial_turns",
     "moduleTitle": "起步與前段轉彎",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "右轉後打左方向燈",
+    "answerText": "右轉完成後依規定切換左方向燈，準備後續車道操作",
     "spokenText": "左右無來車、後方無來車",
     "spokenItems": [
       "左右無來車、後方無來車"
@@ -772,42 +794,35 @@
       "轉彎前核心是方向燈、照後鏡、死角確認；B柱轉頭屬教練用來落實死角確認的操作提醒。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_core",
+    "alignmentLevel": "official_related",
     "officialStandardCodes": [
-      "R3",
-      "R4",
-      "R8"
+      "D5-4",
+      "D5-8"
     ],
     "officialStandards": [
       {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
-        "page": 2
+        "page": 1
       },
       {
-        "code": "R4",
-        "label": "變換車道、轉彎後仍持續顯示方向燈",
-        "deduction": 16,
-        "page": 2
-      },
-      {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+        "code": "D5-8",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜未依規定路線行駛或未依規定行駛正確車道",
         "deduction": 32,
-        "page": 2
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-022",
+    "bankId": "RT-021",
     "segmentId": "road-seg-023",
     "moduleId": "start_and_initial_turns",
     "moduleTitle": "起步與前段轉彎",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "左轉走快車道 此路口需特別注意雙黃線",
+    "answerText": "左轉前減速查看路口安全，左轉後依規定進入正確車道",
     "spokenText": "前方路口減速查看,左右無來車",
     "spokenItems": [
       "前方路口減速查看,左右無來車"
@@ -827,31 +842,45 @@
       "安全確認"
     ],
     "reminderNotes": [
-      "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
+      "雙黃線提醒屬教練補充，正式主準對應的是不得跨越分向限制線與要走正確車道。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-4",
+      "D5-8",
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
-        "page": 2
+        "page": 1
+      },
+      {
+        "code": "D5-8",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜未依規定路線行駛或未依規定行駛正確車道",
+        "deduction": 32,
+        "page": 1
+      },
+      {
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-023",
+    "bankId": "RT-022",
     "segmentId": "road-seg-024",
     "moduleId": "lane_change_fast_to_slow",
     "moduleTitle": "快車道切慢車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "打右方向燈",
+    "answerText": "由快車道切換至慢車道前，顯示右方向燈並減速查看",
     "spokenText": "前方路口減速查看，進行變換車道／左右無來車，後方無來車",
     "spokenItems": [
       "前方路口減速查看，進行變換車道",
@@ -878,40 +907,33 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R3",
-      "R4",
-      "R7"
+      "D5-4",
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
-        "page": 2
+        "page": 1
       },
       {
-        "code": "R4",
-        "label": "變換車道、轉彎後仍持續顯示方向燈",
-        "deduction": 16,
-        "page": 2
-      },
-      {
-        "code": "R7",
-        "label": "未按規定路線行駛或未按規定變換車道",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-024",
+    "bankId": "RT-023",
     "segmentId": "road-seg-025",
     "moduleId": "lane_change_fast_to_slow",
     "moduleTitle": "快車道切慢車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "由快車道切換至慢車道，轉頭時需看到B柱",
+    "answerText": "變換車道前轉頭察看照後鏡並確認側後方安全，再切入慢車道",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "由快車道切換至慢車道，轉頭時需看到B柱",
@@ -929,38 +951,31 @@
       "快車道"
     ],
     "reminderNotes": [
-      "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
+      "教練以「看到B柱」幫助你做出明顯轉頭動作；官方主準是轉頭察看照後鏡並注意車輛行人。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A8",
-      "R3"
+      "D5-4"
     ],
     "officialStandards": [
       {
-        "code": "A8",
-        "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
         "page": 1
-      },
-      {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
-        "deduction": 32,
-        "page": 2
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-025",
+    "bankId": "RT-024",
     "segmentId": "road-seg-026",
     "moduleId": "lane_change_fast_to_slow",
     "moduleTitle": "快車道切慢車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "完成變換車道後，持續穩定行駛於慢車道",
+    "answerText": "完成變換車道後，穩定行駛於正確車道",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "完成變換車道後，持續穩定行駛於慢車道",
@@ -976,19 +991,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D5-8"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-8",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜未依規定路線行駛或未依規定行駛正確車道",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-026",
+    "bankId": "RT-025",
     "segmentId": "road-seg-027",
     "moduleId": "roadside_temporary_stop",
     "moduleTitle": "路邊臨時停車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "打右方向燈，再看左後方",
+    "answerText": "靠邊停車前顯示右方向燈，並再次確認左右與後方安全",
     "spokenText": "前方路口減速查看，左右無來車，後方無來車／後方無來車",
     "spokenItems": [
       "前方路口減速查看，左右無來車，後方無來車",
@@ -1015,40 +1039,26 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R3",
-      "R4",
-      "R8"
+      "D4-3"
     ],
     "officialStandards": [
       {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+        "code": "D4-3",
+        "label": "路邊臨時停車｜靠邊停車前或起駛前，未依規定顯示方向燈或未轉頭察看照後鏡及注意有無障礙或車輛行人",
         "deduction": 32,
-        "page": 2
-      },
-      {
-        "code": "R4",
-        "label": "變換車道、轉彎後仍持續顯示方向燈",
-        "deduction": 16,
-        "page": 2
-      },
-      {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-027",
+    "bankId": "RT-026",
     "segmentId": "road-seg-028",
     "moduleId": "roadside_temporary_stop",
     "moduleTitle": "路邊臨時停車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "頭需看到B柱，車身盡量靠近道路邊線",
+    "answerText": "靠邊停車前轉頭確認側後方安全，再讓車身靠近路面邊緣",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "頭需看到B柱，車身盡量靠近道路邊線",
@@ -1063,38 +1073,31 @@
       "邊線控制"
     ],
     "reminderNotes": [
-      "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
+      "B柱是教練用來強化死角檢查的提示。"
     ],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
     "officialStandardCodes": [
-      "A8",
-      "R3"
+      "D4-3"
     ],
     "officialStandards": [
       {
-        "code": "A8",
-        "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+        "code": "D4-3",
+        "label": "路邊臨時停車｜靠邊停車前或起駛前，未依規定顯示方向燈或未轉頭察看照後鏡及注意有無障礙或車輛行人",
         "deduction": 32,
         "page": 1
-      },
-      {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
-        "deduction": 32,
-        "page": 2
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-028",
+    "bankId": "RT-027",
     "segmentId": "road-seg-029",
     "moduleId": "roadside_temporary_stop",
     "moduleTitle": "路邊臨時停車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "注意道路邊線不可壓到",
+    "answerText": "路邊臨時停車時注意不可壓到路面邊線，並控制與邊緣距離",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "注意道路邊線不可壓到，",
@@ -1109,18 +1112,34 @@
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D4-4",
+      "D5-5"
+    ],
+    "officialStandards": [
+      {
+        "code": "D4-4",
+        "label": "路邊臨時停車｜臨時停車時右側前後輪胎外側距離緣石或路面邊緣逾六十公分",
+        "deduction": 16,
+        "page": 1
+      },
+      {
+        "code": "D5-5",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行駛中車輪壓實線（分向限制線、快慢車道分隔線、禁止變換車道線或路面邊線）",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-029",
+    "bankId": "RT-028",
     "segmentId": "road-seg-030",
     "moduleId": "roadside_temporary_stop",
     "moduleTitle": "路邊臨時停車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "打右方向燈",
+    "answerText": "再次靠邊停車前依規定顯示右方向燈",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "打右方向燈；",
@@ -1134,19 +1153,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D4-3"
+    ],
+    "officialStandards": [
+      {
+        "code": "D4-3",
+        "label": "路邊臨時停車｜靠邊停車前或起駛前，未依規定顯示方向燈或未轉頭察看照後鏡及注意有無障礙或車輛行人",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-030",
+    "bankId": "RT-029",
     "segmentId": "road-seg-031",
     "moduleId": "roadside_temporary_stop",
     "moduleTitle": "路邊臨時停車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車】，",
+    "answerText": "路邊臨時停車前減速查看並確認左右與後方安全",
     "spokenText": "前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車",
     "spokenItems": [
       "前方路口減速查看，進行路邊臨時停車，左右無來車，後方無來車"
@@ -1170,28 +1198,35 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D4-3",
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+        "code": "D4-3",
+        "label": "路邊臨時停車｜靠邊停車前或起駛前，未依規定顯示方向燈或未轉頭察看照後鏡及注意有無障礙或車輛行人",
         "deduction": 32,
-        "page": 2
+        "page": 1
+      },
+      {
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-031",
+    "bankId": "RT-030",
     "segmentId": "road-seg-032",
     "moduleId": "roadside_temporary_stop",
     "moduleTitle": "路邊臨時停車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "頭需看到B柱",
+    "answerText": "靠邊停車最後修正前，再次轉頭確認側後方安全",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "頭需看到B柱",
@@ -1205,142 +1240,31 @@
       "B柱確認"
     ],
     "reminderNotes": [
-      "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
+      "B柱是教練化提醒，正式主準仍是轉頭察看照後鏡並注意人車。"
     ],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
     "officialStandardCodes": [
-      "A8",
-      "R3"
+      "D4-3"
     ],
     "officialStandards": [
       {
-        "code": "A8",
-        "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+        "code": "D4-3",
+        "label": "路邊臨時停車｜靠邊停車前或起駛前，未依規定顯示方向燈或未轉頭察看照後鏡及注意有無障礙或車輛行人",
         "deduction": 32,
         "page": 1
-      },
-      {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
-        "deduction": 32,
-        "page": 2
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-032",
-    "segmentId": "road-seg-033",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【打P檔、拉手煞車】；",
-    "spokenText": "打P檔、拉手煞車",
-    "spokenItems": [
-      "打P檔、拉手煞車"
-    ],
-    "captionText": "【打P檔、拉手煞車】；",
-    "referenceCaption": "【打P檔、拉手煞車】；",
-    "startSec": 276.487,
-    "endSec": 282.489,
-    "clipStartSec": 275.49,
-    "clipEndSec": 283.49,
-    "operationTags": [
-      "gear_p",
-      "hand_brake"
-    ],
-    "reminderNotes": [
-      "影片把臨停後的手腳順序講得很細；官方評分重點則落在是否依規定路線與安全方式完成。"
-    ],
-    "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [
-      "R7"
-    ],
-    "officialStandards": [
-      {
-        "code": "R7",
-        "label": "未按規定路線行駛或未按規定變換車道",
-        "deduction": 32,
-        "page": 2
-      }
-    ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
-    "examRelevant": true
-  },
-  {
-    "bankId": "RT-033",
-    "segmentId": "road-seg-034",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "放鬆腳煞車，確認不滑動後，腳再回煞車",
-    "spokenText": "",
-    "spokenItems": [],
-    "captionText": "放鬆腳煞車，確認不滑動後， 腳再回煞車",
-    "referenceCaption": "放鬆腳煞車，確認不滑動後， 腳再回煞車",
-    "startSec": 282.489,
-    "endSec": 285.312,
-    "clipStartSec": 281.49,
-    "clipEndSec": 286.31,
-    "operationTags": [],
-    "reminderNotes": [],
-    "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
-    "examRelevant": true
-  },
-  {
-    "bankId": "RT-034",
-    "segmentId": "road-seg-035",
-    "moduleId": "roadside_temporary_stop",
-    "moduleTitle": "路邊臨時停車",
-    "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【路邊臨時停車完畢】",
-    "spokenText": "路邊臨時停車完畢",
-    "spokenItems": [
-      "路邊臨時停車完畢"
-    ],
-    "captionText": "【路邊臨時停車完畢】",
-    "referenceCaption": "【路邊臨時停車完畢】",
-    "startSec": 285.312,
-    "endSec": 288.22,
-    "clipStartSec": 284.31,
-    "clipEndSec": 289.22,
-    "operationTags": [
-      "temporary_stop",
-      "臨停"
-    ],
-    "reminderNotes": [
-      "影片把臨停後的手腳順序講得很細；官方評分重點則落在是否依規定路線與安全方式完成。"
-    ],
-    "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [
-      "R7"
-    ],
-    "officialStandards": [
-      {
-        "code": "R7",
-        "label": "未按規定路線行駛或未按規定變換車道",
-        "deduction": 32,
-        "page": 2
-      }
-    ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
-    "examRelevant": true
-  },
-  {
-    "bankId": "RT-035",
+    "bankId": "RT-031",
     "segmentId": "road-seg-036",
     "moduleId": "resume_and_left_lane_change",
     "moduleTitle": "由路邊切回主線並左切車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "踩剎車，打左方向燈",
+    "answerText": "由路邊起駛前顯示左方向燈，入D檔、放手煞車並確認後方安全",
     "spokenText": "切入主線道，打D檔，放手煞車，後方無來車",
     "spokenItems": [
       "切入主線道，打D檔，放手煞車，後方無來車"
@@ -1362,33 +1286,33 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A6",
-      "A7"
+      "D4-3",
+      "D7-2"
     ],
     "officialStandards": [
       {
-        "code": "A6",
-        "label": "起駛前未鬆開手煞車及檢查煞車作用",
-        "deduction": 16,
+        "code": "D4-3",
+        "label": "路邊臨時停車｜靠邊停車前或起駛前，未依規定顯示方向燈或未轉頭察看照後鏡及注意有無障礙或車輛行人",
+        "deduction": 32,
         "page": 1
       },
       {
-        "code": "A7",
-        "label": "起駛前未依規定顯示方向燈",
+        "code": "D7-2",
+        "label": "全程道路行駛｜起駛前未依規定顯示方向燈或未察看照後鏡並轉頭注意前後左右有無障礙或車輛行人",
         "deduction": 32,
-        "page": 1
+        "page": 2
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-036",
+    "bankId": "RT-032",
     "segmentId": "road-seg-037",
     "moduleId": "resume_and_left_lane_change",
     "moduleTitle": "由路邊切回主線並左切車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "頭需看到B柱後再起步",
+    "answerText": "由路邊起駛前轉頭察看照後鏡並確認後方安全後再起步",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "頭需看到B柱後再起步",
@@ -1402,38 +1326,38 @@
       "B柱確認"
     ],
     "reminderNotes": [
-      "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
+      "B柱是教練化口訣，正式主準是明顯轉頭確認。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A8",
-      "R3"
+      "D4-3",
+      "D7-2"
     ],
     "officialStandards": [
       {
-        "code": "A8",
-        "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+        "code": "D4-3",
+        "label": "路邊臨時停車｜靠邊停車前或起駛前，未依規定顯示方向燈或未轉頭察看照後鏡及注意有無障礙或車輛行人",
         "deduction": 32,
         "page": 1
       },
       {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+        "code": "D7-2",
+        "label": "全程道路行駛｜起駛前未依規定顯示方向燈或未察看照後鏡並轉頭注意前後左右有無障礙或車輛行人",
         "deduction": 32,
         "page": 2
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-037",
+    "bankId": "RT-033",
     "segmentId": "road-seg-038",
     "moduleId": "resume_and_left_lane_change",
     "moduleTitle": "由路邊切回主線並左切車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "打左方向燈",
+    "answerText": "往左變換車道前顯示左方向燈並確認後方安全",
     "spokenText": "進行變換車道，後方無來車",
     "spokenItems": [
       "進行變換車道，後方無來車"
@@ -1456,40 +1380,26 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R3",
-      "R4",
-      "R7"
+      "D5-4"
     ],
     "officialStandards": [
       {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
-        "page": 2
-      },
-      {
-        "code": "R4",
-        "label": "變換車道、轉彎後仍持續顯示方向燈",
-        "deduction": 16,
-        "page": 2
-      },
-      {
-        "code": "R7",
-        "label": "未按規定路線行駛或未按規定變換車道",
-        "deduction": 32,
-        "page": 2
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-038",
+    "bankId": "RT-034",
     "segmentId": "road-seg-039",
     "moduleId": "resume_and_left_lane_change",
     "moduleTitle": "由路邊切回主線並左切車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "頭需看到B柱，沒車再變換車道",
+    "answerText": "變換車道前轉頭察看照後鏡並確認側後方安全，再切入車道",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "頭需看到B柱，沒車再變換車道",
@@ -1504,38 +1414,31 @@
       "B柱確認"
     ],
     "reminderNotes": [
-      "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
+      "B柱是教練化提醒，主準仍是轉頭察看照後鏡並注意車輛行人。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A8",
-      "R3"
+      "D5-4"
     ],
     "officialStandards": [
       {
-        "code": "A8",
-        "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
         "page": 1
-      },
-      {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
-        "deduction": 32,
-        "page": 2
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-039",
+    "bankId": "RT-035",
     "segmentId": "road-seg-040",
     "moduleId": "straight_intersection_checks",
     "moduleTitle": "直線行駛與路口減速查看",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "前方路口減速查看",
+    "answerText": "通過路口前先減速查看，確認安全後再通行",
     "spokenText": "左右無來車",
     "spokenItems": [
       "左右無來車"
@@ -1555,28 +1458,28 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-040",
+    "bankId": "RT-036",
     "segmentId": "road-seg-041",
     "moduleId": "straight_intersection_checks",
     "moduleTitle": "直線行駛與路口減速查看",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "直線路段留意兩側照後鏡與車身、車道線間距",
+    "answerText": "直線路段保持車身在車道內，注意照後鏡與車身位置",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "直線路段留意兩側照後鏡與車身、車道線間距",
@@ -1591,18 +1494,27 @@
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D5-5"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-5",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行駛中車輪壓實線（分向限制線、快慢車道分隔線、禁止變換車道線或路面邊線）",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-041",
+    "bankId": "RT-037",
     "segmentId": "road-seg-042",
     "moduleId": "straight_intersection_checks",
     "moduleTitle": "直線行駛與路口減速查看",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "前方路口減速查看",
+    "answerText": "通過路口前先減速查看，確認安全後再通行",
     "spokenText": "左右無來車",
     "spokenItems": [
       "左右無來車"
@@ -1622,28 +1534,28 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-042",
+    "bankId": "RT-038",
     "segmentId": "road-seg-043",
     "moduleId": "straight_intersection_checks",
     "moduleTitle": "直線行駛與路口減速查看",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "行駛中隨時注意不要壓到左右車道線",
+    "answerText": "行駛中保持車身不壓線，持續留意車道線位置",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "行駛中隨時注意不要壓到左右車道線",
@@ -1657,19 +1569,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D5-5"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-5",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行駛中車輪壓實線（分向限制線、快慢車道分隔線、禁止變換車道線或路面邊線）",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-043",
+    "bankId": "RT-039",
     "segmentId": "road-seg-044",
     "moduleId": "straight_intersection_checks",
     "moduleTitle": "直線行駛與路口減速查看",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "再次通過路口前減速查看",
+    "answerText": "通過路口前先減速查看，確認安全後再通行",
     "spokenText": "左右無來車",
     "spokenItems": [
       "左右無來車"
@@ -1686,19 +1607,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D5-9"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-044",
+    "bankId": "RT-040",
     "segmentId": "road-seg-045",
     "moduleId": "u_turn_sequence",
     "moduleTitle": "迴轉流程",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "打左方向燈",
+    "answerText": "迴轉前依規定顯示左方向燈",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "打左方向燈",
@@ -1712,19 +1642,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D5-4"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-045",
+    "bankId": "RT-041",
     "segmentId": "road-seg-046",
     "moduleId": "u_turn_sequence",
     "moduleTitle": "迴轉流程",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "配合準備迴轉",
+    "answerText": "迴轉前減速查看路口安全，預作隨時停車準備",
     "spokenText": "前方路口減速查看",
     "spokenItems": [
       "前方路口減速查看"
@@ -1743,28 +1682,28 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-046",
+    "bankId": "RT-042",
     "segmentId": "road-seg-047",
     "moduleId": "u_turn_sequence",
     "moduleTitle": "迴轉流程",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "確認，到達定點後迅速完成方向盤操作",
+    "answerText": "迴轉前確認左右安全後，依序完成方向盤操作",
     "spokenText": "左右無來車",
     "spokenItems": [
       "左右無來車"
@@ -1782,18 +1721,34 @@
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D5-4",
+      "D5-7"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
+        "deduction": 32,
+        "page": 1
+      },
+      {
+        "code": "D5-7",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜未遵守路權（含轉彎讓直行、圓環優先等）",
+        "deduction": 16,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-047",
+    "bankId": "RT-043",
     "segmentId": "road-seg-048",
     "moduleId": "u_turn_sequence",
     "moduleTitle": "迴轉流程",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "迴轉後走外側車道",
+    "answerText": "迴轉後依規定行駛於正確車道",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "迴轉後走外側車道，",
@@ -1808,19 +1763,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D5-8"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-8",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜未依規定路線行駛或未依規定行駛正確車道",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-048",
+    "bankId": "RT-044",
     "segmentId": "road-seg-049",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "持續注意兩側車道線，盡量讓車輛保持在車道中央",
+    "answerText": "迴轉後持續保持車身在車道中央",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "持續注意兩側車道線，盡量讓車輛保持在車道中央",
@@ -1835,18 +1799,27 @@
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D5-5"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-5",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行駛中車輪壓實線（分向限制線、快慢車道分隔線、禁止變換車道線或路面邊線）",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-049",
+    "bankId": "RT-045",
     "segmentId": "road-seg-050",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "壓到任何一側邊線都會扣分",
+    "answerText": "行駛中不可壓到任何實線或路面邊線",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "壓到任何一側邊線都會扣分，",
@@ -1861,19 +1834,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D5-5"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-5",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行駛中車輪壓實線（分向限制線、快慢車道分隔線、禁止變換車道線或路面邊線）",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-050",
+    "bankId": "RT-046",
     "segmentId": "road-seg-051",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
+    "answerText": "接近路口先減速查看，確認安全後再通行",
     "spokenText": "前方路口減速查看／左右無來車",
     "spokenItems": [
       "前方路口減速查看",
@@ -1894,28 +1876,28 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-051",
+    "bankId": "RT-047",
     "segmentId": "road-seg-052",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "行車速度盡量維持在約40公里左右",
+    "answerText": "一般道路行駛時平穩控制車速，接近路口前先減速",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "行車速度盡量維持在約40公里左右",
@@ -1930,18 +1912,27 @@
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D5-9"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-052",
+    "bankId": "RT-048",
     "segmentId": "road-seg-053",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
+    "answerText": "接近路口先減速查看，確認安全後再通行",
     "spokenText": "前方路口減速查看／左右無來車",
     "spokenItems": [
       "前方路口減速查看",
@@ -1962,28 +1953,28 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-053",
+    "bankId": "RT-049",
     "segmentId": "road-seg-054",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
+    "answerText": "接近路口先減速查看，確認安全後再通行",
     "spokenText": "前方路口減速查看／左右無來車",
     "spokenItems": [
       "前方路口減速查看",
@@ -2004,28 +1995,28 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-054",
+    "bankId": "RT-050",
     "segmentId": "road-seg-055",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "此路段須特別注意車速，標示約40公里，最高速度不要超過44公里",
+    "answerText": "依速限與路況控制車速，不可因標示40就忽略前方路況",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "此路段須特別注意車速， 標示約40公里，最高速度不要超過44公里",
@@ -2037,21 +2028,39 @@
     "operationTags": [
       "速度控制"
     ],
-    "reminderNotes": [],
+    "reminderNotes": [
+      "教練口訣中的40～44公里是該場路線經驗值；正式主準是遇應減速路段要慢行並作隨時停車準備。"
+    ],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D5-9",
+      "D6-4"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
+      },
+      {
+        "code": "D6-4",
+        "label": "交通法規之遵守｜未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+        "deduction": 32,
+        "page": 2
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-055",
+    "bankId": "RT-051",
     "segmentId": "road-seg-056",
     "moduleId": "post_uturn_speed_and_centering",
     "moduleTitle": "迴轉後控速與置中",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
+    "answerText": "接近路口先減速查看，確認安全後再通行",
     "spokenText": "前方路口減速查看／左右無來車",
     "spokenItems": [
       "前方路口減速查看",
@@ -2072,28 +2081,28 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-056",
+    "bankId": "RT-052",
     "segmentId": "road-seg-057",
     "moduleId": "signalized_left_turn_to_slow_lane",
     "moduleTitle": "號誌路口左轉回慢車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "到路口前打左方向燈",
+    "answerText": "到號誌路口左轉前，顯示左方向燈並減速查看路口安全",
     "spokenText": "前方路口減速查看／左右無來車",
     "spokenItems": [
       "前方路口減速查看",
@@ -2117,40 +2126,33 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R3",
-      "R4",
-      "R8"
+      "D5-4",
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
-        "page": 2
+        "page": 1
       },
       {
-        "code": "R4",
-        "label": "變換車道、轉彎後仍持續顯示方向燈",
-        "deduction": 16,
-        "page": 2
-      },
-      {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-057",
+    "bankId": "RT-053",
     "segmentId": "road-seg-058",
     "moduleId": "signalized_left_turn_to_slow_lane",
     "moduleTitle": "號誌路口左轉回慢車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "等紅綠燈後，起步前記得做左右擺頭，尤其是第一台",
+    "answerText": "紅燈停等後重新起駛前，先轉頭確認照後鏡與前後左右安全",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "等紅綠燈後，起步前記得做左右擺頭； 尤其是第一台",
@@ -2164,19 +2166,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D2-3"
+    ],
+    "officialStandards": [
+      {
+        "code": "D2-3",
+        "label": "交岔路口｜起駛前未轉頭察看照後鏡並注意有無障礙或車輛行人",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-058",
+    "bankId": "RT-054",
     "segmentId": "road-seg-059",
     "moduleId": "signalized_left_turn_to_slow_lane",
     "moduleTitle": "號誌路口左轉回慢車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "頭需看到B柱",
+    "answerText": "起駛前確認左右與後方安全後再完成左轉",
     "spokenText": "左右無來車，後方無來車",
     "spokenItems": [
       "左右無來車，後方無來車"
@@ -2196,38 +2207,38 @@
       "後方確認"
     ],
     "reminderNotes": [
-      "B柱與45度是教練化提醒，目的在於落實官方要求的照後鏡與視野死角檢查。"
+      "教練用B柱提醒你做出明顯轉頭；官方交岔路口主準是起駛前察看照後鏡並注意人車。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "A8",
-      "R3"
+      "D2-3",
+      "D5-4"
     ],
     "officialStandards": [
       {
-        "code": "A8",
-        "label": "起駛前未轉頭察看照後鏡、檢查視野死角及注意前後左右有無障礙或車輛行人通過；不暫停讓行進中之車輛行人優先通行",
+        "code": "D2-3",
+        "label": "交岔路口｜起駛前未轉頭察看照後鏡並注意有無障礙或車輛行人",
         "deduction": 32,
         "page": 1
       },
       {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
-        "page": 2
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第1/2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-059",
+    "bankId": "RT-055",
     "segmentId": "road-seg-060",
     "moduleId": "signalized_left_turn_to_slow_lane",
     "moduleTitle": "號誌路口左轉回慢車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "左轉後直接走慢車道",
+    "answerText": "左轉後依規定進入慢車道",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "左轉後直接走慢車道，",
@@ -2242,19 +2253,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D5-8"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-8",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜未依規定路線行駛或未依規定行駛正確車道",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-060",
+    "bankId": "RT-056",
     "segmentId": "road-seg-061",
     "moduleId": "signalized_left_turn_to_slow_lane",
     "moduleTitle": "號誌路口左轉回慢車道",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "注意左側可能有違規插入的車輛，確認左後方來車",
+    "answerText": "左轉後持續注意左側與左後方車流，避免影響優先車流",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "注意左側可能有違規插入的車輛，確認左後方來車",
@@ -2269,18 +2289,34 @@
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D5-7",
+      "D5-8"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-7",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜未遵守路權（含轉彎讓直行、圓環優先等）",
+        "deduction": 16,
+        "page": 1
+      },
+      {
+        "code": "D5-8",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜未依規定路線行駛或未依規定行駛正確車道",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-061",
+    "bankId": "RT-057",
     "segmentId": "road-seg-062",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看】【左右無來車】",
+    "answerText": "返回終點前通過路口先減速查看，確認安全後再通行",
     "spokenText": "前方路口減速查看／左右無來車",
     "spokenItems": [
       "前方路口減速查看",
@@ -2301,28 +2337,28 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-062",
+    "bankId": "RT-058",
     "segmentId": "road-seg-063",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "注意道路邊線，白線不可壓到",
+    "answerText": "接近終點前保持不壓路面邊線，並減速查看路口安全",
     "spokenText": "前方路口減速查看／左右無來車",
     "spokenItems": [
       "前方路口減速查看",
@@ -2345,28 +2381,35 @@
       "官方表列未直接寫「前方路口減速查看」，但它屬於遵守標誌號誌、降低風險的教練化口令。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
+    "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R8"
+      "D5-5",
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
+        "code": "D5-5",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行駛中車輪壓實線（分向限制線、快慢車道分隔線、禁止變換車道線或路面邊線）",
         "deduction": 32,
-        "page": 2
+        "page": 1
+      },
+      {
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-063",
+    "bankId": "RT-059",
     "segmentId": "road-seg-064",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看(打右方向燈)左右無來車,後方無來車】",
+    "answerText": "靠終點區域前顯示右方向燈並確認左右與後方安全",
     "spokenText": "前方路口減速查看(打右方向燈)左右無來車,後方無來車",
     "spokenItems": [
       "前方路口減速查看(打右方向燈)左右無來車,後方無來車"
@@ -2392,40 +2435,33 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R3",
-      "R4",
-      "R8"
+      "D5-4",
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
-        "page": 2
+        "page": 1
       },
       {
-        "code": "R4",
-        "label": "變換車道、轉彎後仍持續顯示方向燈",
-        "deduction": 16,
-        "page": 2
-      },
-      {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-064",
+    "bankId": "RT-060",
     "segmentId": "road-seg-065",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【前方路口減速查看(打左方向燈)左右無來車,後方無來車】",
+    "answerText": "需要再調整位置時依規定顯示左方向燈並確認左右與後方安全",
     "spokenText": "前方路口減速查看(打左方向燈)左右無來車,後方無來車",
     "spokenItems": [
       "前方路口減速查看(打左方向燈)左右無來車,後方無來車"
@@ -2449,42 +2485,35 @@
       "轉彎前核心是方向燈、照後鏡、死角確認；B柱轉頭屬教練用來落實死角確認的操作提醒。"
     ],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_core",
+    "alignmentLevel": "official_related",
     "officialStandardCodes": [
-      "R3",
-      "R4",
-      "R8"
+      "D5-4",
+      "D5-9"
     ],
     "officialStandards": [
       {
-        "code": "R3",
-        "label": "變換車道、轉彎前未依規定顯示方向燈或未轉頭察看照後鏡、檢查視野死角並注意有無障礙或車輛行人",
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
         "deduction": 32,
-        "page": 2
+        "page": 1
       },
       {
-        "code": "R4",
-        "label": "變換車道、轉彎後仍持續顯示方向燈",
-        "deduction": 16,
-        "page": 2
-      },
-      {
-        "code": "R8",
-        "label": "未遵守道路交通法規或道路交通標誌、標線、號誌行車",
-        "deduction": 32,
-        "page": 2
+        "code": "D5-9",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜行車速度控制不當，未減速慢行作隨時停車之準備",
+        "deduction": 8,
+        "page": 1
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-065",
+    "bankId": "RT-061",
     "segmentId": "road-seg-066",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "【打右方向燈,左右無來車,後方無來車】",
+    "answerText": "最終靠位前依規定顯示右方向燈並確認安全",
     "spokenText": "打右方向燈,左右無來車,後方無來車",
     "spokenItems": [
       "打右方向燈,左右無來車,後方無來車"
@@ -2504,19 +2533,28 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D5-4"
+    ],
+    "officialStandards": [
+      {
+        "code": "D5-4",
+        "label": "車道行駛、變換車道、路口轉彎、迴車｜岔路轉彎、變換車道前，未依規定顯示方向燈及未轉頭察看照後鏡並注意車輛與行人路況",
+        "deduction": 32,
+        "page": 1
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-066",
+    "bankId": "RT-062",
     "segmentId": "road-seg-067",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "回到起終點區域，找空位將車輛停正",
+    "answerText": "依考驗員指定完成終點停車，將車輛停正",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "回到起終點區域，找空位將車輛停正",
@@ -2531,18 +2569,27 @@
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "officialStandardCodes": [
+      "D7-9"
+    ],
+    "officialStandards": [
+      {
+        "code": "D7-9",
+        "label": "全程道路行駛｜考驗終點停車後下車前未熄火或未拉緊手煞車（自排車未排入P檔）",
+        "deduction": 16,
+        "page": 2
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-067",
+    "bankId": "RT-063",
     "segmentId": "road-seg-068",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "停妥後依序 打P檔、拉手煞車、關風扇、關AC、熄火",
+    "answerText": "考驗終點停車後，依序排入P檔、拉緊手煞車並熄火",
     "spokenText": "",
     "spokenItems": [],
     "captionText": "停妥後依序 打P檔、拉手煞車、 關風扇、關AC、熄火",
@@ -2555,30 +2602,32 @@
       "gear_p",
       "hand_brake"
     ],
-    "reminderNotes": [],
+    "reminderNotes": [
+      "關風扇、關AC屬教練收車補充；官方核心是P檔、手煞車與熄火。"
+    ],
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R16"
+      "D7-9"
     ],
     "officialStandards": [
       {
-        "code": "R16",
-        "label": "考驗終點，停車後下車前未將引擎熄火或未拉緊手煞車（自排車未排入P檔）",
+        "code": "D7-9",
+        "label": "全程道路行駛｜考驗終點停車後下車前未熄火或未拉緊手煞車（自排車未排入P檔）",
         "deduction": 16,
         "page": 2
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-068",
+    "bankId": "RT-064",
     "segmentId": "road-seg-069",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "解開安全帶、椅子退後，進行",
+    "answerText": "下車前解開安全帶並準備二段式開門",
     "spokenText": "兩段式開車門",
     "spokenItems": [
       "兩段式開車門"
@@ -2596,26 +2645,26 @@
     "sourceBasis": "captions.sbv",
     "alignmentLevel": "official_core",
     "officialStandardCodes": [
-      "R1"
+      "D7-1"
     ],
     "officialStandards": [
       {
-        "code": "R1",
-        "label": "上、下車開車門前未留意有無人車通過（下車應以2段式開門）",
+        "code": "D7-1",
+        "label": "全程道路行駛｜上、下車開車門前未留意有無人車通過（下車應以2段式開門）",
         "deduction": 32,
         "page": 2
       }
     ],
-    "officialSourceLabel": "小型車駕駛人場考評分基準及成績紀錄表(115/3/31起) 第2頁",
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   },
   {
-    "bankId": "RT-069",
+    "bankId": "RT-065",
     "segmentId": "road-seg-070",
     "moduleId": "return_and_finish_stop",
     "moduleTitle": "回起終點與收車",
     "prompt": "依片段判斷，這一步最正確的作法是？",
-    "answerText": "先看後照鏡，再把頭伸出車外看後方，確認打開車門15公分下車",
+    "answerText": "下車前先看照後鏡，再確認後方與左右安全後依二段式開門下車",
     "spokenText": "後方無來車／左右無來車",
     "spokenItems": [
       "後方無來車",
@@ -2636,10 +2685,19 @@
     ],
     "reminderNotes": [],
     "sourceBasis": "captions.sbv",
-    "alignmentLevel": "official_related",
-    "officialStandardCodes": [],
-    "officialStandards": [],
-    "officialSourceLabel": "",
+    "alignmentLevel": "official_core",
+    "officialStandardCodes": [
+      "D7-1"
+    ],
+    "officialStandards": [
+      {
+        "code": "D7-1",
+        "label": "全程道路行駛｜上、下車開車門前未留意有無人車通過（下車應以2段式開門）",
+        "deduction": 32,
+        "page": 2
+      }
+    ],
+    "officialSourceLabel": "小型車駕駛人道路駕駛考驗評分基準及成績紀錄表 第1-2頁",
     "examRelevant": true
   }
 ]

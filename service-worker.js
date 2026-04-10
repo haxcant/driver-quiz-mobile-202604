@@ -1,4 +1,4 @@
-const CACHE_NAME = "driver-quiz-mobile-v20260411-roadtest-v5-official";
+const CACHE_NAME = "driver-quiz-mobile-v20260411-roadtest-v6-road-driving";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -8,9 +8,9 @@ const CORE_ASSETS = [
   "./questions.js",
   "./handbook_explanations.js",
   "./network_reference_answers.js",
-  "./road_test_reference_data.js",
-  "./road_test_question_bank.js",
-  "./road-test-sim.js?v=20260411road4spoken1",
+  "./road_test_reference_data.js?v=20260411road6official1",
+  "./road_test_question_bank.js?v=20260411road6official1",
+  "./road-test-sim.js?v=20260411road6official1",
   "./handbook_pages.js",
   "./manifest.webmanifest",
   "./firebase-init.js",
