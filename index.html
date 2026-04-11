@@ -196,6 +196,8 @@
 
     <main id="mainContent" class="panel quiz-panel empty-state"><p>第一次使用者只須點擊「開始練習」即可，題目會顯示在這裡。</p></main>
 
+
+    
     <section class="panel roadtest-panel collapsed-panel">
       <details id="roadTestDetails" class="fold-panel" open>
         <summary>路考模擬</summary>
@@ -226,9 +228,26 @@
 
         <p id="roadTestSourceLabel" class="scope-summary subtle roadtest-source-label">影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒｜考試時預設靜音</p>
 
-        <details id="roadTestSettingsDetails" class="fold-panel roadtest-settings-fold">
-          <summary>考試設定</summary>
+        <div class="roadtest-player-wrap">
+          <iframe id="roadTestVideoFrame" class="roadtest-video-frame" src="" title="路考模擬影片播放器" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
 
+        <div class="roadtest-toolbar roadtest-toolbar-player-actions">
+          <div class="roadtest-toolbar-group roadtest-toolbar-primary">
+            <button id="roadTestPrevBtn" type="button" class="ghost-btn">上一題</button>
+            <button id="roadTestPlayClipBtn" type="button" class="primary-btn">重播片段</button>
+            <button id="roadTestNextBtn" type="button" class="primary-btn">下一題</button>
+            <button id="roadTestRandomBtn" type="button" class="ghost-btn">隨機一題</button>
+          </div>
+        </div>
+
+        <div class="roadtest-meta-row">
+          <div id="roadTestVideoStatus" class="scope-summary subtle">尚未播放片段。</div>
+          <div id="roadTestExamStatus" class="scope-summary subtle roadtest-exam-status"></div>
+        </div>
+
+        <details id="roadTestConfigDetails" class="fold-panel roadtest-settings-fold">
+          <summary>考試設定</summary>
           <div class="roadtest-settings-grid">
             <label class="roadtest-switch-card">
               <input id="roadTestMutedToggle" type="checkbox" checked>
@@ -253,35 +272,16 @@
             </label>
             <label>
               <span>自動跳題延遲（秒）</span>
-              <input id="roadTestAdvanceDelayInput" type="number" min="0.5" max="5" step="0.1" value="1.2">
+              <input id="roadTestAdvanceDelayInput" type="number" min="0.5" max="5" step="0.1" value="0.5">
             </label>
           </div>
-
         </details>
-
-        <div class="roadtest-player-wrap">
-          <iframe id="roadTestVideoFrame" class="roadtest-video-frame" src="" title="路考模擬影片播放器" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
-        <div class="roadtest-toolbar roadtest-toolbar-player-actions">
-          <div class="roadtest-toolbar-group roadtest-toolbar-primary">
-            <button id="roadTestPrevBtn" type="button" class="ghost-btn">上一題</button>
-            <button id="roadTestPlayClipBtn" type="button" class="primary-btn">重播片段</button>
-            <button id="roadTestNextBtn" type="button" class="primary-btn">下一題</button>
-            <button id="roadTestRandomBtn" type="button" class="ghost-btn">隨機一題</button>
-          </div>
-        </div>
-
-        <div class="roadtest-meta-row">
-          <div id="roadTestVideoStatus" class="scope-summary subtle">尚未播放片段。</div>
-          <div id="roadTestExamStatus" class="scope-summary subtle roadtest-exam-status"></div>
-        </div>
 
         <div id="roadTestQuestionWrap" class="roadtest-question-wrap hidden">
           <div class="roadtest-question-head">
             <div>
               <div id="roadTestProgress" class="roadtest-progress">第 1 / 1 題</div>
-              <h3 id="roadTestPrompt">依影片畫面與字幕，這一步最正確的作法是？</h3>
+              <h3 id="roadTestPrompt">依影片字幕與畫面，這一步最正確的作法是？</h3>
               <p id="roadTestSegmentMeta" class="scope-summary subtle"></p>
             </div>
             <span id="roadTestModuleLabel" class="roadtest-module-badge">模組</span>
@@ -301,35 +301,43 @@
         <section id="roadTestChainPanel" class="roadtest-chain-panel">
           <div class="roadtest-chain-head">
             <div>
-              <h3>接龍練習</h3>
-              <p id="roadTestChainMeta" class="scope-summary subtle">可切換字幕接龍或流程排序；拖曳或點選卡片即可移動。</p>
+              <h3>字幕接龍</h3>
+              <p id="roadTestChainMeta" class="scope-summary subtle">顯示目前這一步，請選下一段是什麼；答對後會一路往下接。</p>
             </div>
             <div class="roadtest-chain-controls">
               <select id="roadTestChainModeSelect">
-                <option value="caption">字幕接龍</option>
-                <option value="module_inner">模組內排序</option>
-                <option value="module_flow">模組流程排序</option>
+                <option value="caption">字幕流程接續</option>
+                <option value="module">模組流程接續</option>
               </select>
               <button id="roadTestChainRefreshBtn" type="button" class="ghost-btn">重新出題</button>
-              <button id="roadTestChainCheckBtn" type="button" class="primary-btn">檢查答案</button>
-              <button id="roadTestChainResetBtn" type="button" class="ghost-btn">清空</button>
             </div>
           </div>
-          <div id="roadTestChainPrompt" class="roadtest-chain-prompt">請依正確順序拖曳接起來。</div>
-          <div class="roadtest-chain-board">
-            <div class="roadtest-chain-column">
-              <strong>作答區</strong>
-              <div id="roadTestChainAnswerRack" class="roadtest-chain-rack roadtest-chain-answer"></div>
+
+          <div class="roadtest-chain-tip subtle">影片只作輔助，可先看目前這一步，再選下一段。</div>
+
+          <div class="roadtest-chain-current-card">
+            <div class="roadtest-chain-current-head">
+              <strong>目前這一步</strong>
+              <span id="roadTestChainStepMeta" class="scope-summary subtle"></span>
             </div>
-            <div class="roadtest-chain-column">
-              <strong>可拖曳片段</strong>
-              <div id="roadTestChainPoolRack" class="roadtest-chain-rack roadtest-chain-pool"></div>
-            </div>
+            <div id="roadTestChainCurrentText" class="roadtest-chain-current-text">正在準備接龍題。</div>
           </div>
-          <div id="roadTestChainFeedback" class="roadtest-chain-feedback"></div>
-          <div id="roadTestChainReference" class="roadtest-answer-box hidden">
-            <strong>正確順序</strong>
-            <p id="roadTestChainReferenceText"></p>
+
+          <div class="roadtest-chain-next-wrap">
+            <strong>下一段是什麼？</strong>
+            <div id="roadTestChainNextOptions" class="roadtest-options"></div>
+          </div>
+
+          <div id="roadTestChainFeedback" class="roadtest-feedback"></div>
+
+          <details id="roadTestChainCompletedDetails" class="fold-panel roadtest-chain-completed-fold">
+            <summary>已完成流程</summary>
+            <div id="roadTestChainCompletedList" class="roadtest-chain-completed-list empty-state">目前尚未完成任何步驟。</div>
+          </details>
+
+          <div id="roadTestChainResultBox" class="roadtest-answer-box hidden">
+            <strong>本組正確順序</strong>
+            <p id="roadTestChainResultText"></p>
           </div>
         </section>
 
@@ -337,7 +345,7 @@
       </details>
     </section>
 
-    <section class="panel reward-panel">
+<section class="panel reward-panel">
       <div class="review-header"><h2>學習獎勵</h2><p>用覆蓋率、連續答對與累計作答推進徽章，讓刷題更有回饋。</p></div>
       <div class="reward-grid">
         <div class="reward-card main"><div class="reward-level" id="rewardLevelLabel">-</div><div class="reward-next" id="rewardNextGoal">-</div><div class="reward-progress-wrap"><div id="rewardProgressBar" class="reward-progress-bar"></div></div><p id="rewardEncouragement" class="reward-note">-</p></div>
@@ -358,7 +366,7 @@
   <script src="handbook_pages.js"></script>
   <script src="memory-bridge.js?v=20260402fixdownload1"></script>
   <script src="app.js?v=20260402fixdownload1"></script>
-  <script src="road-test-sim.js?v=20260412roadfinal5"></script>
+  <script src="road-test-sim.js?v=20260412roadfinal7"></script>
   <script type="module" src="firebase-ui.js?v=20260402fixdownload1"></script>
 </body>
 </html>
