@@ -859,3 +859,11 @@ select,input,button,textarea{font-size:16px;}
   .roadtest-toolbar-group,.roadtest-settings-grid{grid-template-columns:1fr}
   .roadtest-switch-card{padding:12px}
 }
+
+.roadtest-config-panel{margin-top:12px;background:rgba(2,6,23,.28)}
+.roadtest-config-panel > summary{font-size:.98rem;color:#cfe4ff}
+.roadtest-chain-context,.roadtest-chain-build{margin-top:10px;border-radius:14px;border:1px solid rgba(148,163,184,.18);background:rgba(15,23,42,.72);padding:12px 14px;line-height:1.7;color:#dbeafe}
+.roadtest-chain-context strong,.roadtest-chain-build strong{display:block;color:#93c5fd;margin-bottom:6px;font-size:.88rem}
+.roadtest-chain-build.is-complete{border-color:rgba(34,197,94,.46);background:rgba(20,83,45,.22)}
+.roadtest-mode-inline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.roadtest-config-panel .roadtest-grid,.roadtest-config-panel .roadtest-settings-grid{margin-top:12px}

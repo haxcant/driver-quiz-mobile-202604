@@ -6,7 +6,10 @@
     muted: 'roadTest.muted',
     autoplayNav: 'roadTest.autoplayNav',
     autoAdvance: 'roadTest.autoAdvance',
-    advanceDelaySec: 'roadTest.advanceDelaySec'
+    advanceDelaySec: 'roadTest.advanceDelaySec',
+    mode: 'roadTest.mode',
+    roadPanelOpen: 'roadTest.roadPanelOpen',
+    configPanelOpen: 'roadTest.configPanelOpen'
   };
 
   const DEFAULT_URL = 'https://www.youtube.com/watch?v=ldsprS-5Y9E';
@@ -14,8 +17,9 @@
     muted: true,
     autoplayNav: true,
     autoAdvance: true,
-    advanceDelaySec: 1.2
+    advanceDelaySec: 0.5
   };
+  const DEFAULT_MODE = 'mcq';
 
   function qs(id) {
     return document.getElementById(id);
@@ -25,8 +29,55 @@
     return String(v || '').trim();
   }
 
+  function readBool(key, fallback) {
+    const raw = localStorage.getItem(key);
+    if (raw == null) return fallback;
+    return raw === 'true';
+  }
+
+  function readNumber(key, fallback, min, max) {
+    const n = Number(localStorage.getItem(key));
+    if (!Number.isFinite(n)) return fallback;
+    return Math.min(max, Math.max(min, n));
+  }
+
+  function readString(key, fallback) {
+    const raw = localStorage.getItem(key);
+    return safeText(raw) || fallback;
+  }
+
+  function shuffle(array) {
+    const arr = array.slice();
+    for (let i = arr.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function formatTime(seconds) {
+    const total = Math.max(0, Math.floor(Number(seconds) || 0));
+    const mm = Math.floor(total / 60);
+    const ss = total % 60;
+    return `${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
+  }
+
+  function standardizeRoadText(text) {
+    let t = safeText(text)
+      .replace(/【?油量、?溫度、?引擎、?電瓶、?手煞車燈、?機油\s*正常】?/g, '（溫度、油量、煞車、充電、機油）正常')
+      .replace(/開啟紅火[:：]?/g, '')
+      .replace(/觀察儀表/g, '檢查儀表')
+      .replace(/【引擎發動：儀表板正常】/g, '【引擎發動：儀表板正常】')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (/儀表/.test(t) && /溫度|油量|煞車|充電|機油/.test(t)) {
+      t = t.replace(/（?溫度、油量、煞車、充電、機油）?正常/g, '（溫度、油量、煞車、充電、機油）正常');
+    }
+    return t;
+  }
+
   function normalizeAnswerText(text) {
-    return safeText(text)
+    return standardizeRoadText(text)
       .replace(/\s+/g, ' ')
       .replace(/[【】「」『』（）()，,。；;：:]/g, '')
       .trim();
@@ -81,10 +132,9 @@
     if (/兩段式開車門|開車門/.test(t)) return 'door_check';
     if (/調整座椅|調整椅背|調整頭枕/.test(t)) return 'seat_adjust';
     if (/安全帶/.test(t)) return 'seatbelt';
-    if (/P檔|手煞車已拉起|手煞車|D檔/.test(t) && /準備起步|起步|起駛|檔位/.test(t)) return 'gear_start';
-    if (/紅火|儀表|油量|溫度|引擎|電瓶|機油|充電/.test(t)) return 'instrument_check';
+    if (/檢查儀表|溫度油量煞車充電機油/.test(t)) return 'instrument_check';
     if (/試踩煞車|煞車正常/.test(t)) return 'brake_check';
-    if (/試打左右方向燈|方向燈正常/.test(t)) return 'signal_check';
+    if (/方向燈正常|試打左右方向燈/.test(t)) return 'signal_check';
     if (/左方向燈/.test(t) && /起步|起駛|準備起步/.test(t)) return 'start_signal_left';
     if (/右方向燈/.test(t) && /靠邊|臨時停車/.test(t)) return 'roadside_stop_signal';
     if (/左方向燈/.test(t) && /變換車道|主線/.test(t)) return 'lane_change_left';
@@ -123,20 +173,47 @@
     return false;
   }
 
-  function shuffle(array) {
-    const arr = array.slice();
-    for (let i = arr.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
+  function shortLabelForQuestion(q) {
+    const text = standardizeRoadText(q.answerText || q.captionText || '')
+      .replace(/^\(([^)]|[^）])*\)/, '')
+      .replace(/^（([^)]|[^）])*）/, '')
+      .replace(/【/g, '')
+      .replace(/】/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    return text.length > 28 ? `${text.slice(0, 28)}…` : text;
   }
 
-  function formatTime(seconds) {
-    const total = Math.max(0, Math.floor(Number(seconds) || 0));
-    const mm = Math.floor(total / 60);
-    const ss = total % 60;
-    return `${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
+  function splitCaptionChunks(text) {
+    let raw = standardizeRoadText(text)
+      .replace(/^\(([^)]|[^）])*\)\s*/, '')
+      .replace(/^（([^)]|[^）])*）\s*/, '')
+      .trim();
+    if (!raw) return [];
+    let parts = raw.split(/[，；。]/).map((s) => safeText(s)).filter(Boolean);
+    if (parts.length <= 1) {
+      parts = raw
+        .replace(/後，/g, '後｜')
+        .replace(/再/g, '｜再')
+        .replace(/並/g, '｜並')
+        .replace(/然後/g, '｜然後')
+        .split('｜')
+        .map((s) => safeText(s))
+        .filter(Boolean);
+    }
+    const merged = [];
+    parts.forEach((part) => {
+      if (!merged.length) {
+        merged.push(part);
+        return;
+      }
+      if (part.length <= 4) {
+        merged[merged.length - 1] = `${merged[merged.length - 1]} ${part}`.trim();
+      } else {
+        merged.push(part);
+      }
+    });
+    return merged.slice(0, 5);
   }
 
   function extractYouTubeVideoId(url) {
@@ -177,32 +254,22 @@
     return `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}&t=${start}s`;
   }
 
-  function readBool(key, fallback) {
-    const raw = localStorage.getItem(key);
-    if (raw == null) return fallback;
-    return raw === 'true';
-  }
-
-  function readNumber(key, fallback, min, max) {
-    const n = Number(localStorage.getItem(key));
-    if (!Number.isFinite(n)) return fallback;
-    return Math.min(max, Math.max(min, n));
-  }
-
   function buildQuestionBank(ref) {
-    const modules = new Map((ref.modules || []).map((m) => [m.id, m]));
+    const modules = new Map((ref.modules || []).map((m) => [m.id, { ...m, summary: standardizeRoadText(m.summary || '') }]));
     return (ref.segments || [])
       .filter((seg) => isQuizworthyText(seg.answerText || seg.captionText || ''))
       .map((seg, idx) => {
         const mod = modules.get(seg.moduleId) || {};
+        const answerText = standardizeRoadText(seg.answerText || seg.captionText || '');
+        const captionText = standardizeRoadText(seg.captionText || answerText);
         return {
           bankId: `RT-${String(idx + 1).padStart(3, '0')}`,
           segmentId: seg.id,
           moduleId: seg.moduleId,
           moduleTitle: mod.title || '未分類模組',
           prompt: '依影片字幕與畫面，這一步最正確的作法是？',
-          answerText: safeText(seg.answerText || seg.captionText || ''),
-          captionText: safeText(seg.captionText || ''),
+          answerText,
+          captionText,
           startSec: Number(seg.startSec) || 0,
           endSec: Number(seg.endSec) || Number(seg.startSec) || 0,
           clipLeadSeconds: Number(seg.clipLeadSeconds ?? ref.defaults?.clipLeadSeconds ?? 1) || 1,
@@ -214,38 +281,6 @@
           sourceBasis: 'captions.sbv'
         };
       });
-  }
-
-  function createState(ref) {
-    const questionBank = buildQuestionBank(ref);
-    const modules = Array.isArray(ref?.modules) ? ref.modules.slice() : [];
-    const moduleMap = new Map(modules.map((m) => [m.id, m]));
-    const answerPoolMap = new Map();
-    questionBank.forEach((q) => {
-      const norm = normalizeAnswerText(q.answerText || q.captionText || '');
-      if (!norm) return;
-      if (!answerPoolMap.has(norm)) answerPoolMap.set(norm, q.answerText || q.captionText || '');
-    });
-    return {
-      ref,
-      questionBank,
-      modules,
-      moduleMap,
-      answerPool: Array.from(answerPoolMap.values()),
-      filteredQuestions: questionBank.slice(),
-      currentIndex: -1,
-      currentQuestion: null,
-      answered: false,
-      currentVideoId: '',
-      currentUrl: '',
-      pendingAdvanceTimer: null,
-      settings: {
-        muted: readBool(STORAGE_KEYS.muted, DEFAULT_SETTINGS.muted),
-        autoplayNav: readBool(STORAGE_KEYS.autoplayNav, DEFAULT_SETTINGS.autoplayNav),
-        autoAdvance: readBool(STORAGE_KEYS.autoAdvance, DEFAULT_SETTINGS.autoAdvance),
-        advanceDelaySec: readNumber(STORAGE_KEYS.advanceDelaySec, DEFAULT_SETTINGS.advanceDelaySec, 0.5, 5)
-      }
-    };
   }
 
   function buildOptionsForQuestion(question, state) {
@@ -267,26 +302,9 @@
       return true;
     }
 
-    function tryPushText(text) {
-      const raw = safeText(text);
-      const norm = normalizeAnswerText(raw);
-      if (!raw || !norm || used.has(norm)) return false;
-      if (textSimilarity(correct, raw) >= 0.55) return false;
-      used.add(norm);
-      options.push(raw);
-      return true;
-    }
-
     shuffle(otherModules).forEach((q) => { if (options.length < 3) tryPushQuestion(q); });
-    if (options.length < 3) {
-      shuffle(sameModule).forEach((q) => { if (options.length < 3) tryPushQuestion(q); });
-    }
-    if (options.length < 3) {
-      shuffle(allOthers).forEach((q) => { if (options.length < 3) tryPushQuestion(q); });
-    }
-    if (options.length < 3) {
-      shuffle(state.answerPool).forEach((text) => { if (options.length < 3) tryPushText(text); });
-    }
+    if (options.length < 3) shuffle(sameModule).forEach((q) => { if (options.length < 3) tryPushQuestion(q); });
+    if (options.length < 3) shuffle(allOthers).forEach((q) => { if (options.length < 3) tryPushQuestion(q); });
 
     const finalOptions = shuffle([correct, ...options.slice(0, 3)]);
     return {
@@ -294,6 +312,32 @@
       correctNorm,
       options: finalOptions,
       correctIndex: finalOptions.findIndex((opt) => normalizeAnswerText(opt) === correctNorm)
+    };
+  }
+
+  function createState(ref) {
+    const questionBank = buildQuestionBank(ref);
+    const modules = Array.isArray(ref?.modules) ? ref.modules.map((m) => ({ ...m, summary: standardizeRoadText(m.summary || '') })) : [];
+    return {
+      ref,
+      questionBank,
+      modules,
+      moduleMap: new Map(modules.map((m) => [m.id, m])),
+      filteredQuestions: questionBank.slice(),
+      currentIndex: -1,
+      currentQuestion: null,
+      currentVideoId: '',
+      currentUrl: '',
+      pendingAdvanceTimer: null,
+      answered: false,
+      mode: readString(STORAGE_KEYS.mode, DEFAULT_MODE),
+      settings: {
+        muted: readBool(STORAGE_KEYS.muted, DEFAULT_SETTINGS.muted),
+        autoplayNav: readBool(STORAGE_KEYS.autoplayNav, DEFAULT_SETTINGS.autoplayNav),
+        autoAdvance: readBool(STORAGE_KEYS.autoAdvance, DEFAULT_SETTINGS.autoAdvance),
+        advanceDelaySec: readNumber(STORAGE_KEYS.advanceDelaySec, DEFAULT_SETTINGS.advanceDelaySec, 0.5, 5)
+      },
+      modeState: null
     };
   }
 
@@ -311,10 +355,12 @@
     const autoplay = qs('roadTestAutoplayNextToggle');
     const autoAdvance = qs('roadTestAutoAdvanceToggle');
     const delayInput = qs('roadTestAdvanceDelayInput');
+    const modeSelect = qs('roadTestModeSelect');
     if (muted) muted.checked = !!state.settings.muted;
     if (autoplay) autoplay.checked = !!state.settings.autoplayNav;
     if (autoAdvance) autoAdvance.checked = !!state.settings.autoAdvance;
     if (delayInput) delayInput.value = String(state.settings.advanceDelaySec);
+    if (modeSelect) modeSelect.value = state.mode;
   }
 
   function updateHeaderMeta(state) {
@@ -322,13 +368,14 @@
     const bankMeta = qs('roadTestBankMeta');
     const flowHint = qs('roadTestFlowHint');
     if (sourceLabel) {
-      sourceLabel.textContent = `影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒｜考試時預設靜音`;
+      sourceLabel.textContent = '影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒｜考試時預設靜音';
     }
     if (bankMeta) {
       bankMeta.textContent = `已編成題庫 ${state.questionBank.length} 題，共 ${state.modules.length} 類模組；目前篩選後 ${state.filteredQuestions.length} 題。`;
     }
     if (flowHint) {
-      flowHint.textContent = `目前設定：${state.settings.muted ? '靜音' : '開聲'}｜${state.settings.autoplayNav ? '切題自動播放' : '切題不自動播放'}｜${state.settings.autoAdvance ? `答題後 ${state.settings.advanceDelaySec.toFixed(1)} 秒自動跳題` : '答題後停留本題'}`;
+      const modeText = state.mode === 'mcq' ? '一般選擇題' : state.mode === 'caption_chain' ? '字幕接龍' : '模組接龍';
+      flowHint.textContent = `目前設定：${state.settings.muted ? '靜音' : '開聲'}｜${state.settings.autoplayNav ? '切題自動播放' : '切題不自動播放'}｜${state.settings.autoAdvance ? `答題後 ${state.settings.advanceDelaySec.toFixed(1)} 秒自動跳題` : '答題後停留本題'}｜模式：${modeText}`;
     }
   }
 
@@ -363,6 +410,87 @@
     }
   }
 
+  function getModeHelpText(state) {
+    if (state.mode === 'caption_chain') return '字幕接龍：依字幕語序把這一段接完整。答對一段後會接著完成下一段。';
+    if (state.mode === 'module_chain') return '模組接龍：根據目前片段與模組流程，選出下一個最合理接續片段；全部模組時會連同模組外排序一起練。';
+    return '一般選擇題：四選一；已盡量避開語意太像的干擾選項。';
+  }
+
+  function buildCaptionChainState(question, state) {
+    const chunks = splitCaptionChunks(question.captionText || question.answerText || '');
+    const moduleQuestions = state.questionBank.filter((q) => q.moduleId === question.moduleId && q.segmentId !== question.segmentId);
+    const pool = [];
+    moduleQuestions.forEach((q) => {
+      splitCaptionChunks(q.captionText || q.answerText || '').forEach((chunk) => {
+        if (chunk) pool.push(chunk);
+      });
+    });
+    state.questionBank.forEach((q) => {
+      if (q.segmentId === question.segmentId) return;
+      splitCaptionChunks(q.captionText || q.answerText || '').forEach((chunk) => {
+        if (chunk) pool.push(chunk);
+      });
+    });
+    return {
+      type: 'caption_chain',
+      chunks,
+      selected: [],
+      wrongCount: 0,
+      chunkPool: Array.from(new Set(pool.map((p) => standardizeRoadText(p))))
+    };
+  }
+
+  function buildModuleChainState(question, state, index) {
+    const hasNext = index < state.filteredQuestions.length - 1;
+    return {
+      type: 'module_chain',
+      hasNext,
+      nextQuestion: hasNext ? state.filteredQuestions[index + 1] : null,
+      wrongCount: 0
+    };
+  }
+
+  function setupModeState(state, question, index) {
+    if (state.mode === 'caption_chain') {
+      state.modeState = buildCaptionChainState(question, state);
+      return;
+    }
+    if (state.mode === 'module_chain') {
+      state.modeState = buildModuleChainState(question, state, index);
+      return;
+    }
+    state.modeState = buildOptionsForQuestion(question, state);
+  }
+
+  function buildCaptionChainOptions(chainState) {
+    const currentChunk = chainState.chunks[chainState.selected.length] || '';
+    const used = new Set(chainState.selected.map((s) => normalizeAnswerText(s)));
+    const distractors = [];
+    shuffle(chainState.chunkPool).forEach((chunk) => {
+      if (distractors.length >= 3) return;
+      const norm = normalizeAnswerText(chunk);
+      if (!chunk || used.has(norm)) return;
+      if (textSimilarity(currentChunk, chunk) >= 0.65) return;
+      distractors.push(chunk);
+    });
+    return shuffle([currentChunk, ...distractors.slice(0, 3)]);
+  }
+
+  function buildModuleChainOptions(state, currentIndex) {
+    const correct = state.filteredQuestions[currentIndex + 1];
+    const pool = state.filteredQuestions.filter((q, idx) => idx !== currentIndex + 1 && idx !== currentIndex);
+    const options = [];
+    const used = new Set([correct.segmentId]);
+    shuffle(pool).forEach((q) => {
+      if (options.length >= 3) return;
+      if (used.has(q.segmentId)) return;
+      if (q.moduleId === correct.moduleId && textSimilarity(q.captionText, correct.captionText) >= 0.5) return;
+      used.add(q.segmentId);
+      options.push(q);
+    });
+    return shuffle([correct, ...options.slice(0, 3)]);
+  }
+
   function renderQuestion(state) {
     const questionWrap = qs('roadTestQuestionWrap');
     const empty = qs('roadTestEmpty');
@@ -376,8 +504,10 @@
     const answerBox = qs('roadTestAnswerBox');
     const answerText = qs('roadTestAnswerText');
     const progress = qs('roadTestProgress');
-    const bankMeta = qs('roadTestBankMeta');
-    if (!questionWrap || !empty || !optionsEl || !feedback || !prompt || !moduleLabel || !note || !segMeta || !answerBox || !answerText || !progress) return;
+    const modeHelp = qs('roadTestModeHelp');
+    const chainContext = qs('roadTestChainContext');
+    const chainBuild = qs('roadTestChainBuild');
+    if (!questionWrap || !empty || !optionsEl || !feedback || !prompt || !moduleLabel || !note || !segMeta || !answerBox || !answerText || !progress || !modeHelp || !chainContext || !chainBuild) return;
 
     updateHeaderMeta(state);
 
@@ -386,7 +516,6 @@
       questionWrap.classList.add('hidden');
       empty.classList.remove('hidden');
       progress.textContent = `目前共有 ${state.filteredQuestions.length} 題可練習。`;
-      if (bankMeta) bankMeta.textContent = `已編成題庫 ${state.questionBank.length} 題；目前篩選後 0 題。`;
       return;
     }
 
@@ -395,49 +524,111 @@
     questionWrap.classList.remove('hidden');
     progress.textContent = `第 ${state.currentIndex + 1} / ${state.filteredQuestions.length} 題`;
     moduleLabel.textContent = moduleInfo ? moduleInfo.title : (current.question.moduleId || '未分類模組');
-    prompt.textContent = current.question.prompt;
     segMeta.textContent = `題庫編碼 ${current.question.bankId}｜字幕 ${formatTime(current.question.startSec)} - ${formatTime(current.question.endSec)}｜模組重點：${moduleInfo ? moduleInfo.summary : '依字幕判定'}`;
-    note.textContent = '答案以字幕內容為主；若整理文字與字幕有差異，請以字幕為準。若要靜音或自動跳題，可直接在上方考試設定切換。';
+    modeHelp.textContent = getModeHelpText(state);
+    note.textContent = '答案以字幕內容為主；若整理文字與字幕有差異，請以字幕為準。';
     feedback.textContent = '';
     feedback.className = 'roadtest-feedback';
     answerBox.classList.add('hidden');
-    answerText.textContent = current.correct;
+    answerText.textContent = current.question.captionText || current.question.answerText;
     if (answerToggle) answerToggle.textContent = '顯示字幕答案';
     state.answered = false;
     clearPendingAdvance(state);
-
     optionsEl.innerHTML = '';
-    current.options.forEach((opt, idx) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'roadtest-option-btn';
-      btn.dataset.optionIndex = String(idx);
-      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${opt}</span>`;
-      btn.addEventListener('click', () => submitAnswer(state, idx));
-      optionsEl.appendChild(btn);
-    });
+    chainContext.classList.add('hidden');
+    chainBuild.classList.add('hidden');
+    chainBuild.classList.remove('is-complete');
+
+    if (state.mode === 'mcq') {
+      prompt.textContent = current.question.prompt;
+      current.modeState.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'roadtest-option-btn';
+        btn.dataset.optionIndex = String(idx);
+        btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${opt}</span>`;
+        btn.addEventListener('click', () => submitMcqAnswer(state, idx));
+        optionsEl.appendChild(btn);
+      });
+    } else if (state.mode === 'caption_chain') {
+      prompt.textContent = '請依字幕順序，把這段片段接完整。';
+      chainContext.classList.remove('hidden');
+      chainContext.innerHTML = `<strong>本題片段</strong>${current.question.captionText}`;
+      renderCaptionChainStep(state);
+    } else {
+      prompt.textContent = '根據目前片段與模組流程，下一個最合理的接續片段是？';
+      chainContext.classList.remove('hidden');
+      chainContext.innerHTML = `<strong>目前片段</strong>${shortLabelForQuestion(current.question)}`;
+      renderModuleChainStep(state);
+    }
 
     updateVideo(state, false);
   }
 
-  function submitAnswer(state, chosenIndex) {
-    if (state.answered || !state.currentQuestion) return;
-    state.answered = true;
-    const current = state.currentQuestion;
+  function renderCaptionChainStep(state) {
     const optionsEl = qs('roadTestOptions');
     const feedback = qs('roadTestFeedback');
-    const examStatus = qs('roadTestExamStatus');
-    if (!optionsEl || !feedback) return;
-    const buttons = Array.from(optionsEl.querySelectorAll('button'));
-    buttons.forEach((node, btnIdx) => {
-      node.disabled = true;
-      if (btnIdx === current.correctIndex) node.classList.add('correct');
-      if (btnIdx === chosenIndex && chosenIndex !== current.correctIndex) node.classList.add('incorrect');
-    });
-    const isCorrect = chosenIndex === current.correctIndex;
-    feedback.textContent = isCorrect ? '答對：這一題以字幕內容為準。' : '答錯：請對照字幕答案與模組重點。';
-    feedback.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+    const chainBuild = qs('roadTestChainBuild');
+    if (!optionsEl || !feedback || !chainBuild || !state.modeState) return;
+    const chain = state.modeState;
+    optionsEl.innerHTML = '';
+    const assembled = chain.selected.join('｜');
+    chainBuild.classList.remove('hidden');
+    chainBuild.innerHTML = `<strong>目前接到</strong>${assembled || '（尚未開始）'}`;
 
+    if (chain.selected.length >= chain.chunks.length) {
+      chainBuild.classList.add('is-complete');
+      feedback.textContent = '接龍完成：已依字幕順序接完整段落。';
+      feedback.className = 'roadtest-feedback is-correct';
+      state.answered = true;
+      scheduleAutoAdvance(state);
+      return;
+    }
+
+    const options = buildCaptionChainOptions(chain);
+    options.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'roadtest-option-btn';
+      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${opt}</span>`;
+      btn.addEventListener('click', () => submitCaptionChainAnswer(state, opt, btn));
+      optionsEl.appendChild(btn);
+    });
+  }
+
+  function renderModuleChainStep(state) {
+    const optionsEl = qs('roadTestOptions');
+    const feedback = qs('roadTestFeedback');
+    const chainBuild = qs('roadTestChainBuild');
+    if (!optionsEl || !feedback || !chainBuild || !state.modeState) return;
+    const moduleState = state.modeState;
+    optionsEl.innerHTML = '';
+    chainBuild.classList.remove('hidden');
+
+    if (!moduleState.hasNext) {
+      chainBuild.classList.add('is-complete');
+      chainBuild.innerHTML = '<strong>模組接龍</strong>已到目前篩選序列最後一題。';
+      feedback.textContent = '已到最後一題，可改用上一題、隨機一題或切換模組。';
+      feedback.className = 'roadtest-feedback is-correct';
+      state.answered = true;
+      return;
+    }
+
+    chainBuild.innerHTML = `<strong>你要接的下一題</strong>從目前片段之後，選出最合理的接續片段。`;
+    const options = buildModuleChainOptions(state, state.currentIndex);
+    moduleState.options = options;
+    options.forEach((q, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'roadtest-option-btn';
+      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${shortLabelForQuestion(q)}<br><small>${q.moduleTitle}</small></span>`;
+      btn.addEventListener('click', () => submitModuleChainAnswer(state, q, btn));
+      optionsEl.appendChild(btn);
+    });
+  }
+
+  function scheduleAutoAdvance(state) {
+    const examStatus = qs('roadTestExamStatus');
     if (state.settings.autoAdvance && state.currentIndex < state.filteredQuestions.length - 1) {
       const delayMs = Math.round(state.settings.advanceDelaySec * 1000);
       if (examStatus) examStatus.textContent = `${state.settings.advanceDelaySec.toFixed(1)} 秒後自動前往下一題${state.settings.autoplayNav ? '並播放片段' : ''}。`;
@@ -445,7 +636,75 @@
         moveToIndex(state, state.currentIndex + 1, { autoplay: state.settings.autoplayNav });
       }, delayMs);
     } else if (examStatus) {
-      examStatus.textContent = state.currentIndex >= state.filteredQuestions.length - 1 ? '已到最後一題。可按上一題、隨機一題或切換模組。' : '已停留本題。可手動重播、看答案或前往下一題。';
+      examStatus.textContent = state.currentIndex >= state.filteredQuestions.length - 1 ? '已到最後一題。可按上一題、隨機一題或切換模組。' : '已停留本題。';
+    }
+  }
+
+  function submitMcqAnswer(state, chosenIndex) {
+    if (state.answered || !state.currentQuestion) return;
+    state.answered = true;
+    const current = state.currentQuestion;
+    const optionsEl = qs('roadTestOptions');
+    const feedback = qs('roadTestFeedback');
+    if (!optionsEl || !feedback) return;
+    const buttons = Array.from(optionsEl.querySelectorAll('button'));
+    buttons.forEach((node, btnIdx) => {
+      node.disabled = true;
+      if (btnIdx === current.modeState.correctIndex) node.classList.add('correct');
+      if (btnIdx === chosenIndex && chosenIndex !== current.modeState.correctIndex) node.classList.add('incorrect');
+    });
+    const isCorrect = chosenIndex === current.modeState.correctIndex;
+    feedback.textContent = isCorrect ? '答對：這一題以字幕內容為準。' : '答錯：請對照字幕答案與模組重點。';
+    feedback.className = `roadtest-feedback ${isCorrect ? 'is-correct' : 'is-wrong'}`;
+    scheduleAutoAdvance(state);
+  }
+
+  function submitCaptionChainAnswer(state, chosenText, btn) {
+    if (!state.modeState || !btn) return;
+    const feedback = qs('roadTestFeedback');
+    const chain = state.modeState;
+    const expected = chain.chunks[chain.selected.length] || '';
+    if (normalizeAnswerText(chosenText) === normalizeAnswerText(expected)) {
+      chain.selected.push(expected);
+      if (feedback) {
+        feedback.textContent = '正確，繼續接下一段。';
+        feedback.className = 'roadtest-feedback is-correct';
+      }
+      renderCaptionChainStep(state);
+      return;
+    }
+    btn.disabled = true;
+    btn.classList.add('incorrect');
+    chain.wrongCount += 1;
+    if (feedback) {
+      feedback.textContent = '這一段接錯了，請再試一次。';
+      feedback.className = 'roadtest-feedback is-wrong';
+    }
+  }
+
+  function submitModuleChainAnswer(state, chosenQuestion, btn) {
+    if (!state.modeState || !btn) return;
+    const feedback = qs('roadTestFeedback');
+    const current = state.modeState;
+    const correctId = current.nextQuestion ? current.nextQuestion.segmentId : '';
+    if (chosenQuestion.segmentId === correctId) {
+      const optionsEl = qs('roadTestOptions');
+      if (optionsEl) Array.from(optionsEl.querySelectorAll('button')).forEach((node) => { node.disabled = true; });
+      btn.classList.add('correct');
+      if (feedback) {
+        feedback.textContent = '正確：已接到下一個片段。';
+        feedback.className = 'roadtest-feedback is-correct';
+      }
+      state.answered = true;
+      scheduleAutoAdvance(state);
+      return;
+    }
+    btn.disabled = true;
+    btn.classList.add('incorrect');
+    current.wrongCount += 1;
+    if (feedback) {
+      feedback.textContent = '這個接續片段不對，請再選一次。';
+      feedback.className = 'roadtest-feedback is-wrong';
     }
   }
 
@@ -455,15 +714,16 @@
     if (!state.filteredQuestions.length) {
       state.currentIndex = -1;
       state.currentQuestion = null;
+      state.modeState = null;
       renderQuestion(state);
       return;
     }
     const bounded = Math.max(0, Math.min(nextIndex, state.filteredQuestions.length - 1));
     state.currentIndex = bounded;
     const question = state.filteredQuestions[bounded];
-    const q = buildOptionsForQuestion(question, state);
-    state.currentQuestion = { ...q, question };
+    state.currentQuestion = { question };
     localStorage.setItem(STORAGE_KEYS.lastSegmentId, question.segmentId);
+    setupModeState(state, question, bounded);
     renderQuestion(state);
     if (opts.autoplay) updateVideo(state, true);
   }
@@ -501,6 +761,23 @@
     select.value = saved;
   }
 
+  function applyPanelOpenStates() {
+    const roadDetails = qs('roadTestDetails');
+    const configDetails = qs('roadTestConfigDetails');
+    if (roadDetails) {
+      roadDetails.open = readBool(STORAGE_KEYS.roadPanelOpen, true);
+      roadDetails.addEventListener('toggle', () => {
+        localStorage.setItem(STORAGE_KEYS.roadPanelOpen, String(roadDetails.open));
+      });
+    }
+    if (configDetails) {
+      configDetails.open = readBool(STORAGE_KEYS.configPanelOpen, true);
+      configDetails.addEventListener('toggle', () => {
+        localStorage.setItem(STORAGE_KEYS.configPanelOpen, String(configDetails.open));
+      });
+    }
+  }
+
   function bindEvents(state) {
     const urlInput = qs('roadTestYoutubeUrlInput');
     const saveUrlBtn = qs('roadTestSaveUrlBtn');
@@ -510,6 +787,7 @@
     const nextBtn = qs('roadTestNextBtn');
     const randomBtn = qs('roadTestRandomBtn');
     const moduleSelect = qs('roadTestModuleSelect');
+    const modeSelect = qs('roadTestModeSelect');
     const answerToggle = qs('roadTestShowAnswerBtn');
     const mutedToggle = qs('roadTestMutedToggle');
     const autoplayToggle = qs('roadTestAutoplayNextToggle');
@@ -543,6 +821,17 @@
 
     if (moduleSelect) {
       moduleSelect.addEventListener('change', () => applyFilter(state, moduleSelect.value));
+    }
+
+    if (modeSelect) {
+      modeSelect.addEventListener('change', () => {
+        state.mode = safeText(modeSelect.value) || DEFAULT_MODE;
+        localStorage.setItem(STORAGE_KEYS.mode, state.mode);
+        if (state.currentQuestion) {
+          setupModeState(state, state.currentQuestion.question, state.currentIndex);
+        }
+        renderQuestion(state);
+      });
     }
 
     if (answerToggle) {
@@ -583,7 +872,6 @@
 
     if (delayInput) {
       delayInput.addEventListener('change', () => {
-        const next = readNumber(STORAGE_KEYS.advanceDelaySec, Number(delayInput.value) || DEFAULT_SETTINGS.advanceDelaySec, 0.5, 5);
         state.settings.advanceDelaySec = Math.min(5, Math.max(0.5, Number(delayInput.value) || DEFAULT_SETTINGS.advanceDelaySec));
         delayInput.value = String(state.settings.advanceDelaySec);
         localStorage.setItem(STORAGE_KEYS.advanceDelaySec, String(state.settings.advanceDelaySec));
@@ -604,6 +892,7 @@
     state.currentVideoId = extractYouTubeVideoId(savedUrl);
     if (urlInput) urlInput.value = savedUrl;
 
+    applyPanelOpenStates();
     syncSettingControls(state);
     populateModuleSelect(state);
     bindEvents(state);
