@@ -1,4 +1,4 @@
-const CACHE_NAME = "driver-quiz-pwa-v21-14-roadtest-final4";
+const CACHE_NAME = "driver-quiz-mobile-v20260412-roadfinal5";
 const CORE_ASSETS = [
   "./",
   "./index.html",

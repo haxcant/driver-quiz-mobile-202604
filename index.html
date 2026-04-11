@@ -216,15 +216,18 @@
           </div>
         </div>
 
+        <div class="roadtest-toolbar roadtest-toolbar-secondary-wrap roadtest-video-source-toolbar">
+          <div class="roadtest-toolbar-group roadtest-toolbar-secondary">
+            <button id="roadTestSaveUrlBtn" type="button" class="ghost-btn">套用影片網址</button>
+            <button id="roadTestUseDefaultBtn" type="button" class="ghost-btn">恢復預設影片</button>
+            <a id="roadTestOpenYoutubeBtn" class="ghost-btn" href="https://www.youtube.com/watch?v=ldsprS-5Y9E" target="_blank" rel="noopener noreferrer">在 YouTube 開啟</a>
+          </div>
+        </div>
+
+        <p id="roadTestSourceLabel" class="scope-summary subtle roadtest-source-label">影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒｜考試時預設靜音</p>
+
         <details id="roadTestSettingsDetails" class="fold-panel roadtest-settings-fold">
           <summary>考試設定</summary>
-          <div class="roadtest-toolbar roadtest-toolbar-secondary-wrap">
-            <div class="roadtest-toolbar-group roadtest-toolbar-secondary">
-              <button id="roadTestSaveUrlBtn" type="button" class="ghost-btn">套用影片網址</button>
-              <button id="roadTestUseDefaultBtn" type="button" class="ghost-btn">恢復預設影片</button>
-              <a id="roadTestOpenYoutubeBtn" class="ghost-btn" href="https://www.youtube.com/watch?v=ldsprS-5Y9E" target="_blank" rel="noopener noreferrer">在 YouTube 開啟</a>
-            </div>
-          </div>
 
           <div class="roadtest-settings-grid">
             <label class="roadtest-switch-card">
@@ -254,7 +257,6 @@
             </label>
           </div>
 
-          <p id="roadTestSourceLabel" class="scope-summary subtle" style="margin-top:10px;">影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒｜考試時預設靜音</p>
         </details>
 
         <div class="roadtest-player-wrap">
@@ -356,7 +358,7 @@
   <script src="handbook_pages.js"></script>
   <script src="memory-bridge.js?v=20260402fixdownload1"></script>
   <script src="app.js?v=20260402fixdownload1"></script>
-  <script src="road-test-sim.js?v=20260412roadfinal4"></script>
+  <script src="road-test-sim.js?v=20260412roadfinal5"></script>
   <script type="module" src="firebase-ui.js?v=20260402fixdownload1"></script>
 </body>
 </html>
