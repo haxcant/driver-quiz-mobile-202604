@@ -194,9 +194,12 @@
     </section>
 
 
+    <main id="mainContent" class="panel quiz-panel empty-state"><p>第一次使用者只須點擊「開始練習」即可，題目會顯示在這裡。</p></main>
+
+
     <section class="panel roadtest-panel collapsed-panel">
-      <details class="fold-panel" open>
-        <summary>路考模擬（YouTube 片段題庫版）</summary>
+      <details id="roadTestDetails" class="fold-panel">
+        <summary>路考模擬（可收納）</summary>
         <div class="roadtest-grid roadtest-top-grid">
           <label>
             <span>YouTube 影片網址</span>
@@ -213,13 +216,7 @@
           </div>
         </div>
 
-        <div class="roadtest-toolbar">
-          <div class="roadtest-toolbar-group roadtest-toolbar-primary">
-            <button id="roadTestPrevBtn" type="button" class="ghost-btn">上一題</button>
-            <button id="roadTestPlayClipBtn" type="button" class="primary-btn">重播片段</button>
-            <button id="roadTestNextBtn" type="button" class="primary-btn">下一題</button>
-            <button id="roadTestRandomBtn" type="button" class="ghost-btn">隨機一題</button>
-          </div>
+        <div class="roadtest-toolbar roadtest-toolbar-secondary-wrap">
           <div class="roadtest-toolbar-group roadtest-toolbar-secondary">
             <button id="roadTestSaveUrlBtn" type="button" class="ghost-btn">套用影片網址</button>
             <button id="roadTestUseDefaultBtn" type="button" class="ghost-btn">恢復預設影片</button>
@@ -256,10 +253,19 @@
         </div>
 
         <p id="roadTestSourceLabel" class="scope-summary subtle" style="margin-top:10px;">影片來源：YouTube｜字幕來源：captions.sbv</p>
-        <p class="scope-summary subtle">目前先採 YouTube 模式：以字幕切出可練習片段，預設前後 1 秒。若之後補 MP4，可再升級成更穩定的逐幀片段題。</p>
         <div class="roadtest-player-wrap">
           <iframe id="roadTestVideoFrame" class="roadtest-video-frame" src="" title="路考模擬影片播放器" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+
+        <div class="roadtest-toolbar roadtest-toolbar-player-actions">
+          <div class="roadtest-toolbar-group roadtest-toolbar-primary">
+            <button id="roadTestPrevBtn" type="button" class="ghost-btn">上一題</button>
+            <button id="roadTestPlayClipBtn" type="button" class="primary-btn">重播片段</button>
+            <button id="roadTestNextBtn" type="button" class="primary-btn">下一題</button>
+            <button id="roadTestRandomBtn" type="button" class="ghost-btn">隨機一題</button>
+          </div>
+        </div>
+
         <div class="roadtest-meta-row">
           <div id="roadTestVideoStatus" class="scope-summary subtle">尚未播放片段。</div>
           <div id="roadTestExamStatus" class="scope-summary subtle roadtest-exam-status"></div>
@@ -288,8 +294,6 @@
       </details>
     </section>
 
-    <main id="mainContent" class="panel quiz-panel empty-state"><p>第一次使用者只須點擊「開始練習」即可，題目會顯示在這裡。</p></main>
-
     <section class="panel reward-panel">
       <div class="review-header"><h2>學習獎勵</h2><p>用覆蓋率、連續答對與累計作答推進徽章，讓刷題更有回饋。</p></div>
       <div class="reward-grid">
@@ -311,7 +315,7 @@
   <script src="handbook_pages.js"></script>
   <script src="memory-bridge.js?v=20260402fixdownload1"></script>
   <script src="app.js?v=20260402fixdownload1"></script>
-  <script src="road-test-sim.js?v=20260410road2uiux"></script>
+  <script src="road-test-sim.js?v=20260412roadlayout1"></script>
   <script type="module" src="firebase-ui.js?v=20260402fixdownload1"></script>
 </body>
 </html>

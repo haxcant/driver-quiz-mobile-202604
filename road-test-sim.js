@@ -32,6 +32,97 @@
       .trim();
   }
 
+  function canonicalAnswerText(text) {
+    return normalizeAnswerText(text)
+      .replace(/再次|再度|再|先|後|然後|並|且|再看|確認|口誦|注意|留意|隨時|進行|本次|這一步/g, '')
+      .replace(/前方路口|通過路口前/g, '路口')
+      .replace(/左右無來車|後方無來車/g, '無來車')
+      .replace(/轉頭察看|轉頭查看|察看|查看/g, '查看')
+      .replace(/照後鏡|後照鏡/g, '照後鏡')
+      .replace(/變換車道|切入主線道|切回主線道/g, '變換車道')
+      .replace(/打左邊方向燈|打左方向燈/g, '左方向燈')
+      .replace(/打右邊方向燈|打右方向燈/g, '右方向燈')
+      .replace(/\s+/g, '')
+      .trim();
+  }
+
+  function buildBigrams(text) {
+    const s = canonicalAnswerText(text);
+    const grams = new Set();
+    if (!s) return grams;
+    if (s.length === 1) {
+      grams.add(s);
+      return grams;
+    }
+    for (let i = 0; i < s.length - 1; i += 1) grams.add(s.slice(i, i + 2));
+    return grams;
+  }
+
+  function textSimilarity(a, b) {
+    const ca = canonicalAnswerText(a);
+    const cb = canonicalAnswerText(b);
+    if (!ca || !cb) return 0;
+    if (ca === cb) return 1;
+    if (ca.includes(cb) || cb.includes(ca)) return 0.95;
+    const ga = buildBigrams(ca);
+    const gb = buildBigrams(cb);
+    if (!ga.size || !gb.size) return 0;
+    let inter = 0;
+    ga.forEach((g) => { if (gb.has(g)) inter += 1; });
+    return inter / Math.max(ga.size, gb.size);
+  }
+
+  function detectAnswerFamily(text) {
+    const t = canonicalAnswerText(text);
+    if (!t) return 'unknown';
+    if (/胎紋|胎壓|輪胎/.test(t)) return 'tire_check';
+    if (/車燈無破損|車燈/.test(t)) return 'light_check';
+    if (/車底無異物/.test(t)) return 'undercarriage_check';
+    if (/兩段式開車門|開車門/.test(t)) return 'door_check';
+    if (/調整座椅|調整椅背|調整頭枕/.test(t)) return 'seat_adjust';
+    if (/安全帶/.test(t)) return 'seatbelt';
+    if (/P檔|手煞車已拉起|手煞車|D檔/.test(t) && /準備起步|起步|起駛|檔位/.test(t)) return 'gear_start';
+    if (/紅火|儀表|油量|溫度|引擎|電瓶|機油|充電/.test(t)) return 'instrument_check';
+    if (/試踩煞車|煞車正常/.test(t)) return 'brake_check';
+    if (/試打左右方向燈|方向燈正常/.test(t)) return 'signal_check';
+    if (/左方向燈/.test(t) && /起步|起駛|準備起步/.test(t)) return 'start_signal_left';
+    if (/右方向燈/.test(t) && /靠邊|臨時停車/.test(t)) return 'roadside_stop_signal';
+    if (/左方向燈/.test(t) && /變換車道|主線/.test(t)) return 'lane_change_left';
+    if (/右方向燈/.test(t) && /變換車道/.test(t)) return 'lane_change_right';
+    if (/路口|左右無來車/.test(t)) return 'intersection_scan';
+    if (/照後鏡|死角|左後方|右後方|轉頭查看/.test(t)) return 'mirror_blindspot_check';
+    if (/不要壓到|車道線間距|車道線|直線路段/.test(t)) return 'lane_keeping';
+    if (/路邊臨時停車完畢|拉手煞車|打P檔/.test(t)) return 'roadside_stop_complete';
+    if (/切入主線|主線道/.test(t)) return 'merge_main_lane';
+    if (/迴轉/.test(t)) return 'u_turn';
+    if (/熄火|解開安全帶|椅子退後|下車/.test(t)) return 'finish_stop';
+    return 'unknown';
+  }
+
+  function isQuizworthyText(text) {
+    const t = safeText(text);
+    if (!t) return false;
+    if (/(歡迎|駕訓班|TOYOTA|本班|介紹親友|良好學習環境|今天示範的也是新車|影片介紹到這裡|謝謝大家|再見|車棚|颱風|大雨考試|用心)/.test(t)) return false;
+    return true;
+  }
+
+  function isAmbiguousDistractor(correctQuestion, candidateQuestion) {
+    const correctText = safeText(correctQuestion.answerText || correctQuestion.captionText || '');
+    const candidateText = safeText(candidateQuestion.answerText || candidateQuestion.captionText || '');
+    const correctFamily = detectAnswerFamily(correctText);
+    const candidateFamily = detectAnswerFamily(candidateText);
+    if (!candidateText) return true;
+    if (correctFamily === candidateFamily && correctFamily !== 'unknown') return true;
+    const sim = textSimilarity(correctText, candidateText);
+    if (sim >= 0.55) return true;
+    if ((correctFamily === 'intersection_scan' && candidateFamily === 'lane_keeping') ||
+        (correctFamily === 'lane_keeping' && candidateFamily === 'intersection_scan')) return true;
+    if ((correctFamily === 'lane_change_left' && candidateFamily === 'mirror_blindspot_check') ||
+        (correctFamily === 'lane_change_right' && candidateFamily === 'mirror_blindspot_check') ||
+        (correctFamily === 'mirror_blindspot_check' && (candidateFamily === 'lane_change_left' || candidateFamily === 'lane_change_right'))) return true;
+    return false;
+  }
+
   function shuffle(array) {
     const arr = array.slice();
     for (let i = arr.length - 1; i > 0; i -= 1) {
@@ -100,27 +191,29 @@
 
   function buildQuestionBank(ref) {
     const modules = new Map((ref.modules || []).map((m) => [m.id, m]));
-    return (ref.segments || []).map((seg, idx) => {
-      const mod = modules.get(seg.moduleId) || {};
-      return {
-        bankId: `RT-${String(idx + 1).padStart(3, '0')}`,
-        segmentId: seg.id,
-        moduleId: seg.moduleId,
-        moduleTitle: mod.title || '未分類模組',
-        prompt: '依影片字幕與畫面，這一步最正確的作法是？',
-        answerText: safeText(seg.answerText || seg.captionText || ''),
-        captionText: safeText(seg.captionText || ''),
-        startSec: Number(seg.startSec) || 0,
-        endSec: Number(seg.endSec) || Number(seg.startSec) || 0,
-        clipLeadSeconds: Number(seg.clipLeadSeconds ?? ref.defaults?.clipLeadSeconds ?? 1) || 1,
-        clipLagSeconds: Number(seg.clipLagSeconds ?? ref.defaults?.clipLagSeconds ?? 1) || 1,
-        clipStartSec: Number(seg.clipStartSec) || 0,
-        clipEndSec: Number(seg.clipEndSec) || 0,
-        tags: Array.isArray(seg.tags) ? seg.tags.slice() : [],
-        moduleSummary: safeText(mod.summary || ''),
-        sourceBasis: 'captions.sbv'
-      };
-    });
+    return (ref.segments || [])
+      .filter((seg) => isQuizworthyText(seg.answerText || seg.captionText || ''))
+      .map((seg, idx) => {
+        const mod = modules.get(seg.moduleId) || {};
+        return {
+          bankId: `RT-${String(idx + 1).padStart(3, '0')}`,
+          segmentId: seg.id,
+          moduleId: seg.moduleId,
+          moduleTitle: mod.title || '未分類模組',
+          prompt: '依影片字幕與畫面，這一步最正確的作法是？',
+          answerText: safeText(seg.answerText || seg.captionText || ''),
+          captionText: safeText(seg.captionText || ''),
+          startSec: Number(seg.startSec) || 0,
+          endSec: Number(seg.endSec) || Number(seg.startSec) || 0,
+          clipLeadSeconds: Number(seg.clipLeadSeconds ?? ref.defaults?.clipLeadSeconds ?? 1) || 1,
+          clipLagSeconds: Number(seg.clipLagSeconds ?? ref.defaults?.clipLagSeconds ?? 1) || 1,
+          clipStartSec: Number(seg.clipStartSec) || 0,
+          clipEndSec: Number(seg.clipEndSec) || 0,
+          tags: Array.isArray(seg.tags) ? seg.tags.slice() : [],
+          moduleSummary: safeText(mod.summary || ''),
+          sourceBasis: 'captions.sbv'
+        };
+      });
   }
 
   function createState(ref) {
@@ -158,13 +251,15 @@
   function buildOptionsForQuestion(question, state) {
     const correct = safeText(question.answerText || question.captionText || '');
     const correctNorm = normalizeAnswerText(correct);
-    const sameModule = state.filteredQuestions.filter((q) => q.segmentId !== question.segmentId && q.moduleId === question.moduleId);
+    const sameModule = state.questionBank.filter((q) => q.segmentId !== question.segmentId && q.moduleId === question.moduleId);
+    const otherModules = state.questionBank.filter((q) => q.segmentId !== question.segmentId && q.moduleId !== question.moduleId);
     const allOthers = state.questionBank.filter((q) => q.segmentId !== question.segmentId);
     const options = [];
     const used = new Set([correctNorm]);
 
-    function tryPush(text) {
-      const raw = safeText(text);
+    function tryPushQuestion(candidateQuestion) {
+      if (!candidateQuestion || isAmbiguousDistractor(question, candidateQuestion)) return false;
+      const raw = safeText(candidateQuestion.answerText || candidateQuestion.captionText || '');
       const norm = normalizeAnswerText(raw);
       if (!raw || !norm || used.has(norm)) return false;
       used.add(norm);
@@ -172,12 +267,25 @@
       return true;
     }
 
-    shuffle(sameModule).forEach((q) => { if (options.length < 3) tryPush(q.answerText || q.captionText || ''); });
+    function tryPushText(text) {
+      const raw = safeText(text);
+      const norm = normalizeAnswerText(raw);
+      if (!raw || !norm || used.has(norm)) return false;
+      if (textSimilarity(correct, raw) >= 0.55) return false;
+      used.add(norm);
+      options.push(raw);
+      return true;
+    }
+
+    shuffle(otherModules).forEach((q) => { if (options.length < 3) tryPushQuestion(q); });
     if (options.length < 3) {
-      shuffle(allOthers).forEach((q) => { if (options.length < 3) tryPush(q.answerText || q.captionText || ''); });
+      shuffle(sameModule).forEach((q) => { if (options.length < 3) tryPushQuestion(q); });
     }
     if (options.length < 3) {
-      shuffle(state.answerPool).forEach((text) => { if (options.length < 3) tryPush(text); });
+      shuffle(allOthers).forEach((q) => { if (options.length < 3) tryPushQuestion(q); });
+    }
+    if (options.length < 3) {
+      shuffle(state.answerPool).forEach((text) => { if (options.length < 3) tryPushText(text); });
     }
 
     const finalOptions = shuffle([correct, ...options.slice(0, 3)]);

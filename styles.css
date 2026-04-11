@@ -706,6 +706,16 @@ select,input,button,textarea{font-size:16px;}
   gap:10px;
   margin-top:12px;
 }
+.roadtest-toolbar-secondary-wrap{
+  margin-top:10px;
+}
+.roadtest-toolbar-player-actions{
+  margin-top:12px;
+}
+.roadtest-panel .fold-panel > summary{
+  cursor:pointer;
+}
+.roadtest-panel .fold-panel:not([open]) + *{display:none;}
 .roadtest-toolbar-group{
   display:flex;
   flex-wrap:wrap;
