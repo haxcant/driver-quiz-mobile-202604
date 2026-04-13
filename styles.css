@@ -868,18 +868,247 @@ select,input,button,textarea{font-size:16px;}
 .roadtest-config-panel .roadtest-grid,.roadtest-config-panel .roadtest-settings-grid{margin-top:12px}
 
 
-.roadtest-chain-panel{margin-top:14px;border:1px solid rgba(148,163,184,.28);border-radius:16px;padding:14px;background:#f8fafc}
+.roadtest-chain-panel{margin-top:14px;border:1px solid rgba(96,165,250,.20);border-radius:18px;padding:16px;background:linear-gradient(180deg,rgba(15,23,42,.96),rgba(10,17,32,.96));box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}
 .roadtest-chain-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
 .roadtest-chain-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .roadtest-chain-tip{margin-top:8px}
-.roadtest-chain-current-card{margin-top:12px;border:1px solid rgba(148,163,184,.35);border-radius:14px;background:#fff;padding:12px 14px}
+.roadtest-chain-current-card{margin-top:12px;border:1px solid rgba(148,163,184,.22);border-radius:14px;background:rgba(15,23,42,.88);padding:12px 14px;color:#e5edf8}
 .roadtest-chain-current-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;flex-wrap:wrap}
-.roadtest-chain-current-text{margin-top:8px;line-height:1.65;color:#0f172a;font-size:1rem}
+.roadtest-chain-current-text{margin-top:8px;line-height:1.7;color:#f8fafc;font-size:1rem}
 .roadtest-chain-next-wrap{margin-top:12px;display:grid;gap:10px}
 .roadtest-chain-completed-fold{margin-top:12px}
 .roadtest-chain-completed-list{display:grid;gap:8px;margin-top:12px}
-.roadtest-chain-completed-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid rgba(148,163,184,.28);color:#0f172a}
-.roadtest-chain-completed-index{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;background:#dbeafe;color:#1d4ed8;font-size:.85rem;font-weight:700;flex:0 0 22px}
+.roadtest-chain-completed-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:rgba(15,23,42,.88);border:1px solid rgba(148,163,184,.22);color:#e5edf8}
+.roadtest-chain-completed-index{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;background:rgba(37,99,235,.22);color:#bfdbfe;font-size:.85rem;font-weight:700;flex:0 0 22px}
 .roadtest-source-label{margin-top:8px}
 .roadtest-settings-fold{margin-top:14px}
 .roadtest-toolbar-player-actions{margin-top:12px}
+
+
+.roadtest-info-fold{margin-bottom:12px}
+.roadtest-info-fold > summary{font-size:.98rem;color:#dbeafe}
+.compact-top-grid{gap:12px}
+.roadtest-meta-compact{display:grid;gap:4px;margin-top:8px}
+.roadtest-meta-compact p{margin:0}
+
+.roadtest-chain-panel{
+  margin-top:14px;
+  border:1px solid rgba(96,165,250,.20);
+  border-radius:18px;
+  padding:16px;
+  background:linear-gradient(180deg,rgba(15,23,42,.96),rgba(10,17,32,.96));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.roadtest-chain-head h3{margin:0;color:#e5edf8}
+.roadtest-chain-head .scope-summary{margin:4px 0 0;color:#93c5fd}
+.roadtest-chain-tip{margin-top:8px;color:#94a3b8}
+.roadtest-chain-controls select{min-width:170px}
+.roadtest-chain-current-card,
+.roadtest-chain-completed-item{
+  border:1px solid rgba(148,163,184,.22);
+  border-radius:14px;
+  background:rgba(15,23,42,.88);
+  color:#e5edf8;
+}
+.roadtest-chain-current-card{margin-top:12px;padding:12px 14px}
+.roadtest-chain-current-text{margin-top:8px;line-height:1.7;color:#f8fafc;font-size:1rem}
+.roadtest-chain-video-box{margin-top:12px;border:1px solid rgba(96,165,250,.18);border-radius:14px;padding:12px;background:rgba(8,15,30,.78)}
+.roadtest-chain-video-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.roadtest-chain-video-head strong{color:#dbeafe}
+.roadtest-chain-video-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#020617}
+.roadtest-chain-next-wrap{margin-top:12px;display:grid;gap:10px}
+.roadtest-chain-next-wrap > strong{color:#dbeafe}
+.roadtest-chain-completed-index{background:rgba(37,99,235,.22);color:#bfdbfe}
+.roadtest-toolbar-chain-nav{margin-top:12px}
+.roadtest-chain-completed-fold{margin-top:12px}
+.roadtest-chain-completed-fold > summary{color:#dbeafe}
+.roadtest-chain-completed-list{display:grid;gap:8px;margin-top:12px}
+
+@media (max-width:680px){
+  .roadtest-chain-video-head{align-items:flex-start}
+}
+
+/* v21.3 road test tidy */
+.roadtest-info-fold{
+  margin-bottom:12px;
+}
+.roadtest-info-fold > summary{
+  font-size:.98rem;
+  color:#dbeafe;
+}
+.roadtest-help-meta{
+  margin-top:8px;
+  display:grid;
+  gap:6px;
+}
+.roadtest-help-meta p{margin:0; line-height:1.55;}
+.roadtest-video-source-toolbar .ghost-btn,
+.roadtest-toolbar-player-actions .ghost-btn,
+.roadtest-toolbar-player-actions .primary-btn,
+.roadtest-toolbar-chain-nav .ghost-btn,
+.roadtest-toolbar-chain-nav .primary-btn{
+  min-height:44px;
+}
+.roadtest-chain-panel{
+  margin-top:16px;
+  border:1px solid rgba(96,165,250,.22);
+  border-radius:20px;
+  padding:16px;
+  background:linear-gradient(180deg, rgba(9,14,27,.98), rgba(14,23,42,.98));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.roadtest-chain-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.roadtest-chain-controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+.roadtest-chain-controls select{
+  min-width:170px;
+  background:#0f172a;
+  color:#e5edf8;
+  border:1px solid rgba(96,165,250,.22);
+}
+.roadtest-chain-tip{
+  margin-top:8px;
+  color:#93c5fd;
+}
+.roadtest-chain-current-card{
+  margin-top:14px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(96,165,250,.18);
+  background:linear-gradient(180deg, rgba(15,23,42,.95), rgba(7,13,25,.95));
+}
+.roadtest-chain-current-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.roadtest-chain-current-head strong,
+.roadtest-chain-next-wrap > strong,
+.roadtest-chain-video-head strong{
+  color:#dbeafe;
+}
+.roadtest-chain-current-text{
+  margin-top:8px;
+  line-height:1.75;
+  color:#f8fafc;
+  font-size:1rem;
+  white-space:pre-wrap;
+}
+.roadtest-chain-video-box{
+  margin-top:12px;
+  border:1px solid rgba(96,165,250,.18);
+  border-radius:16px;
+  padding:12px;
+  background:rgba(8,15,30,.78);
+}
+.roadtest-chain-video-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.roadtest-chain-video-frame{
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  border-radius:12px;
+  background:#020617;
+}
+.roadtest-chain-next-wrap{
+  margin-top:14px;
+  display:grid;
+  gap:10px;
+}
+.roadtest-chain-panel .roadtest-option-btn{
+  background:rgba(15,23,42,.92);
+  color:#e5edf8;
+  border:1px solid rgba(148,163,184,.22);
+}
+.roadtest-chain-panel .roadtest-option-btn:hover{
+  background:rgba(17,30,52,.98);
+  border-color:rgba(96,165,250,.45);
+}
+.roadtest-chain-panel .roadtest-option-btn.correct{
+  border-color:rgba(34,197,94,.62);
+  background:rgba(20,83,45,.28);
+}
+.roadtest-chain-panel .roadtest-option-btn.incorrect{
+  border-color:rgba(248,113,113,.62);
+  background:rgba(127,29,29,.26);
+}
+.roadtest-chain-panel .roadtest-option-index{
+  background:rgba(148,163,184,.18);
+  color:#e2e8f0;
+}
+.roadtest-chain-completed-fold{
+  margin-top:14px;
+}
+.roadtest-chain-completed-fold > summary{
+  color:#dbeafe;
+}
+.roadtest-chain-completed-list{
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+.roadtest-chain-completed-item{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(96,165,250,.14);
+  background:rgba(15,23,42,.84);
+  color:#e5edf8;
+}
+.roadtest-chain-completed-index{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:26px;
+  height:26px;
+  border-radius:999px;
+  background:rgba(37,99,235,.22);
+  color:#bfdbfe;
+  font-weight:700;
+}
+@media (max-width:780px){
+  .roadtest-chain-head,
+  .roadtest-chain-current-head,
+  .roadtest-chain-video-head{
+    align-items:flex-start;
+  }
+  .roadtest-chain-controls,
+  .roadtest-toolbar-player-actions .roadtest-toolbar-group,
+  .roadtest-toolbar-chain-nav .roadtest-toolbar-group{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    width:100%;
+  }
+  .roadtest-chain-controls > *,
+  .roadtest-toolbar-player-actions .roadtest-toolbar-group > *,
+  .roadtest-toolbar-chain-nav .roadtest-toolbar-group > *{
+    width:100%;
+  }
+}
+@media (max-width:520px){
+  .roadtest-chain-controls,
+  .roadtest-toolbar-player-actions .roadtest-toolbar-group,
+  .roadtest-toolbar-chain-nav .roadtest-toolbar-group{
+    grid-template-columns:1fr;
+  }
+}

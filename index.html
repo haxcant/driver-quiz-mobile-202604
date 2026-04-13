@@ -30,11 +30,11 @@
         <div class="info-grid">
           <div>
             <strong>目前版本</strong>
-            <p id="versionSummary">v21.0：路考模擬改成更流暢的考試模式，支援題庫編碼、切題自動播放、答題後自動跳轉與預設靜音。</p>
+            <p id="versionSummary">v21.2：路考模擬加入字幕接續題、影片獨立顯示、設定獨立收納與精簡資訊。</p>
           </div>
           <div>
             <strong>建議使用方式</strong>
-            <p>先按「開始練習」提升覆蓋率，再用錯題／低分題加強，最後用模擬考驗證。預設答對後自動跳題 1 秒、答錯後自動跳題 4 秒。</p>
+            <p>先用筆試題庫提升覆蓋率，再用錯題／低分題補強；路考模擬可配合影片與字幕順序練流程。</p>
           </div>
         </div>
         <div style="margin-top:12px; font-size:0.95rem; color:#475569; line-height:1.65;">
@@ -202,31 +202,38 @@
       <details id="roadTestDetails" class="fold-panel" open>
         <summary>路考模擬</summary>
 
-        <div class="roadtest-grid roadtest-top-grid">
-          <label>
-            <span>YouTube 影片網址</span>
-            <input id="roadTestYoutubeUrlInput" type="url" placeholder="貼上 YouTube 網址，例如 https://www.youtube.com/watch?v=...">
-          </label>
-          <label>
-            <span>模組篩選</span>
-            <select id="roadTestModuleSelect"></select>
-          </label>
-          <div class="roadtest-info-card">
-            <strong>題庫狀態</strong>
-            <p id="roadTestBankMeta" class="scope-summary subtle">正在建立題庫。</p>
-            <p id="roadTestFlowHint" class="scope-summary subtle">考試時影片預設靜音；切題後可自動播放；答題後可自動跳轉。</p>
+        <details id="roadTestInfoDetails" class="fold-panel roadtest-info-fold" open>
+          <summary>路考資訊</summary>
+          <div class="roadtest-grid roadtest-top-grid compact-top-grid">
+            <label>
+              <span>YouTube 影片網址</span>
+              <input id="roadTestYoutubeUrlInput" type="url" placeholder="貼上 YouTube 網址，例如 https://www.youtube.com/watch?v=...">
+            </label>
+            <label>
+              <span>模組篩選</span>
+              <select id="roadTestModuleSelect"></select>
+            </label>
+            <div class="roadtest-info-card">
+              <strong>題庫狀態</strong>
+              <p id="roadTestBankMeta" class="scope-summary subtle">正在建立題庫。</p>
+              <p id="roadTestFlowHint" class="scope-summary subtle">目前設定摘要會顯示在此，影片不會被收進設定區。</p>
+            </div>
           </div>
-        </div>
 
-        <div class="roadtest-toolbar roadtest-toolbar-secondary-wrap roadtest-video-source-toolbar">
-          <div class="roadtest-toolbar-group roadtest-toolbar-secondary">
-            <button id="roadTestSaveUrlBtn" type="button" class="ghost-btn">套用影片網址</button>
-            <button id="roadTestUseDefaultBtn" type="button" class="ghost-btn">恢復預設影片</button>
-            <a id="roadTestOpenYoutubeBtn" class="ghost-btn" href="https://www.youtube.com/watch?v=ldsprS-5Y9E" target="_blank" rel="noopener noreferrer">在 YouTube 開啟</a>
+          <div class="roadtest-toolbar roadtest-toolbar-secondary-wrap roadtest-video-source-toolbar">
+            <div class="roadtest-toolbar-group roadtest-toolbar-secondary">
+              <button id="roadTestSaveUrlBtn" type="button" class="ghost-btn">套用影片網址</button>
+              <button id="roadTestUseDefaultBtn" type="button" class="ghost-btn">恢復預設影片</button>
+              <a id="roadTestOpenYoutubeBtn" class="ghost-btn" href="https://www.youtube.com/watch?v=ldsprS-5Y9E" target="_blank" rel="noopener noreferrer">在 YouTube 開啟</a>
+            </div>
           </div>
-        </div>
 
-        <p id="roadTestSourceLabel" class="scope-summary subtle roadtest-source-label">影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒｜考試時預設靜音</p>
+          <div class="roadtest-meta-compact roadtest-help-meta">
+            <p id="roadTestSourceLabel" class="scope-summary subtle roadtest-source-label">影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒</p>
+            <p id="roadTestUsageNote" class="scope-summary subtle">使用說明：四選一看主影片；字幕接龍看目前這一步，再選下一段。</p>
+            <p id="roadTestVersionNote" class="scope-summary subtle">版本資訊：RoadTest UI v21.3｜資訊區可收納、接龍區配色整理。</p>
+          </div>
+        </details>
 
         <div class="roadtest-player-wrap">
           <iframe id="roadTestVideoFrame" class="roadtest-video-frame" src="" title="路考模擬影片播放器" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -321,6 +328,22 @@
               <span id="roadTestChainStepMeta" class="scope-summary subtle"></span>
             </div>
             <div id="roadTestChainCurrentText" class="roadtest-chain-current-text">正在準備接龍題。</div>
+            <div class="roadtest-chain-video-box">
+              <div class="roadtest-chain-video-head">
+                <strong>當前片段輔助影片</strong>
+                <button id="roadTestChainPlayBtn" type="button" class="ghost-btn">播放目前片段</button>
+              </div>
+              <iframe id="roadTestChainVideoFrame" class="roadtest-chain-video-frame" src="" title="字幕接龍片段播放器" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div id="roadTestChainClipLabel" class="scope-summary subtle">尚未載入片段。</div>
+            </div>
+          </div>
+
+          <div class="roadtest-toolbar roadtest-toolbar-chain-nav">
+            <div class="roadtest-toolbar-group roadtest-toolbar-secondary">
+              <button id="roadTestChainPrevBtn" type="button" class="ghost-btn">上一題</button>
+              <button id="roadTestChainNextBtn" type="button" class="primary-btn">下一題</button>
+              <button id="roadTestChainRandomBtn" type="button" class="ghost-btn">隨機一題</button>
+            </div>
           </div>
 
           <div class="roadtest-chain-next-wrap">

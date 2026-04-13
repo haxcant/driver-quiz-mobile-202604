@@ -239,7 +239,9 @@
         sequence: [],
         index: 0,
         windowStart: 0,
-        completed: []
+        completed: [],
+        anchorPool: [],
+        anchorPos: 0
       }
     };
   }
@@ -253,9 +255,13 @@
     const sourceLabel = qs('roadTestSourceLabel');
     const bankMeta = qs('roadTestBankMeta');
     const flowHint = qs('roadTestFlowHint');
-    if (sourceLabel) sourceLabel.textContent = '影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒｜考試時預設靜音';
+    const usageNote = qs('roadTestUsageNote');
+    const versionNote = qs('roadTestVersionNote');
+    if (sourceLabel) sourceLabel.textContent = `影片來源：YouTube｜字幕來源：captions.sbv｜片段前後各 1 秒`;
     if (bankMeta) bankMeta.textContent = `已編成題庫 ${state.questionBank.length} 題，共 ${state.modules.length} 類模組；目前篩選後 ${state.filteredQuestions.length} 題。`;
-    if (flowHint) flowHint.textContent = `目前設定：${state.settings.muted ? '靜音' : '開聲'}｜${state.settings.autoplayNav ? '切題自動播放' : '切題不自動播放'}｜${state.settings.autoAdvance ? `答題後 ${state.settings.advanceDelaySec.toFixed(1)} 秒自動跳題` : '答題後停留本題'}`;
+    if (flowHint) flowHint.textContent = `目前設定：${state.settings.muted ? '靜音' : '開聲'}｜${state.settings.autoplayNav ? '切題自動播放' : '切題手動播放'}｜${state.settings.autoAdvance ? `答題後 ${state.settings.advanceDelaySec.toFixed(1)} 秒自動跳題` : '答題後停留本題'}`;
+    if (usageNote) usageNote.textContent = '使用說明：四選一看主影片；字幕接龍先看目前這一步，再選下一段。';
+    if (versionNote) versionNote.textContent = '版本資訊：RoadTest UI v21.3｜資訊區可收納、接龍區配色整理。';
   }
 
   function syncSettingControls(state) {
@@ -290,6 +296,35 @@
     iframe.src = buildEmbedUrl(state.currentVideoId, question.clipStartSec, question.clipEndSec, autoplay, state.settings.muted);
     if (openBtn) openBtn.href = buildWatchUrl(state.currentVideoId, question.clipStartSec);
     if (status) status.textContent = `題庫編碼 ${question.bankId}｜片段 ${formatTime(question.clipStartSec)} - ${formatTime(question.clipEndSec)}｜題點 ${formatTime(question.startSec)}｜${state.settings.muted ? '預設靜音' : '目前開聲'}`;
+  }
+
+
+  function updateChainVideo(state, question, autoplay) {
+    const iframe = qs('roadTestChainVideoFrame');
+    const label = qs('roadTestChainClipLabel');
+    if (!iframe) return;
+    if (!question || !state.currentVideoId) {
+      iframe.removeAttribute('src');
+      if (label) label.textContent = '尚未載入片段。';
+      return;
+    }
+    iframe.src = buildEmbedUrl(state.currentVideoId, question.clipStartSec, question.clipEndSec, autoplay, state.settings.muted);
+    if (label) label.textContent = `${question.bankId}｜${formatTime(question.startSec)} - ${formatTime(question.endSec)}｜播放 ${formatTime(question.clipStartSec)} - ${formatTime(question.clipEndSec)}`;
+  }
+
+  function chainCandidatePool(state, mode) {
+    const source = buildChainSource(state, mode);
+    const sequence = source.length >= 4 ? source : compressForChain(state.questionBank);
+    const minLen = Math.min(6, sequence.length);
+    const maxLen = Math.min(8, sequence.length);
+    const pool = [];
+    if (sequence.length < 4) return { sequence, pool: [{ start: 0, len: sequence.length }] };
+    for (let len = minLen; len <= maxLen; len += 1) {
+      for (let start = 0; start <= sequence.length - len; start += 1) {
+        pool.push({ start, len });
+      }
+    }
+    return { sequence, pool: pool.length ? pool : [{ start: 0, len: sequence.length }] };
   }
 
   function applyFilter(state, moduleId) {
@@ -416,20 +451,34 @@
     return compressForChain(state.filteredQuestions);
   }
 
-  function buildChainQuiz(state) {
-    const mode = state.chain.mode;
-    const source = buildChainSource(state, mode);
-    state.chain.source = source;
-    const sequence = source.length >= 4 ? source : compressForChain(state.questionBank);
-    const len = Math.min(sequence.length, Math.max(4, Math.min(8, sequence.length)));
-    const targetLen = Math.min(sequence.length, 6 + Math.floor(Math.random() * 3));
-    const startMax = Math.max(0, sequence.length - targetLen);
-    const start = startMax > 0 ? Math.floor(Math.random() * (startMax + 1)) : 0;
-    state.chain.sequence = sequence.slice(start, start + targetLen);
-    state.chain.windowStart = start;
+  function buildChainQuiz(state, opts = {}) {
+    const mode = opts.mode || state.chain.mode;
+    state.chain.mode = mode;
+    const { sequence, pool } = chainCandidatePool(state, mode);
+    state.chain.source = sequence;
+    state.chain.anchorPool = pool;
+    let anchorPos = Number.isInteger(opts.anchorPos) ? opts.anchorPos : state.chain.anchorPos;
+    if (!Number.isFinite(anchorPos) || anchorPos < 0 || anchorPos >= pool.length) anchorPos = 0;
+    if (opts.random) anchorPos = Math.floor(Math.random() * Math.max(1, pool.length));
+    const picked = pool[anchorPos] || { start: 0, len: sequence.length };
+    state.chain.anchorPos = anchorPos;
+    state.chain.sequence = sequence.slice(picked.start, picked.start + picked.len);
+    state.chain.windowStart = picked.start;
     state.chain.index = 0;
     state.chain.completed = [];
     renderChain(state);
+  }
+
+  function moveChainWindow(state, delta, randomPick) {
+    const pool = state.chain.anchorPool || [];
+    if (!pool.length) {
+      buildChainQuiz(state, { random: !!randomPick });
+      return;
+    }
+    let nextPos = state.chain.anchorPos || 0;
+    if (randomPick) nextPos = Math.floor(Math.random() * pool.length);
+    else nextPos = (nextPos + delta + pool.length) % pool.length;
+    buildChainQuiz(state, { anchorPos: nextPos });
   }
 
   function buildChainOptions(state) {
@@ -478,7 +527,7 @@
     if (!currentText || !meta || !stepMeta || !optionsEl || !feedback || !resultBox || !resultText) return;
     const chain = state.chain;
     const current = chain.sequence[chain.index];
-    meta.textContent = chain.mode === 'module' ? '以單一模組內的連續流程為主，請選下一段。' : '依字幕原流程往下接，請選下一段。';
+    meta.textContent = chain.mode === 'module' ? `模組流程接續｜第 ${chain.anchorPos + 1} 組，共 ${Math.max(1, chain.anchorPool.length)} 組` : `字幕流程接續｜第 ${chain.anchorPos + 1} 組，共 ${Math.max(1, chain.anchorPool.length)} 組`; 
     feedback.textContent = ''; feedback.className = 'roadtest-feedback';
     resultBox.classList.add('hidden');
     renderCompletedList(state);
@@ -486,11 +535,13 @@
       currentText.textContent = '目前沒有可用的接龍題。';
       stepMeta.textContent = '';
       optionsEl.innerHTML = '';
+      updateChainVideo(state, null, false);
       return;
     }
     currentText.textContent = current.captionText || current.answerText || '（無文字）';
     stepMeta.textContent = `${current.bankId}｜${formatTime(current.startSec)} - ${formatTime(current.endSec)}｜${current.moduleTitle}`;
     updateVideoForQuestion(state, current, false);
+    updateChainVideo(state, current, false);
     if (chain.index >= chain.sequence.length - 1) {
       optionsEl.innerHTML = '';
       feedback.textContent = '這是本組最後一步，已完成這一組接龍。';
@@ -533,8 +584,10 @@
 
   function applyPanelOpenStates() {
     const roadDetails = qs('roadTestDetails');
+    const infoDetails = qs('roadTestInfoDetails');
     const configDetails = qs('roadTestConfigDetails');
     if (roadDetails) { roadDetails.open = readBool(STORAGE_KEYS.roadPanelOpen, true); roadDetails.addEventListener('toggle', () => localStorage.setItem(STORAGE_KEYS.roadPanelOpen, String(roadDetails.open))); }
+    if (infoDetails) { infoDetails.open = readBool(STORAGE_KEYS.infoPanelOpen, true); infoDetails.addEventListener('toggle', () => localStorage.setItem(STORAGE_KEYS.infoPanelOpen, String(infoDetails.open))); }
     if (configDetails) { configDetails.open = readBool(STORAGE_KEYS.configPanelOpen, false); configDetails.addEventListener('toggle', () => localStorage.setItem(STORAGE_KEYS.configPanelOpen, String(configDetails.open))); }
   }
 
@@ -554,6 +607,10 @@
     const delayInput = qs('roadTestAdvanceDelayInput');
     const chainModeSelect = qs('roadTestChainModeSelect');
     const chainRefreshBtn = qs('roadTestChainRefreshBtn');
+    const chainPrevBtn = qs('roadTestChainPrevBtn');
+    const chainNextBtn = qs('roadTestChainNextBtn');
+    const chainRandomBtn = qs('roadTestChainRandomBtn');
+    const chainPlayBtn = qs('roadTestChainPlayBtn');
 
     if (saveUrlBtn && urlInput) saveUrlBtn.addEventListener('click', () => {
       const value = safeText(urlInput.value) || DEFAULT_URL;
@@ -579,8 +636,12 @@
     if (autoplayToggle) autoplayToggle.addEventListener('change', () => { state.settings.autoplayNav = !!autoplayToggle.checked; localStorage.setItem(STORAGE_KEYS.autoplayNav, String(state.settings.autoplayNav)); updateHeaderMeta(state); });
     if (autoAdvanceToggle) autoAdvanceToggle.addEventListener('change', () => { state.settings.autoAdvance = !!autoAdvanceToggle.checked; localStorage.setItem(STORAGE_KEYS.autoAdvance, String(state.settings.autoAdvance)); clearPendingAdvance(state); updateHeaderMeta(state); });
     if (delayInput) delayInput.addEventListener('change', () => { state.settings.advanceDelaySec = Math.min(5, Math.max(0.5, Number(delayInput.value) || DEFAULT_SETTINGS.advanceDelaySec)); delayInput.value = String(state.settings.advanceDelaySec); localStorage.setItem(STORAGE_KEYS.advanceDelaySec, String(state.settings.advanceDelaySec)); updateHeaderMeta(state); });
-    if (chainModeSelect) chainModeSelect.addEventListener('change', () => { state.chain.mode = chainModeSelect.value || 'caption'; localStorage.setItem(STORAGE_KEYS.chainMode, state.chain.mode); buildChainQuiz(state); });
-    if (chainRefreshBtn) chainRefreshBtn.addEventListener('click', () => buildChainQuiz(state));
+    if (chainModeSelect) chainModeSelect.addEventListener('change', () => { state.chain.mode = chainModeSelect.value || 'caption'; localStorage.setItem(STORAGE_KEYS.chainMode, state.chain.mode); buildChainQuiz(state, { mode: state.chain.mode, random: true }); });
+    if (chainRefreshBtn) chainRefreshBtn.addEventListener('click', () => buildChainQuiz(state, { random: true }));
+    if (chainPrevBtn) chainPrevBtn.addEventListener('click', () => moveChainWindow(state, -1, false));
+    if (chainNextBtn) chainNextBtn.addEventListener('click', () => moveChainWindow(state, 1, false));
+    if (chainRandomBtn) chainRandomBtn.addEventListener('click', () => moveChainWindow(state, 0, true));
+    if (chainPlayBtn) chainPlayBtn.addEventListener('click', () => updateChainVideo(state, state.chain.sequence[state.chain.index], true));
   }
 
   function init() {
