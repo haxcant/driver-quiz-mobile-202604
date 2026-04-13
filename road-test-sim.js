@@ -234,14 +234,8 @@
         advanceDelaySec: readNumber(STORAGE_KEYS.advanceDelaySec, DEFAULT_SETTINGS.advanceDelaySec, 0.5, 5)
       },
       chain: {
-        mode: localStorage.getItem(STORAGE_KEYS.chainMode) || 'caption',
-        source: [],
-        sequence: [],
-        index: 0,
-        windowStart: 0,
-        completed: [],
-        anchorPool: [],
-        anchorPos: 0
+        startIndex: 0,
+        currentIndex: 0
       }
     };
   }
@@ -260,8 +254,8 @@
     if (sourceLabel) sourceLabel.textContent = `影片來源：YouTube｜字幕來源：captions.sbv｜片段前後各 1 秒`;
     if (bankMeta) bankMeta.textContent = `已編成題庫 ${state.questionBank.length} 題，共 ${state.modules.length} 類模組；目前篩選後 ${state.filteredQuestions.length} 題。`;
     if (flowHint) flowHint.textContent = `目前設定：${state.settings.muted ? '靜音' : '開聲'}｜${state.settings.autoplayNav ? '切題自動播放' : '切題手動播放'}｜${state.settings.autoAdvance ? `答題後 ${state.settings.advanceDelaySec.toFixed(1)} 秒自動跳題` : '答題後停留本題'}`;
-    if (usageNote) usageNote.textContent = '使用說明：四選一看主影片；字幕接龍先看目前這一步，再選下一段。';
-    if (versionNote) versionNote.textContent = '版本資訊：RoadTest UI v21.3｜資訊區可收納、接龍區配色整理。';
+    if (usageNote) usageNote.textContent = '使用說明：四選一看主影片；字幕接龍直接共用影片考試題庫，先看目前這一步，再選下一題。';
+    if (versionNote) versionNote.textContent = '版本資訊：RoadTest UI v21.4｜字幕接龍共用影片考試題庫。';
   }
 
   function syncSettingControls(state) {
@@ -269,12 +263,10 @@
     const autoplay = qs('roadTestAutoplayNextToggle');
     const autoAdvance = qs('roadTestAutoAdvanceToggle');
     const delayInput = qs('roadTestAdvanceDelayInput');
-    const chainMode = qs('roadTestChainModeSelect');
-    if (muted) muted.checked = !!state.settings.muted;
+        if (muted) muted.checked = !!state.settings.muted;
     if (autoplay) autoplay.checked = !!state.settings.autoplayNav;
     if (autoAdvance) autoAdvance.checked = !!state.settings.autoAdvance;
     if (delayInput) delayInput.value = String(state.settings.advanceDelaySec);
-    if (chainMode) chainMode.value = state.chain.mode;
   }
 
   function updateVideoForQuestion(state, question, autoplay) {
@@ -312,208 +304,80 @@
     if (label) label.textContent = `${question.bankId}｜${formatTime(question.startSec)} - ${formatTime(question.endSec)}｜播放 ${formatTime(question.clipStartSec)} - ${formatTime(question.clipEndSec)}`;
   }
 
-  function chainCandidatePool(state, mode) {
-    const source = buildChainSource(state, mode);
-    const sequence = source.length >= 4 ? source : compressForChain(state.questionBank);
-    const minLen = Math.min(6, sequence.length);
-    const maxLen = Math.min(8, sequence.length);
-    const pool = [];
-    if (sequence.length < 4) return { sequence, pool: [{ start: 0, len: sequence.length }] };
-    for (let len = minLen; len <= maxLen; len += 1) {
-      for (let start = 0; start <= sequence.length - len; start += 1) {
-        pool.push({ start, len });
-      }
-    }
-    return { sequence, pool: pool.length ? pool : [{ start: 0, len: sequence.length }] };
-  }
-
-  function applyFilter(state, moduleId) {
-    const value = moduleId || 'all';
-    state.filteredQuestions = value === 'all' ? state.questionBank.slice() : state.questionBank.filter((q) => q.moduleId === value);
-    localStorage.setItem(STORAGE_KEYS.moduleFilter, value);
-    const savedId = localStorage.getItem(STORAGE_KEYS.lastSegmentId);
-    const idx = state.filteredQuestions.findIndex((q) => q.segmentId === savedId);
-    moveToIndex(state, idx >= 0 ? idx : 0, { autoplay: false });
-    buildChainQuiz(state);
-  }
-
-  function populateModuleSelect(state) {
-    const select = qs('roadTestModuleSelect');
-    if (!select) return;
-    select.innerHTML = '';
-    const allOpt = document.createElement('option');
-    allOpt.value = 'all';
-    allOpt.textContent = `全部模組（${state.modules.length} 類）`;
-    select.appendChild(allOpt);
-    state.modules.forEach((mod) => { const opt = document.createElement('option'); opt.value = mod.id; opt.textContent = mod.title; select.appendChild(opt); });
-    select.value = localStorage.getItem(STORAGE_KEYS.moduleFilter) || 'all';
-  }
-
-  function moveToIndex(state, nextIndex, options) {
-    clearPendingAdvance(state);
-    if (!state.filteredQuestions.length) {
-      state.currentIndex = -1; state.currentQuestion = null; state.mcq = null; renderQuestion(state); return;
-    }
-    const bounded = Math.max(0, Math.min(nextIndex, state.filteredQuestions.length - 1));
-    state.currentIndex = bounded;
-    state.currentQuestion = state.filteredQuestions[bounded];
-    localStorage.setItem(STORAGE_KEYS.lastSegmentId, state.currentQuestion.segmentId);
-    state.mcq = buildOptionsForQuestion(state.currentQuestion, state);
-    renderQuestion(state);
-    if ((options || {}).autoplay) updateVideoForQuestion(state, state.currentQuestion, true);
-  }
-
-  function renderQuestion(state) {
-    const wrap = qs('roadTestQuestionWrap');
-    const empty = qs('roadTestEmpty');
-    const moduleLabel = qs('roadTestModuleLabel');
-    const prompt = qs('roadTestPrompt');
-    const optionsEl = qs('roadTestOptions');
-    const feedback = qs('roadTestFeedback');
-    const note = qs('roadTestReferenceNote');
-    const segMeta = qs('roadTestSegmentMeta');
-    const answerBox = qs('roadTestAnswerBox');
-    const answerText = qs('roadTestAnswerText');
-    const progress = qs('roadTestProgress');
-    if (!wrap || !empty || !optionsEl || !feedback || !note || !segMeta || !answerBox || !answerText || !progress || !prompt || !moduleLabel) return;
-    updateHeaderMeta(state);
-    if (!state.currentQuestion || !state.mcq) {
-      wrap.classList.add('hidden'); empty.classList.remove('hidden'); progress.textContent = `目前共有 ${state.filteredQuestions.length} 題可練習。`; return;
-    }
-    empty.classList.add('hidden'); wrap.classList.remove('hidden');
-    const q = state.currentQuestion;
-    const mod = state.moduleMap.get(q.moduleId);
-    state.answered = false;
-    feedback.textContent = ''; feedback.className = 'roadtest-feedback';
-    answerBox.classList.add('hidden');
-    const toggle = qs('roadTestShowAnswerBtn'); if (toggle) toggle.textContent = '顯示字幕答案';
-    answerText.textContent = q.captionText || q.answerText || '（無字幕答案）';
-    progress.textContent = `第 ${state.currentIndex + 1} / ${state.filteredQuestions.length} 題`;
-    prompt.textContent = q.prompt || '依影片字幕與畫面，這一步最正確的作法是？';
-    moduleLabel.textContent = mod ? mod.title : q.moduleTitle || '未分類模組';
-    segMeta.textContent = `題庫編碼 ${q.bankId}｜字幕 ${formatTime(q.startSec)} - ${formatTime(q.endSec)}｜模組重點：${mod ? mod.summary : q.moduleSummary || '依字幕判定'}`;
-    note.textContent = '答案以字幕內容為主；若整理文字與字幕有差異，請以字幕為準。';
-    optionsEl.innerHTML = '';
-    state.mcq.options.forEach((opt, idx) => {
-      const btn = document.createElement('button');
-      btn.type = 'button'; btn.className = 'roadtest-option-btn';
-      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${opt || '（無文字）'}</span>`;
-      btn.addEventListener('click', () => submitMcqAnswer(state, idx));
-      optionsEl.appendChild(btn);
-    });
-    updateVideoForQuestion(state, q, false);
-  }
-
-  function scheduleAutoAdvance(state) {
-    const examStatus = qs('roadTestExamStatus');
-    if (state.settings.autoAdvance && state.currentIndex < state.filteredQuestions.length - 1) {
-      const delayMs = Math.round(state.settings.advanceDelaySec * 1000);
-      if (examStatus) examStatus.textContent = `${state.settings.advanceDelaySec.toFixed(1)} 秒後自動前往下一題${state.settings.autoplayNav ? '並播放片段' : ''}。`;
-      state.pendingAdvanceTimer = setTimeout(() => moveToIndex(state, state.currentIndex + 1, { autoplay: state.settings.autoplayNav }), delayMs);
-    } else if (examStatus) {
-      examStatus.textContent = state.currentIndex >= state.filteredQuestions.length - 1 ? '已到最後一題。' : '已停留本題。';
-    }
-  }
-
-  function submitMcqAnswer(state, chosenIndex) {
-    if (state.answered || !state.mcq) return;
-    state.answered = true;
-    const optionsEl = qs('roadTestOptions');
-    const feedback = qs('roadTestFeedback');
-    if (!optionsEl || !feedback) return;
-    Array.from(optionsEl.querySelectorAll('button')).forEach((node, idx) => {
-      node.disabled = true;
-      if (idx === state.mcq.correctIndex) node.classList.add('correct');
-      if (idx === chosenIndex && idx !== state.mcq.correctIndex) node.classList.add('incorrect');
-    });
-    const isCorrect = chosenIndex === state.mcq.correctIndex;
-    feedback.textContent = isCorrect ? '答對：這一題以字幕內容為準。' : '答錯：請對照字幕答案與模組重點。';
-    feedback.className = `roadtest-feedback ${isCorrect ? 'is-correct' : 'is-wrong'}`;
-    scheduleAutoAdvance(state);
-  }
-
-  function buildChainSource(state, mode) {
-    if (mode === 'module') {
-      const selectedModule = localStorage.getItem(STORAGE_KEYS.moduleFilter) || 'all';
-      let pool = [];
-      if (selectedModule !== 'all') pool = state.questionBank.filter((q) => q.moduleId === selectedModule);
-      else {
-        const groups = new Map();
-        state.questionBank.forEach((q) => {
-          if (!groups.has(q.moduleId)) groups.set(q.moduleId, []);
-          groups.get(q.moduleId).push(q);
-        });
-        const goodGroups = Array.from(groups.values()).map((g) => compressForChain(g)).filter((g) => g.length >= 5);
-        pool = goodGroups.length ? goodGroups[Math.floor(Math.random() * goodGroups.length)] : state.filteredQuestions;
-      }
-      return compressForChain(pool);
-    }
-    return compressForChain(state.filteredQuestions);
+  function chainUsableQuestions(state) {
+    return state.filteredQuestions.filter((q) => isQuizworthyText(q.answerText || q.captionText || ''));
   }
 
   function buildChainQuiz(state, opts = {}) {
-    const mode = opts.mode || state.chain.mode;
-    state.chain.mode = mode;
-    const { sequence, pool } = chainCandidatePool(state, mode);
-    state.chain.source = sequence;
-    state.chain.anchorPool = pool;
-    let anchorPos = Number.isInteger(opts.anchorPos) ? opts.anchorPos : state.chain.anchorPos;
-    if (!Number.isFinite(anchorPos) || anchorPos < 0 || anchorPos >= pool.length) anchorPos = 0;
-    if (opts.random) anchorPos = Math.floor(Math.random() * Math.max(1, pool.length));
-    const picked = pool[anchorPos] || { start: 0, len: sequence.length };
-    state.chain.anchorPos = anchorPos;
-    state.chain.sequence = sequence.slice(picked.start, picked.start + picked.len);
-    state.chain.windowStart = picked.start;
-    state.chain.index = 0;
-    state.chain.completed = [];
+    const usable = chainUsableQuestions(state);
+    state.chain.usable = usable;
+    if (usable.length < 2) {
+      state.chain.startIndex = 0;
+      state.chain.currentIndex = 0;
+      renderChain(state);
+      return;
+    }
+    const maxStart = Math.max(0, usable.length - 2);
+    let startIndex = Number.isInteger(opts.startIndex) ? opts.startIndex : state.chain.startIndex;
+    if (!Number.isFinite(startIndex) || startIndex < 0 || startIndex > maxStart) startIndex = 0;
+    if (opts.random) startIndex = Math.floor(Math.random() * (maxStart + 1));
+    state.chain.startIndex = startIndex;
+    state.chain.currentIndex = startIndex;
     renderChain(state);
   }
 
   function moveChainWindow(state, delta, randomPick) {
-    const pool = state.chain.anchorPool || [];
-    if (!pool.length) {
-      buildChainQuiz(state, { random: !!randomPick });
-      return;
-    }
-    let nextPos = state.chain.anchorPos || 0;
-    if (randomPick) nextPos = Math.floor(Math.random() * pool.length);
-    else nextPos = (nextPos + delta + pool.length) % pool.length;
-    buildChainQuiz(state, { anchorPos: nextPos });
+    const usable = state.chain.usable || chainUsableQuestions(state);
+    const maxStart = Math.max(0, usable.length - 2);
+    if (maxStart <= 0) { buildChainQuiz(state, { startIndex: 0 }); return; }
+    let next = state.chain.startIndex || 0;
+    if (randomPick) next = Math.floor(Math.random() * (maxStart + 1));
+    else next = (next + delta + (maxStart + 1)) % (maxStart + 1);
+    buildChainQuiz(state, { startIndex: next });
   }
 
   function buildChainOptions(state) {
-    const chain = state.chain;
-    const current = chain.sequence[chain.index];
-    const correct = chain.sequence[chain.index + 1];
-    if (!current || !correct) return [];
-    const pool = chain.sequence.filter((q, idx) => idx !== chain.index && idx !== chain.index + 1);
-    const correctFamily = detectAnswerFamily(correct.answerText || correct.captionText);
+    const usable = state.chain.usable || [];
+    const current = usable[state.chain.currentIndex];
+    const correct = usable[state.chain.currentIndex + 1];
+    if (!current || !correct) return { items: [], correctId: '' };
+    const candidates = usable.filter((q, idx) => idx !== state.chain.currentIndex && idx !== state.chain.currentIndex + 1);
     const distractors = [];
-    shuffle(pool).forEach((q) => {
+    shuffle(candidates).forEach((q) => {
       if (distractors.length >= 3) return;
-      const fam = detectAnswerFamily(q.answerText || q.captionText);
-      const sim = textSimilarity(q.answerText || q.captionText, correct.answerText || correct.captionText);
-      if (fam === correctFamily && fam !== 'unknown') return;
-      if (sim >= 0.55) return;
+      if (isAmbiguousDistractor(correct, q)) return;
       distractors.push(q);
     });
     if (distractors.length < 3) {
-      shuffle(pool).forEach((q) => {
+      shuffle(candidates).forEach((q) => {
         if (distractors.length >= 3) return;
         if (distractors.find((x) => x.segmentId === q.segmentId)) return;
         distractors.push(q);
       });
     }
-    return shuffle([correct, ...distractors.slice(0, 3)]);
+    const items = shuffle([correct, ...distractors.slice(0, 3)]);
+    return { items, correctId: correct.segmentId };
   }
 
   function renderCompletedList(state) {
     const el = qs('roadTestChainCompletedList');
+    const resultBox = qs('roadTestChainResultBox');
+    const resultText = qs('roadTestChainResultText');
     if (!el) return;
-    const done = state.chain.sequence.slice(0, state.chain.index);
-    if (!done.length) { el.className = 'roadtest-chain-completed-list empty-state'; el.textContent = '目前尚未完成任何步驟。'; return; }
+    const usable = state.chain.usable || [];
+    const done = usable.slice(state.chain.startIndex, state.chain.currentIndex);
+    if (!done.length) {
+      el.className = 'roadtest-chain-completed-list empty-state';
+      el.textContent = '目前尚未完成任何步驟。';
+      if (resultBox) resultBox.classList.add('hidden');
+      return;
+    }
     el.className = 'roadtest-chain-completed-list';
-    el.innerHTML = done.map((q, idx) => `<div class="roadtest-chain-completed-item"><span class="roadtest-chain-completed-index">${idx + 1}</span><span>${shortLabelForQuestion(q)}</span></div>`).join('');
+    el.innerHTML = done.map((q, idx) => `<div class="roadtest-chain-completed-item"><span class="roadtest-chain-completed-index">${idx + 1}</span><span>${standardizeRoadText(q.answerText || q.captionText || '（無文字）')}</span></div>`).join('');
+    if (resultBox && resultText) {
+      resultBox.classList.remove('hidden');
+      resultText.textContent = done.map((q, idx) => `${idx + 1}. ${standardizeRoadText(q.answerText || q.captionText || '（無文字）')}`).join(' → ');
+    }
   }
 
   function renderChain(state) {
@@ -522,67 +386,87 @@
     const stepMeta = qs('roadTestChainStepMeta');
     const optionsEl = qs('roadTestChainNextOptions');
     const feedback = qs('roadTestChainFeedback');
-    const resultBox = qs('roadTestChainResultBox');
-    const resultText = qs('roadTestChainResultText');
-    if (!currentText || !meta || !stepMeta || !optionsEl || !feedback || !resultBox || !resultText) return;
-    const chain = state.chain;
-    const current = chain.sequence[chain.index];
-    meta.textContent = chain.mode === 'module' ? `模組流程接續｜第 ${chain.anchorPos + 1} 組，共 ${Math.max(1, chain.anchorPool.length)} 組` : `字幕流程接續｜第 ${chain.anchorPos + 1} 組，共 ${Math.max(1, chain.anchorPool.length)} 組`; 
-    feedback.textContent = ''; feedback.className = 'roadtest-feedback';
-    resultBox.classList.add('hidden');
+    const progress = qs('roadTestChainProgress');
+    const qMeta = qs('roadTestChainQuestionMeta');
+    const moduleLabel = qs('roadTestChainModuleLabel');
+    if (!currentText || !meta || !stepMeta || !optionsEl || !feedback || !progress || !qMeta || !moduleLabel) return;
+    const usable = state.chain.usable || [];
+    const current = usable[state.chain.currentIndex];
+    const nextQ = usable[state.chain.currentIndex + 1];
+    meta.textContent = `字幕接龍直接共用影片考試題庫；目前可用 ${usable.length} 題。`;
+    feedback.textContent = '';
+    feedback.className = 'roadtest-feedback';
     renderCompletedList(state);
     if (!current) {
       currentText.textContent = '目前沒有可用的接龍題。';
       stepMeta.textContent = '';
+      progress.textContent = '第 0 / 0 題';
+      qMeta.textContent = '';
+      moduleLabel.textContent = '字幕接龍';
       optionsEl.innerHTML = '';
       updateChainVideo(state, null, false);
       return;
     }
-    currentText.textContent = current.captionText || current.answerText || '（無文字）';
+    currentText.textContent = standardizeRoadText(current.answerText || current.captionText || '（無文字）');
     stepMeta.textContent = `${current.bankId}｜${formatTime(current.startSec)} - ${formatTime(current.endSec)}｜${current.moduleTitle}`;
-    updateVideoForQuestion(state, current, false);
+    progress.textContent = `第 ${state.chain.currentIndex + 1} / ${usable.length} 題`;
+    qMeta.textContent = nextQ ? `下一題會從同一題庫中選出唯一正確接續。` : '已到題庫最後一題。';
+    moduleLabel.textContent = current.moduleTitle || '字幕接龍';
     updateChainVideo(state, current, false);
-    if (chain.index >= chain.sequence.length - 1) {
+    if (!nextQ) {
       optionsEl.innerHTML = '';
-      feedback.textContent = '這是本組最後一步，已完成這一組接龍。';
+      feedback.textContent = '已到目前題庫最後一題，請切到上一題或重新開始。';
       feedback.className = 'roadtest-feedback is-correct';
-      resultBox.classList.remove('hidden');
-      resultText.textContent = chain.sequence.map((q, idx) => `${idx + 1}. ${shortLabelForQuestion(q)}`).join(' → ');
       return;
     }
-    const options = buildChainOptions(state);
+    const built = buildChainOptions(state);
     optionsEl.innerHTML = '';
-    options.forEach((q, idx) => {
+    built.items.forEach((q, idx) => {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'roadtest-option-btn';
-      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${shortLabelForQuestion(q)}<br><small>${q.moduleTitle}</small></span>`;
-      btn.addEventListener('click', () => submitChainAnswer(state, q, btn));
+      const optionText = standardizeRoadText(q.answerText || q.captionText || '（無文字）');
+      btn.dataset.segmentId = q.segmentId;
+      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${optionText}</span>`;
+      btn.addEventListener('click', () => submitChainAnswer(state, q.segmentId, built.correctId));
       optionsEl.appendChild(btn);
     });
   }
 
-  function submitChainAnswer(state, chosenQuestion, btn) {
+  function submitChainAnswer(state, chosenId, correctId) {
     const feedback = qs('roadTestChainFeedback');
     const optionsEl = qs('roadTestChainNextOptions');
     if (!feedback || !optionsEl) return;
-    const correct = state.chain.sequence[state.chain.index + 1];
-    if (!correct) return;
-    if (chosenQuestion.segmentId === correct.segmentId) {
-      btn.classList.add('correct');
-      Array.from(optionsEl.querySelectorAll('button')).forEach((node) => { node.disabled = true; });
-      feedback.textContent = '答對，已接到下一段。';
+    const buttons = Array.from(optionsEl.querySelectorAll('button'));
+    buttons.forEach((btn) => {
+      btn.disabled = true;
+      const segId = btn.dataset.segmentId || '';
+      if (segId === correctId) btn.classList.add('correct');
+      if (segId === chosenId && chosenId !== correctId) btn.classList.add('incorrect');
+    });
+    if (chosenId === correctId) {
+      feedback.textContent = '答對，已接到下一題。';
       feedback.className = 'roadtest-feedback is-correct';
-      setTimeout(() => { state.chain.index += 1; renderChain(state); }, 450);
-      return;
+      setTimeout(() => { state.chain.currentIndex += 1; renderChain(state); }, 420);
+    } else {
+      feedback.textContent = '答錯，這不是緊接的下一題。';
+      feedback.className = 'roadtest-feedback is-wrong';
+      setTimeout(() => { renderChain(state); }, 650);
     }
-    btn.disabled = true;
-    btn.classList.add('incorrect');
-    feedback.textContent = '這不是緊接的下一段，再試一次。';
-    feedback.className = 'roadtest-feedback is-wrong';
   }
 
   function applyPanelOpenStates() {
+    const roadDetails = qs('roadTestDetails');
+    const infoDetails = qs('roadTestInfoDetails');
+    const configDetails = qs('roadTestConfigDetails');
+    const chainDetails = qs('roadTestChainDetails');
+    if (roadDetails) { roadDetails.open = readBool(STORAGE_KEYS.roadPanelOpen, true); roadDetails.addEventListener('toggle', () => localStorage.setItem(STORAGE_KEYS.roadPanelOpen, String(roadDetails.open))); }
+    if (infoDetails) { infoDetails.open = readBool(STORAGE_KEYS.infoPanelOpen, true); infoDetails.addEventListener('toggle', () => localStorage.setItem(STORAGE_KEYS.infoPanelOpen, String(infoDetails.open))); }
+    if (configDetails) { configDetails.open = readBool(STORAGE_KEYS.configPanelOpen, false); configDetails.addEventListener('toggle', () => localStorage.setItem(STORAGE_KEYS.configPanelOpen, String(configDetails.open))); }
+    if (chainDetails) { chainDetails.open = readBool(STORAGE_KEYS.chainPanelOpen, true); chainDetails.addEventListener('toggle', () => localStorage.setItem(STORAGE_KEYS.chainPanelOpen, String(chainDetails.open))); }
+  }
+
+
     const roadDetails = qs('roadTestDetails');
     const infoDetails = qs('roadTestInfoDetails');
     const configDetails = qs('roadTestConfigDetails');
@@ -605,7 +489,6 @@
     const autoplayToggle = qs('roadTestAutoplayNextToggle');
     const autoAdvanceToggle = qs('roadTestAutoAdvanceToggle');
     const delayInput = qs('roadTestAdvanceDelayInput');
-    const chainModeSelect = qs('roadTestChainModeSelect');
     const chainRefreshBtn = qs('roadTestChainRefreshBtn');
     const chainPrevBtn = qs('roadTestChainPrevBtn');
     const chainNextBtn = qs('roadTestChainNextBtn');
@@ -636,7 +519,6 @@
     if (autoplayToggle) autoplayToggle.addEventListener('change', () => { state.settings.autoplayNav = !!autoplayToggle.checked; localStorage.setItem(STORAGE_KEYS.autoplayNav, String(state.settings.autoplayNav)); updateHeaderMeta(state); });
     if (autoAdvanceToggle) autoAdvanceToggle.addEventListener('change', () => { state.settings.autoAdvance = !!autoAdvanceToggle.checked; localStorage.setItem(STORAGE_KEYS.autoAdvance, String(state.settings.autoAdvance)); clearPendingAdvance(state); updateHeaderMeta(state); });
     if (delayInput) delayInput.addEventListener('change', () => { state.settings.advanceDelaySec = Math.min(5, Math.max(0.5, Number(delayInput.value) || DEFAULT_SETTINGS.advanceDelaySec)); delayInput.value = String(state.settings.advanceDelaySec); localStorage.setItem(STORAGE_KEYS.advanceDelaySec, String(state.settings.advanceDelaySec)); updateHeaderMeta(state); });
-    if (chainModeSelect) chainModeSelect.addEventListener('change', () => { state.chain.mode = chainModeSelect.value || 'caption'; localStorage.setItem(STORAGE_KEYS.chainMode, state.chain.mode); buildChainQuiz(state, { mode: state.chain.mode, random: true }); });
     if (chainRefreshBtn) chainRefreshBtn.addEventListener('click', () => buildChainQuiz(state, { random: true }));
     if (chainPrevBtn) chainPrevBtn.addEventListener('click', () => moveChainWindow(state, -1, false));
     if (chainNextBtn) chainNextBtn.addEventListener('click', () => moveChainWindow(state, 1, false));
