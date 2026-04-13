@@ -1,4 +1,4 @@
-const CACHE_NAME = "driver-quiz-pwa-v21-19-roadtest-chain-samebank";
+const CACHE_NAME = 'driver-quiz-mobile-v21.5-roadtest-fix';
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -10,7 +10,7 @@ const CORE_ASSETS = [
   "./network_reference_answers.js",
   "./road_test_reference_data.js?v=20260413chainsame1",
   "./road_test_question_bank.js?v=20260411captionfinal1",
-  "./road-test-sim.js?v=20260413chainsame1",
+  "./road-test-sim.js?v=20260413fixmcq1",
   "./handbook_pages.js",
   "./manifest.webmanifest",
   "./firebase-init.js",
