@@ -1121,3 +1121,13 @@ select,input,button,textarea{font-size:16px;}
 .roadtest-chain-panel .roadtest-question-head h3{margin:4px 0 0;color:#f8fafc;}
 .roadtest-chain-panel .roadtest-module-badge{background:rgba(59,130,246,.15);color:#dbeafe;border:1px solid rgba(96,165,250,.26);}
 .roadtest-chain-panel .roadtest-option-text{white-space:normal;line-height:1.65;}
+
+
+/* v21.6 chain fixes */
+.roadtest-chain-current-head-below{margin-top:12px}
+.roadtest-chain-current-card{display:grid;gap:0}
+.roadtest-chain-video-box{order:1}
+.roadtest-chain-current-head-below{order:2}
+.roadtest-chain-current-text{order:3}
+.roadtest-chain-question-wrap .roadtest-option-btn{min-height:68px}
+.roadtest-chain-result-box{margin-top:12px}

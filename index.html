@@ -30,7 +30,7 @@
         <div class="info-grid">
           <div>
             <strong>目前版本</strong>
-            <p id="versionSummary">v21.4：字幕接龍改為共用影片考試題庫，並以「選下一題」方式作答。</p>
+            <p id="versionSummary">v21.6：整理完整基準包，修正字幕接龍切換、顯示與累積邏輯。</p>
           </div>
           <div>
             <strong>建議使用方式</strong>
@@ -230,8 +230,8 @@
 
           <div class="roadtest-meta-compact roadtest-help-meta">
             <p id="roadTestSourceLabel" class="scope-summary subtle roadtest-source-label">影片來源：YouTube｜字幕來源：captions.sbv｜片段預設前後 1 秒</p>
-            <p id="roadTestUsageNote" class="scope-summary subtle">使用說明：四選一看主影片；字幕接龍看目前這一步，再選下一段。</p>
-            <p id="roadTestVersionNote" class="scope-summary subtle">版本資訊：RoadTest UI v21.5｜接龍共用影片考試題庫、選下一題。</p>
+            <p id="roadTestUsageNote" class="scope-summary subtle">使用說明：四選一先看主影片；字幕接龍共用同一題庫，根據目前這一步選緊接的下一題。</p>
+            <p id="roadTestVersionNote" class="scope-summary subtle">版本資訊：RoadTest UI v21.6｜整理完整基準包，修正字幕接龍切換、顯示與累積邏輯。</p>
           </div>
         </details>
 
@@ -321,11 +321,6 @@
             <div class="roadtest-chain-tip subtle">操作方式：先看目前這一步，再選緊接的下一題；影片只作輔助。</div>
 
             <div class="roadtest-chain-current-card">
-              <div class="roadtest-chain-current-head">
-                <strong>目前這一步</strong>
-                <span id="roadTestChainStepMeta" class="scope-summary subtle"></span>
-              </div>
-              <div id="roadTestChainCurrentText" class="roadtest-chain-current-text">正在準備接龍題。</div>
               <div class="roadtest-chain-video-box">
                 <div class="roadtest-chain-video-head">
                   <strong>當前片段輔助影片</strong>
@@ -334,6 +329,11 @@
                 <iframe id="roadTestChainVideoFrame" class="roadtest-chain-video-frame" src="" title="字幕接龍片段播放器" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div id="roadTestChainClipLabel" class="scope-summary subtle">尚未載入片段。</div>
               </div>
+              <div class="roadtest-chain-current-head roadtest-chain-current-head-below">
+                <strong>目前這一步</strong>
+                <span id="roadTestChainStepMeta" class="scope-summary subtle"></span>
+              </div>
+              <div id="roadTestChainCurrentText" class="roadtest-chain-current-text">正在準備接龍題。</div>
             </div>
 
             <div class="roadtest-toolbar roadtest-toolbar-chain-nav">
@@ -391,11 +391,11 @@
   <script src="questions.js"></script>
   <script src="handbook_explanations.js"></script>
   <script src="network_reference_answers.js"></script>
-  <script src="road_test_reference_data.js?v=20260413chainsame1"></script>
+  <script src="road_test_reference_data.js?v=20260413chainfix2"></script>
   <script src="handbook_pages.js"></script>
   <script src="memory-bridge.js?v=20260402fixdownload1"></script>
   <script src="app.js?v=20260402fixdownload1"></script>
-  <script src="road-test-sim.js?v=20260413fixmcq1"></script>
+  <script src="road-test-sim.js?v=20260413chainfix2"></script>
   <script type="module" src="firebase-ui.js?v=20260402fixdownload1"></script>
 </body>
 </html>

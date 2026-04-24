@@ -59,6 +59,14 @@
     return t;
   }
 
+  function displayTextForQuestion(question) {
+    const a = standardizeRoadText(question && question.answerText || '');
+    const c = standardizeRoadText(question && question.captionText || '');
+    if (!a) return c || '（無文字）';
+    if (!c) return a || '（無文字）';
+    return c.length > a.length ? c : a;
+  }
+
   function normalizeAnswerText(text) {
     return standardizeRoadText(text)
       .replace(/[【】「」『』（）()，,。；;：:]/g, '')
@@ -256,8 +264,8 @@
     const sourceLabel = qs('roadTestSourceLabel');
     if (bankMeta) bankMeta.textContent = `已編成題庫 ${state.questionBank.length} 題，共 ${state.modules.length} 類模組；目前篩選後 ${state.filteredQuestions.length} 題。`;
     if (flowHint) flowHint.textContent = `目前設定：${state.settings.muted ? '靜音' : '開聲'}｜${state.settings.autoplayNav ? '切題自動播放' : '切題手動播放'}｜${state.settings.autoAdvance ? `答題後 ${state.settings.advanceDelaySec.toFixed(1)} 秒自動跳題` : '答題後停留本題'}`;
-    if (usageNote) usageNote.textContent = '使用說明：四選一看主影片；字幕接龍共用同一題庫，請根據目前這一步選下一題。';
-    if (versionNote) versionNote.textContent = '版本資訊：RoadTest UI v21.5｜修正影片載入與四選一顯示。';
+    if (usageNote) usageNote.textContent = '使用說明：上方四選一先看主影片；下方字幕接龍共用同一題庫，根據目前這一步選緊接的下一題。';
+    if (versionNote) versionNote.textContent = '版本資訊：RoadTest UI v21.6｜整理完整基準包，修正字幕接龍切換、顯示與累積邏輯。';
     if (sourceLabel) sourceLabel.textContent = '影片來源：YouTube｜字幕來源：captions.sbv｜片段前後各 1 秒';
   }
 
@@ -504,7 +512,22 @@
   }
 
   function chainUsableQuestions(state) {
-    return state.filteredQuestions.filter((q) => !isChainLowSignal(q));
+    return state.filteredQuestions.slice();
+  }
+
+  function resetChainToIndex(state, index) {
+    const usable = chainUsableQuestions(state);
+    state.chain.usable = usable;
+    if (!usable.length) {
+      state.chain.startIndex = 0;
+      state.chain.currentIndex = 0;
+      renderChain(state);
+      return;
+    }
+    const safeIndex = Math.max(0, Math.min(index, usable.length - 1));
+    state.chain.startIndex = safeIndex;
+    state.chain.currentIndex = safeIndex;
+    renderChain(state);
   }
 
   function buildChainOptions(state) {
@@ -524,7 +547,7 @@
       if (distractors.some((x) => x.segmentId === q.segmentId)) return;
       distractors.push(q);
     });
-    return { items: shuffle([correct, ...distractors.slice(0, 3)]), correctId: correct.segmentId };
+    return { options: shuffle([correct, ...distractors.slice(0, 3)]), correctId: correct.segmentId };
   }
 
   function renderCompletedList(state) {
@@ -540,8 +563,8 @@
       return;
     }
     list.className = 'roadtest-chain-completed-list';
-    list.innerHTML = done.map((q, idx) => `<div class="roadtest-chain-completed-item"><span class="roadtest-chain-completed-index">${idx + 1}</span><span>${standardizeRoadText(q.answerText || q.captionText || '（無文字）')}</span></div>`).join('');
-    resultText.textContent = done.map((q) => standardizeRoadText(q.answerText || q.captionText || '（無文字）')).join(' → ');
+    list.innerHTML = done.map((q, idx) => `<div class="roadtest-chain-completed-item"><span class="roadtest-chain-completed-index">${idx + 1}</span><span>${displayTextForQuestion(q)}</span></div>`).join('');
+    resultText.textContent = done.map((q) => displayTextForQuestion(q)).join(' → ');
     resultBox.classList.remove('hidden');
   }
 
@@ -555,50 +578,58 @@
     const moduleLabel = qs('roadTestChainModuleLabel');
     const optionsEl = qs('roadTestChainNextOptions');
     const feedback = qs('roadTestChainFeedback');
-    if (!panel || !meta || !currentText || !stepMeta || !progress || !qMeta || !moduleLabel || !optionsEl || !feedback) return;
+    const resultBox = qs('roadTestChainResultBox');
+    const resultText = qs('roadTestChainResultText');
+    if (!panel || !meta || !currentText || !stepMeta || !progress || !qMeta || !moduleLabel || !optionsEl || !feedback || !resultBox || !resultText) return;
 
     const usable = state.chain.usable || [];
     const current = usable[state.chain.currentIndex];
     const nextQ = usable[state.chain.currentIndex + 1];
-
-    meta.textContent = `字幕接龍直接共用影片考試題庫；目前可用 ${usable.length} 題。`;
-    feedback.textContent = '';
-    feedback.className = 'roadtest-feedback';
-    renderCompletedList(state);
+    meta.textContent = `字幕接龍共用影片考試題庫；目前可用 ${usable.length} 題。`;
 
     if (!current) {
-      currentText.textContent = '目前沒有可用的接龍題。';
+      currentText.textContent = '目前沒有可用的字幕接龍題。';
       stepMeta.textContent = '';
       progress.textContent = '第 0 / 0 題';
       qMeta.textContent = '';
       moduleLabel.textContent = '字幕接龍';
       optionsEl.innerHTML = '';
+      feedback.textContent = '請先選擇有內容的模組。';
+      feedback.className = 'roadtest-feedback';
+      resultBox.classList.add('hidden');
       updateChainVideo(state, null, false);
+      renderCompletedList(state);
       return;
     }
 
-    currentText.textContent = standardizeRoadText(current.answerText || current.captionText || '（無文字）');
-    stepMeta.textContent = `${current.bankId}｜${formatTime(current.startSec)} - ${formatTime(current.endSec)}｜${current.moduleTitle}`;
+    const currentTextValue = displayTextForQuestion(current);
+    currentText.textContent = currentTextValue;
+    stepMeta.textContent = `${current.bankId}｜${formatTime(current.startSec)} - ${formatTime(current.endSec)}｜${current.moduleTitle || '字幕接龍'}`;
     progress.textContent = `第 ${state.chain.currentIndex + 1} / ${usable.length} 題`;
-    qMeta.textContent = nextQ ? '下一題是什麼？' : '已到題庫最後一題。';
+    qMeta.textContent = nextQ ? `下一題是什麼？（接在 ${current.bankId} 後）` : '已到題庫最後一題。';
     moduleLabel.textContent = current.moduleTitle || '字幕接龍';
+    feedback.textContent = '';
+    feedback.className = 'roadtest-feedback';
+    resultBox.classList.remove('hidden');
+    resultText.textContent = currentTextValue;
+    renderCompletedList(state);
     updateChainVideo(state, current, false);
 
     if (!nextQ) {
       optionsEl.innerHTML = '';
       feedback.textContent = '已到目前題庫最後一題，請切到上一題或隨機一題。';
-      feedback.className = 'roadtest-feedback is-correct';
+      feedback.className = 'roadtest-feedback';
       return;
     }
 
     const built = buildChainOptions(state);
     optionsEl.innerHTML = '';
-    built.items.forEach((q, idx) => {
+    built.options.forEach((q, idx) => {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'roadtest-option-btn';
       btn.dataset.segmentId = q.segmentId;
-      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${standardizeRoadText(q.answerText || q.captionText || '（無文字）')}</span>`;
+      btn.innerHTML = `<span class="roadtest-option-index">${idx + 1}</span><span class="roadtest-option-text">${displayTextForQuestion(q)}</span>`;
       btn.addEventListener('click', function () { submitChainAnswer(state, q.segmentId, built.correctId); });
       optionsEl.appendChild(btn);
     });
@@ -619,7 +650,7 @@
       feedback.textContent = '答對，已接到下一題。';
       feedback.className = 'roadtest-feedback is-correct';
       setTimeout(function () {
-        state.chain.currentIndex += 1;
+        state.chain.currentIndex = Math.min(state.chain.currentIndex + 1, Math.max(0, (state.chain.usable || []).length - 1));
         renderChain(state);
       }, 360);
     } else {
@@ -632,10 +663,16 @@
   function buildChainQuiz(state, opts) {
     const usable = chainUsableQuestions(state);
     state.chain.usable = usable;
-    const maxStart = Math.max(0, usable.length - 2);
-    let startIndex = opts && Number.isInteger(opts.startIndex) ? opts.startIndex : state.chain.startIndex;
-    if (!Number.isFinite(startIndex) || startIndex < 0 || startIndex > maxStart) startIndex = 0;
+    if (!usable.length) {
+      state.chain.startIndex = 0;
+      state.chain.currentIndex = 0;
+      renderChain(state);
+      return;
+    }
+    let startIndex = opts && Number.isInteger(opts.startIndex) ? opts.startIndex : (Number.isInteger(state.currentIndex) ? state.currentIndex : 0);
+    const maxStart = Math.max(0, usable.length - 1);
     if (opts && opts.random && maxStart > 0) startIndex = Math.floor(Math.random() * (maxStart + 1));
+    startIndex = Math.max(0, Math.min(startIndex, maxStart));
     state.chain.startIndex = startIndex;
     state.chain.currentIndex = startIndex;
     renderChain(state);
@@ -643,15 +680,15 @@
 
   function moveChainWindow(state, delta, randomPick) {
     const usable = state.chain.usable || chainUsableQuestions(state);
-    const maxStart = Math.max(0, usable.length - 2);
-    if (maxStart <= 0) {
+    const maxStart = Math.max(0, usable.length - 1);
+    if (!usable.length) {
       buildChainQuiz(state, { startIndex: 0 });
       return;
     }
-    let next = state.chain.startIndex || 0;
+    let next = Number.isInteger(state.chain.currentIndex) ? state.chain.currentIndex : 0;
     if (randomPick) next = Math.floor(Math.random() * (maxStart + 1));
     else next = (next + delta + (maxStart + 1)) % (maxStart + 1);
-    buildChainQuiz(state, { startIndex: next });
+    resetChainToIndex(state, next);
   }
 
   function applyPanelOpenStates() {
