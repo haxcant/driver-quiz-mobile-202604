@@ -271,7 +271,20 @@ const HANDBOOK_RULES = [
   let quizAudioContext = null;
   let audioUnlocked = false;
 
-  init();
+  try {
+    window.__driveExamBootLog?.("app-init-start", "app init started");
+    init();
+    window.__DRIVE_EXAM_APP_READY = true;
+    window.__driveExamBootLog?.("app-ready", "app init completed");
+  } catch (err) {
+    window.__DRIVE_EXAM_APP_BOOT_ERROR = {
+      name: err?.name || "Error",
+      message: err?.message || String(err),
+      stack: err?.stack || ""
+    };
+    window.__driveExamBootLog?.("app-init-error", "app init failed", window.__DRIVE_EXAM_APP_BOOT_ERROR);
+    console.error("app init failed", err);
+  }
 
 
   function setQuizChromeMode(mode) {
@@ -808,6 +821,7 @@ function renderQuestion() {
             <div class="secondary-meta">答對 +1 分，答錯 / 逾時 / 不會 -1 分。</div>
             <div class="inline-action-group">
               <button id="searchQuestionQuickBtn" class="ghost-btn aux-btn">搜尋此題</button>
+              ${buildAiVerifyButtonsHtml(question)}
               <button id="dontKnowBtn" class="ghost-btn aux-btn">不會（-1）</button>
             </div>
           </div>
@@ -830,6 +844,7 @@ function renderQuestion() {
   document.getElementById("exitModeBtn")?.addEventListener("click", confirmExitCurrentMode);
   bindQuestionSearchButton(question);
   bindVerifyToolButton();
+  bindAiVerifyButtons(question);
   attachResilientImageHandlers(els.mainContent);
   startQuestionTimer(question);
 }
@@ -922,6 +937,7 @@ function renderFlashcard() {
   document.getElementById("nextCardBtn")?.addEventListener("click", goToNextFlashcardWithoutGrading);
   bindQuestionSearchButton(question);
   bindVerifyToolButton();
+  bindAiVerifyButtons(question);
   attachResilientImageHandlers(els.mainContent);
 }
 
@@ -1121,6 +1137,7 @@ function goToNextFlashcardWithoutGrading() {
 
     document.getElementById("nextBtn")?.addEventListener("click", advanceToNextQuestion);
     bindVerifyToolButton();
+    bindAiVerifyButtons(question);
     scheduleNext(autoNextDelaySec, "nextCountdown");
   }
 
@@ -3126,6 +3143,102 @@ function restoreRecommendedSettings() {
     ].join("\n\n"));
   }
 
+
+  function getQuestionOptionLines(question) {
+    const opts = Array.isArray(question?.options) ? question.options : [];
+    return opts.map((opt, idx) => {
+      const label = typeof opt === "object" && opt !== null ? (opt.label ?? opt.text ?? opt.value ?? "") : opt;
+      return (idx + 1) + ". " + String(label || "");
+    }).filter(Boolean);
+  }
+
+  function buildAiVerifyPrompt(question) {
+    const q = question || {};
+    const optionLines = getQuestionOptionLines(q);
+    const lawResources = collectOfficialLawResources(q);
+    const focusItems = buildVerifyFocusItems(q, extractQuestionKeywordCandidates(q));
+    const sourceBits = [
+      q?.source?.pdf ? "PDF/來源：" + q.source.pdf : "",
+      q?.source?.page ? "頁碼：" + q.source.page : "",
+      q?.source?.topicLabel ? "主題：" + q.source.topicLabel : "",
+      Array.isArray(q?.lawBasis) && q.lawBasis.length ? "法源線索：" + q.lawBasis.map((x) => [x?.law, x?.article, x?.paragraph, x?.note].filter(Boolean).join("")).filter(Boolean).join("；") : "",
+      lawResources.length ? "可查官方網址：" + lawResources.map((x) => x.url).join("；") : ""
+    ].filter(Boolean);
+    return [
+      "請上網查證這題台灣汽車駕照筆試／道路交通法規題，請用繁體中文回答。",
+      "題目 ID：" + (q.id || ""),
+      "分類：" + (CATEGORY_LABELS[q.category] || q.category || ""),
+      "題幹：" + (q.prompt || ""),
+      optionLines.length ? "選項：\n" + optionLines.join("\n") : "選項：無",
+      "目前題庫答案：" + (q.answer || ""),
+      sourceBits.length ? "來源線索：" + sourceBits.join("；") : "來源線索：請優先查交通部公路局／監理服務網、道路交通安全規則、道路交通管理處罰條例、道路交通標誌標線號誌設置規則、駕駛人手冊。",
+      focusItems.length ? "查證重點：" + focusItems.join("；") : "查證重點：核對官方法源、題目措辭、正確答案與易混淆選項。",
+      "請不要預設題庫答案一定正確。請核對：1. 正確答案 2. 官方或法源依據 3. 題幹關鍵詞 4. 選項辨析 5. 白話解釋 6. 常見陷阱 7. 若題庫疑似錯誤請明確指出 8. 來源 URL。"
+    ].filter(Boolean).join("\n");
+  }
+
+  async function copyTextToClipboard(text) {
+    try {
+      if (navigator.clipboard?.writeText && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {}
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return !!ok;
+    } catch { return false; }
+  }
+
+  const AI_VERIFY_TARGETS = {
+    gpt: { label: "GPT", url: (prompt) => "https://chat.openai.com/?q=" + encodeURIComponent(prompt) },
+    gemini: { label: "Gemini", url: () => "https://gemini.google.com/app" },
+    perp: { label: "Perp", url: (prompt) => "https://www.perplexity.ai/search?q=" + encodeURIComponent(prompt) },
+    grok: { label: "Grok", url: () => "https://grok.com/" }
+  };
+
+  function buildAiVerifyButtonsHtml(question) {
+    const qid = escapeAttr(question?.id || "");
+    return Object.entries(AI_VERIFY_TARGETS).map(([key, target]) => {
+      return '<button type="button" class="ghost-btn aux-btn ai-verify-btn" data-ai-target="' + escapeAttr(key) + '" data-question-id="' + qid + '" title="複製查證 prompt 並開啟 ' + escapeAttr(target.label) + '">' + escapeHtml(target.label) + '</button>';
+    }).join("");
+  }
+
+  async function openAiVerify(question, targetKey) {
+    const target = AI_VERIFY_TARGETS[targetKey] || AI_VERIFY_TARGETS.gpt;
+    const prompt = buildAiVerifyPrompt(question);
+    if (activeTimerState && !activeTimerState.paused) pauseActiveTimer();
+    const copied = await copyTextToClipboard(prompt);
+    let opened = null;
+    try { opened = window.open(target.url(prompt), "_blank", "noopener,noreferrer"); } catch { opened = null; }
+    if (!opened) {
+      window.alert([target.label + " 分頁被瀏覽器阻擋。", copied ? "查證 prompt 已複製，請手動開啟後貼上。" : "無法自動複製 prompt，請手動複製下方內容。", "", prompt].join("\n"));
+    } else if (!copied) {
+      window.alert(target.label + " 已開啟，但瀏覽器未允許自動複製 prompt；請回到本頁手動複製或使用搜尋此題。");
+    }
+  }
+
+  function bindAiVerifyButtons(defaultQuestion = null) {
+    Array.from(document.querySelectorAll(".ai-verify-btn")).forEach((button) => {
+      if (button.dataset.boundAiVerify === "1") return;
+      button.dataset.boundAiVerify = "1";
+      button.addEventListener("click", () => {
+        const qid = button.getAttribute("data-question-id") || defaultQuestion?.id || "";
+        const question = QUESTION_MAP.get(qid) || defaultQuestion;
+        if (!question) { window.alert("找不到本題資料，無法產生查證 prompt。"); return; }
+        openAiVerify(question, button.getAttribute("data-ai-target") || "gpt");
+      });
+    });
+  }
+
   function bindQuestionSearchButton(question) {
     const buttons = Array.from(document.querySelectorAll("#searchQuestionQuickBtn"));
     buttons.forEach((button) => {
@@ -3550,7 +3663,8 @@ function buildAnswerExplanationHtml(question) {
       <div class="feedback-explanation-title">查證工具</div>
       <div class="search-tool-row">
         <button type="button" class="ghost-btn aux-btn verify-tool-btn" aria-expanded="false">搜尋此題</button>
-        <span class="secondary-meta">直接顯示本題的手冊對照、關鍵詞與查證重點，不再跳出外部搜尋頁。</span>
+        ${buildAiVerifyButtonsHtml(question)}
+        <span class="secondary-meta">顯示本題手冊對照；AI 按鈕會先複製查證 prompt，再開啟外部工具。</span>
       </div>
       ${buildVerifyToolDetailHtml(question)}
     </div>

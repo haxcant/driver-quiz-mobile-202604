@@ -12,7 +12,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260426drivefix22">
 </head>
 <body>
   <div class="app-shell">
@@ -404,15 +404,43 @@
       <div id="wrongBookList" class="wrong-list empty-state">目前沒有錯題。</div>
     </section>
   </div>
-
-  <script src="questions.js"></script>
-  <script src="handbook_explanations.js"></script>
-  <script src="network_reference_answers.js"></script>
-  <script src="road_test_reference_data.js?v=20260413chainfix2"></script>
-  <script src="handbook_pages.js"></script>
-  <script src="memory-bridge.js?v=20260402fixdownload1"></script>
-  <script src="app.js?v=20260402fixdownload1"></script>
-  <script src="road-test-sim.js?v=20260413chainfix2"></script>
-  <script type="module" src="firebase-ui.js?v=20260402fixdownload1"></script>
+  <script>
+    (function () {
+      var startedAt = Date.now();
+      var logs = [];
+      function compactError(err) { return err ? { name: err.name || "Error", message: err.message || String(err), stack: err.stack || "" } : null; }
+      function record(type, message, extra) { try { logs.push({ t: Date.now() - startedAt, type: String(type || "log"), message: String(message || ""), extra: extra || null }); if (logs.length > 120) logs.shift(); } catch (_) {} }
+      window.__DRIVE_EXAM_BOOT_STARTED_AT = startedAt;
+      window.__DRIVE_EXAM_BOOT_LOGS = logs;
+      window.__driveExamBootLog = record;
+      window.addEventListener("error", function (event) { record("window-error", event.message || "script error", { filename: event.filename || "", lineno: event.lineno || 0, colno: event.colno || 0, error: compactError(event.error) }); }, true);
+      window.addEventListener("unhandledrejection", function (event) { record("unhandledrejection", "unhandled promise rejection", { reason: compactError(event.reason) || String(event.reason || "") }); });
+    })();
+  </script>
+  <script src="questions.js?v=20260426drivefix22" onload="window.__driveExamBootLog?.('asset-load','questions.js loaded')" onerror="window.__driveExamBootLog?.('asset-error','questions.js failed',{src:this.src})"></script>
+  <script src="handbook_explanations.js?v=20260426drivefix22" onload="window.__driveExamBootLog?.('asset-load','handbook_explanations.js loaded')" onerror="window.__driveExamBootLog?.('asset-error','handbook_explanations.js failed',{src:this.src})"></script>
+  <script src="network_reference_answers.js?v=20260426drivefix22" onload="window.__driveExamBootLog?.('asset-load','network_reference_answers.js loaded')" onerror="window.__driveExamBootLog?.('asset-error','network_reference_answers.js failed',{src:this.src})"></script>
+  <script src="road_test_reference_data.js?v=20260426drivefix22" onload="window.__driveExamBootLog?.('asset-load','road_test_reference_data.js loaded')" onerror="window.__driveExamBootLog?.('asset-error','road_test_reference_data.js failed',{src:this.src})"></script>
+  <script src="handbook_pages.js?v=20260426drivefix22" onload="window.__driveExamBootLog?.('asset-load','handbook_pages.js loaded')" onerror="window.__driveExamBootLog?.('asset-error','handbook_pages.js failed',{src:this.src})"></script>
+  <script src="memory-bridge.js?v=20260426drivefix22" onload="window.__driveExamBootLog?.('asset-load','memory-bridge.js loaded')" onerror="window.__driveExamBootLog?.('asset-error','memory-bridge.js failed',{src:this.src})"></script>
+  <script src="app.js?v=20260426drivefix22" onload="window.__driveExamBootLog?.('asset-load','app.js loaded')" onerror="window.__driveExamBootLog?.('asset-error','app.js failed',{src:this.src})"></script>
+  <script src="road-test-sim.js?v=20260426drivefix22" onload="window.__driveExamBootLog?.('asset-load','road-test-sim.js loaded')" onerror="window.__driveExamBootLog?.('asset-error','road-test-sim.js failed',{src:this.src})"></script>
+  <script type="module" src="firebase-ui.js?v=20260426drivefix22" onload="window.__driveExamBootLog?.('asset-load','firebase-ui.js loaded')" onerror="window.__driveExamBootLog?.('asset-error','firebase-ui.js failed',{src:this.src})"></script>
+  <script>
+    (function () {
+      var VERSION_TAG = "20260426drivefix22";
+      function isReady() { return !!window.__DRIVE_EXAM_APP_READY; }
+      function mainPanel() { return document.getElementById("mainContent"); }
+      function escapeHtml(text) { return String(text || "").replace(/[&<>"']/g, function (ch) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch] || ch; }); }
+      function downloadBootLog() { var payload = JSON.stringify({ version: VERSION_TAG, href: location.href, userAgent: navigator.userAgent, ready: isReady(), error: window.__DRIVE_EXAM_APP_BOOT_ERROR || null, logs: window.__DRIVE_EXAM_BOOT_LOGS || [] }, null, 2); var blob = new Blob([payload], { type: "application/json;charset=utf-8" }); var url = URL.createObjectURL(blob); var a = document.createElement("a"); a.href = url; a.download = "drive-exam-boot-log-" + Date.now() + ".json"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); }
+      async function clearCacheAndReload() { try { if (navigator.serviceWorker) { var regs = await navigator.serviceWorker.getRegistrations(); await Promise.all(regs.map(function (r) { return r.unregister(); })); } } catch (_) {} try { if (window.caches) { var keys = await caches.keys(); await Promise.all(keys.map(function (k) { return caches.delete(k); })); } } catch (_) {} location.href = location.pathname.replace(/[^/]*$/, "index.html") + "?v=" + VERSION_TAG + "&reload=" + Date.now(); }
+      function renderLoadingNotice() { if (isReady()) return; var main = mainPanel(); if (!main || document.body.classList.contains("quiz-mode-active")) return; main.className = "panel quiz-panel empty-state"; main.innerHTML = '<div class="empty-start-card boot-status-card"><h2>主程式仍在載入</h2><p>手機或 LINE 內建瀏覽器第一次開啟時，題庫與樣式可能需要幾秒鐘。</p><div class="boot-spinner" aria-hidden="true"></div></div>'; }
+      function renderFailureNotice() { if (isReady()) return; var main = mainPanel(); if (!main) return; var errorText = ""; if (window.__DRIVE_EXAM_APP_BOOT_ERROR && window.__DRIVE_EXAM_APP_BOOT_ERROR.message) { errorText = '<p class="boot-error-text">偵測到錯誤：' + escapeHtml(window.__DRIVE_EXAM_APP_BOOT_ERROR.message) + '</p>'; } main.className = "panel quiz-panel empty-state"; main.innerHTML = '<div class="empty-start-card boot-status-card"><h2>主程式尚未成功載入</h2><p>可能是舊版快取、站台資料異常、部署缺檔，或某個腳本載入失敗。</p>' + errorText + '<div class="actions compact boot-actions"><button id="bootDownloadLogBtn" type="button" class="secondary-btn">下載診斷 log</button><button id="bootGuardReloadBtn" type="button" class="primary-btn">清快取並重新載入</button><button id="bootGuardPlainReloadBtn" type="button" class="ghost-btn">直接重新整理</button></div></div>'; document.getElementById("bootDownloadLogBtn")?.addEventListener("click", downloadBootLog); document.getElementById("bootGuardReloadBtn")?.addEventListener("click", clearCacheAndReload); document.getElementById("bootGuardPlainReloadBtn")?.addEventListener("click", function () { location.reload(); }); }
+      window.DriveExamBootTools = { downloadBootLog: downloadBootLog, clearCacheAndReload: clearCacheAndReload };
+      window.setTimeout(renderLoadingNotice, 3500);
+      window.setTimeout(renderFailureNotice, 12000);
+      window.setInterval(function () { if (window.__DRIVE_EXAM_APP_BOOT_ERROR && !isReady()) renderFailureNotice(); }, 2000);
+    })();
+  </script>
 </body>
 </html>
