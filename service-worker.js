@@ -1,10 +1,10 @@
-const CACHE_NAME = 'driver-quiz-mobile-v21.7-dashboard';
+const CACHE_NAME = 'driver-quiz-mobile-v21.6-roadtest-chainfix';
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=20260426dashboard1",
+  "./styles.css",
   "././memory-bridge.js?v=20260402fixdownload1",
-  "././app.js?v=20260426dashboard1",
+  "././app.js?v=20260402fixdownload1",
   "./questions.js",
   "./handbook_explanations.js",
   "./network_reference_answers.js",

@@ -71,32 +71,6 @@
     lt: "<",
     eq: "="
   };
-  const DASHBOARD_BANKS = [
-    {
-      key: "official_small_car",
-      label: "正式筆試",
-      description: "普通小型車官方筆試題庫",
-      filter: (q) => isOfficialSmallCarQuestion(q),
-    },
-    {
-      key: "mechanical_core",
-      label: "機械常識",
-      description: "機械常識選擇題與是非題",
-      filter: (q) => isMechanicalQuestion(q),
-    },
-    {
-      key: "extended_signs",
-      label: "延伸圖示",
-      description: "非正式筆試／非機械的延伸圖示題",
-      filter: (q) => !isOfficialSmallCarQuestion(q) && !isMechanicalQuestion(q),
-    },
-    {
-      key: "full_extended",
-      label: "全部題庫",
-      description: "目前載入的全部題庫",
-      filter: () => true,
-    },
-  ];
   const REWARD_LEVELS = [
     { key: "starter", label: "起步徽章", minPct: 0, nextPct: 10, note: "先把低分題刷起來，讓更多題目進入正分區。" },
     { key: "bronze", label: "銅牌學習者", minPct: 10, nextPct: 30, note: "你已經開始建立穩定記憶，接下來把熟題擴大到三成。" },
@@ -252,9 +226,6 @@ const HANDBOOK_RULES = [
     rewardProgressBar: document.getElementById("rewardProgressBar"),
     rewardEncouragement: document.getElementById("rewardEncouragement"),
     badgeList: document.getElementById("badgeList"),
-    bankDashboardCards: document.getElementById("bankDashboardCards"),
-    bankDashboardCompact: document.getElementById("bankDashboardCompact"),
-    bankDashboardUpdated: document.getElementById("bankDashboardUpdated"),
   };
 
   let progress = loadProgress();
@@ -1402,79 +1373,6 @@ function renderWrongBook() {
     if (els.masteredCoverageCount) els.masteredCoverageCount.textContent = `${positivePct}%`;
     if (els.masteredCoverageDetail) els.masteredCoverageDetail.textContent = `正分 ${positiveCount} / ${scopedQuestions.length} 題；其中 >1 有 ${masteredCount} 題；本輪答對 ${session?.correct || 0} 題`;
     if (els.totalPointsCount) els.totalPointsCount.textContent = formatSignedNumber(totalPoints);
-    refreshBankDashboard();
-  }
-
-  function computeBankDashboardMetric(bank) {
-    const questions = ALL_QUESTIONS.filter((q) => {
-      try { return bank.filter(q); } catch { return false; }
-    });
-    const entries = questions.map((q) => questionProgress(q.id));
-    const total = questions.length;
-    const seen = entries.reduce((sum, x) => sum + (Number(x.totalSeen) || 0), 0);
-    const correct = entries.reduce((sum, x) => sum + (Number(x.totalCorrect) || 0), 0);
-    const positive = entries.filter((x) => (Number(x.score) || 0) >= 1).length;
-    const totalScore = entries.reduce((sum, x) => sum + (Number(x.score) || 0), 0);
-    const positiveRate = total ? (100 * positive / total) : 0;
-    const accuracy = seen ? (100 * correct / seen) : 0;
-    const avgScore = total ? (totalScore / total) : 0;
-    return { ...bank, total, seen, correct, positive, totalScore, positiveRate, accuracy, avgScore };
-  }
-
-  function formatPercent(value) {
-    const n = Number(value);
-    if (!Number.isFinite(n)) return "-";
-    if (n >= 99.95) return "100%";
-    if (n <= 0) return "0%";
-    return `${Math.round(n * 10) / 10}%`;
-  }
-
-  function formatSignedDecimal(value) {
-    const n = Number(value) || 0;
-    const rounded = Math.round(n * 100) / 100;
-    if (Object.is(rounded, -0) || rounded === 0) return "0.00";
-    return `${rounded > 0 ? "+" : ""}${rounded.toFixed(2)}`;
-  }
-
-  function refreshBankDashboard() {
-    if (!els.bankDashboardCards && !els.bankDashboardCompact) return;
-    const metrics = DASHBOARD_BANKS.map(computeBankDashboardMetric).filter((m) => m.total > 0);
-    if (els.bankDashboardCards) {
-      els.bankDashboardCards.innerHTML = metrics.map((m) => {
-        const pct = Math.max(0, Math.min(100, m.positiveRate));
-        const accWidth = Math.max(0, Math.min(100, m.accuracy));
-        const avgClass = m.avgScore > 0 ? "positive" : m.avgScore < 0 ? "negative" : "neutral";
-        const accuracyText = m.seen ? escapeHtml(formatPercent(m.accuracy)) : "-";
-        return `
-          <article class="bank-metric-card" data-bank="${escapeHtml(m.key)}" style="--pct:${pct.toFixed(2)};">
-            <div class="bank-metric-head">
-              <span class="bank-metric-kicker">題庫</span>
-              <strong>${escapeHtml(m.label)}</strong>
-              <small>${escapeHtml(m.description || "")}</small>
-            </div>
-            <div class="bank-metric-body">
-              <div class="bank-ring" aria-label="${escapeHtml(m.label)} 正分率 ${formatPercent(m.positiveRate)}">
-                <span>${escapeHtml(formatPercent(m.positiveRate))}</span>
-                <small>正分率</small>
-              </div>
-              <div class="bank-metric-lines">
-                <div class="bank-metric-row"><span>答對率</span><strong>${accuracyText}</strong></div>
-                <div class="bank-mini-bar" aria-hidden="true"><i style="width:${accWidth.toFixed(2)}%"></i></div>
-                <div class="bank-metric-row"><span>平均每題分數</span><strong class="avg-score ${avgClass}">${escapeHtml(formatSignedDecimal(m.avgScore))}</strong></div>
-                <div class="bank-metric-subline">正分 ${m.positive} / ${m.total} 題｜已作答 ${m.seen} 次</div>
-              </div>
-            </div>
-          </article>`;
-      }).join("");
-    }
-    if (els.bankDashboardCompact) {
-      els.bankDashboardCompact.innerHTML = metrics.map((m) => {
-        return `<span class="dashboard-chip">${escapeHtml(m.label)} ${escapeHtml(formatPercent(m.positiveRate))}｜${escapeHtml(formatSignedDecimal(m.avgScore))}</span>`;
-      }).join("");
-    }
-    if (els.bankDashboardUpdated) {
-      els.bankDashboardUpdated.textContent = `即時統計｜${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
-    }
   }
 
   function refreshRewards() {
