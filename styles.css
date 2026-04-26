@@ -1168,20 +1168,3 @@ select,input,button,textarea{font-size:16px;}
 .quiz-mode-active .dashboard-panel{display:none;}
 @media (max-width:1050px){.bank-dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media (max-width:680px){.bank-dashboard-grid{grid-template-columns:1fr}.dashboard-headline{display:grid}.dashboard-updated{width:max-content}.learning-dashboard-fold > summary{align-items:flex-start}.dashboard-compact-summary{justify-content:flex-start}.bank-metric-body{grid-template-columns:78px minmax(0,1fr)}}
-
-/* 20260426drivefix22: boot guard styles */
-.boot-status-card{text-align:left}
-.boot-spinner{width:32px;height:32px;margin:14px auto 4px;border:4px solid var(--border,#cbd5e1);border-top-color:var(--primary,#2563eb);border-radius:999px;animation:bootSpin .9s linear infinite}
-.boot-actions{gap:8px;flex-wrap:wrap}
-.boot-error-text{margin-top:10px;padding:10px 12px;border:1px solid var(--danger,#dc2626);border-radius:12px;background:color-mix(in srgb,var(--danger,#dc2626) 12%,var(--panel,#fff));color:var(--text,#111827);font-size:.92rem}
-@keyframes bootSpin{to{transform:rotate(360deg)}}
-
-/* 20260426drivefix22: compact AI verification buttons */
-.search-tool-row,
-.inline-action-group{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.search-tool-row .aux-btn,
-.inline-action-group .ai-verify-btn,
-.inline-action-group #searchQuestionQuickBtn,
-.search-tool-row .ai-verify-btn,
-.search-tool-row .verify-tool-btn{min-height:30px;padding:5px 8px;border-radius:10px;font-size:.78rem;line-height:1.2;white-space:nowrap}
-.inline-action-group #dontKnowBtn{min-height:30px;padding:5px 8px;border-radius:10px;font-size:.78rem;white-space:nowrap}
